@@ -135,3 +135,8 @@ pre.veri{font:.92rem/1.5 var(--mono);background:var(--yuzey);border:1px solid va
 .sonuclar span{font-size:.85rem;color:var(--soluk)}
 .sonuclar b{font:600 1.9rem var(--serif);color:var(--vurgu-ink)}
 .sonuclar small{color:var(--soluk)}
+main.ic{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+main.ic input{-webkit-user-select:text;user-select:text}
+.iletisim{font-size:.93rem}
+.baski-notu{display:none}
+@media print{body>*{display:none!important}.baski-notu{display:block!important;font:16px/1.5 system-ui,sans-serif;padding:40px}}

@@ -194,9 +194,15 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif=""):
 <p><b>ALES Rotası</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, çözümlü sorular, konu analizi ve çalışma programları.
 Günlük soru, haftalık kamp ve akademik ilanlar için <a href="{TG}">Telegram grubu @aleskampi</a>.</p>
 <p class="altlink"><a href="{kok}ales-puan-hesaplama/">ALES puan hesaplama</a> · <a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a></p>
-<p class="kucuk">İçerikler özgündür; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
+<p class="iletisim">İletişim: <a href="mailto:esraaksoyy34@gmail.com">esraaksoyy34@gmail.com</a></p>
+<p class="kucuk">© ALES Rotası. İçerikler özgündür ve izinsiz çoğaltılamaz; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
 bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
 </div></footer>
+<div class="baski-notu">Bu içerik ALES Rotası'na aittir: {BASE}/</div>
+<script>
+(function(){{var serbest=function(e){{return e.target&&e.target.closest&&e.target.closest("input,textarea,select")}};
+["copy","cut","contextmenu","dragstart","selectstart"].forEach(function(t){{document.addEventListener(t,function(e){{if(!serbest(e))e.preventDefault()}})}});}})();
+</script>
 </body>
 </html>
 """
