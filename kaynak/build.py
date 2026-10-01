@@ -23,7 +23,9 @@ from icerik import PROGRAMLAR, REHBER  # noqa: E402
 
 CNAME = open(os.path.join(KOK, "CNAME")).read().strip() if os.path.exists(os.path.join(KOK, "CNAME")) else None
 BASE = os.environ.get("SITE_BASE") or (f"https://{CNAME}" if CNAME else "https://alesrotasi.github.io")
-TG = "https://t.me/aleskampi"
+TG = "https://t.me/+yu1PnT-cz9ZiM2Fk"  # @aleskampi, "Site" davet bağlantısı (katılım kaynağı sayılır)
+TG_GENEL = "https://t.me/aleskampi"
+GC = open(os.path.join(KOK, "goatcounter.txt")).read().strip() if os.path.exists(os.path.join(KOK, "goatcounter.txt")) else None
 BUGUN_TR = datetime.now(timezone(timedelta(hours=3))).date()
 KAMP_BASI = date(2026, 9, 28)
 esc = html.escape
@@ -194,11 +196,12 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif=""):
 <p><b>ALES Rotası</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, çözümlü sorular, konu analizi ve çalışma programları.
 Günlük soru, haftalık kamp ve akademik ilanlar için <a href="{TG}">Telegram grubu @aleskampi</a>.</p>
 <p class="altlink"><a href="{kok}ales-puan-hesaplama/">ALES puan hesaplama</a> · <a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a></p>
-<p class="iletisim">İletişim: <a href="mailto:esraaksoyy34@gmail.com">esraaksoyy34@gmail.com</a></p>
+<p class="iletisim"><a href="{kok}hakkinda/">Hakkında</a> · İletişim: <a href="mailto:esraaksoyy34@gmail.com">esraaksoyy34@gmail.com</a></p>
 <p class="kucuk">© ALES Rotası. İçerikler özgündür ve izinsiz çoğaltılamaz; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
 bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
 </div></footer>
 <div class="baski-notu">Bu içerik ALES Rotası'na aittir: {BASE}/</div>
+{f'<script data-goatcounter="https://{GC}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>' if GC else ""}
 <script>
 (function(){{var serbest=function(e){{return e.target&&e.target.closest&&e.target.closest("input,textarea,select")}};
 ["copy","cut","contextmenu","dragstart","selectstart"].forEach(function(t){{document.addEventListener(t,function(e){{if(!serbest(e))e.preventDefault()}})}});}})();
@@ -289,7 +292,7 @@ def ana_sayfa():
 </section>
 """
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "ALES Rotası", "url": BASE + "/", "inLanguage": "tr"},
-          {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Rotası", "url": BASE + "/", "sameAs": [TG]}]
+          {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Rotası", "url": BASE + "/", "sameAs": [TG_GENEL], "email": "esraaksoyy34@gmail.com"}]
     yaz("", sayfa("", "ALES Rotası · ALES'e sıfırdan hazırlık: konu anlatımı, çözümlü sorular, çalışma programı",
                   f"ALES sözel ve sayısal için ücretsiz {len(DERSLER)} konu anlatımı, çözümlü sorular, son {NS} sınavın konu dağılımı ve 1-2-3-4 aylık çalışma programları.",
                   g, "", ld))
@@ -767,6 +770,32 @@ document.querySelectorAll('#hesap input').forEach(i=>i.addEventListener('input',
                                       g, "../", ld, "ales-puan-hesaplama/"))
 
 
+def hakkinda():
+    g = f"""
+<article class="ders"><header><p class="ust-yazi">ALES Rotası</p><h1>Hakkında</h1></header>
+<div class="govde rehber">
+<p><b>ALES Rotası</b>, ALES'e sıfırdan hazırlananlar için ücretsiz bir çalışma rehberidir: {len(DERSLER)} konu anlatımı, her gün yeni
+çözümlü sorular, sınava kalan süreye göre çalışma programları, konu dağılımı analizi ve yaklaşık puan hesaplama.
+Aynı ekip, her gün soru ve kamp görevi paylaşılan <a href="{TG}">@aleskampi Telegram grubunu</a> yönetir.</p>
+<h2>İçerik nasıl hazırlanıyor?</h2>
+<ul class="liste">
+<li><b>Konu dağılımı:</b> son {NS} ALES'teki ({SINAVLAR[0]} – {SINAVLAR[-1]}) {len(SORULAR)} sorunun her biri konu ve zorluğa göre tek tek etiketlendi. Zorluk etiketleri bizim değerlendirmemizdir.</li>
+<li><b>Dersler ve sorular özgündür.</b> Hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı yapılmaz; sorular ALES'in soru tiplerini örnek alarak sıfırdan yazılır.
+Sayısal soruların cevapları bilgisayarla ayrıca doğrulanır; sözel sorularda her yanlış şıkkın neden yanlış olduğu çözümde gösterilir.</li>
+<li><b>Puan hesaplama</b> ÖSYM kılavuzundaki resmî formülü ve ÖSYM'nin yayımladığı son istatistikleri kullanır; bu yüzden tek bir sayı değil, yaklaşık bir aralık verir.</li>
+<li><b>Tarih ve kurallar</b> ÖSYM'nin kılavuzlarından alınır; son söz her zaman <a href="https://www.osym.gov.tr/">osym.gov.tr</a>'dedir. ALES Rotası ÖSYM ile bağlantılı değildir.</li>
+</ul>
+<h2>Hata mı buldun?</h2>
+<p>Bir soruda ikinci bir doğru cevap, bir derste yanlış bilgi ya da çalışmayan bir sayfa gördüysen yaz; kontrol edip düzeltiriz:
+<a href="mailto:esraaksoyy34@gmail.com">esraaksoyy34@gmail.com</a></p>
+<h2>Kullanım</h2>
+<p>Siteyi kişisel çalışman için özgürce kullanabilirsin. İçeriklerin başka bir sitede, kitapta ya da kanalda izinsiz çoğaltılmasına izin verilmez; alıntı yapmak istersen kaynak bağlantısı vererek yap.</p>
+</div></article>
+{tg_kutu()}
+"""
+    yaz("hakkinda/", sayfa("hakkinda/", "Hakkında · ALES Rotası", "ALES Rotası nedir, içerikler nasıl hazırlanıyor, veri kaynakları ve iletişim.", g, "../"))
+
+
 def ekler(yollar):
     yaz("404.html", sayfa("404.html", "Sayfa bulunamadı | ALES Rotası", "Aradığın sayfa bulunamadı.",
                           f'<header class="baslik"><h1>Sayfa bulunamadı</h1><p class="giris"><a href="{BASE}/">Ana sayfaya dön</a> · <a href="{BASE}/sorular/">Çözümlü sorular</a> · <a href="{BASE}/dersler/">Dersler</a></p></header>', BASE + "/"))
@@ -782,10 +811,10 @@ def ekler(yollar):
 if __name__ == "__main__":
     shutil.rmtree(CIKTI, ignore_errors=True)
     os.makedirs(CIKTI)
-    ana_sayfa(); ders_sayfalari(); soru_sayfalari(); analiz(); konu_sayfalari(); programlar(); ales3(); rehber(); puan_sayfasi()
+    ana_sayfa(); ders_sayfalari(); soru_sayfalari(); analiz(); konu_sayfalari(); programlar(); ales3(); rehber(); puan_sayfasi(); hakkinda()
     yollar = (["", "ales-puan-hesaplama/", "ales-3-hazirlik/", "ales-calisma-programi/"] + [f"ales-calisma-programi/{n}-aylik/" for n in (1, 2, 3, 4)] +
               ["ales-nasil-calisilir/", "dersler/"] + [f"dersler/{d['slug']}/" for d in SIRA] +
               ["sorular/"] + [f"sorular/{q['slug']}/" for q in YAYIN] +
-              ["konu-analizi/", "ales-konulari/"] + [f"ales-konulari/{s[0]}/" for s in KONU_SAYFALARI])
+              ["konu-analizi/", "ales-konulari/", "hakkinda/"] + [f"ales-konulari/{s[0]}/" for s in KONU_SAYFALARI])
     ekler(yollar)
     print(f"Site: {CIKTI} · {len(yollar)} sayfa · {len(YAYIN)} yayımlanmış soru · taban {BASE}")
