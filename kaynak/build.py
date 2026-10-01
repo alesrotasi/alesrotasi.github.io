@@ -22,7 +22,7 @@ sys.path.insert(0, KOK)
 from icerik import PROGRAMLAR, REHBER  # noqa: E402
 
 CNAME = open(os.path.join(KOK, "CNAME")).read().strip() if os.path.exists(os.path.join(KOK, "CNAME")) else None
-BASE = os.environ.get("SITE_BASE") or (f"https://{CNAME}" if CNAME else "https://esraaksoy29.github.io/ales-rotasi")
+BASE = os.environ.get("SITE_BASE") or (f"https://{CNAME}" if CNAME else "https://alesrotasi.github.io")
 TG = "https://t.me/aleskampi"
 BUGUN_TR = datetime.now(timezone(timedelta(hours=3))).date()
 KAMP_BASI = date(2026, 9, 28)
