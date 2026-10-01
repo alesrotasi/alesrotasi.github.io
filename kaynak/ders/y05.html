@@ -1,0 +1,282 @@
+<div class="alesde">
+<p>Çarpanlara ayırma ve özdeşlikler, ALES'te ayrı bir soru başlığı olarak nadiren görünür; ama işlem sorularının içine <strong>gizlenmiş</strong> halde çok sık kullanılır. Özellikle "iki kare farkı" özdeşliği, büyük sayılarla yapılan çarpma-çıkarma işlemlerini saniyeler içinde çözmeni sağlar (ör. 101² − 99² gibi). Bu yüzden bu dersi bilmek, diğer derslerdeki soruları hızlandırır.</p>
+</div>
+
+<h3>Ortak çarpan parantezine alma</h3>
+<div class="kural">
+<p>Bir toplamda ya da farkta ortak bir çarpan varsa, bu çarpan parantezine alınabilir:</p>
+<p>a·c + b·c = c·(a+b)</p>
+</div>
+<div class="ornek">
+<p class="soru">3×7 + 3×13 işleminin sonucu kaçtır?</p>
+<p>A) 40   B) 50   C) 60   D) 70   E) 80</p>
+<details>
+<summary>Çözüm</summary>
+<p>Ortak çarpan 3'ü parantezine alalım: 3×7+3×13 = 3×(7+13) = 3×20</p>
+<p>3×20 = 60</p>
+<p class="sonuc">Cevap: C) 60</p>
+</details>
+</div>
+
+<h3>İki kare farkı özdeşliği</h3>
+<div class="kural">
+<p><strong>a² − b² = (a−b)(a+b)</strong></p>
+<p>Bu özdeşlik, ardışık ya da birbirine yakın iki sayının karelerinin farkını çok hızlı hesaplamanı sağlar.</p>
+</div>
+<div class="ornek">
+<p class="soru">101² − 99² işleminin sonucu kaçtır?</p>
+<p>A) 200   B) 300   C) 400   D) 500   E) 600</p>
+<details>
+<summary>Çözüm</summary>
+<p>İki kare farkı özdeşliğini kullanalım: 101² − 99² = (101−99)(101+99)</p>
+<p>= 2 × 200 = 400</p>
+<p>(Karşılaştırma: doğrudan hesaplasaydık 10201−9801=400 çıkardı, aynı sonuç ama çok daha uzun sürerdi.)</p>
+<p class="sonuc">Cevap: C) 400</p>
+</details>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> a²−b² ifadesini (a−b)² sanmak sık yapılan bir hatadır. Bunlar tamamen farklı ifadelerdir: a²−b²=(a−b)(a+b) iken (a−b)²=a²−2ab+b²'dir. Birbirine karıştırma.</p>
+</div>
+
+<h3>Tam kare özdeşlikleri</h3>
+<div class="kural">
+<p><strong>(a+b)² = a² + 2ab + b²</strong></p>
+<p><strong>(a−b)² = a² − 2ab + b²</strong></p>
+<p>Bu özdeşlikler, iki basamaklı bir sayının karesini "onlar + birler" şeklinde ayırıp hızlı hesaplamak için de kullanılabilir.</p>
+</div>
+<div class="ornek">
+<p class="soru">23² işleminin sonucu kaçtır?</p>
+<p>A) 429   B) 469   C) 499   D) 529   E) 549</p>
+<details>
+<summary>Çözüm</summary>
+<p>23'ü (20+3) şeklinde yazalım ve tam kare özdeşliğini uygulayalım:</p>
+<p>(20+3)² = 20² + 2×20×3 + 3² = 400 + 120 + 9</p>
+<p>= 529</p>
+<p class="sonuc">Cevap: D) 529</p>
+</details>
+</div>
+
+<h3>Küp özdeşlikleri (kısaca)</h3>
+<div class="kural">
+<p>a³ − b³ = (a−b)(a² + ab + b²)</p>
+<p>a³ + b³ = (a+b)(a² − ab + b²)</p>
+<p>Bu ikisi ALES'te çok nadir çıkar ama isimlerini ve genel yapılarını tanıman yeterlidir.</p>
+</div>
+<div class="ornek">
+<p class="soru">7³ − 4³ işleminin sonucu kaçtır?</p>
+<p>A) 259   B) 269   C) 279   D) 289   E) 299</p>
+<details>
+<summary>Çözüm</summary>
+<p>Küp farkı özdeşliği: 7³−4³ = (7−4)(7²+7×4+4²) = 3×(49+28+16) = 3×93</p>
+<p>3×93 = 279</p>
+<p>(Direkt hesap: 343−64=279, aynı sonuç.)</p>
+<p class="sonuc">Cevap: C) 279</p>
+</details>
+</div>
+
+<h3>Sadeleştirme soruları</h3>
+<p>Çarpanlara ayırma en çok kesir sadeleştirme sorularında işine yarar. Bir kesrin payı ya da paydası çarpanlarına ayrılabiliyorsa, ortak çarpanları sadeleştirebilirsin.</p>
+<div class="ornek">
+<p class="soru">x = 10 için <span class="frac"><span>x² − 9</span><span>x − 3</span></span> ifadesinin değeri kaçtır?</p>
+<p>A) 7   B) 10   C) 13   D) 16   E) 19</p>
+<details>
+<summary>Çözüm</summary>
+<p>Pay iki kare farkıdır: x²−9 = x²−3² = (x−3)(x+3)</p>
+<p>Kesir: (x−3)(x+3) / (x−3) = x+3 (x≠3 iken sadeleşir)</p>
+<p>x=10 için: 10+3 = 13</p>
+<p>Kontrol: x=10 iken pay=100−9=91, payda=10−3=7, 91/7=13 ✓</p>
+<p class="sonuc">Cevap: C) 13</p>
+</details>
+</div>
+
+<h3>Sayısal işlemlerde gizli özdeşlik kullanımı</h3>
+<div class="tuzak">
+<p><strong>Dikkat:</strong> ALES'te "998×1002 kaçtır?" gibi bir soru gördüğünde bunu düz çarpma ile çözmeye çalışma; sayıları 1000'e yakın iki sayı olarak görüp (1000−2)(1000+2)=1000²−2² şeklinde iki kare farkına çevir. Bu, hem zaman kazandırır hem hata riskini azaltır.</p>
+</div>
+<div class="ornek">
+<p class="soru">998 × 1002 işleminin sonucu kaçtır?</p>
+<p>A) 999 996   B) 999 998   C) 1 000 000   D) 1 000 004   E) 1 000 996</p>
+<details>
+<summary>Çözüm</summary>
+<p>998 ve 1002 sayılarını 1000'e göre yazalım: 998=1000−2, 1002=1000+2</p>
+<p>İki kare farkı: (1000−2)(1000+2) = 1000² − 2² = 1 000 000 − 4</p>
+<p>= 999 996</p>
+<p class="sonuc">Cevap: A) 999 996</p>
+</details>
+</div>
+
+<h3>ALES seviyesine çıkmak</h3>
+<p>Özdeşlikler ALES'te iki biçimde karşına çıkar: büyük sayılarla hesap yaptıran işlem soruları (2025<sup>2</sup> − 2024<sup>2</sup> gibi) ve verilen toplam-çarpım bilgisinden başka bir ifadeyi bulduran sorular (a + b ve ab verilip a<sup>2</sup> + b<sup>2</sup> sorulması gibi).</p>
+<div class="kural"><ul>
+<li>a<sup>2</sup> + b<sup>2</sup> = (a + b)<sup>2</sup> − 2ab</li>
+<li>a<sup>2</sup> − b<sup>2</sup> = (a − b)(a + b)</li>
+<li>x<sup>2</sup> + <span class="frac"><span>1</span><span>x<sup>2</sup></span></span> = (x + <span class="frac"><span>1</span><span>x</span></span>)<sup>2</sup> − 2</li>
+<li>x<sup>2</sup> + bx + c ifadesini çarpanlara ayırırken çarpımı c, toplamı b olan iki sayı ara: x<sup>2</sup> − 5x + 6 = (x − 2)(x − 3).</li>
+</ul></div>
+<div class="tuzak"><p><strong>(a + b)<sup>2</sup> ≠ a<sup>2</sup> + b<sup>2</sup>.</strong> Ortadaki 2ab terimini unutmak en sık yapılan hatadır: (3 + 4)<sup>2</sup> = 49, ama 3<sup>2</sup> + 4<sup>2</sup> = 25.</p></div>
+<div class="ornek">
+<p class="soru">a + b = 7 ve a·b = 10 olduğuna göre a<sup>2</sup> + b<sup>2</sup> kaçtır? A) 19  B) 29  C) 39  D) 49  E) 59</p>
+<details><summary>Çözüm</summary>
+<p>a<sup>2</sup> + b<sup>2</sup> = (a + b)<sup>2</sup> − 2ab = 49 − 20 = 29. a ile b'yi tek tek bulmana gerek yok; 5 ve 2 olduklarını görsen de bu yol daha hızlıdır.</p>
+<p class="sonuc">Cevap: B) 29</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">a − b = 3 ve a<sup>2</sup> − b<sup>2</sup> = 33 olduğuna göre a + b kaçtır? A) 9  B) 10  C) 11  D) 12  E) 13</p>
+<details><summary>Çözüm</summary>
+<p>a<sup>2</sup> − b<sup>2</sup> = (a − b)(a + b) ⇒ 33 = 3·(a + b) ⇒ a + b = 11.</p>
+<p class="sonuc">Cevap: C) 11</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">2025<sup>2</sup> − 2024<sup>2</sup> işleminin sonucu kaçtır? A) 1  B) 2024  C) 4048  D) 4049  E) 4050</p>
+<details><summary>Çözüm</summary>
+<p>İki kare farkı: (2025 − 2024)(2025 + 2024) = 1·4049 = 4049. Ardışık iki sayının karelerinin farkı, bu iki sayının toplamına eşittir.</p>
+<p class="sonuc">Cevap: D) 4049</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">x + <span class="frac"><span>1</span><span>x</span></span> = 4 olduğuna göre x<sup>2</sup> + <span class="frac"><span>1</span><span>x<sup>2</sup></span></span> kaçtır? A) 12  B) 14  C) 16  D) 18  E) 20</p>
+<details><summary>Çözüm</summary>
+<p>Her iki tarafın karesini al: x<sup>2</sup> + 2 + <span class="frac"><span>1</span><span>x<sup>2</sup></span></span> = 16. Ortadaki 2, 2·x·<span class="frac"><span>1</span><span>x</span></span> teriminden gelir. O hâlde x<sup>2</sup> + <span class="frac"><span>1</span><span>x<sup>2</sup></span></span> = 14.</p>
+<p class="sonuc">Cevap: B) 14</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">x ≠ −2 olmak üzere <span class="frac"><span>x<sup>2</sup> − 4</span><span>x<sup>2</sup> + 4x + 4</span></span> ifadesinin sadeleşmiş hâli hangisidir? A) <span class="frac"><span>x − 2</span><span>x + 2</span></span>  B) <span class="frac"><span>x + 2</span><span>x − 2</span></span>  C) x − 2  D) 1  E) <span class="frac"><span>1</span><span>x + 2</span></span></p>
+<details><summary>Çözüm</summary>
+<p>Pay iki kare farkı: (x − 2)(x + 2). Payda tam kare: (x + 2)<sup>2</sup>. Bir (x + 2) sadeleşir: <span class="frac"><span>x − 2</span><span>x + 2</span></span>.</p>
+<p class="sonuc">Cevap: A) <span class="frac"><span>x − 2</span><span>x + 2</span></span></p>
+</details>
+</div>
+
+<h3>Ortak çarpanı bulurken değişkenli terimleri de hesaba kat</h3>
+<p>Ortak çarpan yalnızca sayı olmak zorunda değildir; terimlerde ortak geçen harfler de parantezine alınabilir. Bunu bulmak için sayısal kısımların ortak çarpanını (EBOB mantığıyla) ve harfli kısımların her terimde ortak geçen en küçük üssünü ayrı ayrı tespit edersin.</p>
+<div class="kural">
+<p><strong>Değişkenli ortak çarpan bulma adımları:</strong></p>
+<ol>
+<li>Terimlerin sayı katsayılarının ortak çarpanını bul.</li>
+<li>Her terimde ortak geçen harfleri, en küçük üssüyle birlikte belirle.</li>
+<li>Bulduğun sayısal ve harfli ortak çarpanı parantezin dışına al; parantez içine her terimi bu ortak çarpana bölerek yaz.</li>
+</ol>
+</div>
+<p>Mini örnek: 6x²y + 9xy² ifadesinde sayısal ortak çarpan 3'tür (6 ve 9'un ortak çarpanı), harfli ortak çarpan ise xy'dir (x hem x² hem x'te var, en küçük üs 1; y de aynı şekilde). Sonuç: 6x²y + 9xy² = 3xy(2x + 3y).</p>
+
+<h3>Dört terimli ifadelerde gruplandırma yöntemi</h3>
+<p>Bazı ifadelerde tüm terimlerin ortak bir çarpanı yoktur ama terimler ikişerli gruplara ayrıldığında her grup kendi içinde bir ortak çarpana sahip olabilir. Bu yönteme <strong>gruplandırma</strong> denir.</p>
+<div class="kural">
+<p><strong>Gruplandırarak çarpanlara ayırma:</strong> ax + ay + bx + by ifadesinde ilk iki terimden a, son iki terimden b ortak çarpanını alırsan:</p>
+<p>ax + ay + bx + by = a(x + y) + b(x + y) = (a + b)(x + y)</p>
+<p>Kritik nokta: iki gruptan sonra parantez içindeki ifade (burada x+y) aynı çıkmalıdır; aynı çıkmıyorsa terimleri farklı ikişerli gruplamayı dene.</p>
+</div>
+<p>Mini örnek: xy + 3x + 2y + 6 ifadesini gruplandıralım: (xy + 3x) + (2y + 6) = x(y + 3) + 2(y + 3) = (x + 2)(y + 3).</p>
+
+<h3>x² + bx + c tipi ifadelerde çarpanlara ayırma — adım adım şablon</h3>
+<div class="kural">
+<p><strong>Adım adım çözüm şablonu:</strong></p>
+<ol>
+<li>c'nin çarpan çiftlerini, işaretleriyle birlikte listele.</li>
+<li>Bu çiftlerden toplamı b'ye eşit olan çifti (p ve q) seç.</li>
+<li>Sonucu (x + p)(x + q) biçiminde yaz.</li>
+<li>Parantezleri açarak x² + bx + c'ye geri döndüğünü kontrol et.</li>
+</ol>
+</div>
+<p>Mini örnek: x² + 2x − 15 ifadesinde c = −15'in çarpımı −15, toplamı 2 olan çifti ara: 5 ve −3 (5×(−3)=−15, 5+(−3)=2). Sonuç: x² + 2x − 15 = (x + 5)(x − 3).</p>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> x² − x − 6 gibi negatif b ve negatif c içeren ifadelerde çarpım −6, toplam −1 olan çift aranır: bu çift −3 ve 2'dir (−3×2=−6, −3+2=−1), yani sonuç (x − 3)(x + 2)'dir. Birçok kişi işaretleri karıştırıp (x + 3)(x − 2) yazar; bu yanlıştır çünkü açıldığında x² + x − 6 çıkar, ortadaki terimin işareti tersine döner. Bulduğun çifti mutlaka açıp kontrol et.</p>
+</div>
+
+<h3>Yeni çözümlü örnekler</h3>
+<div class="ornek">
+<p class="soru">xy + 4x + 3y + 12 ifadesinin çarpanlarına ayrılmış hâli aşağıdakilerden hangisidir?</p>
+<p>A) (x+3)(y+4)   B) (x+4)(y+3)   C) (x−3)(y−4)   D) (x+3)(y−4)   E) (x−3)(y+4)</p>
+<details>
+<summary>Çözüm</summary>
+<p>Terimleri ikişerli gruplayalım: (xy + 4x) + (3y + 12) = x(y + 4) + 3(y + 4)</p>
+<p>Ortak çarpan (y+4)'ü parantezine alalım: (x + 3)(y + 4)</p>
+<p>Kontrol: (x+3)(y+4) = xy + 4x + 3y + 12, verilen ifadeyle aynı ✓</p>
+<p class="sonuc">Cevap: A) (x+3)(y+4)</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">x² − 2x − 24 ifadesinin çarpanlarına ayrılmış hâli aşağıdakilerden hangisidir?</p>
+<p>A) (x−6)(x+4)   B) (x+6)(x−4)   C) (x−8)(x+3)   D) (x+8)(x−3)   E) (x−4)(x−6)</p>
+<details>
+<summary>Çözüm</summary>
+<p>Çarpımı −24, toplamı −2 olan iki sayı arıyoruz. −6 ve 4'ü deneyelim: −6×4=−24, −6+4=−2 ✓</p>
+<p>Sonuç: x² − 2x − 24 = (x − 6)(x + 4)</p>
+<p>Kontrol: (x−6)(x+4) = x² + 4x − 6x − 24 = x² − 2x − 24, verilen ifadeyle aynı ✓</p>
+<p class="sonuc">Cevap: A) (x−6)(x+4)</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">37 × 43 işleminin sonucu, iki kare farkı özdeşliği kullanılarak nasıl hesaplanır? Buna göre bu işlemin sonucu kaçtır?</p>
+<p>A) 1571   B) 1581   C) 1591   D) 1601   E) 1611</p>
+<details>
+<summary>Çözüm</summary>
+<p>37 ve 43, 40'a eşit uzaklıkta iki sayıdır: 37 = 40−3, 43 = 40+3.</p>
+<p>İki kare farkı: (40−3)(40+3) = 40² − 3² = 1600 − 9</p>
+<p>= 1591</p>
+<p class="sonuc">Cevap: C) 1591</p>
+</details>
+</div>
+
+<h3>Kendini dene</h3>
+<div class="ornek">
+<p class="soru">4x + 4y ifadesini çarpanlarına ayır.</p>
+<details>
+<summary>Çözüm</summary>
+<p>Ortak çarpan 4'tür: 4x + 4y = 4(x + y).</p>
+<p class="sonuc">Cevap: 4(x + y)</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">15² işlemini tam kare özdeşliğini kullanarak hesapla.</p>
+<details>
+<summary>Çözüm</summary>
+<p>15 = 10 + 5. (10+5)² = 10² + 2×10×5 + 5² = 100 + 100 + 25 = 225.</p>
+<p class="sonuc">Cevap: 225</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">52 × 48 işlemini iki kare farkı özdeşliğini kullanarak hesapla.</p>
+<details>
+<summary>Çözüm</summary>
+<p>52 = 50+2, 48 = 50−2. (50+2)(50−2) = 50² − 2² = 2500 − 4 = 2496.</p>
+<p class="sonuc">Cevap: 2496</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">x² + 7x + 10 ifadesini çarpanlarına ayır.</p>
+<details>
+<summary>Çözüm</summary>
+<p>Çarpımı 10, toplamı 7 olan çift: 2 ve 5. Sonuç: (x + 2)(x + 5).</p>
+<p class="sonuc">Cevap: (x + 2)(x + 5)</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">xy + 5x + 2y + 10 ifadesini gruplandırarak çarpanlarına ayır.</p>
+<details>
+<summary>Çözüm</summary>
+<p>(xy + 5x) + (2y + 10) = x(y + 5) + 2(y + 5) = (x + 2)(y + 5).</p>
+<p class="sonuc">Cevap: (x + 2)(y + 5)</p>
+</details>
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Ortak çarpan parantezine alma: a·c+b·c = c·(a+b); büyük çarpımları küçültmek için kullan.</li>
+<li>Ortak çarpan sayı olabileceği gibi, terimlerde ortak geçen değişken de olabilir (örn. 6x²y+9xy²=3xy(2x+3y)).</li>
+<li>Dört terimli ifadelerde gruplandırma yöntemiyle ax+ay+bx+by = (a+b)(x+y) biçiminde çarpanlarına ayrılabilir.</li>
+<li>x²+bx+c tipi ifadelerde çarpımı c, toplamı b olan iki sayı bulup (x+p)(x+q) yaz; işaretlere dikkat et.</li>
+<li>İki kare farkı: a²−b² = (a−b)(a+b) — birbirine yakın sayıların kare farkını anında hesaplatır.</li>
+<li>Tam kare özdeşlikleri: (a±b)² = a² ± 2ab + b²; iki basamaklı sayıların karesini almakta işine yarar.</li>
+<li>a²−b² ile (a−b)²'yi asla birbirine karıştırma, tamamen farklı ifadelerdir.</li>
+<li>Küp özdeşlikleri (a³±b³) ALES'te nadir çıkar ama genel yapısını tanı.</li>
+<li>Kesir sadeleştirme sorularında payı/paydayı çarpanlarına ayırıp ortak terimi sadeleştir.</li>
+<li>1000'e yakın iki sayının çarpımı gibi görünen sorularda iki kare farkı özdeşliğini akılda tut, işlemi kısalt.</li>
+</ul>

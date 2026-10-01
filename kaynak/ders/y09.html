@@ -1,0 +1,240 @@
+<div class="alesde">
+<p><strong>ALES'te bu konu nasıl karşına çıkar?</strong> Kümeler konusu sınav başına ortalama 1-3 soru getirir, genelde soru kağıdının 11-13. soruları civarındadır. Tanımlı işlem konusu ise daha cömerttir: sınav başına ortalama 2-6 soru çıkar, çoğu 12. soru civarında tek başına gelir ama bazen 32-43 arası "ortak öncüllü" bloklarda bir paragraf ya da tabloya bağlı 2-3 soru birden sorulur. Yani ikisi birlikte, hazırlıklı olduğunda 5-6 net soruyu garantileyebileceğin, ama hazırlıksız yakalanırsan hepsini kaybedebileceğin bir alan. İyi haber: ikisi de "ezber" değil, "dikkat ve sıra" konusu.</p>
+</div>
+
+<h4>Küme nedir, nasıl yazılır?</h4>
+<p>Küme, aralarında ortak bir özellik bulunan (ya da sadece bir arada toplanmış) nesnelerin oluşturduğu topluluktur. Bir kümeyi genelde büyük harfle adlandırırız (A, B, C…) ve elemanlarını süslü parantez içine yazarız: A = {1, 2, 3, 4}. Bir elemanın kümeye ait olduğunu ∈ sembolüyle, ait olmadığını ∉ ile gösteririz: 2 ∈ A doğrudur, 7 ∉ A da doğrudur. Hiç elemanı olmayan kümeye <strong>boş küme</strong> denir ve ∅ sembolüyle gösterilir. Boş kümenin eleman sayısı 0'dır ama kendisi yine de bir kümedir — bunu unutmak ALES'te puan kaybettiren en klasik hatalardan biridir.</p>
+
+<h3>Kümeler</h3>
+
+<h4>Alt küme ve alt küme sayısı</h4>
+<p>Bir kümenin bütün elemanları başka bir kümenin de elemanıysa, ilk kümeye ikincinin <strong>alt kümesi</strong> deriz. Örneğin A = {1, 2} ise, A'nın alt kümeleri şunlardır: ∅, {1}, {2}, {1, 2}. Dikkat et: hem boş küme hem kümenin kendisi de alt küme sayılır. ALES bu sayıyı bulmanı ister, tek tek yazmanı değil — bunun için hazır bir formül var.</p>
+
+<div class="kural">
+<p><strong>Alt küme sayısı formülü:</strong> n elemanlı bir kümenin toplam alt küme sayısı 2<sup>n</sup>'dir.</p>
+<p>Mini örnek: A = {a, b, c} kümesinin eleman sayısı n = 3 olduğuna göre, alt küme sayısı 2<sup>3</sup> = 8'dir. İstersen say: ∅, {a}, {b}, {c}, {a,b}, {a,c}, {b,c}, {a,b,c} — tam 8 tane.</p>
+</div>
+
+<p>ALES bazen "en az bir eleman içeren alt küme sayısı" ya da "öz alt küme sayısı" gibi küçük bir çeviri ister. Öz alt küme, kümenin kendisi hariç tüm alt kümeleridir; bu durumda formülden 1 çıkarırsın: 2<sup>n</sup> - 1. Boş kümeyi de hariç tutman istenirse bir 1 daha çıkarırsın: 2<sup>n</sup> - 2.</p>
+
+<h4>Birleşim, kesişim ve fark işlemleri</h4>
+<p>İki küme üzerinde üç temel işlem yaparız:</p>
+
+<div class="kural">
+<p><strong>Birleşim (A ∪ B):</strong> A'da veya B'de (ya da ikisinde birden) bulunan tüm elemanların oluşturduğu kümedir. Her elemanı yalnızca bir kez yazarız, tekrar etmeyiz.</p>
+<p><strong>Kesişim (A ∩ B):</strong> Hem A'da hem B'de ortak olarak bulunan elemanların kümesidir.</p>
+<p><strong>Fark (A - B):</strong> A'da olup B'de olmayan elemanların kümesidir. A - B ile B - A genelde birbirinden farklıdır.</p>
+</div>
+
+<p>Mini örnek: A = {1, 2, 3, 4, 5} ve B = {3, 4, 5, 6, 7} olsun. A ∪ B = {1, 2, 3, 4, 5, 6, 7}, A ∩ B = {3, 4, 5}, A - B = {1, 2} (A'da olup B'de olmayanlar), B - A = {6, 7} (B'de olup A'da olmayanlar). Gördüğün gibi A - B ile B - A tamamen farklı kümeler; bu yüzden fark işleminde sıra önemlidir.</p>
+
+<h4>Venn şeması ile sayma problemleri</h4>
+<p>Venn şeması, kümeleri iç içe geçen daireler gibi düşünüp elemanları "bölgelere" ayırarak görselleştirmenin bir yoludur. Burada görsel çizemesek de, mantığını bir tabloyla anlatabiliriz: iki küme söz konusu olduğunda ortaya üç bölge çıkar — "sadece A", "hem A hem B (ortak bölge)" ve "sadece B". Bir de kümelerin dışında kalan, hiçbirine ait olmayan elemanlar vardır.</p>
+
+<table>
+<thead><tr><th>Bölge</th><th>Anlamı</th></tr></thead>
+<tbody>
+<tr><td>Sadece A</td><td>A'da var, B'de yok</td></tr>
+<tr><td>A ∩ B (ortak bölge)</td><td>Hem A'da hem B'de var</td></tr>
+<tr><td>Sadece B</td><td>B'de var, A'da yok</td></tr>
+<tr><td>Hiçbiri</td><td>Ne A'da ne B'de</td></tr>
+</tbody>
+</table>
+
+<div class="kural">
+<p><strong>İki kümeli birleşim formülü:</strong> |A ∪ B| = |A| + |B| - |A ∩ B|</p>
+<p>Burada |A| kümenin eleman sayısını gösterir. Formülün mantığı basit: A ve B'nin eleman sayılarını toplarsan, ortak bölgeyi (kesişimi) iki kere saymış olursun; bu yüzden bir kere geri çıkarırsın.</p>
+<p>Mini örnek: Bir sınıfta 20 öğrencinin 12'si satranç, 9'u tavla oynuyor, 5'i ikisini de oynuyor. |A ∪ B| = 12 + 9 - 5 = 16 öğrenci en az bir oyun oynuyor. Hiçbirini oynamayan öğrenci sayısı ise 20 - 16 = 4'tür.</p>
+</div>
+
+<div class="kural">
+<p><strong>Üç kümeli birleşim formülü:</strong> |A ∪ B ∪ C| = |A| + |B| + |C| - |A∩B| - |A∩C| - |B∩C| + |A∩B∩C|</p>
+<p>Burada da mantık aynı: üçünü toplarken ikili ortak bölgeleri fazladan saymış oluyorsun, onları çıkarıyorsun; ama bu sefer üçünün ortak olduğu tam orta bölgeyi de fazladan çıkarmış oluyorsun, bu yüzden onu bir kez daha geri ekliyorsun.</p>
+</div>
+
+<p>Venn sorularında en çok karışan nokta şudur: soru "kaç kişi satranç oynuyor" derse, kesişimi de içeren toplam sayıyı (yani |A|'yı) sorar. Ama "kaç kişi <em>sadece</em> satranç oynuyor" derse, kesişim bölgesini çıkarman gerekir: sadece A = |A| - |A ∩ B|. Bu tek kelime ("sadece") cevabı komple değiştirir.</p>
+
+<h3>Tanımlı işlem</h3>
+
+<h4>Tanımlı işlem nedir?</h4>
+<p>Tanımlı işlem sorularında sana bilmediğin bir sembol (★, ▲, ⊕, veya benzeri) verilir ve bu sembolün ne anlama geldiğini bir formülle açıklarlar. Senin işin, verilen formüle sayıları doğru yerlerine koyup işlemi yapmaktır. Zorluk matematikte değil, dikkatte: parantezleri doğru açmak, üslü ifadeleri doğru hesaplamak ve mutlak değer gibi işaretleri unutmamaktır.</p>
+
+<div class="kural">
+<p><strong>Nasıl çalışır:</strong> Örneğin "a ★ b = 2|a² - b²| - 9" tanımlansın. Bu, "★ işaretinin solundaki sayıyı a yerine, sağındaki sayıyı b yerine koy" demektir. 3 ★ 1 işlemini bulmak için a = 3, b = 1 yazarsın: 2|3² - 1²| - 9 = 2|9 - 1| - 9 = 2 · 8 - 9 = 16 - 9 = 7.</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Tanımlı işlemlerde a ★ b ile b ★ a genelde birbirinden FARKLIDIR, çünkü formülde a ve b'nin yerleri (özellikle çıkarma, bölme veya sıra gerektiren işlemlerde) simetrik olmayabilir. Sorudaki sembolün hangi tarafının a, hangi tarafının b olduğunu karıştırma; her zaman "★'in solundaki ilk harfe, sağındaki ikinci harfe karşılık gelir" diye düşün.</p>
+</div>
+
+<h4>İç içe tanımlı işlemler</h4>
+<p>Bazı sorularda aynı işlem art arda, iç içe kullanılır: (2 ★ 3) ★ 1 gibi. Bu durumda, tıpkı normal matematikte olduğu gibi, <strong>önce parantez içini</strong> hesaplarsın, çıkan sonucu bir sayı gibi kullanıp dıştaki işlemi ona uygularsın. Sırayı değiştirip önce dıştaki gibi davranmak en sık yapılan hatadır.</p>
+
+<div class="kural">
+<p><strong>Adım sırası:</strong> İç içe tanımlı işlemde her zaman en içteki parantezden başla, tek bir sayıya indir, sonra bir üst adıma geç. Asla iki işlemi aynı anda birleştirmeye çalışma.</p>
+<p>Mini örnek: a ▲ b = 2a - 3b + 4 olsun. (2 ▲ 3) ▲ 1 için önce 2 ▲ 3'ü hesapla: 2·2 - 3·3 + 4 = 4 - 9 + 4 = -1. Sonra bu sonucu yeni "a" yaparak -1 ▲ 1'i hesapla: 2·(-1) - 3·1 + 4 = -2 - 3 + 4 = -1.</p>
+</div>
+
+<h4>Tablo ile verilen tanımlı işlem</h4>
+<p>Bazı sorular formül vermez, doğrudan bir tablo verir. Tabloda satır başlıkları ilk sayıyı (a), sütun başlıkları ikinci sayıyı (b) temsil eder; a ★ b değerini bulmak için a'nın satırı ile b'nin sütununun kesiştiği hücreye bakarsın.</p>
+
+<div class="kural">
+<p><strong>Tablo okuma kuralı:</strong> a ★ b sorulduğunda önce SATIRLARDA a'yı bul, sonra SÜTUNLARDA b'yi bul, ikisinin kesiştiği hücre cevabındır. Satır ve sütunu karıştırırsan yanlış hücreyi okursun.</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Tablo sorularında satır ve sütunu ters okumak (a ★ b yerine yanlışlıkla b ★ a hücresini okumak) en sık yapılan hatadır. Tablo simetrik değilse (yani a ★ b ≠ b ★ a ise) bu hata seni doğrudan yanlış şıkka götürür. Parmağınla satırı, sonra sütunu takip ederek ilerlemek işini kolaylaştırır.</p>
+</div>
+
+<h3>Çözümlü örnekler</h3>
+
+<div class="ornek">
+<p class="soru">1) A = {k, l, m, n} kümesinin alt küme sayısı kaçtır?</p>
+<ul>
+<li>A) 4</li>
+<li>B) 8</li>
+<li>C) 12</li>
+<li>D) 16</li>
+<li>E) 32</li>
+</ul>
+<details>
+<summary>Çözüm</summary>
+<p>A kümesinin eleman sayısı n = 4'tür. Alt küme sayısı formülü 2<sup>n</sup>'dir. Buna göre alt küme sayısı 2<sup>4</sup> = 16'dır.</p>
+<p class="sonuc">Cevap: D) 16</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">2) a ★ b = 2|a² - b²| - 9 şeklinde tanımlanıyor. Buna göre 3 ★ 1 kaçtır?</p>
+<ul>
+<li>A) 5</li>
+<li>B) 6</li>
+<li>C) 7</li>
+<li>D) 8</li>
+<li>E) 9</li>
+</ul>
+<details>
+<summary>Çözüm</summary>
+<p>Formülde a = 3, b = 1 yazarız: 2|3² - 1²| - 9 = 2|9 - 1| - 9 = 2 · 8 - 9 = 16 - 9 = 7.</p>
+<p class="sonuc">Cevap: C) 7</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">3) 40 kişilik bir grupta 25 kişi futbol, 18 kişi basketbol izliyor. Bu kişilerden 10'u her iki sporu da izliyor. Buna göre hiçbirini izlemeyen kaç kişi vardır?</p>
+<ul>
+<li>A) 5</li>
+<li>B) 6</li>
+<li>C) 7</li>
+<li>D) 8</li>
+<li>E) 9</li>
+</ul>
+<details>
+<summary>Çözüm</summary>
+<p>Önce en az birini izleyen kişi sayısını bulalım: |A ∪ B| = |A| + |B| - |A ∩ B| = 25 + 18 - 10 = 33. Toplam kişi sayısı 40 olduğuna göre, hiçbirini izlemeyenler 40 - 33 = 7 kişidir.</p>
+<p class="sonuc">Cevap: C) 7</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">4) Aşağıdaki tabloda a ⊕ b işleminin sonuçları verilmiştir (satırlar a, sütunlar b değerini gösterir). Buna göre (2 ⊕ 3) ⊕ 4 kaçtır?</p>
+<table>
+<thead><tr><th>⊕</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
+<tbody>
+<tr><th>1</th><td>2</td><td>3</td><td>4</td><td>1</td></tr>
+<tr><th>2</th><td>3</td><td>4</td><td>1</td><td>2</td></tr>
+<tr><th>3</th><td>4</td><td>1</td><td>2</td><td>3</td></tr>
+<tr><th>4</th><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+</tbody>
+</table>
+<ul>
+<li>A) 1</li>
+<li>B) 2</li>
+<li>C) 3</li>
+<li>D) 4</li>
+<li>E) 5</li>
+</ul>
+<details>
+<summary>Çözüm</summary>
+<p>Önce parantez içini çözelim: 2 ⊕ 3 için 2. satır, 3. sütuna bakarız; tabloda bu hücre 1'dir. Şimdi elimizde 1 ⊕ 4 kaldı: 1. satır, 4. sütuna bakarız; bu hücre de 1'dir.</p>
+<p class="sonuc">Cevap: A) 1</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">5) a ▲ b = 2a - 3b + 4 şeklinde tanımlanıyor. Buna göre (2 ▲ 3) ▲ 1 kaçtır?</p>
+<ul>
+<li>A) -3</li>
+<li>B) -2</li>
+<li>C) -1</li>
+<li>D) 0</li>
+<li>E) 1</li>
+</ul>
+<details>
+<summary>Çözüm</summary>
+<p>Önce içteki parantezi çözelim: 2 ▲ 3 için a = 2, b = 3 yazarız: 2·2 - 3·3 + 4 = 4 - 9 + 4 = -1. Şimdi bu sonucu yeni a yaparak -1 ▲ 1'i hesaplarız: a = -1, b = 1: 2·(-1) - 3·1 + 4 = -2 - 3 + 4 = -1.</p>
+<p class="sonuc">Cevap: C) -1</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">6) Bir toplulukta 60 kişi vardır. Bu kişilerden 30'u kahve, 25'i çay, 20'si su içmektedir. Kahve içenlerden 10'u aynı zamanda çay, 8'i aynı zamanda su içmektedir. Çay içenlerden 7'si aynı zamanda su içmektedir. Her üç içeceği de içenlerin sayısı 3'tür. Buna göre bu topluluktan hiçbirini içmeyen kaç kişi vardır?</p>
+<ul>
+<li>A) 3</li>
+<li>B) 5</li>
+<li>C) 7</li>
+<li>D) 9</li>
+<li>E) 11</li>
+</ul>
+<details>
+<summary>Çözüm</summary>
+<p>Üç kümeli birleşim formülünü kullanalım: |K ∪ Ç ∪ S| = |K| + |Ç| + |S| - |K∩Ç| - |K∩S| - |Ç∩S| + |K∩Ç∩S|. Değerleri yerine koyalım: 30 + 25 + 20 - 10 - 8 - 7 + 3 = 53. En az birini içen kişi sayısı 53'tür. Toplam 60 kişi olduğuna göre, hiçbirini içmeyenler 60 - 53 = 7 kişidir.</p>
+<p class="sonuc">Cevap: C) 7</p>
+</details>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Alt küme sayısı sorularında "en az 1 elemanlı alt küme sayısı" ile "toplam alt küme sayısı"nı karıştırmak çok yaygındır. Toplam alt küme sayısı 2<sup>n</sup>'dir ve boş kümeyi de içerir. "En az bir eleman içeren" denirse boş kümeyi (∅) çıkarman gerekir: 2<sup>n</sup> - 1. Sorunun tam olarak ne istediğini iki kez okumadan formülü uygulama.</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Venn sorularında "kaç kişi bu işi yapıyor" ile "kaç kişi SADECE bu işi yapıyor" farklı sorulardır. Birincisi kesişimi de içerir (|A|), ikincisi kesişimi dışlar (|A| - |A ∩ B|). Aynı şekilde üç kümeli sorularda toplam elemanları toplarken kesişimleri unutup direkt |A| + |B| + |C| yazmak, seni gerçek sayıdan büyük bir sonuca götürür — formülü atlamadan uygula.</p>
+</div>
+
+<h3>Kendini dene</h3>
+<div class="ornek">
+<p class="soru">s(A) = 12, s(B) = 9 ve s(A ∩ B) = 4 ise s(A ∪ B) kaçtır?</p>
+<details><summary>Cevap</summary><p>Birleşim formülü: s(A ∪ B) = s(A) + s(B) − s(A ∩ B) = 12 + 9 − 4 = 17. Kesişim iki kez sayıldığı için bir kez çıkarılır.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">5 elemanlı bir kümenin kaç alt kümesi ve kaç öz alt kümesi vardır?</p>
+<details><summary>Cevap</summary><p>Alt küme sayısı 2⁵ = 32. Öz alt küme, kümenin kendisi hariç alt kümelerdir: 32 − 1 = 31.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">30 kişilik bir sınıfta 18 öğrenci İngilizce, 15 öğrenci Almanca biliyor; 5 öğrenci ikisini de bilmiyor. Her iki dili de bilen kaç öğrenci vardır?</p>
+<details><summary>Cevap</summary><p>En az bir dil bilen: 30 − 5 = 25. 18 + 15 = 33 kişi sayıldı ama gerçekte 25 kişi var; fazladan sayılan 33 − 25 = 8 kişi iki dili de bilenlerdir.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">a * b = 2a − b + 3 işlemine göre 4 * 5 kaçtır?</p>
+<details><summary>Cevap</summary><p>Kuralda a yerine 4, b yerine 5 yaz: 2 · 4 − 5 + 3 = 8 − 5 + 3 = 6.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">a * b = a · b − a − b işlemine göre (2 * 3) * 1 kaçtır?</p>
+<details><summary>Cevap</summary><p>Önce parantez: 2 * 3 = 6 − 2 − 3 = 1. Sonra 1 * 1 = 1 − 1 − 1 = −1.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">A = {1, 2, 3, 4} ve B = {3, 4, 5} ise A \ B kümesinin eleman sayısı kaçtır?</p>
+<details><summary>Cevap</summary><p>A \ B, A'da olup B'de olmayanlardır: {1, 2}. Eleman sayısı 2.</p></details>
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>n elemanlı bir kümenin alt küme sayısı 2<sup>n</sup>'dir; boş küme ve kümenin kendisi de alt küme sayılır.</li>
+<li>"En az bir elemanlı" alt küme sayısı istenirse 2<sup>n</sup> - 1, hem boş kümeyi hem kümenin kendisini hariç tutan "öz alt küme" istenirse 2<sup>n</sup> - 2 yaz.</li>
+<li>Birleşim (∪) ortak ve ayrı tüm elemanları, kesişim (∩) sadece ortak elemanları, fark (A - B) yalnızca A'da olup B'de olmayanları verir; A - B ile B - A farklıdır.</li>
+<li>İki kümeli Venn sorularında |A ∪ B| = |A| + |B| - |A ∩ B| formülünü kullan; "sadece A" istenirse kesişimi bir kez daha çıkar.</li>
+<li>Üç kümeli Venn sorularında |A∪B∪C| = |A|+|B|+|C| - ikili kesişimler + üçlü kesişim formülünü uygula.</li>
+<li>Tanımlı işlemde formüldeki a ve b'nin hangi sayıya karşılık geldiğine dikkat et; a ★ b genelde b ★ a'ya eşit değildir.</li>
+<li>İç içe tanımlı işlemlerde her zaman en içteki parantezden başla, tek adımda ilerle.</li>
+<li>Tablo ile verilen işlemlerde önce satırda ilk sayıyı, sonra sütunda ikinci sayıyı bul; kesiştikleri hücre cevaptır.</li>
+</ul>

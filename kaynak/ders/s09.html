@@ -1,0 +1,105 @@
+<div class="alesde">
+Sözel mantık bloklarında (43–50) her kurgudan sonra gelen 4 soru genelde aynı kalıpları tekrar eder: "kesinlikle doğrudur", "olabilir/mümkündür", "kesinlikle yanlıştır", "hangi bilgi eklenirse sıralama tam belirlenir" ve "şu ek bilgiye göre ... nedir". Bu dersin amacı, bir kurgu tek çözüme varmasa bile (yani birden fazla olasılık kalsa bile) bu soru tiplerinin her birine nasıl cevap verileceğini göstermek. Aynı kurgu üzerinden ilerleyeceğiz.
+</div>
+
+<h3>Kurgu her zaman tek çözüme varmaz</h3>
+<p>s08'de gördüğün örneklerin hepsinde bilgiler sıralamayı tek bir diziliminde sabitliyordu. Ama ALES'te bazı kurgular kasıtlı olarak "gevşek" bırakılır: birden fazla dizilim mümkündür ve sorular bu belirsizliğin üzerine kuruludur. Böyle durumlarda tabloyu değil, "hangi dizilimler mümkün" listesini çıkarman gerekir.</p>
+
+<div class="kural">
+<p><strong>Aşağıdaki kurguyu tüm örneklerde kullanacağız:</strong></p>
+<p>Aras, Bora, Cansu, Deren ve Ela'nın katıldığı bir yarış 1'den (birinci) 5'e (sonuncu) kadar sıralanarak bitmiştir.</p>
+<ul>
+<li>Cansu, Deren'den önce bitirmiştir.</li>
+<li>Bora, ilk iki sırada değildir.</li>
+<li>Ela, Aras'ın hemen bir sonraki sırasında bitirmiştir.</li>
+<li>Deren, sonuncu değildir.</li>
+</ul>
+<p>Bu dört bilgi tek başına yarışı bitirmez: geriye 5 kişinin 120 olası biriş sırasından tam <strong>4 tanesi</strong> uyumlu kalır (120 dizilimin tamamı tek tek denenerek bulunur):</p>
+<table>
+<thead><tr><th>#</th><th>1.</th><th>2.</th><th>3.</th><th>4.</th><th>5.</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Aras</td><td>Ela</td><td>Cansu</td><td>Deren</td><td>Bora</td></tr>
+<tr><td>2</td><td>Cansu</td><td>Aras</td><td>Ela</td><td>Deren</td><td>Bora</td></tr>
+<tr><td>3</td><td>Cansu</td><td>Deren</td><td>Aras</td><td>Ela</td><td>Bora</td></tr>
+<tr><td>4</td><td>Cansu</td><td>Deren</td><td>Bora</td><td>Aras</td><td>Ela</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Bu 4 satırlık listeye "olası dünyalar" gibi bak. Her soru tipi, aslında bu 4 satıra bakıp bir örüntü aramaktır: bir ifade 4 satırda da doğruysa "kesinlikle doğru", 4 satırda da yanlışsa "kesinlikle yanlış", bazılarında doğru bazılarında yanlışsa "olabilir ama kesin değil".</p>
+
+<div class="kural">
+<p><strong>Soru tipi → yöntem:</strong></p>
+<ul>
+<li><strong>Kesinlikle doğrudur:</strong> ifade olası dünyaların HEPSİNDE doğru mu?</li>
+<li><strong>Olabilir / mümkündür:</strong> ifade en az BİR dünyada doğru mu (hepsinde olmasa da yeter)?</li>
+<li><strong>Kesinlikle yanlıştır:</strong> ifade olası dünyaların HİÇBİRİNDE doğru değil mi?</li>
+<li><strong>Hangi bilgi eklenirse tam belirlenir:</strong> hangi ek cümle, 4 dünyadan yalnızca 1 tanesini bırakıyor?</li>
+</ul>
+</div>
+
+<h3>Çözümlü örnekler</h3>
+
+<div class="ornek">
+<p class="soru">1. Yukarıdaki bilgilere göre aşağıdakilerden hangisi kesinlikle doğrudur? A) Aras, Cansu'dan önce bitirmiştir.  B) Ela, Deren'den önce bitirmiştir.  C) Deren, Cansu'dan önce bitirmiştir.  D) Bora, Aras'tan sonra bitirmiştir.  E) Deren, Bora'dan önce bitirmiştir.</p>
+<details>
+<summary>Çözüm</summary>
+<p>4 dünyayı tek tek kontrol edelim. A) 1. dünyada doğru (Aras 1, Cansu 3) ama 2. dünyada yanlış (Cansu 1, Aras 2) — kesin değil. B) 1. ve 2. dünyada doğru ama 3. ve 4. dünyada yanlış — kesin değil. C) zaten verilen bilgiyle çelişir (Cansu her zaman Deren'den önce), yani her dünyada yanlış. D) 1-2-3. dünyada doğru ama 4. dünyada Bora=3, Aras=4 olduğundan yanlış — kesin değil. E) Deren'in sırası ile Bora'nın sırası her dört dünyada da karşılaştırıldığında (4&lt;5, 4&lt;5, 2&lt;5, 2&lt;3) Deren her zaman Bora'dan önce bitiriyor. Bu ifade verilen bilgilerde doğrudan yazmıyor ama zincirleme çıkarımla (Deren en geç 4., Bora en erken 3. olabiliyor ve aralarında hep pay kalıyor) her dünyada doğrulanıyor.</p>
+<p class="sonuc">Cevap: E</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">2. Yukarıdaki bilgilere göre aşağıdakilerden hangisi olabilir (kesin olmasa da mümkündür)? A) Ela, birinci sırada bitirmiş olabilir.  B) Bora, ikinci sırada bitirmiş olabilir.  C) Bora, üçüncü sırada bitirmiş olabilir.  D) Cansu, dördüncü sırada bitirmiş olabilir.  E) Aras, beşinci sırada bitirmiş olabilir.</p>
+<details>
+<summary>Çözüm</summary>
+<p>4 dünyada her sıradaki kişiyi listeleyelim: 1. sırada {Aras, Cansu}; 2. sırada {Ela, Aras, Deren}; 3. sırada {Cansu, Ela, Aras, Bora}; 4. sırada {Deren, Ela, Aras}; 5. sırada {Bora, Ela}. A) Ela hiçbir dünyada 1. değil → olmaz. B) Bora hiçbir dünyada 2. değil (zaten "ilk iki sırada değil" bilgisiyle de tutarlı) → olmaz. C) Bora, 4. dünyada 3. sırada — mümkün! D) Cansu hiçbir dünyada 4. değil → olmaz. E) Aras hiçbir dünyada 5. değil → olmaz. Tek mümkün olan seçenek C'dir.</p>
+<p class="sonuc">Cevap: C</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">3. Yukarıdaki bilgilere ek olarak aşağıdaki bilgilerden hangisi verilirse yarışın tam sıralaması kesin olarak belirlenir? A) Deren, dördüncü sırada bitirmiştir.  B) Bora, beşinci sırada bitirmiştir.  C) Cansu, birinci sırada bitirmiştir.  D) Aras, üçüncü sırada bitirmiştir.  E) Cansu, Deren'den hemen önce bitirmiştir.</p>
+<details>
+<summary>Çözüm</summary>
+<p>4 dünyadan kaçının her seçenekle uyuştuğuna bakalım. A) Deren=4. sıra: 1. ve 2. dünyada geçerli — 2 olasılık kalır, tam belirlemez. B) Bora=5. sıra: 1., 2. ve 3. dünyada geçerli — 3 olasılık kalır. C) Cansu=1. sıra: 2., 3. ve 4. dünyada geçerli — 3 olasılık kalır. D) Aras=3. sıra: yalnızca 3. dünyada geçerli (diğerlerinde Aras 1, 2 ya da 4. sırada) — tek bir dünya kalır, sıralama tamamen belirlenir: Cansu-Deren-Aras-Ela-Bora. E) "Cansu, Deren'den hemen önce": 1., 3. ve 4. dünyada geçerli — 3 olasılık kalır. Sonuç: yalnızca D seçeneği tabloyu tek bir satıra indiriyor.</p>
+<p class="sonuc">Cevap: D</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">4. Yukarıdaki bilgilere göre aşağıdakilerden hangisi kesinlikle yanlıştır? A) Cansu, birinci sırada bitirmiştir.  B) Deren, ikinci sırada bitirmiştir.  C) Bora, beşinci sırada bitirmiştir.  D) Aras, dördüncü sırada bitirmiştir.  E) Ela, birinci sırada bitirmiştir.</p>
+<details>
+<summary>Çözüm</summary>
+<p>A, B, C, D seçeneklerinin her biri 4 dünyanın en az birinde gerçekleşiyor (A: 3 dünyada, B: 2 dünyada, C: 3 dünyada, D: 1 dünyada) — yani hepsi "olabilir" durumunda, kesin yanlış değiller. E seçeneğine bakalım: Ela'nın konumu, Aras'ın konumundan tam bir fazla olmak zorunda (Ela = Aras+1). Aras en erken 1. sırada olabildiğine göre Ela en erken 2. sırada olabilir, asla 1. olamaz. Nitekim 4 dünyanın hiçbirinde Ela 1. sırada değil. Bu yüzden "Ela birinci sırada bitirmiştir" ifadesi kesinlikle yanlıştır.</p>
+<p class="sonuc">Cevap: E</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">5. Yukarıdaki bilgilere ek olarak "Aras, yarışı üçüncü sırada bitirmiştir" bilgisi de veriliyor. Buna göre beşinci sırada kim bitirmiştir? A) Bora  B) Cansu  C) Deren  D) Ela  E) Aras</p>
+<details>
+<summary>Çözüm</summary>
+<p>Bir önceki örnekte (3. soru, D seçeneği) bu ek bilginin tabloyu tek bir dünyaya indirdiğini bulmuştuk: Cansu(1.)-Deren(2.)-Aras(3.)-Ela(4.)-Bora(5.). Ek bilgi geldiğinde eski işini tekrar sıfırdan yapmana gerek yok — az önce bulduğun "hangi dünya kaldı" bilgisini kullan. Beşinci sırada Bora bitirmiştir.</p>
+<p class="sonuc">Cevap: A</p>
+</details>
+</div>
+
+<div class="tuzak">
+<strong>Tuzak:</strong> "Olabilir" sorularında tek bir uygun dünya bulur bulmaz şıkkı işaretleyip geçebilirsin — ama "kesinlikle doğrudur" sorularında tek dünyaya bakıp karar vermek büyük hata olur; ifadenin dört dünyanın da hepsinde geçerli olduğunu kontrol etmeden "kesin" deme.
+</div>
+
+<div class="tuzak">
+<strong>Tuzak:</strong> Ek bilgili sorularda (5. örnekteki gibi) kurguyu sıfırdan çözmeye kalkma. Önceki sorularda çıkardığın ara sonuçları (olası dünyalar listesi) sakla, yeni bilgiyle bu listeyi filtrelemen yeter.
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Bir kurgu tek çözüme varmıyorsa, mümkün olan tüm dizilimleri kısa bir liste hâlinde çıkar (genelde 2-4 tane kalır).</li>
+<li>"Kesinlikle doğru" = ifade listedeki HER dizilimde doğru.</li>
+<li>"Olabilir / mümkündür" = ifade listede EN AZ BİR dizilimde doğru.</li>
+<li>"Kesinlikle yanlış" = ifade listedeki HİÇBİR dizilimde doğru değil.</li>
+<li>"Hangi bilgi tam belirler" sorusunda her şıkkı listeye uygula; listeyi tek satıra indiren şık doğru cevaptır.</li>
+<li>Ek bilgili sorularda önceki adımlarda çıkardığın olası dizilim listesini filtrele, baştan çözme.</li>
+<li>Süre stratejisi: bir kurguyu (4 soruluk bloğu) anlamak ve olası dizilimleri çıkarmak için 3-4 dakika ayır; sonra kalan 4 soruyu bu listeye bakarak hızlıca yanıtla.</li>
+</ul>

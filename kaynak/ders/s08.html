@@ -1,0 +1,103 @@
+<div class="alesde">
+Sözel bölümün son 8 sorusu (43–50) iki ayrı 4'lü bloktan oluşur: her blokta bir "kurgu" (senaryo) verilir, ardından o kurguyla ilgili 4 soru sorulur. Kurgu genelde birkaç kişiyi, bir sıralamayı (boy, yaş, bitiş sırası, oturma düzeni) ya da bir tabloyu (kişi–şehir–meslek gibi) içerir. Sorular "kesinlikle doğrudur", "olabilir", "kesinlikle yanlıştır" gibi kalıplarla gelir. Bu bölüm sözelin en zor kısmıdır (ortalama zorluk ≈ 2,7/3) ama doğru yöntemle en garanti puan getiren kısımdır: bilgi sabit, sadece dikkatli okuma ve düzenli not tutma ister.
+</div>
+
+<h3>Bilgiyi sembole çevirme</h3>
+<p>Bu sorularda en büyük zaman kaybı, bilgileri tekrar tekrar cümle olarak okumaktır. Çözümün ilk adımı, her cümleyi kısa bir sembole indirmektir: isimlerin ilk harfini kullan, "büyük/uzun/önce" ilişkilerini ok ya da eşitsizlik gibi düşün.</p>
+
+<div class="kural">
+<p><strong>Sembolleştirme kuralları:</strong></p>
+<ul>
+<li>"A, B'den uzundur" → A &gt; B (boy sıralamasında A önde)</li>
+<li>"A, B'den önce bitirdi" → A önce, B sonra</li>
+<li>"A, en kısa değildir" → A ≠ son sıra</li>
+<li>"A ile B yan yana / bitişik" → |A konumu − B konumu| = 1</li>
+<li>"A, B'nin hemen solunda/önünde" → A konumu = B konumu − 1 (yön net!)</li>
+</ul>
+</div>
+
+<p>Mini örnek: "Kemal, Leyla'dan uzun; Leyla en kısa değil" cümlesini şöyle yazarsın: K &gt; L, L ≠ son. Tek başına bu bilgi sıralamayı bitirmez ama tabloya koyduğunda diğer bilgilerle birleşince işe yarar.</p>
+
+<h3>Tablo şablonu: kişi × özellik</h3>
+<p>Kurguda birden fazla özellik varsa (şehir, meslek, gün, renk gibi), satırlara kişileri, sütunlara özellikleri yaz. Her kesin bilgiyi hemen tabloya ✓ olarak, imkânsız olan eşleşmeleri de ✗ olarak işaretle. Bir satırda ✓ varsa, o satırın diğer hücreleri otomatik ✗ olur (bir kişi aynı özellikten sadece bir tane alır).</p>
+
+<div class="kural">
+<p><strong>Çözüm sırası:</strong></p>
+<ol>
+<li>Doğrudan verilen kesin bilgileri tabloya/sıraya yerleştir.</li>
+<li>Olumsuz bilgileri (✗) işaretle — bunlar da eleme sağlar.</li>
+<li>Bir satırda/sütunda tek boşluk kaldıysa, o hücre otomatik ✓ olur.</li>
+<li>Kesin bilgi bittiğinde "eğer... ise" mantığıyla bir olasılığı dene; çelişki çıkarsa diğerini seç.</li>
+<li>Son olarak şıklara bak: çoğu zaman tüm tabloyu bitirmeden de sorulan tek şıkkı bulabilirsin.</li>
+</ol>
+</div>
+
+<div class="tuzak">
+<strong>Tuzak:</strong> "A, B'den uzundur" ile "A, B'den daha uzun olabilir" farklı şeylerdir. Birincisi kesin bilgi, ikincisi ihtimaldir. Sözel mantıkta kesin bilgi ile ihtimali karıştırmak en sık yapılan hatadır.
+</div>
+
+<div class="tuzak">
+<strong>Tuzak:</strong> "Ne en uzun ne en kısa" gibi olumsuz bilgileri atlama. Bu tür cümleler tabloyu doldurmaz ama olasılıkları daraltarak çözümün anahtarı olur; genelde son adımda devreye girerler.
+</div>
+
+<h3>Çözümlü örnekler</h3>
+
+<div class="ornek">
+<p class="soru">1. Ayşe, Burak, Cem ve Deniz'in boyları farklıdır. Ayşe, Burak'tan uzundur. Deniz, Ayşe'den kısa ama Burak'tan uzundur. Cem, dört kişi arasında en uzun boyludur. Buna göre, en uzundan en kısaya doğru sıralama aşağıdakilerden hangisidir? A) Cem-Ayşe-Deniz-Burak  B) Ayşe-Cem-Deniz-Burak  C) Cem-Deniz-Ayşe-Burak  D) Ayşe-Deniz-Cem-Burak  E) Cem-Ayşe-Burak-Deniz</p>
+<details>
+<summary>Çözüm</summary>
+<p>Sembolleştirelim: Ayşe &gt; Burak. Ayşe &gt; Deniz &gt; Burak (Deniz, Ayşe'den kısa, Burak'tan uzun). Cem = en uzun. Cem zaten en başa yerleşti. Kalan üç kişi için elimizde Ayşe &gt; Deniz &gt; Burak zinciri var — bu tek başına üçünün sırasını da belirliyor. Zincirleri birleştirince: Cem &gt; Ayşe &gt; Deniz &gt; Burak. Bu sıralamayı, dört kişinin olası 24 diziliminin tamamını deneyip üç koşulu birden sağlayanları sayarak doğruladık: yalnızca bir dizilim kalıyor.</p>
+<p class="sonuc">Cevap: A</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">2. Aslı, Barış, Ceyda ve Doğan; Ankara, İzmir, Bursa ve Van şehirlerinden birinde yaşamakta ve öğretmen, mühendis, doktor, hemşire mesleklerinden birini yapmaktadır. Aslı, Ankara'da yaşamıyor. İzmir'de yaşayan kişi mühendistir. Barış hemşire değildir ve İzmir'de yaşamıyor. Doğan doktordur ve Van'da yaşamaktadır. Ceyda, Ankara'da yaşamaktadır. Buna göre Aslı'nın mesleği nedir? A) Öğretmen  B) Mühendis  C) Doktor  D) Hemşire  E) Belirlenemez</p>
+<details>
+<summary>Çözüm</summary>
+<p>Doğan → Van, doktor (kesin). Ceyda → Ankara (kesin). Aslı, Ankara'da yaşamıyor ve Ceyda zaten Ankara'da olduğu için geriye Aslı için İzmir ve Bursa kalır. Barış, İzmir'de yaşamıyor; Doğan zaten Van'da; Ceyda Ankara'da. O hâlde İzmir'de yaşayabilecek tek kişi Aslı'dır → Aslı = İzmir. İzmir'de yaşayan mühendis olduğuna göre Aslı = mühendis. Geriye Barış = Bursa, öğretmen; Ceyda = hemşire kalır (Barış hemşire değil zaten verilmişti, tutarlı). Tüm tablo: Aslı-İzmir-mühendis, Barış-Bursa-öğretmen, Ceyda-Ankara-hemşire, Doğan-Van-doktor. Bu atamanın tek olduğunu, şehir ve meslek eşleşmelerinin 24×24 olası kombinasyonunu tek tek deneyip beş koşulu birden sağlayan tek çözümü bularak doğruladık.</p>
+<p class="sonuc">Cevap: B</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">3. Ege, Fatma, Gül, Hakan ve Irmak yan yana dizilmiş 5 sandalyeye soldan sağa 1'den 5'e kadar oturmaktadır. Gül tam ortadadır. Ege, Hakan'dan önce; Hakan da Fatma'dan önce oturmaktadır (soldan sağa). Irmak, Fatma'nın hemen solundadır. Buna göre 1 numaralı sandalyede kim oturmaktadır? A) Ege  B) Fatma  C) Gül  D) Hakan  E) Irmak</p>
+<details>
+<summary>Çözüm</summary>
+<p>Gül = 3. numaralı sandalye (kesin). Ege &lt; Hakan &lt; Fatma sırası korunmalı ve Irmak, Fatma'nın hemen solunda, yani Irmak = Fatma − 1. Gül 3'ü tuttuğu için kalan sandalyeler 1, 2, 4, 5. Ege &lt; Hakan &lt; Fatma üçlüsünü ve Irmak = Fatma−1 şartını birlikte deneyince tek uyan dizilim: Ege=1, Hakan=2, Gül=3, Irmak=4, Fatma=5. Bu, Irmak'ın Fatma'nın hemen solunda olma şartını da (4 = 5−1) sağlıyor. Beş kişinin 120 olası diziliminin tamamı tek tek denendiğinde üç koşulu birden sağlayan tek dizilimin bu olduğu doğrulandı.</p>
+<p class="sonuc">Cevap: A</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">4. Aylin, Berk, Ceren ve Dila'nın yaşları farklıdır. Berk, Aylin'den büyüktür. Ceren ne en büyük ne de en küçüktür. Dila, Berk'ten küçük ama Ceren'den büyüktür. Buna göre en büyükten en küçüğe doğru sıralama aşağıdakilerden hangisidir? A) Berk-Ceren-Dila-Aylin  B) Berk-Dila-Ceren-Aylin  C) Ceren-Berk-Dila-Aylin  D) Berk-Dila-Aylin-Ceren  E) Dila-Berk-Ceren-Aylin</p>
+<details>
+<summary>Çözüm</summary>
+<p>Berk &gt; Aylin (kesin). Dila &gt; ... Berk'ten küçük demek Berk &gt; Dila; Dila, Ceren'den büyük demek Dila &gt; Ceren. Bunları birleştirince: Berk &gt; Dila &gt; Ceren. Ceren'in "ne en büyük ne en küçük" olması bu zincirle zaten tutarlı (Ceren üçüncü sırada, ne baş ne son — ama son kişi olarak Aylin kalıyor). Aylin'in Berk'ten küçük olduğunu biliyoruz; zincire nereye gireceğini şıklardan ve "dört kişi de farklı" bilgisinden çözeriz: Berk &gt; Dila &gt; Ceren &gt; Aylin sıralaması hem Berk&gt;Aylin hem Ceren'in ortada olması şartını sağlıyor. Aylin'in Ceren'den küçük olması gerektiği (aksi hâlde Ceren en küçük olurdu) da buradan çıkar. 24 olası sıralamanın tamamı tek tek denendiğinde yalnızca Berk-Dila-Ceren-Aylin sıralamasının dört koşulu birden sağladığı doğrulandı.</p>
+<p class="sonuc">Cevap: B</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">5. Mert, Nil, Onur, Pelin ve Rüya, hafta içi 5 farklı günde (Pazartesi–Cuma) doğum günü kutlamakta ve kırmızı, mavi, yeşil, sarı, mor renklerinden birini sevmektedir. Onur, Çarşamba günü kutlamaktadır. Nil, Onur'dan bir gün önce kutlamaktadır. Mert maviyi sever. Pelin, Pazartesi ya da Cuma günü kutlamaktadır. Rüya, Pelin'den sonraki bir günde kutlamaktadır. Onur, kırmızı ya da sarı sevmez. Nil yeşili sever. Rüya mor sevmez. Mert, Rüya'dan bir gün sonra kutlamaktadır. Pelin kırmızı sevmez. Buna göre Onur hangi rengi sever? A) Kırmızı  B) Mavi  C) Yeşil  D) Sarı  E) Mor</p>
+<details>
+<summary>Çözüm</summary>
+<p>Onur = Çarşamba (kesin). Nil, Onur'dan bir gün önce → Nil = Salı. Pelin, Pazartesi ya da Cuma; Rüya, Pelin'den sonra kutladığına göre Pelin Cuma olamaz (sonrası yok) → Pelin = Pazartesi. Kalan günler Perşembe ve Cuma, Mert ile Rüya'ya kalıyor. Mert, Rüya'dan bir gün sonra kutladığına göre Rüya = Perşembe, Mert = Cuma. Renklerde: Mert = mavi, Nil = yeşil (verilmiş). Onur kırmızı/sarı sevmiyor, mavi/yeşil zaten dolu, mor da Rüya'ya kalmıyor çünkü Rüya mor sevmiyor — geriye Onur için sadece mor kalıyor. Pelin kırmızı sevmediğine göre Pelin = sarı, Rüya için de kırmızı kalıyor. Bu tam tabloyu (gün ve renk için 5!×5! olası kombinasyonu) tek tek deneyip on koşulu birden sağlayan tek çözümün bu olduğunu doğruladık.</p>
+<p class="sonuc">Cevap: E</p>
+</details>
+</div>
+
+<div class="tuzak">
+<strong>Tuzak:</strong> Beşinci örnekte olduğu gibi çok bilgili sorularda, bilgileri geldiği sırayla değil, en "kesin" olandan (isim + gün gibi doğrudan eşleşme) başlayarak işlemek zaman kazandırır. Sondaki dolaylı bilgileri en sona bırak.
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Her cümleyi hemen sembole çevir (&gt;, ✓/✗, konum eşitliği).</li>
+<li>Kişi × özellik tablosu kur; bir satırda ✓ varsa aynı satırın diğer hücrelerini ✗ yap.</li>
+<li>Önce kesin bilgileri, sonra olumsuz (değildir) bilgileri işaretle.</li>
+<li>Tek boşluk kalan satır/sütun otomatik dolar — bunu ara ara kontrol et.</li>
+<li>Kesin bilgi tükenirse "varsayıp dene" yöntemine geç; çelişki çıkarsa varsayımı değiştir.</li>
+<li>Tüm tabloyu bitirmeden de sorulan tek hücreyi bulabiliyorsan zaman kaybetme, direkt şıkka bak.</li>
+<li>"Ne ... ne ..." ve "hemen yanında/solunda" gibi ifadeleri atlamadan işaretle; çoğu zaman çözümün kilidi bunlardır.</li>
+</ul>

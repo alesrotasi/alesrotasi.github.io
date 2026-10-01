@@ -1,0 +1,52 @@
+name: Siteyi derle ve yayımla
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Her gün: bir önceki günün Günün Sorusu sayfaları eklenir (TR ~06:30; GitHub gecikebilir).
+    - cron: "30 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  derle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q pymupdf
+      - run: python kaynak/build.py
+        env:
+          PYTHONIOENCODING: utf-8
+      - name: Etkinlik kaydı (zamanlanmış görev 60 gün sonra kapanmasın)
+        if: github.event_name == 'schedule'
+        run: |
+          ls _site/sorular | grep -c -- "-" > kaynak/yayin_sayisi.txt || true
+          git config user.name "ales-rotasi-bot"
+          git config user.email "ales-rotasi-bot@users.noreply.github.com"
+          git add kaynak/yayin_sayisi.txt
+          git diff --cached --quiet || (git commit -q -m "Yayımlanan soru sayısı: $(cat kaynak/yayin_sayisi.txt)" && git push -q)
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  yayimla:
+    needs: derle
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.d.outputs.page_url }}
+    steps:
+      - id: d
+        uses: actions/deploy-pages@v4

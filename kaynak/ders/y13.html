@@ -1,0 +1,279 @@
+<div class="alesde">
+<p><strong>ALES'te bu konu nasıl çıkar?</strong> Grafik ve tablo yorumlama soruları sınav başına ortalama <strong>2,9 soru</strong> ile karşına çıkar ve genellikle testin <strong>25-43. soruları</strong> arasındaki bloklarda, tek bir grafik/tabloya bağlı <strong>2-4 soruluk gruplar</strong> halinde sorulur. Yani bir grafiği/tabloyu bir kere iyi okursan, ardı ardına gelen birkaç soruyu hızlıca çözebilirsin. Bu derste grafikler görsel yerine <strong>HTML tablo</strong> ile verilecek; asıl beceri, sayısal veriden doğru sonucu çıkarmak ve "kesin doğru" ile "muhtemelen doğru"yu ayırt etmektir.</p>
+</div>
+
+<h3>1. Grafik türleri ve nasıl okunur</h3>
+<div class="kural">
+<p><strong>Sütun (çubuk) grafik:</strong> Her kategoriye ait değer, bir sütunun yüksekliğiyle gösterilir. Sütunları karşılaştırırken farkı doğrudan değerlerden çıkar.</p>
+<p><strong>Çizgi grafik:</strong> Zaman içindeki değişimi gösterir; çizginin yükselip alçalması artış/azalışı, eğimin dikliği değişim hızını gösterir.</p>
+<p><strong>Daire (dilim) grafik:</strong> Bütünün parçalara bölünüşünü gösterir. Tüm dilimlerin toplamı her zaman <strong>360°</strong> ya da <strong>%100</strong>'dür.</p>
+</div>
+
+<h3>2. Yüzde-derece dönüşümü</h3>
+<p>Daire grafiklerde veri bazen derece, bazen yüzde olarak verilir. İkisi arasında geçiş yapmak çok basittir çünkü tam daire hem 360°'ye hem %100'e karşılık gelir.</p>
+
+<div class="kural">
+<p>360° = %100 olduğundan: <strong>1° = %(100/360) = %(5/18)</strong> ve <strong>%1 = 3,6°</strong>.</p>
+<p>Bir dilimin derecesi biliniyorsa yüzdesi = derece · (100/360). Yüzdesi biliniyorsa derecesi = yüzde · (360/100) = yüzde · 3,6.</p>
+</div>
+
+<p>Mini örnek: Bir daire grafikte bir dilim 90° ise, bu dilim bütünün 90 · (100/360) = %25'idir.</p>
+
+<h3>3. Tablodan oran ve yüzde değişim çıkarma</h3>
+<p>Tablo sorularında en sık istenen şey, iki değer arasındaki farkı, oranı ya da yüzde değişimi bulmaktır.</p>
+
+<div class="kural">
+<p><strong>Yüzde değişim</strong> = <span class="frac"><span>Yeni değer − Eski değer</span><span>Eski değer</span></span> · 100</p>
+<p>Sonuç pozitifse artış, negatifse azalış olduğunu unutma. Değişim her zaman <strong>eski (başlangıç) değere</strong> göre hesaplanır, yeni değere göre değil.</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak 1 — Yanlış paydayı kullanmak:</strong> 250'den 300'e çıkan bir değerin yüzde artışını bulurken payda 300 değil, <strong>250</strong> (başlangıç/eski değer) olmalıdır. Yanlış paydayı kullanmak, doğru cevaba çok yakın ama hatalı bir şık üretir — ALES bu yanlış şıkkı bilerek seçenekler arasına koyar.</p>
+</div>
+
+<h3>4. "Kesinlikle doğrudur" tipi sorular</h3>
+<p>Bu soru tipinde beş şıktan sadece biri, verilen veriyle <strong>matematiksel olarak zorunlu</strong> olan bilgiyi söyler; diğerleri "olabilir ama kesin değil" türünden yanıltıcı önermelerdir.</p>
+
+<div class="kural">
+<p>Bir şıkkın "kesinlikle doğru" olması için, verilen sayılardan <strong>tek bir sonuca</strong> ulaşman gerekir. Eğer bir şık için birden fazla senaryo (birbirinden farklı ama tabloyla tutarlı iki durum) üretebiliyorsan, o şık kesin doğru değildir.</p>
+<p>En sağlam yöntem: toplamı bilinen bir bütünden, bilinen alt parçaları çıkararak bilinmeyen parçayı bulmaktır — bu tür bir sonuç her zaman kesindir.</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak 2 — "Genelde böyledir" ile "kesinlikle böyledir"i karıştırmak:</strong> Bir tabloda "en çok satan ürün her yıl aynıdır" gibi bir örüntü görülse bile, bu örüntünün sorulmayan bir yılda da devam edeceği kesin değildir. "Kesinlikle doğrudur" sorularında sadece tabloda açıkça yazan ya da ondan zorunlu olarak (başka türlü olamayacak şekilde) çıkan sonuçlar doğru kabul edilir.</p>
+</div>
+
+<h3>5. Ortak öncüllü blokları verimli çözmek</h3>
+<p>Bir grafiğe/tabloya bağlı 2-4 soruluk bloklarda zaman kazanmanın yolu şudur: Önce grafiği/tabloyu satır satır, sütun sütun <strong>bir kere dikkatlice</strong> oku (birimi, yılları, kategorileri not al), sonra soruları sırayla çöz. Her soru için tabloya dönüp sadece ilgili hücrelere bak; tüm tabloyu her seferinde baştan okumaya çalışma.</p>
+
+<h3>Çözümlü Örnekler</h3>
+
+<div class="ornek">
+<p class="soru">Aşağıdaki tabloda dört şehrin nüfusu (bin kişi) verilmiştir.</p>
+<table>
+<thead><tr><th>Şehir</th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>
+<tbody><tr><td>Nüfus (bin kişi)</td><td>120</td><td>150</td><td>90</td><td>140</td></tr></tbody>
+</table>
+<p class="soru">Bu dört şehirden hangi ikisinin nüfus farkı en büyüktür ve bu fark kaç bin kişidir?<br>A) 30  B) 40  C) 50  D) 60  E) 70</p>
+<details>
+<summary>Çözüm</summary>
+<p>En büyük fark, en yüksek değerle en düşük değer arasında olur: en yüksek B = 150, en düşük C = 90.</p>
+<p>Fark: 150 − 90 = 60 bin kişi.</p>
+<p class="sonuc">Cevap: D) 60</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir okuldaki öğrencilerin bölüm dağılımı daire grafikte derece cinsinden verilmiştir:</p>
+<table>
+<thead><tr><th>Bölüm</th><th>Fen</th><th>Sözel</th><th>Dil</th><th>TM</th></tr></thead>
+<tbody><tr><td>Açı</td><td>108°</td><td>90°</td><td>72°</td><td>90°</td></tr></tbody>
+</table>
+<p class="soru">Fen bölümündeki öğrenciler, tüm öğrencilerin yüzde kaçıdır?<br>A) 20  B) 25  C) 30  D) 35  E) 40</p>
+<details>
+<summary>Çözüm</summary>
+<p>Tam daire 360° = %100'e karşılık gelir. Fen bölümünün açısı 108°.</p>
+<p>Yüzdesi = 108 · (100/360) = 10800/360 = %30.</p>
+<p class="sonuc">Cevap: C) 30</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir mağazanın yıllara göre satış miktarları (bin adet) aşağıdaki tabloda verilmiştir.</p>
+<table>
+<thead><tr><th>Yıl</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th></tr></thead>
+<tbody><tr><td>Satış (bin adet)</td><td>200</td><td>250</td><td>300</td><td>270</td></tr></tbody>
+</table>
+<p class="soru">2022'den 2023'e satışlardaki artış yüzde kaçtır?<br>A) 10  B) 15  C) 20  D) 25  E) 30</p>
+<details>
+<summary>Çözüm</summary>
+<p>Yüzde değişim, eski (başlangıç) değere göre hesaplanır. Burada eski değer 2022'nin değeri olan 250'dir.</p>
+<p>Yüzde artış = (300 − 250) / 250 · 100 = 50/250 · 100 = %20.</p>
+<p class="sonuc">Cevap: C) 20</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir fabrikadaki 260 çalışanın bölümlere göre dağılımının bir kısmı aşağıdaki tabloda verilmiştir; Muhasebe bölümündeki çalışan sayısı tabloda gösterilmemiştir.</p>
+<table>
+<thead><tr><th>Bölüm</th><th>Üretim</th><th>Pazarlama</th><th>Muhasebe</th><th>İK</th><th>Toplam</th></tr></thead>
+<tbody><tr><td>Çalışan sayısı</td><td>150</td><td>40</td><td>?</td><td>30</td><td>260</td></tr></tbody>
+</table>
+<p class="soru">Muhasebe bölümündeki çalışan sayısı kesinlikle kaçtır?<br>A) 30  B) 35  C) 40  D) 45  E) 50</p>
+<details>
+<summary>Çözüm</summary>
+<p>Toplam çalışan sayısı bilindiğine ve diğer üç bölümün değeri açıkça verildiğine göre, Muhasebe bölümü zorunlu olarak tek bir değere sahiptir; bu yüzden "kesinlikle doğru"dur.</p>
+<p>Muhasebe = 260 − 150 − 40 − 30 = 40.</p>
+<p class="sonuc">Cevap: C) 40</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir firmanın X ve Y ürünlerinin yıllara göre satış miktarları (bin adet) aşağıdaki tabloda verilmiştir. Bu tabloya göre aşağıdaki iki soruyu cevaplayınız.</p>
+<table>
+<thead><tr><th>Yıl</th><th>2022</th><th>2023</th><th>2024</th></tr></thead>
+<tbody>
+<tr><td>X ürünü</td><td>300</td><td>360</td><td>450</td></tr>
+<tr><td>Y ürünü</td><td>400</td><td>400</td><td>360</td></tr>
+</tbody>
+</table>
+<p class="soru">Soru 1: 2023 yılında X ürününün satışının Y ürününün satışına oranı kaçtır?<br>A) 4/5  B) 9/10  C) 1  D) 11/10  E) 5/4</p>
+<details>
+<summary>Çözüm</summary>
+<p>2023'te X = 360, Y = 400. Oran = 360/400 = 9/10 (sadeleştirilmiş hâli).</p>
+<p class="sonuc">Cevap: B) 9/10</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Soru 2 (yukarıdaki tabloya göre): Aşağıdakilerden hangisi tabloya göre kesinlikle doğrudur?<br>A) X ürünü her yıl Y ürününden az satılmıştır.<br>B) Y ürününün satışı her yıl artmıştır.<br>C) X ürününün satışı sadece 2024 yılında Y ürününün satışını geçmiştir.<br>D) X ürününün satışı üç yılda toplam olarak Y'den fazladır.<br>E) 2022 yılında X, Y'den fazla satılmıştır.</p>
+<details>
+<summary>Çözüm</summary>
+<p>Yıl yıl karşılaştıralım: 2022'de X=300, Y=400 → X&lt;Y. 2023'te X=360, Y=400 → X&lt;Y. 2024'te X=450, Y=360 → X&gt;Y.</p>
+<p>Demek ki X, Y'yi sadece 2024 yılında geçmiştir. Bu, tablodan zorunlu olarak çıkan tek doğru önermedir.</p>
+<p>Diğer şıkları eleyelim: A yanlış (2024'te X fazla), B yanlış (Y 2023'te sabit, 2024'te azalmış), D için toplamlar hesaplanmalı: X toplamı 300+360+450=1110, Y toplamı 400+400+360=1160; X toplamı Y'den küçük, D yanlış. E yanlış (2022'de X&lt;Y).</p>
+<p class="sonuc">Cevap: C) X ürününün satışı sadece 2024 yılında Y ürününün satışını geçmiştir.</p>
+</details>
+</div>
+
+<h3>6. Ortalama (aritmetik ortalama) tablo sorularında</h3>
+<p>Grafik-tablo sorularının bir kısmı doğrudan ortalama ister: "bu 4 ayın ortalama satışı kaçtır", "5 şehrin ortalama nüfusu nedir" gibi. Ortalama kavramı basittir ama tabloda kaç tane veri olduğunu (kaç ay, kaç yıl, kaç şehir) doğru saymak kritiktir.</p>
+<div class="kural">
+<p><strong>Aritmetik ortalama</strong> = Tüm değerlerin toplamı ÷ değer sayısı.</p>
+<p>Tabloya bakıp "kaç tane sütun/satır var" diye saymadan bölme işlemi yapma; yanlış sayıya bölmek en sık yapılan hesap hatasıdır.</p>
+</div>
+<p>Mini örnek: Bir mağazanın 5 aylık satışları (bin adet) 40, 55, 60, 45, 50 ise ortalama satış = (40+55+60+45+50)/5 = 250/5 = 50 bin adettir.</p>
+
+<h3>7. "Kaç katı" ve oran karşılaştırmaları</h3>
+<p>Bazı sorular fark ya da yüzde değil, doğrudan oran ("kaç katı") sorar. Bu tip sorularda hangi değerin payda (bölen), hangisinin pay (bölünen) olduğunu doğru seçmek gerekir.</p>
+<div class="kural">
+<p>"A, B'nin kaç katıdır?" sorusunun cevabı her zaman <span class="frac"><span>A</span><span>B</span></span> işlemiyle bulunur — yani sorulan değer payda, "kime göre" denen değer paydadır.</p>
+<p>"B, A'nın kaç katıdır?" ile "A, B'nin kaç katıdır?" birbirinin tersidir (çarpımları 1 vermez, birbirinin çarpmaya göre tersidir); bu ikisini karıştırmamak gerekir.</p>
+</div>
+<p>Mini örnek: X ürününün satışı 450, Y ürününün satışı 90 birim ise X, Y'nin 450/90 = 5 katıdır.</p>
+
+<div class="kural">
+<p><strong>Adım adım çözüm şablonu:</strong></p>
+<ol>
+<li>Tabloyu/grafiği bir kez dikkatle oku: birim (bin, %, derece), yıl/kategori isimleri neler, not al.</li>
+<li>Soruda tam olarak ne isteniyor, netleştir: fark mı, oran ("kaç katı") mı, yüzde değişim mi, ortalama mı, yoksa "kesinlikle doğru" bir önerme mi?</li>
+<li>Sadece soruyla ilgili hücreleri tabloda bul; gereksiz sayılarla vakit kaybetme.</li>
+<li>İşlemi yap, sonucu birimiyle birlikte yaz (bin adet, %, kat gibi).</li>
+<li>Sonucu şıklarla karşılaştır; "kesinlikle doğru" sorularında her şıkkı tek tek tabloyla test et.</li>
+</ol>
+</div>
+
+<h3>Yeni Çözümlü Örnekler</h3>
+
+<div class="ornek">
+<p class="soru">Bir firmanın Ocak-Haziran (6 ay) toplam üretimi 2400 birimdir. İlk beş ayın (Ocak-Mayıs) üretimi aşağıdaki tabloda verilmiştir; Haziran ayının üretimi tabloda gösterilmemiştir.</p>
+<table>
+<thead><tr><th>Ay</th><th>Ocak</th><th>Şubat</th><th>Mart</th><th>Nisan</th><th>Mayıs</th></tr></thead>
+<tbody><tr><td>Üretim (birim)</td><td>380</td><td>420</td><td>400</td><td>410</td><td>390</td></tr></tbody>
+</table>
+<p class="soru">Haziran ayının üretimi, ilk beş ayın ortalama üretiminin yüzde kaçıdır?</p>
+<p>A) 80  B) 90  C) 100  D) 110  E) 120</p>
+<details>
+<summary>Çözüm</summary>
+<p>İlk beş ayın toplamı = 380 + 420 + 400 + 410 + 390 = 2000. Ortalaması = 2000/5 = 400.</p>
+<p>Toplam altı ay 2400 olduğundan Haziran = 2400 − 2000 = 400 (bu, toplamdan bilinen parçaları çıkarma yöntemiyle kesin olarak bulunur).</p>
+<p>Haziran'ın ortalamaya oranı = 400/400 · 100 = %100.</p>
+<p class="sonuc">Cevap: C) 100</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir okulun spor kulüplerine üye öğrenci sayıları aşağıdaki tabloda verilmiştir.</p>
+<table>
+<thead><tr><th>Kulüp</th><th>Basketbol</th><th>Voleybol</th><th>Futbol</th><th>Tenis</th></tr></thead>
+<tbody><tr><td>Üye sayısı</td><td>36</td><td>24</td><td>60</td><td>12</td></tr></tbody>
+</table>
+<p class="soru">Futbol kulübündeki üye sayısı, Tenis kulübündeki üye sayısının kaç katıdır?</p>
+<p>A) 3  B) 4  C) 5  D) 6  E) 8</p>
+<details>
+<summary>Çözüm</summary>
+<p>"Futbol, Tenis'in kaç katı" sorulduğuna göre Futbol payda (bölünen), Tenis payda (bölen) olur: 60/12 = 5.</p>
+<p class="sonuc">Cevap: C) 5</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir şehrin dört mevsimdeki ortalama yağış miktarı (mm) aşağıdaki tabloda verilmiştir.</p>
+<table>
+<thead><tr><th>Mevsim</th><th>İlkbahar</th><th>Yaz</th><th>Sonbahar</th><th>Kış</th></tr></thead>
+<tbody><tr><td>Yağış (mm)</td><td>90</td><td>30</td><td>60</td><td>120</td></tr></tbody>
+</table>
+<p class="soru">Kış mevsimindeki yağış, yıllık toplam yağışın yüzde kaçıdır?</p>
+<p>A) 30  B) 35  C) 40  D) 45  E) 50</p>
+<details>
+<summary>Çözüm</summary>
+<p>Yıllık toplam yağış = 90 + 30 + 60 + 120 = 300 mm.</p>
+<p>Kış'ın payı = 120/300 · 100 = %40.</p>
+<p class="sonuc">Cevap: C) 40</p>
+</details>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak 3 — Ortalama ve oranı yanlış kurmak:</strong> Ortalama sorularında toplamı, tablodaki veri sayısına (ay/yıl/kişi sayısına) değil rastgele bir sayıya bölmek büyük bir hesap hatasıdır — önce "kaç tane değer var" diye say. "Kaç katı" sorularında ise A'nın B'ye oranı ile B'nin A'ya oranını karıştırmak (payda-payı ters kurmak) ALES'in sıkça kullandığı bir çeldiricidir; soruyu "... , ...'nin kaç katıdır" diye tekrar oku ve hangi değerin payda geldiğini netleştir.</p>
+</div>
+
+<h3>Kendini dene</h3>
+
+<div class="ornek">
+<p class="soru">Bir mağazada satılan 4 ürünün fiyatları 20, 35, 15 ve 50 TL'dir. Bu ürünlerin ortalama fiyatı kaç TL'dir?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Ortalama = (20 + 35 + 15 + 50) / 4 = 120 / 4 = 30 TL.</p>
+<p class="sonuc">Cevap: 30 TL</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">A ürününün satışı 180 birim, B ürününün satışı 45 birimdir. A, B'nin kaç katıdır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>180/45 = 4.</p>
+<p class="sonuc">Cevap: 4 katı</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir daire grafikte bir dilim 45° ile gösterilmiştir. Bu dilim bütünün yüzde kaçıdır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Yüzde = 45 · (100/360) = 4500/360 = %12,5.</p>
+<p class="sonuc">Cevap: %12,5</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir ürünün satışı 2020'de 400, 2021'de 500 birim olmuştur. Bu ürünün satışındaki yüzde artış kaçtır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Yüzde değişim = (Yeni − Eski)/Eski · 100 = (500 − 400)/400 · 100 = 100/400 · 100 = %25.</p>
+<p class="sonuc">Cevap: %25 artış</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Toplamı 500 olan 4 kalemden 3'ünün değeri bilinmektedir: 120, 130 ve 150. Dördüncü kalem kesinlikle kaçtır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Toplamdan bilinen üç parçayı çıkarırsak: 500 − 120 − 130 − 150 = 100. Toplam bilindiği ve diğer üç değer açık verildiği için bu sonuç kesindir (tek bir değere zorunlu olarak ulaşılır).</p>
+<p class="sonuc">Cevap: 100</p>
+</details>
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Daire grafikte tam bütün her zaman 360°'ye ve %100'e eşittir; 1° = %(5/18), %1 = 3,6°.</li>
+<li>Yüzde değişim hesabında payda her zaman eski (başlangıç) değerdir, yeni değer değil.</li>
+<li>"Kesinlikle doğrudur" sorularında sadece tek bir sonuca zorunlu olarak götüren şıkkı seç; birden fazla senaryoya açık olan şıkları ele.</li>
+<li>Bilinen bir toplamdan bilinen alt parçaları çıkarmak, her zaman kesin (zorunlu) bir sonuç verir.</li>
+<li>Ortak öncüllü bloklarda grafiği/tabloyu bir kez dikkatle oku, sonra sorulara tek tek dön; her soru için tüm tabloyu yeniden okumaya çalışma.</li>
+<li>Sütun ve çizgi grafiklerde en büyük fark, en yüksek ile en düşük değer arasında aranır.</li>
+<li>Şıklardaki sayıları tabloyla karşılaştırıp elemeden önce, hangi yılın/kategorinin "eski", hangisinin "yeni" değer olduğunu netleştir.</li>
+<li>Ortalama = toplam ÷ değer sayısı; tabloda kaç veri olduğunu saymadan bölme.</li>
+<li>"A, B'nin kaç katıdır" sorularında A payda, B paydadır; tersini karıştırma.</li>
+<li>Adım adım şablonu uygula: önce tabloyu oku, sonra sorunun tam olarak ne istediğini belirle, sonra ilgili hücrelerle işlem yap.</li>
+</ul>

@@ -1,0 +1,282 @@
+<div class="alesde">
+<p><strong>ALES'te bu konu nasıl çıkar?</strong> ALES sayısal bölümünün <strong>20–43. soruları arası</strong> — yani sayısaldaki ilk büyük blok — neredeyse tamamen <strong>sayısal mantık</strong> sorularından oluşur; bir sınavda ortalama <strong>11 soru</strong> bu başlığa ayrılır. Bu sorularda hesap makinesi gibi işlem yapman değil, verilen kuralları doğru okuyup mantıksal çıkarım yapman istenir. Genelde bir "öncül" (kurallar metni) verilir ve bu öncüle bağlı 2-4 soruluk bir blok gelir (ortak öncüllü sorular). Kalıp: kişi/nesne yerleştirme, sayı-şekil yerleştirme, örüntü tamamlama, tablo kurma, bazen basit bir oyun/strateji sorusu.</p>
+</div>
+
+<h3>1. Öncülü okuma yöntemi</h3>
+<p>Sayısal mantık sorularının en büyük tuzağı, öncülü (kural metnini) hızlı ama dikkatsiz okumaktır. Aşağıdaki adımları izlemek çoğu soruyu çözülebilir hale getirir.</p>
+
+<div class="kural">
+<p><strong>Öncül okuma adımları:</strong></p>
+<ol>
+<li>Her kuralı ayrı bir madde olarak kâğıda (veya zihninde) çıkar; "ve", "ama", "sadece", "en az", "hemen önce/sonra" gibi kelimelerin altını çiz — bunlar kısıtın türünü belirler.</li>
+<li>Kişi/nesne sayısı kadar boş bir satır ya da sütun çiz (basit bir tablo). Kesin bilgi veren kuralları önce yerleştir.</li>
+<li>Küçük, somut bir örnek dene: "bu böyle olsaydı, diğer kural çelişir miydi?" sorusunu sor. Çelişki varsa o ihtimali ele.</li>
+<li>Kalan boşlukları, "eleme" ile doldur: bir kişiye/nesneye kalan tek seçenek neyse odur.</li>
+</ol>
+</div>
+
+<div class="kural">
+<p><strong>Şıklardan geriye gitme:</strong> Özellikle sayısal bir değer soruluyorsa (örn. "kaçıncı sırada", "hangi sayı"), şıklardaki değerleri sırayla öncüle sokup çelişki çıkarmayan tek şıkkı bulmak, sıfırdan kurmaktan çoğu zaman daha hızlıdır.</p>
+</div>
+
+<div class="kural">
+<p><strong>Blok mantığı:</strong> Ortak öncüllü bir blokta (aynı kurallara bağlı 2-4 soru), genelde ilk soru en çok bilgi verir — çünkü onu çözmek için tüm tabloyu/sıralamayı kurman gerekir. İlk soruyu doğru çözünce elindeki tablo, sonraki soruları saniyeler içinde cevaplamana yardımcı olur. Bu yüzden bloğun ilk sorusuna normalden fazla zaman ayırmak mantıklıdır.</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> "Kesinlikle doğrudur" ile "doğru olabilir" farklı sorulardır. Bir öncülden birden fazla düzenleme çıkabiliyorsa (yani soru tek çözüme gitmiyorsa), "kesinlikle doğru" sorusu sadece TÜM olası düzenlemelerde ortak olan bilgiyi sorar. Tek bir olası düzenlemeye bakıp "kesin" diye işaretlemek en sık yapılan hatadır.</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Ne zaman atlanmalı:</strong> Bir öncülü okuduktan 30-40 saniye içinde nereden başlayacağını göremiyorsan (özellikle karmaşık tablo kurgusu veya çok değişkenli bir düzenek ise), o bloğu işaretleyip geç; zamanının çoğunu tek bir zor bloğa harcamak, arkadaki daha kolay soruları kaçırmana yol açar. Sınavın sonunda vaktin kalırsa dön.</p>
+</div>
+
+<h3>2. Örnek soru tipleri ve çözüm stratejileri</h3>
+<p>Aşağıda ALES'te sık görülen beş soru tipi için kendi yazdığım örnekler var; her birinin cevabı tektir.</p>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 1 (kurallı düzenek — sıralama).</strong> Ayşe, Barış, Cem, Deniz ve Ece bir sırada yan yana, 1'den 5'e numaralanmış beş koltukta oturmaktadır.<br>
+– Ayşe, Barış'ın hemen önünde oturmaktadır (Barış'ın koltuk numarası, Ayşe'ninkinden tam 1 fazladır).<br>
+– Cem, sıranın uç koltuklarından birinde (1. veya 5.) oturmaktadır.<br>
+– Deniz, Ece'den önce oturmaktadır.<br>
+– Barış, 3. koltukta oturmamaktadır.<br>
+– Ece, 5. koltukta oturmaktadır.<br>
+Buna göre Ayşe kaçıncı koltukta oturmaktadır?</p>
+<p>A) 1  B) 2  C) 3  D) 4  E) 5</p>
+<details>
+<summary>Çözüm</summary>
+<p>Ece 5. koltukta olduğuna göre, Cem'in uçta olması kuralı gereği Cem 1. koltukta oturur (5. koltuk Ece'ye ait, o yüzden Cem 5 olamaz).</p>
+<p>Deniz, Ece'den (5.) önce oturduğuna göre Deniz 2, 3 veya 4. koltukta olabilir; ama 1. koltuk Cem'e ait olduğundan Deniz için 2, 3, 4 seçenekleri kalır.</p>
+<p>Ayşe-Barış ikilisi ardışık koltuklarda (Ayşe hemen önce) oturduğuna göre, kalan koltuklar 2, 3, 4 arasında ardışık iki koltuk olmalı: (2,3) ya da (3,4). Barış 3. koltukta oturamayacağından (2,3) ikilisi elenir (çünkü o durumda Barış 3'te olurdu). Geriye Ayşe=3, Barış=4 kalır, Deniz de kalan koltuk olan 2'ye yerleşir.</p>
+<p>Sonuç: Cem=1, Deniz=2, Ayşe=3, Barış=4, Ece=5. Bu tek düzenleme tüm kuralları sağlar.</p>
+<p class="sonuc">Cevap: C) 3</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 2 (tablo kurgusu).</strong> Kaan, Elif, Mert ve Sena; doktor, öğretmen, mühendis ve avukat mesleklerinden birine sahiptir ve Ankara, İzmir, Bursa, Konya şehirlerinden birinde yaşamaktadır (her kişi farklı meslek ve farklı şehir).<br>
+– Elif doktor değildir.<br>
+– Ankara'da yaşayan kişi mühendistir.<br>
+– Mert, İzmir'de yaşamamaktadır.<br>
+– Sena avukat, Kaan öğretmendir.<br>
+– Doktor olan kişi Konya'da yaşamaktadır.<br>
+– Sena, İzmir'de yaşamamaktadır.<br>
+Buna göre Kaan hangi şehirde yaşamaktadır?</p>
+<p>A) Ankara  B) İzmir  C) Bursa  D) Konya  E) Belirlenemez</p>
+<details>
+<summary>Çözüm</summary>
+<p>Sena avukat, Kaan öğretmen olduğuna göre; Elif doktor olamadığından (kural 1) Elif mühendis, geriye kalan Mert doktor olur.</p>
+<p>Doktor Konya'da yaşadığından (kural 5): Mert → Konya.</p>
+<p>Ankara'da yaşayan mühendis olduğundan (kural 2) ve mühendis Elif olduğundan: Elif → Ankara.</p>
+<p>Kalan şehirler İzmir ve Bursa, kalan kişiler Kaan ve Sena. Sena İzmir'de yaşamadığına göre (kural 6): Sena → Bursa, dolayısıyla Kaan → İzmir. (Mert zaten İzmir'de değil, kural 3 ile tutarlı.)</p>
+<p>Bu tablo tüm kısıtları sağlayan tek dağılımdır.</p>
+<p class="sonuc">Cevap: B) İzmir</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 3 (örüntü-dizi).</strong> 2, 5, 10, 17, 26, ? dizisinde soru işareti yerine hangi sayı gelmelidir?</p>
+<p>A) 33  B) 35  C) 37  D) 39  E) 41</p>
+<details>
+<summary>Çözüm</summary>
+<p>Ardışık terimler arasındaki farklara bak: 5−2=3, 10−5=5, 17−10=7, 26−17=9. Farklar kendi içinde bir örüntü oluşturuyor: 3, 5, 7, 9 — her seferinde 2 artıyor (ardışık tek sayılar).</p>
+<p>Bir sonraki fark 9+2=11 olmalı. O halde sonraki terim = 26 + 11 = 37.</p>
+<p class="sonuc">Cevap: C) 37</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 4 (şekil/sayı yerleştirme).</strong> Aşağıdaki 3×3'lük tabloya 1'den 9'a kadar her sayı yalnızca bir kez gelecek şekilde yerleştirilmiştir. Her satırın, her sütunun ve her iki köşegenin sayılar toplamı 15'tir. Tabloda sol üst kutu 2, üst orta kutu 7, sağ orta kutu (2. satır 3. sütun) 1, sol alt kutu 4 olarak verilmiştir. Buna göre sağ üst kutuya hangi sayı gelmelidir?</p>
+<p>A) 3  B) 5  C) 6  D) 8  E) 9</p>
+<details>
+<summary>Çözüm</summary>
+<p>Üst satırın toplamı 15 ve sol üst=2, orta üst=7 olduğundan sağ üst = 15 − 2 − 7 = 6.</p>
+<p>Kontrol: Bu değerle tam tabloyu tamamlarsak (2. satır 9,5,1 ve 3. satır 4,3,8 şeklinde) tüm satır, sütun ve köşegen toplamları 15 çıkar; 1'den 9'a kadar her sayı bir kez kullanılmıştır ve verilen dört ipucunu sağlayan başka bir diziliş yoktur.</p>
+<p class="sonuc">Cevap: C) 6</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 5 (strateji/oyun).</strong> Bir kutuda 20 taş vardır. A ve B sırayla oynamaktadır; her oyuncu kendi sırasında kutudan 1 veya 2 taş alabilir. Son taşı alan oyuncu kazanır. Oyuna A başlamaktadır. A'nın kazanmayı garantileyen bir stratejisi olduğuna göre, A ilk hamlesinde kaç taş almalıdır?</p>
+<p>A) 1  B) 2  C) 3  D) 4  E) Hangi sayıyı alırsa alsın fark etmez</p>
+<details>
+<summary>Çözüm</summary>
+<p>Bu tip oyunlarda kaybeden pozisyonlar (sırası gelen oyuncunun kaybettiği taş sayıları) bulunur. 1 veya 2 taş alınabilen bir oyunda, kalan taş sayısı 3'ün katı olduğunda sıradaki oyuncu kaybeder (rakip her zaman "3'e tamamlayarak" karşılık verebilir: rakip 1 alırsa sen 2 al, rakip 2 alırsa sen 1 al — böylece her turda toplam 3 taş azalır ve son taşı sen alırsın).</p>
+<p>20 taş, 3'ün katı değildir (20 = 6·3 + 2). A, rakibine 3'ün katı bir sayı (18) bırakmalıdır: 20 − 18 = 2 taş alarak. Yani 20 taşla başlayan oyuncu kazanır ve kazanma yolu ilk hamlede 2 taş almaktır.</p>
+<p class="sonuc">Cevap: B) 2</p>
+</details>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Tablo kurgusu sorularında "X, Y değildir" gibi olumsuz bir kural, doğrudan bir yerleştirme vermez; sadece bir ihtimali eler. Olumsuz kuralları en son değil, elemeler sırasında sürekli akılda tutman gerekir — çoğu kez son adımda kritik rol oynarlar (Örnek 2'deki "Sena İzmir'de değildir" kuralı gibi).</p>
+</div>
+
+<h3>3. Genel strateji notları</h3>
+<ul>
+<li>Öncülü bir kez oku, kuralları listele; ikinci okumada kuralları tabloya/şemaya geçir.</li>
+<li>Kesin bilgi veren kuralları (örn. "X, Y şehrindedir") önce yerleştir; göreceli kuralları ("X, Y'den önce") en son kullan.</li>
+<li>Bir blokta ilk soruyu çözmek genelde tüm düzeni ortaya çıkarır; sonraki sorular bu düzenden okunur.</li>
+<li>Sayısal cevap istenen sorularda şıklardan geriye gitmek zaman kazandırabilir.</li>
+<li>30-40 saniyede yol göremiyorsan bloğu atla, vaktin kalırsa dön.</li>
+<li>Geçmiş ALES oturumlarında (2019, 2020, 2021 dönemlerindeki sayısal bölümlerde) bu sorular genelde 20-43 arası yoğunlaşır; pratik yaparken bu aralığa özellikle zaman ayır.</li>
+</ul>
+
+<h3>4. Sıfırdan: temel kavramlar ve ifadeler</h3>
+<p>Sayısal mantık öncüllerinde geçen bazı kelimeler, kısıtın türünü belirler. Bu kelimeleri doğru okumadan doğru tabloyu kuramazsın; aşağıda sıfırdan bir açıklama var.</p>
+
+<div class="kural">
+<p><strong>Önerme:</strong> Doğru ya da yanlış olduğu kesin olarak söylenebilen cümledir ("Ali, 3. sırada oturur" bir önermedir; bir soru cümlesi önerme değildir).</p>
+<p><strong>"Ve" / "veya" / "değil":</strong> "X ve Y" dendiğinde ikisi de aynı anda geçerli olmalıdır. "X veya Y" dendiğinde en az biri geçerlidir (ALES öncülleri genelde tabloyu tek bir düzenlemeye götürecek şekilde kurulur). "X değildir" bir olasılığı doğrudan eler; yeni bir bilgi vermez ama seçenek sayısını azaltır.</p>
+<p><strong>"Hemen önce / hemen sonra":</strong> Aralarında başka kimse/hiçbir şey yoktur; sıra numaraları arasındaki fark tam 1'dir. <strong>"Önce / sonra" (hemen olmadan):</strong> Sadece sıralama bilgisi verir, aradaki fark 1, 2, 3... herhangi bir sayı olabilir.</p>
+<p><strong>"En az iki kişi/nesne arasında":</strong> İki öğe arasındaki sıra farkının en az 3 olduğu anlamına gelir (aralarında en az 2 öğe daha bulunur).</p>
+</div>
+
+<p>Mini örnek: "Deniz, Ece'den hemen önce oturmaktadır" dendiğinde Deniz'in koltuk numarası Ece'ninkinden tam 1 azdır (örn. Deniz=2 ise Ece=3 olmalıdır, Ece=4 olamaz). Ama "Deniz, Ece'den önce oturmaktadır" dendiğinde Deniz'in numarası sadece Ece'ninkinden küçük olmalıdır; ara fark 1, 2, 3 herhangi bir şey olabilir.</p>
+
+<div class="kural">
+<p><strong>Adım adım çözüm şablonu:</strong></p>
+<ol>
+<li>Öncülü oku, her kuralı numaralandırarak ayrı bir madde hâline getir.</li>
+<li>Kişi/nesne sayısı kadar boş bir tablo/sıra çiz; kesin bilgi veren kuralları (isim-değer eşleştiren ya da "X, n. sıradadır" diyen kuralları) hemen yerleştir.</li>
+<li>Göreceli kuralları ("hemen önce/sonra", "en az ... arasında") kalan boşluklara dene; her denemede diğer kurallarla çelişki olup olmadığını kontrol et.</li>
+<li>Bir kural boşluk bırakıyorsa (birden fazla yerleşim mümkünse), diğer kuralları uygulamaya devam et — genelde ilerledikçe seçenekler kendiliğinden azalır.</li>
+<li>Tabloyu tamamladıktan sonra TÜM kuralları tek tek tekrar kontrol et; bir tek kurala bile aykırıysa düzenleme yanlıştır.</li>
+</ol>
+</div>
+
+<h3>5. Yeni çözümlü örnekler</h3>
+<p>Aşağıdaki üç örnek de ALES seviyesinde, 5 şıklı ve her birinin tek çözümü vardır.</p>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 6 (sıralama — "en az ... arasında").</strong> Kaan, Elif, Mert, Sena ve Tolga bir yarışta 1'den 5'e kadar sıralanmıştır (aynı sırada iki kişi yoktur).</p>
+<ul>
+<li>Elif, Mert'ten hemen sonra bitirmiştir.</li>
+<li>Kaan ile Sena arasında en az iki kişi bitirmiştir.</li>
+<li>Tolga, birinci olmamıştır.</li>
+<li>Mert, Tolga'dan önce bitirmiştir.</li>
+<li>Sena, beşinci olmamıştır.</li>
+<li>Sena, Mert'ten önce bitirmiştir.</li>
+<li>Kaan, Tolga'dan önce bitirmiştir.</li>
+</ul>
+<p>Buna göre Elif kaçıncı olmuştur?</p>
+<p>A) 1  B) 2  C) 3  D) 4  E) 5</p>
+<details>
+<summary>Çözüm</summary>
+<p>"Kaan ile Sena arasında en az iki kişi bitirmiştir" demek, sıra numaraları arasındaki farkın en az 3 olması demektir.</p>
+<p>Sena beşinci olmadığına ve Mert'ten önce bitirdiğine göre, Sena için düşük sıralar denenir. Tolga birinci olmadığına ve Mert'ten sonra bitirdiğine göre (Mert&lt;Tolga), Tolga için de kısıt vardır. Kaan, Tolga'dan önce bitirdiğine göre Kaan&lt;Tolga.</p>
+<p>Tüm kuralları birlikte sağlayan tek düzenleme şudur: Sena=1, Mert=2, Elif=3 (Mert'in hemen sonrası), Kaan=4, Tolga=5. Kontrol: Kaan(4) ile Sena(1) arasındaki fark 3 (en az iki kişi şartını sağlar); Tolga(5) birinci değil; Mert(2)&lt;Tolga(5); Sena(1)&lt;Mert(2); Kaan(4)&lt;Tolga(5) — tüm kurallar sağlanır.</p>
+<p>Olası 120 sıralamanın hepsi denense de bu kuralları sağlayan tek düzen budur.</p>
+<p class="sonuc">Cevap: C) 3</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 7 (üç özellikli tablo kurgusu).</strong> Ali, Burak, Cansu ve Derya; yüzme, tenis, satranç ve voleybol sporlarından birini yapmakta ve kırmızı, mavi, yeşil, sarı renklerinden birinin formasını giymektedir (her kişi farklı spor, farklı renk).</p>
+<ul>
+<li>Yüzme yapan kişi kırmızı forma giymemektedir.</li>
+<li>Ali satranç oynamaktadır.</li>
+<li>Mavi forma giyen kişi tenis oynamaktadır.</li>
+<li>Burak sarı forma giymektedir.</li>
+<li>Cansu yüzme yapmamaktadır.</li>
+<li>Yeşil forma giyen kişi voleybol oynamaktadır.</li>
+<li>Derya mavi forma giymemektedir.</li>
+</ul>
+<p>Buna göre Derya hangi sporu yapmaktadır?</p>
+<p>A) Yüzme  B) Tenis  C) Satranç  D) Voleybol  E) Belirlenemez</p>
+<details>
+<summary>Çözüm</summary>
+<p>Ali satranç oynadığına göre geriye Burak, Cansu, Derya için yüzme, tenis, voleybol kalır. Cansu yüzme yapmadığına göre Cansu tenis ya da voleybol oynar.</p>
+<p>Burak sarı forma giydiğine göre Burak ne mavi (tenis) ne de yeşil (voleybol) formaya sahip olabilir; sarı forma kalan tek spor olan yüzmeyle eşleşir, çünkü yüzme kırmızı olamaz ve geriye sarı kalır — o hâlde Burak yüzme yapar.</p>
+<p>Geriye Cansu ve Derya için tenis ile voleybol kalır. Derya mavi forma giymediğine göre, mavi formayla eşleşen tenis sporunu Derya yapamaz; o hâlde Derya voleybol oynar (yeşil forma), Cansu da tenis oynar (mavi forma).</p>
+<p>4! × 4! = 576 olası spor-renk eşleşmesinin hepsi denense de koşulları sağlayan tek atama budur.</p>
+<p class="sonuc">Cevap: D) Voleybol</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 8 (kesinlikle doğru — sıralamada belirsizlik olsa da tek cevap).</strong> Efe, Gül, Hakan ve Işıl'ın yaşları birbirinden farklıdır.</p>
+<ul>
+<li>Efe, Gül'den büyüktür.</li>
+<li>Işıl, Hakan'dan büyüktür.</li>
+<li>Hakan, Gül'den büyüktür.</li>
+<li>Işıl, Efe'den büyüktür.</li>
+<li>Efe, Hakan'dan küçüktür.</li>
+</ul>
+<p>Buna göre bu dört kişiden en yaşlısı kesinlikle kimdir?</p>
+<p>A) Efe  B) Gül  C) Hakan  D) Işıl  E) Belirlenemez</p>
+<details>
+<summary>Çözüm</summary>
+<p>Kuralları sıraya dizersek: Gül &lt; Efe &lt; Hakan &lt; Işıl. Ayrıca Işıl'ın hem Hakan'dan hem Efe'den büyük olması gerektiği zaten (kural 2 ve 4) veriliyor, ki bu sıralamayla tutarlıdır.</p>
+<p>Bu beş kuralı birlikte sağlayan tek yaş sıralaması: Gül (en genç) &lt; Efe &lt; Hakan &lt; Işıl (en yaşlı). Bu durumda en yaşlı kişi kesin olarak Işıl'dır.</p>
+<p>(Not: Eğer soruda son kural — "Efe, Hakan'dan küçüktür" — verilmeseydi, Efe ile Hakan'ın sırası belirsiz kalırdı; ama yine de Işıl her olası düzenlemede en büyük çıkardı, çünkü Işıl hem Efe'den hem Hakan'dan büyük olmak zorundadır. Bu, "tam sıralama belirsiz olsa da sorulan tek bilginin kesin olabileceği" durumuna örnektir.)</p>
+<p>Olası 24 sıralamanın hepsi denense de beş kuralı sağlayan tek düzen Gül &lt; Efe &lt; Hakan &lt; Işıl'dır.</p>
+<p class="sonuc">Cevap: D) Işıl</p>
+</details>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak — "hemen önce/sonra" ile "önce/sonra"yı karıştırmak:</strong> "X, Y'den hemen önce gelir" ile "X, Y'den önce gelir" çok farklı kısıtlardır. Birincisi aralarında kimsenin olmadığını (fark tam 1), ikincisi sadece sıranın yönünü söyler (fark 1 ya da daha fazla olabilir). Öncülü hızlı okurken "hemen" kelimesini atlamak, yanlış (çok dar ya da çok geniş) bir kısıt uygulamana ve yanlış şıkka gitmene yol açar.</p>
+</div>
+
+<h3>Kendini dene</h3>
+
+<div class="ornek">
+<p class="soru">Kerem, Lale'den daha uzun boyludur. Lale, Mert'ten daha uzun boyludur. Bu üç kişiden en kısa boylu olan kimdir?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Kerem &gt; Lale &gt; Mert olduğuna göre sıralamada en altta (en kısa) Mert kalır. Bu, tek bir zincirleme sıralama olduğu için tek çözümdür (3! = 6 olasılığın taranmasıyla doğrulanmıştır).</p>
+<p class="sonuc">Cevap: Mert</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Ada, Boran ve Ceren, 1'den 3'e numaralanmış üç sırada yan yana oturmaktadır. Ada, Boran'ın hemen solunda oturmaktadır (Boran'ın sıra numarası, Ada'nınkinden tam 1 fazladır). Ceren, 1 numaralı sırada oturmamaktadır. Ceren kaçıncı sırada oturur?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Ada-Boran ikilisi için iki olası ardışık yerleşim vardır: (Ada=1, Boran=2) ya da (Ada=2, Boran=3). İkinci seçenekte Ceren'e kalan tek sıra 1 olurdu, ama Ceren 1 numaralı sırada oturamayacağından bu seçenek elenir.</p>
+<p>Geriye Ada=1, Boran=2 kalır; Ceren de kalan tek sıra olan 3'e yerleşir. Tüm 6 olası dizilişin taranmasıyla bu düzenlemenin tek çözüm olduğu doğrulanmıştır.</p>
+<p class="sonuc">Cevap: 3. sıra</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Pelin, Rüya ve Sinan; öğretmen, hemşire ve mühendis mesleklerinden birine sahiptir (her biri farklı meslek). Pelin mühendis değildir. Sinan öğretmen değildir. Rüya ne hemşire ne de mühendistir. Sinan'ın mesleği nedir?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Rüya hemşire de mühendis de olmadığına göre Rüya öğretmendir. Sinan öğretmen olamayacağına göre (ve öğretmen zaten Rüya olduğuna göre) Sinan hemşire ya da mühendis olabilir; Pelin mühendis olmadığına göre mühendislik Sinan'a kalır, Pelin de hemşire olur.</p>
+<p>Tüm 6 olası meslek atamasının taranmasıyla bu dağılımın (Rüya=öğretmen, Pelin=hemşire, Sinan=mühendis) tek çözüm olduğu doğrulanmıştır.</p>
+<p class="sonuc">Cevap: Mühendis</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">3, 7, 15, 31, ? dizisinde soru işareti yerine hangi sayı gelmelidir?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Her terim, bir öncekinin 2 katının 1 fazlası: 3·2+1=7, 7·2+1=15, 15·2+1=31. Aynı kuralla bir sonraki terim = 31·2+1 = 63.</p>
+<p class="sonuc">Cevap: 63</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir kutuda 15 taş vardır. İki oyuncu sırayla kutudan 1 veya 3 taş alabilir (2 taş alınamaz); son taşı alan kazanır. Oyuna A başlamaktadır. A, kazanmayı garantileyebilir mi?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Bu tür oyunlarda "kaybeden pozisyonlar" bulunur. 1 veya 3 taş alınabilen bir oyunda, her hamle taş sayısının tekliğini/çiftliğini değiştirir (1 ve 3'ün ikisi de tek sayıdır); bu yüzden çift sayıda taş kalan pozisyonlar sıradaki oyuncu için kaybettiricidir, tek sayıda taş kalanlar ise kazandırıcıdır.</p>
+<p>15 tek sayı olduğundan A kazanan bir pozisyonda başlar: A ilk hamlede 1 taş alarak geriye çift sayı (14) bırakabilir; B ne alırsa alsın (1 veya 3, ikisi de tek) geriye yine tek sayı kalır ve sıra tekrar A'ya gelir. A bu şekilde her turda rakibine çift sayı bırakarak sonunda 0 taşı B'nin önüne bırakır (B'nin hamle yapamadığı, dolayısıyla kaybettiği durum).</p>
+<p>Bu strateji 0'dan 15'e kadar tüm taş sayıları için geçerlidir: 15 taşla başlayan oyuncu her zaman kazanır.</p>
+<p class="sonuc">Cevap: Evet, A kazanmayı garantileyebilir (örneğin ilk hamlede 1 taş alarak).</p>
+</details>
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Sayısal mantık soruları ALES sayısalın 20-43. soruları arasında yoğunlaşır, sınav başına ~11 soru gelir.</li>
+<li>Öncülü madde madde kurallara ayır, kesin bilgi veren kuralları önce kullan.</li>
+<li>Ortak öncüllü blokta ilk soruyu dikkatle çöz; kurduğun tablo/sıralama sonraki soruları hızlandırır.</li>
+<li>Şıklardan geriye gitmek (deneme-yanılma), özellikle sayısal cevaplı sorularda hızlı bir yöntemdir.</li>
+<li>"Kesinlikle doğru" sorularında tek bir olası düzenlemeye değil, TÜM olası düzenlemelere bakılmalıdır.</li>
+<li>Zorlanılan bir bloğu 30-40 saniye içinde çözemiyorsan atla, zamanı daha kolay sorulara ayır.</li>
+<li>"Hemen önce/sonra" (fark tam 1) ile "önce/sonra" (fark 1 veya daha fazla) farklı kısıtlardır; "en az ... arasında" ifadesi farkın en az 3 olduğunu söyler.</li>
+<li>Bazen tam sıralama/tablo tek türlü belirlenemese de, sorulan tek bilgi (örn. "en büyük kim") tüm olası düzenlemelerde aynı çıkabilir — bu da "kesinlikle doğru" sayılır.</li>
+</ul>

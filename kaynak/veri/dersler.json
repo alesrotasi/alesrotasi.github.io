@@ -1,0 +1,263 @@
+[
+ {
+  "id": "s01",
+  "hafta": 1,
+  "baslik": "Paragrafta ana düşünce, konu ve başlık",
+  "bolum": "SOZ",
+  "konu": [
+   "Paragraf-Ana Düşünce"
+  ],
+  "band": null
+ },
+ {
+  "id": "y01",
+  "hafta": 1,
+  "baslik": "Sayılar ve temel kavramlar",
+  "bolum": "SAY",
+  "konu": [
+   "Sayı Kavramları"
+  ],
+  "band": null
+ },
+ {
+  "id": "y02",
+  "hafta": 1,
+  "baslik": "Kesirler, ondalık sayılar, işlem önceliği",
+  "bolum": "SAY",
+  "konu": [
+   "Temel İşlemler"
+  ],
+  "band": null
+ },
+ {
+  "id": "s02",
+  "hafta": 2,
+  "baslik": "Yardımcı düşünce ve çıkarım",
+  "bolum": "SOZ",
+  "konu": [
+   "Paragraf-Yardımcı Düşünce/Çıkarım"
+  ],
+  "band": null
+ },
+ {
+  "id": "y03",
+  "hafta": 2,
+  "baslik": "Üslü sayılar",
+  "bolum": "SAY",
+  "konu": [
+   "Temel İşlemler"
+  ],
+  "band": null
+ },
+ {
+  "id": "y04",
+  "hafta": 2,
+  "baslik": "Köklü sayılar",
+  "bolum": "SAY",
+  "konu": [
+   "Temel İşlemler"
+  ],
+  "band": null
+ },
+ {
+  "id": "y05",
+  "hafta": 2,
+  "baslik": "Çarpanlara ayırma ve özdeşlikler",
+  "bolum": "SAY",
+  "konu": [
+   "Temel İşlemler"
+  ],
+  "band": null
+ },
+ {
+  "id": "s03",
+  "hafta": 3,
+  "baslik": "Boşluk doldurma ve kesin çıkarım (1–8)",
+  "bolum": "SOZ",
+  "konu": [],
+  "band": [
+   1,
+   8
+  ]
+ },
+ {
+  "id": "s04",
+  "hafta": 3,
+  "baslik": "Anlatım biçimleri ve yazar tutumu",
+  "bolum": "SOZ",
+  "konu": [
+   "Paragraf-Anlatım",
+   "Paragraf-Ana Düşünce"
+  ],
+  "band": null
+ },
+ {
+  "id": "y06",
+  "hafta": 3,
+  "baslik": "Denklemler ve denklem sistemleri",
+  "bolum": "SAY",
+  "konu": [
+   "Denklem-Eşitsizlik-Mutlak Değer"
+  ],
+  "band": null
+ },
+ {
+  "id": "y07",
+  "hafta": 3,
+  "baslik": "Eşitsizlik, mutlak değer, işaret analizi",
+  "bolum": "SAY",
+  "konu": [
+   "Denklem-Eşitsizlik-Mutlak Değer"
+  ],
+  "band": null
+ },
+ {
+  "id": "y08",
+  "hafta": 4,
+  "baslik": "Bölünebilme, asal çarpanlar, EBOB-EKOK",
+  "bolum": "SAY",
+  "konu": [
+   "Bölünebilme-EBOB-EKOK-Asal"
+  ],
+  "band": null
+ },
+ {
+  "id": "y09",
+  "hafta": 4,
+  "baslik": "Kümeler ve tanımlı işlem",
+  "bolum": "SAY",
+  "konu": [
+   "Kümeler",
+   "Tanımlı İşlem-Fonksiyon"
+  ],
+  "band": null
+ },
+ {
+  "id": "s05",
+  "hafta": 5,
+  "baslik": "Cümle sıralama (9–12)",
+  "bolum": "SOZ",
+  "konu": [],
+  "band": [
+   9,
+   12
+  ]
+ },
+ {
+  "id": "y10",
+  "hafta": 5,
+  "baslik": "Sayı-kesir ve yaş problemleri",
+  "bolum": "SAY",
+  "konu": [
+   "Sayı-Kesir Problemleri",
+   "Yaş Problemleri"
+  ],
+  "band": null
+ },
+ {
+  "id": "s06",
+  "hafta": 6,
+  "baslik": "Yer değiştirme ve akışı bozan cümle (13–18)",
+  "bolum": "SOZ",
+  "konu": [],
+  "band": [
+   13,
+   18
+  ]
+ },
+ {
+  "id": "y11",
+  "hafta": 6,
+  "baslik": "Yüzde, kâr-zarar, oran-orantı",
+  "bolum": "SAY",
+  "konu": [
+   "Yüzde-Kar-Zarar-Faiz",
+   "Oran-Orantı"
+  ],
+  "band": null
+ },
+ {
+  "id": "s07",
+  "hafta": 7,
+  "baslik": "Uzun metin blokları (29–42)",
+  "bolum": "SOZ",
+  "konu": [
+   "Uzun Metin Okuma"
+  ],
+  "band": null
+ },
+ {
+  "id": "y12",
+  "hafta": 7,
+  "baslik": "Hareket, işçi-havuz, temel olasılık",
+  "bolum": "SAY",
+  "konu": [
+   "Hareket Problemleri",
+   "Karışım Problemleri",
+   "Permütasyon-Kombinasyon-Olasılık"
+  ],
+  "band": null
+ },
+ {
+  "id": "y13",
+  "hafta": 8,
+  "baslik": "Grafik ve tablo yorumlama",
+  "bolum": "SAY",
+  "konu": [
+   "Grafik-Tablo Yorumlama"
+  ],
+  "band": null
+ },
+ {
+  "id": "s08",
+  "hafta": 8,
+  "baslik": "Sözel mantık I: sıralama ve tablo",
+  "bolum": "SOZ",
+  "konu": [
+   "Sözel Mantık"
+  ],
+  "band": null
+ },
+ {
+  "id": "s09",
+  "hafta": 10,
+  "baslik": "Sözel mantık II: koşullu kurgu",
+  "bolum": "SOZ",
+  "konu": [
+   "Sözel Mantık"
+  ],
+  "band": null
+ },
+ {
+  "id": "y14",
+  "hafta": 9,
+  "baslik": "Üçgenler",
+  "bolum": "SAY",
+  "konu": [
+   "Geometri-Açılar-Üçgen"
+  ],
+  "band": null
+ },
+ {
+  "id": "y15",
+  "hafta": 11,
+  "baslik": "Dörtgenler, çokgenler, çember",
+  "bolum": "SAY",
+  "konu": [
+   "Geometri-Dörtgen-Çokgen",
+   "Geometri-Çember-Daire",
+   "Geometri-Katı Cisimler"
+  ],
+  "band": null
+ },
+ {
+  "id": "y16",
+  "hafta": 12,
+  "baslik": "Sayısal mantık ve ortak öncüllü bloklar",
+  "bolum": "SAY",
+  "konu": [
+   "Sayısal Mantık"
+  ],
+  "band": null
+ }
+]

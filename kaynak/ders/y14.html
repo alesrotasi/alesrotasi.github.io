@@ -1,0 +1,456 @@
+<div class="alesde">
+<p><strong>ALES'te bu konu nasıl çıkar?</strong> Üçgenlerle ilgili sorular ALES sayısal bölümünde genelde sona doğru, yaklaşık <strong>43–45. sorular</strong> civarında karşına çıkar; sınav başına ortalama <strong>2 soru</strong> bekleyebilirsin. Tipik kalıp şudur: sana bir üçgen sözle tarif edilir (kenar uzunlukları veya açılardan bazıları verilir), bir bilinmeyeni (açı, kenar veya alan) bulman istenir. Bazen de iki üçgenin benzer olduğu söylenir ve kenar/alan oranı sorulur. Şekil çoğu zaman "yardımcı"dır; asıl iş, doğru kuralı (iç açılar toplamı, Pisagor, benzerlik) hatırlayıp uygulamaktır.</p>
+</div>
+
+<h3>1. Üçgende açılar</h3>
+<p>Bir üçgenin üç iç açısı vardır ve bunların toplamı her zaman sabittir. Bu, geometri bilginin en temel taşı — çoğu soru dolaylı olarak buna dayanır.</p>
+
+<div class="kural">
+<p><strong>İç açılar toplamı kuralı:</strong> Bir üçgende iç açılar A, B, C ise</p>
+<p>A + B + C = 180°</p>
+<svg class="sekil" viewBox="0 0 260 180" role="img" aria-label="Bir üçgenin köşeleri A, B, C olarak işaretlenmiş">
+<polygon points="30,150 230,150 120,20" stroke="currentColor" fill="none"/>
+<text font-size="13" x="12" y="168" fill="currentColor">A</text>
+<text font-size="13" x="222" y="168" fill="currentColor">B</text>
+<text font-size="13" x="114" y="14" fill="currentColor">C</text>
+</svg>
+</div>
+
+<p><strong>Mini örnek:</strong> Bir üçgenin açıları x, 2x ve 3x olsun. O zaman x + 2x + 3x = 180°, yani 6x = 180°, x = 30°. Açılar sırasıyla 30°, 60°, 90°'dir.</p>
+
+<div class="kural">
+<p><strong>Dış açı kuralı:</strong> Bir üçgenin bir dış açısı, kendisine komşu olmayan diğer iki iç açının toplamına eşittir.</p>
+<p>Dış açı = 180° − (komşu iç açı) = (diğer iki iç açının toplamı)</p>
+<svg class="sekil" viewBox="0 0 280 180" role="img" aria-label="B köşesinde kenarın uzatılmasıyla oluşan dış açı">
+<polygon points="20,150 180,150 90,30" stroke="currentColor" fill="none"/>
+<line x1="180" y1="150" x2="260" y2="150" stroke="currentColor" fill="none"/>
+<text font-size="13" x="6" y="168" fill="currentColor">A</text>
+<text font-size="13" x="176" y="170" fill="currentColor">B</text>
+<text font-size="13" x="84" y="24" fill="currentColor">C</text>
+<text font-size="13" x="196" y="140" fill="currentColor">dış açı</text>
+</svg>
+</div>
+
+<p><strong>Mini örnek:</strong> Bir üçgenin iki iç açısı 50° ve 70° ise, üçüncü iç açı 180° − 50° − 70° = 60°'tir. Bu 60°'lik açıya komşu olan dış açı ise 180° − 60° = 120°'dir. Dikkat et: bu değer aynı zamanda 50° + 70° = 120°'ye de eşit çıkıyor — dış açı kuralının kısayolu tam olarak bu.</p>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> "Dış açı" ile "üçüncü iç açının bütünleri" karıştırılabilir. Bir köşedeki dış açı, o köşedeki iç açının bütünleyicisidir (toplamları 180°), ama sayısal olarak diğer iki iç açının toplamına eşittir. Soruyu çözerken hangi köşenin dış açısının sorulduğuna dikkat et.</p>
+</div>
+
+<h3>2. İkizkenar ve eşkenar üçgen</h3>
+<p><strong>İkizkenar üçgen:</strong> İki kenarı eşit olan üçgendir; bu iki eşit kenarın karşısındaki açılar da birbirine eşittir (taban açıları eşittir). Üçüncü kenara "taban", tabana ait açılara da "taban açıları" denir. İkizkenar üçgende tepe açısından tabana inen dikme aynı zamanda hem açıortay hem de kenarortaydır — yani tabanı tam ortadan ikiye böler. Bu özellik, ikizkenar üçgeni iki eş dik üçgene ayırıp Pisagor uygulamak için sık kullanılır.</p>
+<p><strong>Eşkenar üçgen:</strong> Üç kenarı da eşit olan üçgendir; bu durumda üç açı da eşittir ve her biri 180°/3 = 60°'dir. Eşkenar üçgen aynı zamanda özel bir ikizkenar üçgendir (üç kenarı da birbirine eşit olduğundan her iki kenar çifti için ikizkenarlık şartı otomatik sağlanır).</p>
+<p><strong>Mini örnek:</strong> İkizkenar bir üçgende tepe açısı 40° ise, geri kalan 140° iki eşit taban açısına paylaştırılır: 140°/2 = 70°. Taban açılarının her biri 70°'dir.</p>
+
+<div class="kural">
+<p>İkizkenar üçgende: eşit kenarların karşısındaki açılar eşittir.</p>
+<p>Eşkenar üçgende: her açı 60°'dir; kenar a ise alan = <span class="frac"><span>√3</span><span>4</span></span> · a².</p>
+<svg class="sekil" viewBox="0 0 260 180" role="img" aria-label="İkizkenar üçgen, CA ve CB kenarları eşit işaretli">
+<polygon points="40,150 220,150 130,30" stroke="currentColor" fill="none"/>
+<line x1="80" y1="97" x2="92" y2="87" stroke="currentColor" fill="none"/>
+<line x1="168" y1="97" x2="180" y2="87" stroke="currentColor" fill="none"/>
+<text font-size="13" x="24" y="168" fill="currentColor">A</text>
+<text font-size="13" x="212" y="168" fill="currentColor">B</text>
+<text font-size="13" x="124" y="20" fill="currentColor">C</text>
+</svg>
+</div>
+
+<h3>3. Pisagor bağıntısı</h3>
+<p>Bir üçgenin dik açısı varsa (yani 90°'lik bir açısı varsa), buna <strong>dik üçgen</strong> denir. Dik açının karşısındaki (en uzun) kenara <strong>hipotenüs</strong>, diğer iki kenara <strong>dik kenarlar</strong> denir.</p>
+
+<div class="kural">
+<p><strong>Pisagor bağıntısı:</strong> Dik kenarlar a ve b, hipotenüs c ise</p>
+<p>a² + b² = c²</p>
+<svg class="sekil" viewBox="0 0 220 180" role="img" aria-label="Dik üçgen, dik kenarlar a ve b, hipotenüs c">
+<polygon points="30,150 200,150 30,40" stroke="currentColor" fill="none"/>
+<polyline points="30,132 48,132 48,150" stroke="currentColor" fill="none"/>
+<text font-size="13" x="110" y="170" fill="currentColor">b</text>
+<text font-size="13" x="10" y="98" fill="currentColor">a</text>
+<text font-size="13" x="118" y="88" fill="currentColor">c</text>
+</svg>
+</div>
+
+<p><strong>Mini örnek:</strong> Dik kenarları 9 ve 12 olan dik üçgende hipotenüs: √(9² + 12²) = √(81 + 144) = √225 = 15.</p>
+
+<div class="kural">
+<p><strong>Sık kullanılan Pisagor üçlüleri</strong> (ezberlemesi işini çok hızlandırır, çünkü kök almana gerek kalmaz):</p>
+<ul>
+<li>3 – 4 – 5 (ve katları: 6-8-10, 9-12-15, ...)</li>
+<li>5 – 12 – 13</li>
+<li>6 – 8 – 10 (3-4-5'in 2 katı)</li>
+</ul>
+</div>
+
+<p>Doğrulama: 3² + 4² = 9 + 16 = 25 = 5²; 5² + 12² = 25 + 144 = 169 = 13²; 6² + 8² = 36 + 64 = 100 = 10².</p>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Pisagor üçlüsünü görünce hemen "hipotenüs en büyük sayıdır" diye ezberleme yanlış anlaşılmasın — 5-12-13'te hipotenüs 13, yani üç sayının en büyüğü her zaman hipotenüstür. Ama soruda kenarlar 12 ve 13 verilip 5 isteniyorsa, çıkarma işlemine dikkat et: 13² − 12² = 169 − 144 = 25, kök alınca 5. Toplama ile çıkarmayı karıştırmak en sık yapılan hatadır.</p>
+</div>
+
+<h3>4. Özel açılı dik üçgenler: 30-60-90 ve 45-45-90</h3>
+<p>Bu iki üçgen o kadar sık çıkar ki kenar oranlarını ezbere bilmek zaman kazandırır.</p>
+
+<div class="kural">
+<p><strong>30-60-90 üçgeni</strong> (kısa kenar : orta kenar : hipotenüs oranı):</p>
+<p>a : a√3 : 2a</p>
+<p>(30°'nin karşısındaki kenar en kısa, 60°'nin karşısındaki a√3, 90°'nin karşısındaki 2a'dır.)</p>
+<svg class="sekil" viewBox="0 0 260 190" role="img" aria-label="30-60-90 üçgeni, kenarlar a, a kök 3, 2a">
+<polygon points="30,160 230,160 30,40" stroke="currentColor" fill="none"/>
+<polyline points="30,144 46,144 46,160" stroke="currentColor" fill="none"/>
+<text font-size="13" x="120" y="178" fill="currentColor">a</text>
+<text font-size="13" x="6" y="105" fill="currentColor">a√3</text>
+<text font-size="13" x="150" y="95" fill="currentColor">2a</text>
+<text font-size="13" x="35" y="155" fill="currentColor">90°</text>
+<text font-size="13" x="205" y="155" fill="currentColor">60°</text>
+<text font-size="13" x="40" y="55" fill="currentColor">30°</text>
+</svg>
+</div>
+
+<div class="kural">
+<p><strong>45-45-90 üçgeni</strong> (ikizkenar dik üçgen):</p>
+<p>a : a : a√2</p>
+<svg class="sekil" viewBox="0 0 200 180" role="img" aria-label="45-45-90 üçgeni, dik kenarlar eşit a, hipotenüs a kök 2">
+<polygon points="30,150 160,150 30,20" stroke="currentColor" fill="none"/>
+<polyline points="30,134 46,134 46,150" stroke="currentColor" fill="none"/>
+<text font-size="13" x="90" y="168" fill="currentColor">a</text>
+<text font-size="13" x="6" y="90" fill="currentColor">a</text>
+<text font-size="13" x="95" y="80" fill="currentColor">a√2</text>
+<text font-size="13" x="130" y="145" fill="currentColor">45°</text>
+<text font-size="13" x="36" y="35" fill="currentColor">45°</text>
+</svg>
+</div>
+
+<p><strong>Mini örnek:</strong> 30-60-90 üçgeninde kısa kenar 5 ise, orta kenar 5√3 ≈ 8,66 ve hipotenüs 2·5 = 10'dur.</p>
+
+<h3>5. Benzerlik ve alan oranı</h3>
+<p>İki üçgen, açıları birebir eşit ve kenarları orantılıysa <strong>benzer</strong>dir. Benzer üçgenlerde kenar uzunluklarının oranına <strong>benzerlik oranı (k)</strong> denir.</p>
+
+<div class="kural">
+<p><strong>Benzerlik ve alan:</strong> Benzerlik oranı k ise (kenarlar oranı), alanların oranı k²'dir.</p>
+<p>Alan oranı = k²</p>
+<svg class="sekil" viewBox="0 0 300 170" role="img" aria-label="Küçük ve büyük iki benzer üçgen, kenar oranı 2:3">
+<polygon points="20,150 90,150 55,95" stroke="currentColor" fill="none"/>
+<text font-size="13" x="45" y="90" fill="currentColor">2</text>
+<polygon points="140,155 300,155 220,55" stroke="currentColor" fill="none"/>
+<text font-size="13" x="215" y="110" fill="currentColor">3</text>
+</svg>
+</div>
+
+<p><strong>Mini örnek:</strong> İki benzer üçgenin kenar oranı 2:3'tür (k = 3/2, küçükten büyüğe). Küçük üçgenin alanı 8 br² ise, büyük üçgenin alanı 8 · (3/2)² = 8 · 2,25 = 18 br²'dir.</p>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Alan oranını kenar oranıyla aynı sanmak en yaygın hatalardan biri. Kenarlar 2 katına çıkarsa alan 2 kat değil, 2² = 4 kat artar. Soruda "alan" kelimesi geçiyorsa mutlaka kareye alma adımını unutma.</p>
+</div>
+
+<h3>6. Alan formülleri</h3>
+<div class="kural">
+<p><strong>Genel alan formülü:</strong> Alan = <span class="frac"><span>taban · yükseklik</span><span>2</span></span></p>
+<p><strong>Eşkenar üçgen:</strong> Alan = <span class="frac"><span>√3</span><span>4</span></span> · kenar²</p>
+<svg class="sekil" viewBox="0 0 240 180" role="img" aria-label="Üçgende taban ve tabana inen yükseklik">
+<polygon points="20,160 220,160 90,40" stroke="currentColor" fill="none"/>
+<line x1="90" y1="40" x2="90" y2="160" stroke="currentColor" fill="none" stroke-dasharray="4 3"/>
+<text font-size="13" x="110" y="176" fill="currentColor">taban</text>
+<text font-size="13" x="96" y="100" fill="currentColor">yükseklik</text>
+</svg>
+</div>
+
+<p><strong>Mini örnek:</strong> Tabanı 10, o tabana ait yüksekliği 6 olan bir üçgenin alanı = (10 · 6) / 2 = 30 br²'dir.</p>
+
+<h3>Çözümlü örnekler</h3>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 1.</strong> Bir üçgenin iç açıları x, 2x ve 3x ölçüsündedir. Bu üçgenin en büyük açısı kaç derecedir?</p>
+<svg class="sekil" viewBox="0 0 260 180" role="img" aria-label="Açıları x, 2x, 3x olan üçgen">
+<polygon points="30,150 230,150 120,20" stroke="currentColor" fill="none"/>
+<text font-size="13" x="16" y="145" fill="currentColor">x</text>
+<text font-size="13" x="195" y="145" fill="currentColor">2x</text>
+<text font-size="13" x="112" y="35" fill="currentColor">3x</text>
+</svg>
+<p>A) 30°  B) 60°  C) 90°  D) 120°  E) 150°</p>
+<details>
+<summary>Çözüm</summary>
+<p>İç açılar toplamı 180° olduğundan: x + 2x + 3x = 180° → 6x = 180° → x = 30°.</p>
+<p>Açılar: 30°, 60°, 90°. En büyüğü 3x = 90°'dir.</p>
+<p class="sonuc">Cevap: C) 90°</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 2.</strong> Bir üçgenin iki iç açısı 50° ve 70°'dir. Bu iki açının komşusu olmayan üçüncü köşedeki dış açı kaç derecedir?</p>
+<svg class="sekil" viewBox="0 0 280 200" role="img" aria-label="İç açıları 50 ve 70 derece olan üçgende üçüncü köşedeki dış açı">
+<polygon points="20,170 180,170 90,70" stroke="currentColor" fill="none"/>
+<line x1="20" y1="170" x2="118" y2="30" stroke="currentColor" fill="none"/>
+<text font-size="13" x="6" y="188" fill="currentColor">50°</text>
+<text font-size="13" x="152" y="188" fill="currentColor">70°</text>
+<text font-size="13" x="96" y="64" fill="currentColor">C</text>
+<text font-size="13" x="118" y="45" fill="currentColor">dış açı</text>
+</svg>
+<p>A) 60°  B) 100°  C) 110°  D) 120°  E) 130°</p>
+<details>
+<summary>Çözüm</summary>
+<p>Üçüncü iç açı = 180° − 50° − 70° = 60°.</p>
+<p>Bu köşedeki dış açı, üçüncü iç açının bütünleyicisidir: 180° − 60° = 120°. (Kontrol: 50° + 70° = 120°, dış açı kuralıyla uyumlu.)</p>
+<p class="sonuc">Cevap: D) 120°</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 3.</strong> Bir dik üçgende dik kenarlar 9 cm ve 12 cm'dir. Hipotenüs kaç cm'dir?</p>
+<svg class="sekil" viewBox="0 0 220 180" role="img" aria-label="Dik kenarları 9 ve 12 olan dik üçgen">
+<polygon points="30,150 200,150 30,40" stroke="currentColor" fill="none"/>
+<polyline points="30,132 48,132 48,150" stroke="currentColor" fill="none"/>
+<text font-size="13" x="105" y="170" fill="currentColor">12</text>
+<text font-size="13" x="8" y="98" fill="currentColor">9</text>
+<text font-size="13" x="118" y="88" fill="currentColor">?</text>
+</svg>
+<p>A) 13  B) 14  C) 15  D) 16  E) 21</p>
+<details>
+<summary>Çözüm</summary>
+<p>Pisagor bağıntısı: hipotenüs² = 9² + 12² = 81 + 144 = 225.</p>
+<p>Hipotenüs = √225 = 15 cm.</p>
+<p>Not: 9 ve 12, 3-4-5 üçlüsünün 3 katıdır (3·3=9, 4·3=12), bu yüzden hipotenüs de 5·3=15 olmalıydı — kısayoldan da aynı sonuca ulaşılır.</p>
+<p class="sonuc">Cevap: C) 15</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 4.</strong> 30°-60°-90° açılı bir üçgende, 30°'nin karşısındaki kenar 5 cm'dir. Hipotenüs kaç cm'dir?</p>
+<svg class="sekil" viewBox="0 0 260 190" role="img" aria-label="30-60-90 üçgeni, kısa kenar 5 cm">
+<polygon points="30,160 230,160 30,40" stroke="currentColor" fill="none"/>
+<polyline points="30,144 46,144 46,160" stroke="currentColor" fill="none"/>
+<text font-size="13" x="130" y="178" fill="currentColor">5</text>
+<text font-size="13" x="150" y="95" fill="currentColor">?</text>
+<text font-size="13" x="205" y="155" fill="currentColor">60°</text>
+<text font-size="13" x="40" y="55" fill="currentColor">30°</text>
+</svg>
+<p>A) 5  B) 5√2  C) 5√3  D) 10  E) 10√3</p>
+<details>
+<summary>Çözüm</summary>
+<p>30-60-90 üçgeninde kenar oranı a : a√3 : 2a'dır. 30°'nin karşısındaki kenar en kısa olan "a"dır, burada a = 5.</p>
+<p>Hipotenüs (90°'nin karşısı) = 2a = 2 · 5 = 10 cm.</p>
+<p class="sonuc">Cevap: D) 10</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 5.</strong> Kenar uzunlukları oranı 2:3 olan iki benzer üçgenden küçüğünün alanı 8 cm²'dir. Büyük üçgenin alanı kaç cm²'dir?</p>
+<svg class="sekil" viewBox="0 0 300 170" role="img" aria-label="Kenar oranı 2:3 olan iki benzer üçgen, küçüğün alanı 8">
+<polygon points="20,150 90,150 55,95" stroke="currentColor" fill="none"/>
+<text font-size="13" x="45" y="90" fill="currentColor">2, Alan=8</text>
+<polygon points="140,155 300,155 220,55" stroke="currentColor" fill="none"/>
+<text font-size="13" x="205" y="110" fill="currentColor">3, Alan=?</text>
+</svg>
+<p>A) 12  B) 16  C) 18  D) 24  E) 32</p>
+<details>
+<summary>Çözüm</summary>
+<p>Benzerlik oranı (küçükten büyüğe) k = 3/2'dir. Alan oranı k² = (3/2)² = 9/4'tür.</p>
+<p>Büyük üçgenin alanı = 8 · 9/4 = 18 cm².</p>
+<p class="sonuc">Cevap: C) 18</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 6.</strong> Bir üçgenin tabanı 10 cm, bu tabana ait yüksekliği 6 cm'dir. Bu üçgenin alanı kaç cm²'dir?</p>
+<svg class="sekil" viewBox="0 0 240 180" role="img" aria-label="Tabanı 10, yüksekliği 6 olan üçgen">
+<polygon points="20,160 220,160 90,40" stroke="currentColor" fill="none"/>
+<line x1="90" y1="40" x2="90" y2="160" stroke="currentColor" fill="none" stroke-dasharray="4 3"/>
+<text font-size="13" x="110" y="176" fill="currentColor">10</text>
+<text font-size="13" x="96" y="100" fill="currentColor">6</text>
+</svg>
+<p>A) 16  B) 24  C) 30  D) 36  E) 60</p>
+<details>
+<summary>Çözüm</summary>
+<p>Alan = (taban · yükseklik) / 2 = (10 · 6) / 2 = 60 / 2 = 30 cm².</p>
+<p class="sonuc">Cevap: C) 30</p>
+</details>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> "Üçgen eşitsizliği" denen kuralı unutma: bir üçgenin iki kenarının toplamı üçüncü kenardan büyük olmak zorundadır. Sana verilen üç uzunluğun gerçekten bir üçgen oluşturup oluşturmadığını (örneğin 2, 3, 6 gibi bir üçlü üçgen OLUŞTURMAZ çünkü 2+3=5 < 6) kontrol etmeden hesaba girişme; bazı ALES soruları bunu bir "olası mı, değil mi" sorusu olarak sorar.</p>
+</div>
+
+<h3>7. Üçgen eşitsizliği: üç uzunluk her zaman üçgen kurmaz</h3>
+<p>Sana üç uzunluk verildiğinde, bunların gerçekten bir üçgen oluşturup oluşturmadığını kontrol etmen gerekebilir. Bunun kuralı basittir: <strong>herhangi iki kenarın toplamı üçüncü kenardan büyük olmalıdır.</strong> Bu şart sağlanmazsa üçgen çizilemez — üç çubuğu yan yana koysan bile ya düz bir çizgi olur ya da uçlar birleşmez.</p>
+
+<div class="kural">
+<p><strong>Üçgen eşitsizliği:</strong> Kenarlar a, b, c ise, her zaman şu ikisi birden sağlanmalıdır:</p>
+<p>a + b &gt; c &nbsp;&nbsp; ve &nbsp;&nbsp; |a − b| &lt; c</p>
+<p>Kısaca: üçüncü kenar, diğer iki kenarın farkı ile toplamı arasında olmalıdır.</p>
+<svg class="sekil" viewBox="0 0 240 170" role="img" aria-label="Kenarları a, b, c olan bir üçgen">
+<polygon points="30,150 200,150 140,40" stroke="currentColor" fill="none"/>
+<text font-size="13" x="100" y="168" fill="currentColor">c</text>
+<text font-size="13" x="60" y="98" fill="currentColor">b</text>
+<text font-size="13" x="178" y="98" fill="currentColor">a</text>
+</svg>
+</div>
+
+<p><strong>Mini örnek:</strong> Kenarları 4 cm ve 9 cm olan bir üçgenin üçüncü kenarı x ise, |9−4| &lt; x &lt; 9+4, yani 5 &lt; x &lt; 13 olmalıdır. x = 5 ya da x = 13 olamaz, ama x = 6, 7, ... 12 gibi tam sayı değerleri alabilir.</p>
+
+<h3>8. Kenarortay ve ağırlık merkezi</h3>
+<p>Bir üçgende bir köşeyi, karşısındaki kenarın <strong>orta noktasına</strong> birleştiren doğru parçasına <strong>kenarortay</strong> denir. Üç kenarortay her zaman tek bir noktada kesişir; bu noktaya <strong>ağırlık merkezi</strong> denir. Ağırlık merkezinin önemli bir özelliği vardır: her kenarortayı köşeden başlayarak 2:1 oranında böler.</p>
+
+<div class="kural">
+<p><strong>Ağırlık merkezi (G):</strong> Bir kenarortayın köşeden ağırlık merkezine olan parçası, ağırlık merkezinden kenarın orta noktasına olan parçasının 2 katıdır.</p>
+<p>Köşe–G : G–Orta nokta = 2 : 1</p>
+<svg class="sekil" viewBox="0 0 260 180" role="img" aria-label="Kenarortay CM ve üzerindeki ağırlık merkezi G">
+<polygon points="30,150 230,150 130,30" stroke="currentColor" fill="none"/>
+<line x1="130" y1="30" x2="130" y2="150" stroke="currentColor" fill="none"/>
+<circle cx="130" cy="110" r="3" stroke="currentColor" fill="none"/>
+<text font-size="13" x="120" y="22" fill="currentColor">C</text>
+<text font-size="13" x="138" y="113" fill="currentColor">G</text>
+<text font-size="13" x="120" y="168" fill="currentColor">M</text>
+</svg>
+</div>
+
+<p><strong>Mini örnek:</strong> Bir kenarortayın uzunluğu 15 cm ise, köşe ile ağırlık merkezi arasındaki uzaklık 2 birim, ağırlık merkezi ile orta nokta arasındaki uzaklık 1 birim olacak şekilde 15'i 3'e böleriz: her birim 15/3 = 5 cm. Köşe–G uzaklığı 2·5 = 10 cm, G–orta nokta uzaklığı 5 cm'dir.</p>
+
+<h3>9. Dik üçgende hipotenüse ait yükseklik</h3>
+<p>Bir dik üçgende, dik açının köşesinden hipotenüse indirilen yükseklik de sık sorulan bir bilgidir. Bu yükseklik, dik kenarların çarpımının hipotenüse bölümüne eşittir.</p>
+
+<div class="kural">
+<p><strong>Hipotenüse ait yükseklik:</strong> Dik kenarlar a, b; hipotenüs c; hipotenüse ait yükseklik h ise</p>
+<p>h = (a · b) / c</p>
+<svg class="sekil" viewBox="0 0 260 190" role="img" aria-label="Dik üçgende hipotenüse inen yükseklik h">
+<polygon points="20,170 240,170 120,50" stroke="currentColor" fill="none"/>
+<line x1="120" y1="50" x2="120" y2="170" stroke="currentColor" fill="none" stroke-dasharray="4 3"/>
+<text font-size="13" x="6" y="186" fill="currentColor">B</text>
+<text font-size="13" x="232" y="186" fill="currentColor">C</text>
+<text font-size="13" x="112" y="42" fill="currentColor">A</text>
+<text font-size="13" x="126" y="120" fill="currentColor">h</text>
+</svg>
+</div>
+
+<p><strong>Mini örnek:</strong> Dik kenarları 6 cm ve 8 cm olan dik üçgende hipotenüs (6-8-10 üçlüsünden) 10 cm'dir. Hipotenüse ait yükseklik h = (6·8)/10 = 48/10 = 4,8 cm'dir.</p>
+
+<div class="kural">
+<p><strong>Adım adım çözüm şablonu</strong> (sıfırdan bir üçgen sorusuna böyle yaklaş):</p>
+<ul>
+<li>1) Verilenleri not et: kaç kenar, kaç açı biliniyor? Dik açı var mı?</li>
+<li>2) Şekli (zihninde ya da kâğıtta) çiz, bilinmeyeni işaretle.</li>
+<li>3) Hangi kural işe yarar? (İç açılar toplamı mı, Pisagor mu, benzerlik mi, özel üçgen oranı mı?)</li>
+<li>4) Kuralı uygula, işlemi yap.</li>
+<li>5) Sonucu mantık kontrolünden geçir (örneğin hipotenüs her zaman en uzun kenar olmalı).</li>
+</ul>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Kenarortayı yükseklik ya da açıortay ile karıştırma. Sadece <strong>ikizkenar</strong> (ya da eşkenar) üçgende, tepe köşesinden inilen kenarortay aynı zamanda yükseklik ve açıortaydır. Genel (kenarları farklı) bir üçgende bu üçü farklı doğru parçalarıdır ve birbirinin yerine kullanılamaz.</p>
+</div>
+
+<h3>Ek çözümlü örnekler</h3>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 7.</strong> Kenar uzunlukları 4 cm, 7 cm ve x cm olan bir üçgende, x tam sayı olmak üzere alabileceği en büyük değer kaçtır?</p>
+<svg class="sekil" viewBox="0 0 240 170" role="img" aria-label="Kenarları 4, 7 ve x olan üçgen">
+<polygon points="30,150 200,150 140,40" stroke="currentColor" fill="none"/>
+<text font-size="13" x="100" y="168" fill="currentColor">x</text>
+<text font-size="13" x="60" y="98" fill="currentColor">4</text>
+<text font-size="13" x="178" y="98" fill="currentColor">7</text>
+</svg>
+<p>A) 8  B) 9  C) 10  D) 11  E) 12</p>
+<details>
+<summary>Çözüm</summary>
+<p>Üçgen eşitsizliğine göre |7−4| &lt; x &lt; 7+4, yani 3 &lt; x &lt; 11.</p>
+<p>x tam sayı olduğuna göre alabileceği en büyük değer 10'dur (11 sınırın kendisi olduğu için, yani eşitlik durumunda üçgen dejenere olur ve kabul edilmez).</p>
+<p class="sonuc">Cevap: C) 10</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 8.</strong> Bir üçgende bir kenarortayın uzunluğu 12 cm'dir. Ağırlık merkezinden, bu kenarortayın karşı kenardaki ayağına (orta noktaya) olan uzaklık kaç cm'dir?</p>
+<svg class="sekil" viewBox="0 0 260 180" role="img" aria-label="Uzunluğu 12 olan kenarortay üzerinde ağırlık merkezi G">
+<polygon points="30,150 230,150 130,30" stroke="currentColor" fill="none"/>
+<line x1="130" y1="30" x2="130" y2="150" stroke="currentColor" fill="none"/>
+<circle cx="130" cy="110" r="3" stroke="currentColor" fill="none"/>
+<text font-size="13" x="120" y="22" fill="currentColor">C</text>
+<text font-size="13" x="138" y="113" fill="currentColor">G</text>
+<text font-size="13" x="120" y="168" fill="currentColor">M</text>
+</svg>
+<p>A) 3  B) 4  C) 6  D) 8  E) 9</p>
+<details>
+<summary>Çözüm</summary>
+<p>Ağırlık merkezi kenarortayı köşeden başlayarak 2:1 oranında böler; yani kenarortay toplamda 2+1=3 eşit parçaya ayrılır.</p>
+<p>Bir parça = 12 / 3 = 4 cm. Ağırlık merkezinden orta noktaya olan uzaklık, bu 1 parçalık kısımdır: 4 cm.</p>
+<p class="sonuc">Cevap: B) 4</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Örnek 9.</strong> Dik kenarları 6 cm ve 8 cm olan bir dik üçgende, hipotenüse ait yükseklik kaç cm'dir?</p>
+<svg class="sekil" viewBox="0 0 260 190" role="img" aria-label="Dik kenarları 6 ve 8 olan üçgende hipotenüse inen yükseklik">
+<polygon points="20,170 240,170 120,50" stroke="currentColor" fill="none"/>
+<line x1="120" y1="50" x2="120" y2="170" stroke="currentColor" fill="none" stroke-dasharray="4 3"/>
+<text font-size="13" x="60" y="186" fill="currentColor">6</text>
+<text font-size="13" x="175" y="186" fill="currentColor">8</text>
+<text font-size="13" x="126" y="120" fill="currentColor">?</text>
+</svg>
+<p>A) 3,6  B) 4  C) 4,8  D) 5  E) 6</p>
+<details>
+<summary>Çözüm</summary>
+<p>Önce hipotenüsü bul: 6 ve 8, 3-4-5 üçlüsünün 2 katı olduğundan hipotenüs 10 cm'dir (kontrol: √(6²+8²) = √(36+64) = √100 = 10).</p>
+<p>Hipotenüse ait yükseklik h = (a·b)/c = (6·8)/10 = 48/10 = 4,8 cm.</p>
+<p class="sonuc">Cevap: C) 4,8</p>
+</details>
+</div>
+
+<h3>Kendini dene</h3>
+
+<div class="ornek">
+<p class="soru"><strong>Alıştırma 1.</strong> Bir üçgenin açıları x, x+10 ve x+20 derecedir. En büyük açı kaç derecedir?</p>
+<details>
+<summary>Çözüm</summary>
+<p>x + (x+10) + (x+20) = 180° → 3x + 30° = 180° → x = 50°. Açılar 50°, 60°, 70°'tir.</p>
+<p class="sonuc">Cevap: 70°</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Alıştırma 2.</strong> Dik kenarları 5 cm ve 12 cm olan dik üçgende hipotenüs kaç cm'dir?</p>
+<details>
+<summary>Çözüm</summary>
+<p>5-12-13 Pisagor üçlüsünden (ya da √(5²+12²) = √169) hipotenüs 13 cm'dir.</p>
+<p class="sonuc">Cevap: 13 cm</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Alıştırma 3.</strong> Kenarı 6 cm olan eşkenar üçgenin alanı kaç cm²'dir?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Alan = (√3/4)·kenar² = (√3/4)·36 = 9√3 cm² (≈ 15,59 cm²).</p>
+<p class="sonuc">Cevap: 9√3 cm²</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Alıştırma 4.</strong> Kenar oranı 1:4 olan iki benzer üçgenin alan oranı kaçtır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Alan oranı, kenar oranının karesidir: 1² : 4² = 1 : 16.</p>
+<p class="sonuc">Cevap: 1 : 16</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><strong>Alıştırma 5.</strong> Kenar uzunlukları 3 cm, 5 cm ve 9 cm olan üç çubukla bir üçgen kurulabilir mi?</p>
+<details>
+<summary>Çözüm</summary>
+<p>En küçük iki kenarın toplamı üçüncü kenardan büyük olmalı: 3 + 5 = 8. Ama 8 &lt; 9 olduğundan bu şart sağlanmaz.</p>
+<p class="sonuc">Cevap: Hayır, üçgen kurulamaz (3+5=8&lt;9).</p>
+</details>
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Bir üçgende iç açılar toplamı her zaman 180°'dir.</li>
+<li>Dış açı, komşu olmadığı iki iç açının toplamına eşittir.</li>
+<li>İkizkenar üçgende eşit kenarların karşısındaki açılar eşittir; eşkenar üçgende her açı 60°'dir.</li>
+<li>Dik üçgende Pisagor bağıntısı geçerlidir: a² + b² = c² (c hipotenüs).</li>
+<li>3-4-5, 5-12-13, 6-8-10 gibi Pisagor üçlülerini ezberlemek kök alma işini atlatır.</li>
+<li>30-60-90 üçgeninde kenar oranı a : a√3 : 2a; 45-45-90 üçgeninde a : a : a√2'dir.</li>
+<li>Benzer üçgenlerde kenar oranı k ise, alan oranı k²'dir — kareye almayı unutma.</li>
+<li>Üçgenin alanı = (taban · yükseklik) / 2; eşkenar üçgende alan = (√3/4)·kenar².</li>
+<li>Üçgen eşitsizliği: her iki kenarın toplamı üçüncü kenardan büyük olmalı, farkı da üçüncü kenardan küçük olmalı.</li>
+<li>Kenarortaylar ağırlık merkezinde kesişir; ağırlık merkezi her kenarortayı köşeden itibaren 2:1 oranında böler.</li>
+<li>Dik üçgende hipotenüse ait yükseklik h = (a·b)/c formülüyle bulunur.</li>
+</ul>

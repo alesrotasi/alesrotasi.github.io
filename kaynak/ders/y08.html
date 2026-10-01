@@ -1,0 +1,214 @@
+<div class="alesde">
+<p>Bu konu ALES sayısal bölümünde sınav başına ortalama <strong>1-2 soru</strong> ile karşına çıkıyor, genellikle <strong>13-14. sorular</strong> civarında. En sık görülen kalıplar: bir sayının kaç tane çarpanı (böleni) olduğunu bulmak, iki sayının EBOB-EKOK'unu kullanarak diğer sayıyı bulmak, "kutulara eşit dağıtma" ya da "ziller aynı anda çalma" gibi sözel EBOB-EKOK problemleri ve son olarak da harfli bir ifadenin (m = 20(n+7)+n²−9 gibi) belli bir sayıya bölümünden kalanı bulmak. Bu son tip biraz cebir gerektirdiği için genelde sorunun zor ucunda yer alır.</p>
+</div>
+
+<h3>Bölünebilme kuralları</h3>
+<p>Bir sayının başka bir sayıya "tam bölünmesi", bölme işleminde kalanın 0 çıkması demektir. Uzun bölme yapmadan, sadece basamaklara bakarak bölünüp bölünmediğini anlamanı sağlayan kısayollar var. Bunları ezberlemen işini çok hızlandırır.</p>
+
+<div class="kural">
+<ul>
+<li><strong>2 ile bölünebilme:</strong> son basamak çift (0,2,4,6,8) ise sayı 2'ye tam bölünür.</li>
+<li><strong>3 ile bölünebilme:</strong> basamakların toplamı 3'e bölünüyorsa sayı da 3'e tam bölünür.</li>
+<li><strong>4 ile bölünebilme:</strong> son iki basamağın oluşturduğu sayı 4'e bölünüyorsa sayı da 4'e tam bölünür.</li>
+<li><strong>5 ile bölünebilme:</strong> son basamak 0 ya da 5 ise sayı 5'e tam bölünür.</li>
+<li><strong>9 ile bölünebilme:</strong> basamakların toplamı 9'a bölünüyorsa sayı da 9'a tam bölünür.</li>
+<li><strong>10 ile bölünebilme:</strong> son basamak 0 ise sayı 10'a tam bölünür.</li>
+<li><strong>11 ile bölünebilme:</strong> sağdan sayarak tek sıradaki basamakların (1., 3., 5. ...) toplamı ile çift sıradaki basamakların (2., 4., 6. ...) toplamı arasındaki fark 0 ya da 11'in katı ise sayı 11'e tam bölünür.</li>
+</ul>
+</div>
+
+<p>Birkaç mini örnekle bu kuralları somutlaştıralım:</p>
+<ul>
+<li>4536 → son basamak 6 (çift) ⇒ 2'ye bölünür.</li>
+<li>2547 → basamak toplamı 2+5+4+7=18, 18 3'e bölünüyor ⇒ 2547 de 3'e bölünür.</li>
+<li>3128 → son iki basamak 28, 28÷4=7 tam ⇒ 3128 de 4'e bölünür.</li>
+<li>3168 → basamak toplamı 3+1+6+8=18, 18 9'a bölünüyor ⇒ 3168 de 9'a bölünür.</li>
+<li>9163 → sağdan tek sıradaki basamaklar 3 ve 1, toplamları 4; çift sıradaki basamaklar 6 ve 9, toplamları 15; fark 15−4=11 ⇒ 9163 de 11'e bölünür.</li>
+</ul>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> "6 ile bölünebilme" diye ayrı bir kural ezberlemene gerek yok — 6 = 2×3 olduğundan bir sayı hem 2'ye hem 3'e bölünüyorsa 6'ya da bölünür. Aynı mantık 12 (=4×3), 15 (=3×5), 18 (=2×9) gibi sayılar için de geçerlidir. Kuralları tek tek ezberlemek yerine asal çarpanlarına ayırıp birleştirmeyi öğren.</p>
+</div>
+
+<h3>Asal sayı ve asal çarpanlara ayırma</h3>
+<p><strong>Asal sayı</strong>, sadece 1'e ve kendisine tam bölünen, 1'den büyük doğal sayıdır (2, 3, 5, 7, 11, 13, 17, 19, 23...). Dikkat: 1 asal sayı DEĞİLDİR, 2 ise tek çift asal sayıdır.</p>
+<p>Her doğal sayı (1 hariç), asal sayıların çarpımı şeklinde <strong>tek bir yolla</strong> yazılabilir. Buna "asal çarpanlara ayırma" denir. Yöntem basit: sayıyı en küçük asal bölenden başlayarak sırayla bölmeye devam edersin.</p>
+
+<div class="kural">
+<p>Örnek olarak 360 sayısını asal çarpanlarına ayıralım:</p>
+<p>360 = 2×180 = 2×2×90 = 2×2×2×45 = 2×2×2×3×15 = 2×2×2×3×3×5</p>
+<p>Sonuç: <strong>360 = 2³ × 3² × 5¹</strong></p>
+</div>
+
+<h3>Bir sayının pozitif bölen (çarpan) sayısını bulma</h3>
+<p>Bir sayıyı asal çarpanlarına ayırdıktan sonra, kaç tane pozitif tam böleni olduğunu tek tek saymadan, doğrudan formülle bulabilirsin.</p>
+
+<div class="kural">
+<p>Bir sayı N = a<sup>x</sup> × b<sup>y</sup> × c<sup>z</sup> şeklinde asal çarpanlarına ayrılmışsa (a, b, c birbirinden farklı asal sayılar), N'nin pozitif bölen sayısı:</p>
+<p><strong>(x+1) × (y+1) × (z+1)</strong></p>
+<p>Yani her üssün üzerine 1 ekleyip hepsini çarparsın.</p>
+</div>
+
+<p>360 = 2³×3²×5¹ örneğine dönersek: bölen sayısı = (3+1)×(2+1)×(1+1) = 4×3×2 = <strong>24</strong>. Yani 360'ın 1'den 360'a kadar tam 24 tane pozitif böleni vardır (1 ve 360 dahil).</p>
+
+<h3>EBOB ve EKOK kavramı</h3>
+<p><strong>EBOB</strong> (En Büyük Ortak Bölen), iki ya da daha fazla sayıyı aynı anda tam bölen sayıların en büyüğüdür. <strong>EKOK</strong> (En Küçük Ortak Kat) ise, o sayıların hepsinin aynı anda tam böldüğü (yani hepsinin katı olan) sayıların en küçüğüdür.</p>
+
+<div class="kural">
+<p><strong>Asal çarpanlarla EBOB-EKOK:</strong> Sayıları asal çarpanlarına ayırdıktan sonra:</p>
+<ul>
+<li>EBOB için: ortak olan asal çarpanların en küçük üslüsünü al ve çarp.</li>
+<li>EKOK için: hem ortak hem ortak olmayan tüm asal çarpanların en büyük üslüsünü al ve çarp.</li>
+</ul>
+<p>Önemli ilişki: iki sayı a ve b için her zaman <strong>EBOB(a,b) × EKOK(a,b) = a × b</strong> eşitliği geçerlidir.</p>
+</div>
+
+<div class="ornek">
+<p class="soru">12 = 2²×3 ve 18 = 2×3² sayılarının EBOB ve EKOK'u sırasıyla kaçtır?</p>
+<p>A) 6 ve 36   B) 3 ve 72   C) 6 ve 72   D) 2 ve 36   E) 9 ve 36</p>
+<details>
+<summary>Çözüm</summary>
+<p>Ortak asal çarpanlar 2 ve 3. EBOB için en küçük üsleri al: 2¹×3¹ = 6.</p>
+<p>EKOK için en büyük üsleri al: 2²×3² = 4×9 = 36.</p>
+<p>Kontrol: EBOB×EKOK = 6×36 = 216, a×b = 12×18 = 216 ✓ (eşit çıktı, doğrulandı)</p>
+<p class="sonuc">Cevap: A) 6 ve 36</p>
+</details>
+</div>
+
+<p>Şimdi bu konuyu ALES seviyesinde, 5 şıklı, kolaydan zora doğru örneklerle pekiştirelim.</p>
+
+<div class="ornek">
+<p class="soru">5A38 dört basamaklı sayısında A bir rakamı göstermektedir. Bu sayının 3 ile tam bölünebilmesi için A yerine aşağıdaki rakamlardan hangisi yazılabilir?</p>
+<p>A) 1   B) 2   C) 4   D) 6   E) 7</p>
+<details>
+<summary>Çözüm</summary>
+<p>3 ile bölünebilme kuralı: basamak toplamı 3'e bölünmeli.</p>
+<p>Basamak toplamı: 5 + A + 3 + 8 = 16 + A</p>
+<p>16 + A'nın 3'e bölünmesi gerekiyor. Şıkları tek tek deneyelim:</p>
+<p>A=1 → 17 (3'e bölünmez), A=2 → 18 (3'e bölünür ✓), A=4 → 20 (bölünmez), A=6 → 22 (bölünmez), A=7 → 23 (bölünmez)</p>
+<p>Sadece A=2 için 16+A=18 sayısı 3'e tam bölünüyor.</p>
+<p class="sonuc">Cevap: B) 2</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">360 sayısının pozitif tam bölen (çarpan) sayısı kaçtır?</p>
+<p>A) 16   B) 20   C) 22   D) 24   E) 30</p>
+<details>
+<summary>Çözüm</summary>
+<p>Önce 360'ı asal çarpanlarına ayıralım: 360 = 2³ × 3² × 5¹.</p>
+<p>Bölen sayısı formülü: (üs+1)'lerin çarpımı.</p>
+<p>(3+1) × (2+1) × (1+1) = 4 × 3 × 2 = 24</p>
+<p class="sonuc">Cevap: D) 24</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">İki pozitif tam sayının EBOB'u 8, EKOK'u 96'dır. Bu sayılardan biri 24 olduğuna göre diğeri kaçtır?</p>
+<p>A) 16   B) 24   C) 32   D) 36   E) 48</p>
+<details>
+<summary>Çözüm</summary>
+<p>EBOB × EKOK = iki sayının çarpımı kuralını kullanırız.</p>
+<p>8 × 96 = 24 × diğer sayı</p>
+<p>768 = 24 × diğer sayı ⇒ diğer sayı = 768 ÷ 24 = 32</p>
+<p>Kontrol: EBOB(24,32)=8 ✓, EKOK(24,32)=96 ✓ (gerçekten sağlanıyor)</p>
+<p class="sonuc">Cevap: C) 32</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir alışveriş merkezinde üç farklı zil sırasıyla 12, 18 ve 24 dakikada bir çalmaktadır. Sabah saat 08.00'de üç zil aynı anda çaldığına göre, üçü bir sonraki kez saat kaçta yeniden birlikte çalar?</p>
+<p>A) 09.00   B) 09.06   C) 09.12   D) 09.18   E) 09.30</p>
+<details>
+<summary>Çözüm</summary>
+<p>"Aynı anda tekrar çalma" sorularında aranan şey EKOK'tur, çünkü her üç zilin de aynı anda vurduğu ilk an, sürelerin ortak katıdır.</p>
+<p>12 = 2²×3, 18 = 2×3², 24 = 2³×3</p>
+<p>EKOK için en büyük üsleri al: 2³×3² = 8×9 = 72</p>
+<p>Yani 72 dakika sonra üçü tekrar birlikte çalar. 72 dakika = 1 saat 12 dakika.</p>
+<p>08.00 + 1 saat 12 dakika = 09.12</p>
+<p class="sonuc">Cevap: C) 09.12</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir öğretmen elindeki 60 elmayı ve 84 armudu, her kutuya eşit sayıda elma ve eşit sayıda armut düşecek şekilde, mümkün olan en fazla sayıda özdeş kutuya eksiksiz paylaştırmak istiyor. Buna göre en fazla kaç kutu kullanılabilir?</p>
+<p>A) 6   B) 8   C) 10   D) 12   E) 15</p>
+<details>
+<summary>Çözüm</summary>
+<p>"Eşit paylaştırma, en fazla grup/kutu" ifadesi EBOB sorusudur; çünkü kutu sayısı hem 60'ı hem 84'ü tam bölmeli, ve istenen en büyük değer.</p>
+<p>60 = 2²×3×5, 84 = 2²×3×7</p>
+<p>EBOB için ortak asal çarpanların en küçük üslerini al: 2²×3 = 4×3 = 12</p>
+<p>Kontrol: 60÷12=5 elma, 84÷12=7 armut, her kutuda 5 elma ve 7 armut olur, tam bölünüyor ✓</p>
+<p class="sonuc">Cevap: D) 12</p>
+</details>
+</div>
+
+<h3>Bölme-kalan ilişkisi</h3>
+<p>Bir sayıyı bir başka sayıya böldüğümüzde şu temel eşitlik her zaman geçerlidir:</p>
+
+<div class="kural">
+<p><strong>Bölünen = Bölen × Bölüm + Kalan</strong> (kısaca: m = d×b + k, burada 0 ≤ k &lt; d)</p>
+<p>Yani kalan her zaman bölenden küçüktür ve negatif olamaz. Bu formülü tersine de kullanabilirsin: eğer bir ifadenin bir kısmı zaten bölene tam bölünüyorsa, kalan sadece geri kalan kısımdan gelir.</p>
+</div>
+
+<p>ALES'te bazen bölünen sayı, n gibi bir harfle ifade edilmiş karışık bir toplam/çarpım şeklinde verilir; örneğin m = 20(n+7) + n² − 9. Burada istenen genelde m'nin belirli bir sayıya (mesela 5'e) bölümünden kalanı bulmaktır. Yöntem: ifadeyi sadeleştir, bölene tam bölünen kısımları at, sadece geri kalanın kalanına bak.</p>
+
+<div class="ornek">
+<p class="soru">n bir doğal sayı olmak üzere m = 20(n+7) + n² − 9 olarak tanımlanıyor. n = 42 için m'nin 5'e bölümünden kalan kaçtır?</p>
+<p>A) 0   B) 1   C) 2   D) 3   E) 4</p>
+<details>
+<summary>Çözüm</summary>
+<p>Önce ifadeyi açalım: m = 20(n+7) + n² − 9 = 20n + 140 + n² − 9 = n² + 20n + 131</p>
+<p>20n terimi 5'in katı olduğu için kalana katkısı sıfırdır (5'e bölümünden kalanı etkilemez). 131 sayısının 5'e bölümünden kalanı: 131 = 5×26 + 1, yani kalan 1.</p>
+<p>Öyleyse m'nin 5'e bölümünden kalan, sadece n²'nin 5'e bölümünden kalan ile 1'in toplamının 5'e göre kalanına eşittir.</p>
+<p>n=42 için n'nin 5'e bölümünden kalanı: 42 = 5×8+2, kalan 2. Bu durumda n²'nin kalanı, kalanın karesinin kalanına eşittir: 2²=4, 4'ün 5'e bölümünden kalanı 4.</p>
+<p>Toplam kalan: 4 + 1 = 5, ve 5'in 5'e bölümünden kalanı 0'dır.</p>
+<p>Doğrulama (doğrudan hesapla): n=42 için m = 20×49 + 42² − 9 = 980 + 1764 − 9 = 2735. 2735 ÷ 5 = 547 tam, kalan 0. ✓</p>
+<p class="sonuc">Cevap: A) 0</p>
+</details>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> m = d×b + k eşitliğinde kalanın (k) bölenden (d) küçük olması ZORUNLUDUR. Bir işlem sonunda "kalan 7, bölen 5" gibi bir sonuç bulursan bir yerde hata yapmışsın demektir — bu durumda bölümü bir artırıp kalanı yeniden hesaplaman gerekir (kalan = 7−5 = 2, bölüm = b+1).</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> EBOB ve EKOK'u karıştırmak en sık yapılan hatadır. Kısa hatırlatma: "en büyük ortak <em>bölen</em>" küçük bir sayı çıkar (çünkü ortak sayıları bölen bir sayı aranıyor), "en küçük ortak <em>kat</em>" ise genelde daha büyük bir sayı çıkar (çünkü sayıların katı aranıyor). Sözel sorularda "eşit paylaştırma / en fazla grup" geçiyorsa EBOB, "aynı anda tekrar olma / birlikte gerçekleşme" geçiyorsa EKOK aklına gelmeli.</p>
+</div>
+
+<h3>Kendini dene</h3>
+<div class="ornek">
+<p class="soru">Üç basamaklı 4a5 sayısı 9 ile tam bölünebiliyorsa a'nın alabileceği değerlerin toplamı kaçtır?</p>
+<details><summary>Cevap</summary><p>Rakamlar toplamı 4 + a + 5 = 9 + a, 9'un katı olmalı. a bir rakam olduğundan a = 0 ya da a = 9. Toplam: 9.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">360 sayısının kaç tane pozitif böleni vardır?</p>
+<details><summary>Cevap</summary><p>Asal çarpanlara ayır: 360 = 2³ · 3² · 5¹. Üslerin birer fazlasını çarp: (3 + 1)(2 + 1)(1 + 1) = 4 · 3 · 2 = 24.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">24 ve 36 sayılarının EBOB'u ve EKOK'u kaçtır?</p>
+<details><summary>Cevap</summary><p>24 = 2³ · 3, 36 = 2² · 3². EBOB ortak asalların küçük üsleri: 2² · 3 = 12. EKOK tüm asalların büyük üsleri: 2³ · 3² = 72. Kontrol: 12 · 72 = 864 = 24 · 36.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">Bir sayı 6'ya bölündüğünde kalan 4'tür. Bu sayının 3'e bölümünden kalan kaçtır?</p>
+<details><summary>Cevap</summary><p>Sayı 6k + 4 biçimindedir. 6k zaten 3'ün katı; 4'ü 3'e bölünce kalan 1. O hâlde sayının 3'e bölümünden kalan 1'dir.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">Biri 12 dakikada bir, diğeri 18 dakikada bir kalkan iki otobüs saat 08.00'de birlikte kalkıyor. Bir sonraki birlikte kalkış saat kaçtadır?</p>
+<details><summary>Cevap</summary><p>Birlikte kalkış için geçen süre iki sürenin ortak katı olmalı; en yakını EKOK(12, 18) = 36 dakikadır. Cevap: 08.36.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">84 sayısının farklı asal çarpanlarının toplamı kaçtır?</p>
+<details><summary>Cevap</summary><p>84 = 2² · 3 · 7. Farklı asal çarpanlar 2, 3 ve 7'dir. Toplam: 12. (Üsler sayılmaz, her asal bir kez alınır.)</p></details>
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>2, 3, 4, 5, 9, 10 ile bölünebilme kuralları son basamak(lar)a veya basamak toplamına bakar; 11 kuralı ise sağdan tek ve çift sıradaki basamak toplamlarının farkına bakar.</li>
+<li>6, 12, 15 gibi bileşik sayılara bölünebilmeyi ayrı ayrı ezberlemek yerine, o sayının asal çarpanlarına (ör. 6=2×3) bölünüp bölünmediğine bak.</li>
+<li>Bir sayının pozitif bölen sayısı, asal çarpanlara ayrıldıktan sonra üslerin (1 artırılmış hallerinin) çarpımıyla bulunur.</li>
+<li>EBOB(a,b) × EKOK(a,b) = a × b ilişkisini unutma; bilinmeyen sayıyı bulurken çoğu zaman en kısa yol budur.</li>
+<li>Sözel problemlerde "eşit paylaştırma / en fazla kutu-grup" ifadeleri EBOB'a, "aynı anda tekrar etme / birlikte olma" ifadeleri EKOK'a işaret eder.</li>
+<li>Bölme-kalan sorularında m = bölen×bölüm + kalan eşitliğini kur; kalan her zaman bölenden küçük ve negatif olmayan bir sayıdır.</li>
+<li>Karışık ifadelerde (m = 20(n+7)+n²−9 gibi) önce ifadeyi sadeleştir, bölene tam bölünen terimleri kalan hesabından çıkar, sadece geri kalan kısmın kalanına odaklan.</li>
+</ul>

@@ -1,0 +1,272 @@
+<div class="alesde">
+<p><strong>ALES'te bu konu nasıl çıkar?</strong> Hareket problemleri sınav başına ortalama <strong>1 soru</strong> ile, genellikle testin <strong>17-19. soruları</strong> civarında; işçi-havuz, permütasyon-kombinasyon ve olasılık ise birlikte ortalama <strong>1,5 soru</strong> ile <strong>22-24. sorular</strong> civarında karşına çıkar. Bu bölümde derinlemesine olasılık teorisi gerekmez — ALES sadece saymanın temel ilkesi, basit permütasyon/kombinasyon ve klasik olasılık tanımını sorar. Amacımız, karmaşık formüllere boğulmadan bu sorulara hızlı ve güvenilir çözüm üretmek.</p>
+</div>
+
+<h3>1. Hareket problemleri: yol = hız × zaman</h3>
+<div class="kural">
+<p><strong>Temel bağıntı:</strong> Yol = Hız · Zaman, kısaca y = h · t.</p>
+<p>Buradan zaman = yol / hız, hız = yol / zaman şeklinde de yazılabilir.</p>
+</div>
+
+<p>Bu tek formülden, iki cismin farklı yönlerde ya da aynı yönde hareket ettiği durumlar için iki önemli sonuç çıkar:</p>
+
+<div class="kural">
+<p><strong>Karşılıklı hareket (birbirine doğru):</strong> İki cisim birbirine doğru hareket ederse, aralarındaki mesafe, iki hızın <em>toplamı</em> kadar hızla kapanır. Buluşma süresi = Başlangıç mesafesi / (h₁ + h₂).</p>
+<p><strong>Aynı yönde hareket (kovalama/uzaklaşma):</strong> İki cisim aynı yönde hareket ederse, aralarındaki mesafe, iki hızın <em>farkı</em> kadar hızla değişir. Süre = İstenen mesafe farkı / (h₁ − h₂).</p>
+</div>
+
+<p>Mini örnek: 240 km arayla duran iki araç birbirine doğru 50 km/s ve 30 km/s hızla hareket ederse, aralarındaki mesafe saatte 80 km azalır; 240/80 = 3 saatte buluşurlar.</p>
+
+<h3>2. Dairesel pist hareketleri</h3>
+<p>Dairesel pistte iki koşucu/araç aynı noktadan aynı anda, aynı yönde hareket ederse, hızlı olan yavaş olanı "bir tur farkı" attığında yakalar; yani aralarındaki fark, pistin tüm çevre uzunluğuna ulaşmalıdır.</p>
+
+<div class="kural">
+<p><strong>Aynı yönde dairesel harekette yakalama süresi</strong> = Pist çevresi / (h₁ − h₂) (h₁ > h₂ varsayılır).</p>
+<p>Zıt yönde hareket edip ilk karşılaşma isteniyorsa: Süre = Pist çevresi / (h₁ + h₂).</p>
+</div>
+
+<h3>3. Ortalama hız</h3>
+<p>Ortalama hızla ilgili en sık yapılan hata, iki farklı hızın aritmetik ortalamasını almaktır. Ancak <strong>aynı yol iki farklı hızla</strong> gidilip geliniyorsa (gidiş-dönüş gibi), doğru yöntem harmonik ortalamadır.</p>
+
+<div class="kural">
+<p>Aynı uzunluktaki bir yol, gidişte h₁ hızıyla, dönüşte h₂ hızıyla alınıyorsa, tüm yolculuğun ortalama hızı:</p>
+<p>Ortalama hız = <span class="frac"><span>2 · h₁ · h₂</span><span>h₁ + h₂</span></span></p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak 1 — Ortalama hızı aritmetik ortalama sanmak:</strong> Gidişte 60 km/s, dönüşte 40 km/s hızla gidilen bir yolun ortalama hızı (60+40)/2 = 50 değildir! Aynı yolda dönüşte daha uzun süre harcandığı için düşük hız ortalamayı daha çok etkiler; doğru sonuç 48'dir (aşağıdaki örnekte gösteriliyor). Bu formül sadece "aynı mesafe, iki farklı hız" durumunda geçerlidir; "aynı süre, iki farklı hız" durumunda gerçekten aritmetik ortalama kullanılır — bu ayrımı sorudan çıkarmak gerekir.</p>
+</div>
+
+<h3>4. İşçi-havuz problemleri</h3>
+<p>Bu problemlerin sırrı, "kim, birim zamanda işin ne kadarını yapıyor" sorusuna cevap vermektir.</p>
+
+<div class="kural">
+<p>Bir iş X saatte bitiyorsa, birim zamanda (1 saatte) yapılan iş <span class="frac"><span>1</span><span>X</span></span> kadardır.</p>
+<p>Birlikte çalışan iki işçi/musluk için: birim zamanda yapılan iş oranları toplanır. Toplam süre bulmak için bu toplamın tersi alınır.</p>
+</div>
+
+<p>Mini örnek: Bir işi tek başına 4 saatte bitiren biri, saatte işin 1/4'ünü yapar. Bir başkası aynı işi 4 saatte değil 12 saatte bitiriyorsa saatte 1/12'sini yapar. Birlikte saatte 1/4 + 1/12 = 3/12 + 1/12 = 4/12 = 1/3'ünü yaparlar; demek ki işi birlikte 3 saatte bitirirler.</p>
+
+<h3>5. Saymanın temel ilkesi, permütasyon, kombinasyon</h3>
+<div class="kural">
+<p><strong>Saymanın temel ilkesi:</strong> Birbirini takip eden bağımsız seçimlerde, toplam seçenek sayısı, her adımdaki seçenek sayılarının çarpımıdır.</p>
+<p><strong>Permütasyon (sıra önemli):</strong> n farklı elemandan r tanesini sıralı şekilde seçmenin yol sayısı.</p>
+<p><strong>Kombinasyon (sıra önemsiz):</strong> n farklı elemandan r tanesini, sırasız bir grup olarak seçmenin yol sayısı. Örneğin bir komisyon, kurul ya da takım seçimi kombinasyondur; kimin "birinci" kimin "ikinci" seçildiği önemli değilse kombinasyon kullanılır.</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak 2 — Permütasyon mu kombinasyon mu?</strong> "3 kişilik bir yönetim kurulu (başkan, sekreter, sayman gibi görevlerle) seçilecek" dendiğinde sıra/görev önemlidir → permütasyon. "3 kişilik bir komisyon (herkes eşit) seçilecek" dendiğinde sıra önemsizdir → kombinasyon. Soru cümlesinde bir görev/sıra ayrımı var mı yok mu, mutlaka kontrol et.</p>
+</div>
+
+<h3>6. Basit olasılık</h3>
+<div class="kural">
+<p><strong>Klasik olasılık tanımı:</strong> Olasılık = <span class="frac"><span>İstenen durum sayısı</span><span>Tüm olası durum sayısı</span></span></p>
+<p>Bir olayın gerçekleşmeme olasılığı = 1 − (gerçekleşme olasılığı).</p>
+</div>
+
+<h3>Çözümlü Örnekler</h3>
+
+<div class="ornek">
+<p class="soru">A ve B araçları aynı noktadan aynı anda, aynı yönde hareket etmeye başlıyor. A aracının hızı 80 km/s, B aracının hızı 60 km/s'dir. Kaç saat sonra aralarındaki mesafe 100 km olur?<br>A) 3  B) 4  C) 5  D) 6  E) 8</p>
+<details>
+<summary>Çözüm</summary>
+<p>Aynı yönde hareket ettikleri için aradaki mesafe, hız farkı kadar hızla açılır: 80 − 60 = 20 km/s.</p>
+<p>100 km farkın oluşması için gereken süre: 100 / 20 = 5 saat.</p>
+<p class="sonuc">Cevap: C) 5</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">İki şehir arası uzaklık 300 km'dir. Bu şehirlerden aynı anda birbirine doğru hareket eden iki araçtan biri 60 km/s, diğeri 40 km/s hızla gitmektedir. Kaç saat sonra karşılaşırlar?<br>A) 2  B) 2,5  C) 3  D) 3,5  E) 4</p>
+<details>
+<summary>Çözüm</summary>
+<p>Birbirine doğru hareket ettikleri için aradaki mesafe, hızların toplamı kadar hızla kapanır: 60 + 40 = 100 km/s.</p>
+<p>Buluşma süresi: 300 / 100 = 3 saat.</p>
+<p class="sonuc">Cevap: C) 3</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Çevresi 800 m olan dairesel bir pistte A ve B aynı noktadan aynı anda, aynı yönde koşmaya başlıyor. A'nın hızı 20 m/s, B'nin hızı 12 m/s'dir. A, B'yi kaç saniye sonra ilk kez tur farkıyla geçer (yani ilk kez tekrar yan yana gelirler)?<br>A) 80  B) 90  C) 100  D) 110  E) 120</p>
+<details>
+<summary>Çözüm</summary>
+<p>Aynı yönde koştukları için aradaki mesafe farkı, hız farkı kadar hızla açılır: 20 − 12 = 8 m/s.</p>
+<p>A'nın B'yi "bir tur farkıyla" geçmesi için aradaki farkın tam pist çevresi kadar (800 m) olması gerekir.</p>
+<p>Gereken süre: 800 / 8 = 100 saniye.</p>
+<p class="sonuc">Cevap: C) 100</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir araç, aynı yolu gidişte 60 km/s, dönüşte 40 km/s ortalama hızla almaktadır. Aracın tüm yolculuk boyunca (gidiş-dönüş) ortalama hızı kaç km/s'dir?<br>A) 45  B) 48  C) 50  D) 52  E) 55</p>
+<details>
+<summary>Çözüm</summary>
+<p>Aynı yol iki farklı hızla alındığı için harmonik ortalama formülü kullanılır:</p>
+<p>Ortalama hız = (2 · 60 · 40) / (60 + 40) = 4800 / 100 = 48 km/s.</p>
+<p>Not: Bu değer 60 ile 40'ın aritmetik ortalaması olan 50'den küçüktür; çünkü dönüşte (düşük hızda) daha uzun zaman geçirilmiştir.</p>
+<p class="sonuc">Cevap: B) 48</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir havuzu A musluğu tek başına açıldığında 6 saatte, B musluğu tek başına açıldığında 3 saatte doldurabiliyor. İki musluk birlikte açılırsa havuz kaç saatte dolar?<br>A) 1  B) 1,5  C) 2  D) 2,5  E) 3</p>
+<details>
+<summary>Çözüm</summary>
+<p>A musluğu saatte havuzun 1/6'sını, B musluğu saatte 1/3'ünü doldurur.</p>
+<p>Birlikte saatte doldurdukları kısım: 1/6 + 1/3 = 1/6 + 2/6 = 3/6 = 1/2.</p>
+<p>Saatte havuzun yarısı doluyorsa, tamamı 2 saatte dolar.</p>
+<p class="sonuc">Cevap: C) 2</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir torbada 4 kırmızı, 5 mavi ve 3 yeşil top vardır. Torbadan rastgele çekilen bir topun mavi olmama olasılığı kaçtır?<br>A) 5/12  B) 7/12  C) 1/3  D) 1/4  E) 2/3</p>
+<details>
+<summary>Çözüm</summary>
+<p>Toplam top sayısı: 4 + 5 + 3 = 12. Mavi top sayısı 5 olduğundan P(mavi) = 5/12.</p>
+<p>Mavi olmama olasılığı = 1 − P(mavi) = 1 − 5/12 = 7/12.</p>
+<p>Kontrol: mavi olmayan toplar 4 kırmızı + 3 yeşil = 7 tanedir; 7/12 doğrudan da bulunabilir.</p>
+<p class="sonuc">Cevap: B) 7/12</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">5 kişilik bir öğretmen grubundan, görev ayrımı olmayan 2 kişilik bir komisyon kaç farklı şekilde seçilebilir?<br>A) 8  B) 10  C) 15  D) 20  E) 25</p>
+<details>
+<summary>Çözüm</summary>
+<p>Komisyonda görev ayrımı (başkan-üye gibi) olmadığından bu bir kombinasyon sorusudur: sıra önemsizdir.</p>
+<p>C(5,2) = (5 · 4) / (2 · 1) = 20 / 2 = 10.</p>
+<p class="sonuc">Cevap: B) 10</p>
+</details>
+</div>
+
+<h3>7. Hız birimlerini dönüştürme</h3>
+<p>Sıfırdan başlıyorsan önce hız birimlerini netleştirelim: ALES sorularında hız çoğu zaman km/s (kilometre/saat) verilir, ama bazen m/s (metre/saniye) cinsinden ifade edilir ya da sorulur. Birimler karışırsa işlem tamamen yanlış çıkar.</p>
+<div class="kural">
+<p><strong>Birim dönüşümü:</strong> 1 km = 1000 m, 1 saat = 3600 saniye olduğundan:</p>
+<p>km/s → m/s: hızı <strong>3,6'ya böl</strong>. m/s → km/s: hızı <strong>3,6 ile çarp</strong>.</p>
+</div>
+<p>Mini örnek: 36 km/s hız, m/s cinsinden 36/3,6 = 10 m/s'dir. Tersine, 15 m/s hız, km/s cinsinden 15×3,6 = 54 km/s'dir.</p>
+
+<h3>8. Hareket problemleri — adım adım çözüm şablonu</h3>
+<div class="kural">
+<p><strong>Adım adım çözüm şablonu:</strong></p>
+<ol>
+<li>Sorudaki verileri bir tabloya (her cisim için hız, zaman, yol) yaz; hangi büyüklüğün bilinmediğini belirle.</li>
+<li>Gerekiyorsa tüm hızları/uzunlukları aynı birime çevir.</li>
+<li>Cisimlerin birbirine göre yönünü belirle: karşılıklı mı (hızlar toplanır), aynı yönde mi (hızlar çıkarılır)?</li>
+<li>y = h·t bağıntısını (ya da toplam/fark hâlini) kurup denklemi çöz.</li>
+<li>Bulduğun sonucu, sorunun verdiği mesafe/süre bilgisiyle geriye doğru kontrol et.</li>
+</ol>
+</div>
+
+<h3>9. Musluk boşaltma problemleri (dolum eksi boşaltım)</h3>
+<p>İşçi-havuz problemlerinin bir çeşidinde, bir musluk havuzu doldururken başka bir musluk (ya da delik) aynı anda havuzu boşaltır. Bu durumda iki oran toplanmaz, <strong>birbirinden çıkarılır.</strong></p>
+<div class="kural">
+<p>Dolduran musluğun birim zamandaki iş oranından, boşaltan musluğun birim zamandaki iş oranı çıkarılarak <strong>net doluş oranı</strong> bulunur:</p>
+<p>Net oran = <span class="frac"><span>1</span><span>dolum süresi</span></span> − <span class="frac"><span>1</span><span>boşaltım süresi</span></span></p>
+<p>Toplam süre, bu net oranın tersidir. Net oran negatif ya da sıfır çıkarsa havuz hiç dolmaz.</p>
+</div>
+<p>Mini örnek: Dolduran musluk havuzu 6 saatte dolduruyor, boşaltan musluk 12 saatte boşaltıyorsa net oran 1/6 − 1/12 = 2/12 − 1/12 = 1/12'dir; havuz 12 saatte dolar.</p>
+
+<h3>10. Faktöriyel ve permütasyon-kombinasyon formülleri</h3>
+<p>Saymanın temel ilkesini gördün; şimdi bunun kısayolu olan formülleri tanıyalım.</p>
+<div class="kural">
+<p><strong>Faktöriyel:</strong> n! = n×(n−1)×(n−2)×…×2×1 (n pozitif tam sayı). Örneğin 4! = 4×3×2×1 = 24.</p>
+<p><strong>Permütasyon:</strong> n farklı elemandan r tanesini sıralı seçmenin yolu: P(n,r) = <span class="frac"><span>n!</span><span>(n−r)!</span></span></p>
+<p><strong>Kombinasyon:</strong> n farklı elemandan r tanesini sırasız seçmenin yolu: C(n,r) = <span class="frac"><span>n!</span><span>r!(n−r)!</span></span></p>
+</div>
+<p>Mini örnek: P(5,2) = 5!/(5−2)! = 5!/3! = (5×4×3×2×1)/(3×2×1) = 5×4 = 20. C(5,2) = 5!/(2!×3!) = 20/2 = 10.</p>
+
+<div class="tuzak">
+<p><strong>Tuzak 3 — Dolum ve boşaltım oranını toplamak:</strong> Bir musluk doldururken diğeri boşaltıyorsa oranları toplamak büyük bir hatadır; bu, havuzun olduğundan çok daha hızlı dolduğu izlenimi verir. Doğrusu her zaman dolum oranından boşaltım oranını çıkarmaktır. Ayrıca sonuç negatifse ("boşaltım, dolumdan hızlıysa") havuzun asla dolmayacağını unutma.</p>
+</div>
+
+<h3>Yeni çözümlü örnekler</h3>
+<div class="ornek">
+<p class="soru">Bir tren 108 km/s hızla gitmektedir. Bu hız m/s cinsinden kaçtır?</p>
+<p>A) 20   B) 25   C) 30   D) 35   E) 40</p>
+<details>
+<summary>Çözüm</summary>
+<p>km/s'yi m/s'ye çevirmek için 3,6'ya böleriz: 108 / 3,6 = 30 m/s.</p>
+<p class="sonuc">Cevap: C) 30</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir havuzu dolduran musluk 4 saatte, boşaltan musluk ise 6 saatte havuzu tek başına boşaltabilmektedir. Havuz boşken iki musluk birlikte açılırsa havuz kaç saatte dolar?</p>
+<p>A) 8   B) 10   C) 12   D) 14   E) 16</p>
+<details>
+<summary>Çözüm</summary>
+<p>Dolum oranı 1/4, boşaltım oranı 1/6'dır. Net oran = 1/4 − 1/6 = 3/12 − 2/12 = 1/12.</p>
+<p>Saatte havuzun 1/12'si dolduğuna göre tamamı 12 saatte dolar.</p>
+<p class="sonuc">Cevap: C) 12</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">6 kişilik bir gruptan başkan ve yardımcısı (iki farklı görev) kaç farklı şekilde seçilebilir?</p>
+<p>A) 15   B) 20   C) 25   D) 30   E) 36</p>
+<details>
+<summary>Çözüm</summary>
+<p>Görevler farklı olduğundan (başkan ≠ yardımcı) sıra önemlidir; bu bir permütasyon sorusudur.</p>
+<p>P(6,2) = 6!/(6−2)! = 6×5 = 30.</p>
+<p class="sonuc">Cevap: D) 30</p>
+</details>
+</div>
+
+<h3>Kendini dene</h3>
+<div class="ornek">
+<p class="soru">72 km/s hız, m/s cinsinden kaçtır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>72 / 3,6 = 20 m/s.</p>
+<p class="sonuc">Cevap: 20 m/s</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">Bir havuzu dolduran musluk 5 saatte dolduruyor, boşaltan musluk 10 saatte boşaltıyor. Birlikte açılırsa havuz kaç saatte dolar?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Net oran = 1/5 − 1/10 = 2/10 − 1/10 = 1/10. Havuz 10 saatte dolar.</p>
+<p class="sonuc">Cevap: 10 saat</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">4 kişilik bir gruptan sıralı olarak ilk iki kişi (1.'lik ve 2.'lik) kaç farklı şekilde seçilir?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Sıra önemli olduğundan permütasyon: P(4,2) = 4×3 = 12.</p>
+<p class="sonuc">Cevap: 12</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">Bir torbada 3 kırmızı, 2 mavi top vardır. Torbadan rastgele çekilen bir topun kırmızı olma olasılığı kaçtır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Toplam top 3+2=5. P(kırmızı) = 3/5.</p>
+<p class="sonuc">Cevap: 3/5</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">Bir araç 150 km'lik yolu 3 saatte almaktadır. Aracın ortalama hızı kaç km/s'dir?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Hız = yol/zaman = 150/3 = 50 km/s.</p>
+<p class="sonuc">Cevap: 50 km/s</p>
+</details>
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Temel bağıntı: yol = hız × zaman. Karşılıklı harekette hızlar toplanır, aynı yönde harekette hızlar çıkarılır.</li>
+<li>Hız birimlerini dönüştürürken km/s'yi 3,6'ya böl (m/s'ye geç), m/s'yi 3,6 ile çarp (km/s'ye geç).</li>
+<li>Dairesel pistte aynı yönde "yakalama", aradaki farkın tam bir tur (çevre uzunluğu) olmasıyla gerçekleşir.</li>
+<li>Aynı yolun iki farklı hızla gidilip gelinmesinde ortalama hız, aritmetik değil harmonik ortalamadır: 2h₁h₂/(h₁+h₂).</li>
+<li>İşçi-havuz sorularında herkesin "birim zamanda yaptığı iş oranı"nı bulup toplamak, sonra tersini almak yeterlidir.</li>
+<li>Dolum ve boşaltım birlikte olduğunda oranlar toplanmaz, boşaltım oranı dolum oranından çıkarılır.</li>
+<li>Permütasyon P(n,r)=n!/(n−r)! sıralı seçimlerde, kombinasyon C(n,r)=n!/(r!(n−r)!) sırasız seçimlerde kullanılır.</li>
+<li>Görev/sıra varsa permütasyon, yoksa (eşit bir grup/komisyon seçimiyse) kombinasyon kullanılır.</li>
+<li>Klasik olasılık = istenen durum / tüm durumlar; "olmama" olasılığı 1'den çıkarılarak bulunur.</li>
+<li>Her sonucu, sorunun verdiği sayılarla mutlaka geriye doğru kontrol et.</li>
+</ul>

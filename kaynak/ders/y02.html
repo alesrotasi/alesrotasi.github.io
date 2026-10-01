@@ -1,0 +1,281 @@
+<div class="alesde">
+<p>"Temel İşlemler" konusu ALES sayısalında sınav başına ortalama <strong>4 soru</strong> getirir ve genelde ilk sorularda karşına çıkar. Hatta <strong>1. soru neredeyse her zaman</strong> içinde birkaç kesir işlemi barındıran, işlem önceliğine dikkat etmen gereken bir sorudur (sınavın en kolay sorusu kabul edilir). Yani bu dersi iyi öğrenmek sana garanti bir soru kazandırır.</p>
+</div>
+
+<h3>Kesirlerde dört işlem</h3>
+<div class="kural">
+<p><strong>Toplama/çıkarma:</strong> paydalar eşit değilse önce paydaları eşitle (OKEK bul), sonra paylarını topla/çıkar.</p>
+<p><span class="frac"><span>a</span><span>b</span></span> + <span class="frac"><span>c</span><span>b</span></span> = <span class="frac"><span>a+c</span><span>b</span></span></p>
+<p><strong>Çarpma:</strong> pay payla, payda paydayla çarpılır: <span class="frac"><span>a</span><span>b</span></span> × <span class="frac"><span>c</span><span>d</span></span> = <span class="frac"><span>a·c</span><span>b·d</span></span></p>
+<p><strong>Bölme:</strong> ikinci kesirin ters çevrilmiş hali ile çarpılır: <span class="frac"><span>a</span><span>b</span></span> ÷ <span class="frac"><span>c</span><span>d</span></span> = <span class="frac"><span>a</span><span>b</span></span> × <span class="frac"><span>d</span><span>c</span></span></p>
+</div>
+
+<div class="ornek">
+<p class="soru"><span class="frac"><span>1</span><span>2</span></span> + <span class="frac"><span>1</span><span>3</span></span> işleminin sonucu kaçtır?</p>
+<p>A) 1/6   B) 1/2   C) 5/6   D) 4/3   E) 3/2</p>
+<details>
+<summary>Çözüm</summary>
+<p>Paydaları eşitlemek için OKEK(2,3) = 6 kullanırız.</p>
+<p>1/2 = 3/6, 1/3 = 2/6</p>
+<p>3/6 + 2/6 = 5/6</p>
+<p class="sonuc">Cevap: C) 5/6</p>
+</details>
+</div>
+
+<h3>Payda eşitleme mantığı</h3>
+<p>İki kesiri toplarken paydaları farklıysa, her iki paydanın da OKEK'ini (en küçük ortak katını) bulman gerekir. Örneğin paydalar 4 ve 6 ise OKEK(4,6)=12'dir; her kesri payda 12 olacak şekilde genişletirsin.</p>
+<p>OKEK bulmanın en pratik yolu, paydaları asal çarpanlarına ayırıp her asal çarpanın en yüksek kuvvetini almaktır. Örneğin 4=2², 6=2×3 ise OKEK=2²×3=12'dir. Sayılar küçükse deneme yanılma ile de (4'ün katlarını yazıp 6'ya bölünen ilkini bulmak gibi) kolayca bulabilirsin: 4, 8, 12 → 12, 6'ya tam bölünüyor.</p>
+<p>Kesri genişletirken hem payı hem paydayı aynı sayıyla çarpman gerektiğini unutma; sadece paydayı değiştirip payı olduğu gibi bırakmak kesrin değerini bozar.</p>
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Kesir toplarken "pay payla, payda paydayla toplanır" diye düşünmek büyük bir hatadır. 1/2 + 1/3 asla 2/5 DEĞİLDİR. Bu kural sadece çarpmada geçerlidir (ve orada da payda değil, çarpımdır).</p>
+</div>
+
+<h3>Karışık sayılar</h3>
+<div class="kural">
+<p>Bir tam sayı ile bir kesrin yan yana yazılmış hâline "karışık sayı" denir (ör. 3 tam 2/5). Bunu bildik kesre çevirmek için: tam kısmı payda ile çarpıp paya eklersin, payda aynı kalır.</p>
+<p>3 tam 2/5 = (3×5 + 2)/5 = 17/5</p>
+</div>
+<div class="ornek">
+<p class="soru">3 tam 2/5 karışık sayısının bildik kesir (bileşik kesir) hâli aşağıdakilerden hangisidir?</p>
+<p>A) 11/5   B) 13/5   C) 15/5   D) 17/5   E) 19/5</p>
+<details>
+<summary>Çözüm</summary>
+<p>Tam kısmı payda ile çarpıp paya ekleriz: 3×5+2 = 17</p>
+<p>Payda aynı kalır: 5</p>
+<p>Sonuç: 17/5</p>
+<p class="sonuc">Cevap: D) 17/5</p>
+</details>
+</div>
+
+<h3>İç içe (bileşik) kesirler</h3>
+<div class="kural">
+<p>İç içe kesirlerde en alttan (en içteki kesirden) başlayarak dışarı doğru sadeleştirirsin. Her aşamada "bölme = ters çevirip çarpma" kuralını kullanırsın.</p>
+</div>
+<div class="ornek">
+<p class="soru"><span class="frac"><span>1</span><span>1 + <span class="frac"><span>1</span><span>1 + <span class="frac"><span>1</span><span>2</span></span></span></span></span></span> işleminin sonucu kaçtır?</p>
+<p>A) 2/5   B) 3/5   C) 1/2   D) 2/3   E) 3/4</p>
+<details>
+<summary>Çözüm</summary>
+<p>En içten başlarız: 1 + 1/2 = 3/2</p>
+<p>Bir üst kata çıkarız: 1/(3/2) = 2/3</p>
+<p>Sonra: 1 + 2/3 = 5/3</p>
+<p>En dıştaki: 1/(5/3) = 3/5</p>
+<p class="sonuc">Cevap: B) 3/5</p>
+</details>
+</div>
+
+<h3>Ondalık sayı - kesir dönüşümü</h3>
+<div class="kural">
+<p>Ondalık sayıyı kesre çevirirken virgülden sonraki basamak sayısı kadar sıfır içeren bir paydaya (10, 100, 1000...) yazıp sadeleştirirsin.</p>
+<p>0.375 = 375/1000 = 3/8 (sadeleştirilmiş hâli)</p>
+</div>
+<div class="ornek">
+<p class="soru">0.375 ondalık sayısının sadeleştirilmiş kesir hâli aşağıdakilerden hangisidir?</p>
+<p>A) 1/4   B) 3/8   C) 3/4   D) 5/8   E) 7/8</p>
+<details>
+<summary>Çözüm</summary>
+<p>0.375 = 375/1000</p>
+<p>375 ve 1000'in ortak böleni 125'tir: 375/125=3, 1000/125=8</p>
+<p>Sonuç: 3/8</p>
+<p class="sonuc">Cevap: B) 3/8</p>
+</details>
+</div>
+
+<p>Tersi yönde, yani kesri ondalık sayıya çevirmek istediğinde payı paydaya bölersin (pay ÷ payda). Örneğin 3/8 = 3÷8 = 0.375. Sınavda hangi yönde dönüşüm istendiğine dikkat et; çoğu zaman soru köküne "ondalık sayı" ya da "kesir" kelimesi geçtiğinde hangi forma çevireceğin bellidir.</p>
+<div class="ornek">
+<p class="soru">0.125 ondalık sayısının sadeleştirilmiş kesir hâli aşağıdakilerden hangisidir?</p>
+<p>A) 1/4   B) 1/6   C) 1/8   D) 1/10   E) 1/12</p>
+<details>
+<summary>Çözüm</summary>
+<p>0.125 = 125/1000</p>
+<p>125 ve 1000'in ortak böleni 125'tir: 125/125=1, 1000/125=8</p>
+<p>Sonuç: 1/8</p>
+<p class="sonuc">Cevap: C) 1/8</p>
+</details>
+</div>
+
+<h3>İşlem önceliği</h3>
+<div class="kural">
+<p>İşlem sırası (ALES'te de geçerli standart matematik kuralı):</p>
+<ol>
+<li>Parantez içi</li>
+<li>Üs ve kök</li>
+<li>Çarpma ve bölme (soldan sağa)</li>
+<li>Toplama ve çıkarma (soldan sağa)</li>
+</ol>
+</div>
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Çarpma her zaman toplamadan "önce" yazılmasa da önceliklidir. Örneğin 2 + 3×4 işleminde önce 3×4=12 yapılır, sonra 2+12=14 bulunur. Soldan sağa "2+3=5, 5×4=20" yapmak klasik bir hatadır.</p>
+</div>
+
+<div class="ornek">
+<p class="soru">4 + 2×(3+1) − 5 işleminin sonucu kaçtır?</p>
+<p>A) 5   B) 6   C) 7   D) 8   E) 9</p>
+<details>
+<summary>Çözüm</summary>
+<p>Önce parantez içi: 3+1 = 4</p>
+<p>Sonra çarpma: 2×4 = 8</p>
+<p>Son olarak soldan sağa toplama-çıkarma: 4 + 8 − 5 = 7</p>
+<p class="sonuc">Cevap: C) 7</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">3/4 − 1/6 + 1/3 işleminin sonucu kaçtır?</p>
+<p>A) 7/12   B) 3/4   C) 5/6   D) 11/12   E) 13/12</p>
+<details>
+<summary>Çözüm</summary>
+<p>OKEK(4,6,3) = 12 kullanarak paydaları eşitleyelim.</p>
+<p>3/4 = 9/12, 1/6 = 2/12, 1/3 = 4/12</p>
+<p>9/12 − 2/12 + 4/12 = (9−2+4)/12 = 11/12</p>
+<p class="sonuc">Cevap: D) 11/12</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><span class="frac"><span>2 + 3/4</span><span>1/2</span></span> − 1 işleminin sonucu kaçtır?</p>
+<p>A) 7/2   B) 4   C) 9/2   D) 5   E) 11/2</p>
+<details>
+<summary>Çözüm</summary>
+<p>Önce payı hesaplarız: 2 + 3/4 = 11/4</p>
+<p>Bölme işlemi: (11/4) ÷ (1/2) = (11/4) × (2/1) = 22/4 = 11/2</p>
+<p>Sonra çıkarma: 11/2 − 1 = 11/2 − 2/2 = 9/2</p>
+<p class="sonuc">Cevap: C) 9/2</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">3/5, 5/8 ve 7/10 kesirleri küçükten büyüğe sıralandığında hangisi ortada yer alır?</p>
+<p>A) 3/5   B) 5/8   C) 7/10   D) Hepsi eşit   E) Sıralanamaz</p>
+<details>
+<summary>Çözüm</summary>
+<p>Kesirleri ondalık sayıya çevirerek karşılaştıralım: 3/5=0.6, 5/8=0.625, 7/10=0.7</p>
+<p>Küçükten büyüğe: 0.6 < 0.625 < 0.7, yani 3/5 < 5/8 < 7/10</p>
+<p>Ortada yer alan: 5/8</p>
+<p class="sonuc">Cevap: B) 5/8</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru"><span class="frac"><span>1/2 + 1/3</span><span>1/2 − 1/3</span></span> + 1/5 işleminin sonucu kaçtır?</p>
+<p>A) 21/5   B) 23/5   C) 24/5   D) 26/5   E) 27/5</p>
+<details>
+<summary>Çözüm</summary>
+<p>Pay: 1/2 + 1/3 = 3/6+2/6 = 5/6</p>
+<p>Payda: 1/2 − 1/3 = 3/6−2/6 = 1/6</p>
+<p>Bölme: (5/6) ÷ (1/6) = 5/6 × 6/1 = 5</p>
+<p>Son toplama: 5 + 1/5 = 25/5 + 1/5 = 26/5</p>
+<p class="sonuc">Cevap: D) 26/5</p>
+</details>
+</div>
+
+<h3>Kesirlerde sadeleştirme ve genişletme</h3>
+<div class="kural">
+<p>Bir kesrin payını ve paydasını AYNI sayıyla çarparsan kesri <strong>genişletmiş</strong>, aynı sayıya bölersen <strong>sadeleştirmiş</strong> olursun. Her iki işlemde de kesrin değeri değişmez, sadece görünüşü değişir.</p>
+<p>Sadeleştirmede pay ve paydanın ortak bölenini bulup ikisini de o sayıya bölersin; en sona kadar (artık ortak bölen kalmayana dek) devam edersin.</p>
+</div>
+<p>Mini örnek: 24/36 kesrini sadeleştirelim. 24 ve 36'nın ortak böleni 12'dir: 24÷12=2, 36÷12=3. Sonuç 2/3'tür ve artık 2 ile 3'ün 1'den başka ortak böleni olmadığı için bu, kesrin en sade hâlidir. Büyük sayılarla uğraşırken ortak böleni bir kerede bulamıyorsan, önce 2'ye, sonra 3'e bölmeyi dene; adım adım küçültmek de aynı sonuca ulaştırır.</p>
+<p>Genişletme ise sadeleştirmenin tam tersidir ve genelde paydaları eşitlemek için kullanılır: iki kesri toplarken paydaları farklıysa, her birini uygun bir sayıyla genişleterek ortak bir paydaya getirirsin. Örneğin 1/4'ü payda 12 olacak şekilde genişletmek istersen, hem payı hem paydayı 3 ile çarparsın: 1/4 = 3/12. Bu işlemi yaparken sadece paydayı değiştirip payı unutmak, kesrin değerini tamamen bozar; bu yüzden pay ve payda hep birlikte, aynı sayıyla çarpılır ya da bölünür.</p>
+
+<h3>Kesirleri çapraz çarpma ile karşılaştırma</h3>
+<p>İki kesri hangisinin büyük olduğuna karar vermek için ondalığa çevirmek her zaman pratik olmayabilir (bölme küsüratlı çıkabilir). Bu durumda "çapraz çarpma" yöntemi daha hızlıdır.</p>
+<div class="kural">
+<p><span class="frac"><span>a</span><span>b</span></span> ile <span class="frac"><span>c</span><span>d</span></span> kesirlerini karşılaştırmak için a·d ile b·c çarpımlarını karşılaştır (b, d pozitif kabul edilir):</p>
+<p>a·d &gt; b·c ise a/b &gt; c/d'dir.</p>
+</div>
+<p>Mini örnek: 5/7 ile 4/5'i karşılaştıralım. Çapraz çarpım: 5×5=25, 4×7=28. 28 &gt; 25 olduğu için 4/5 &gt; 5/7'dir. (Kontrol: 5/7≈0.714, 4/5=0.8, gerçekten 4/5 daha büyük.)</p>
+
+<h3>Ondalık sayılarda toplama, çıkarma ve çarpma</h3>
+<div class="kural">
+<p><strong>Toplama/çıkarma:</strong> virgülleri alt alta getirip normal toplama-çıkarma gibi işlem yapılır.</p>
+<p><strong>Çarpma:</strong> virgülleri yok sayıp sayıları tam sayı gibi çarparsın; sonunda, iki sayının virgülden sonraki basamak sayılarını toplayıp sonuca soldan o kadar basamak sayacak şekilde virgül koyarsın.</p>
+</div>
+<p>Mini örnek: 0.4 × 0.25 işlemini yapalım. Virgülleri yok sayarsak 4 × 25 = 100. 0.4'te 1 basamak, 0.25'te 2 basamak virgülden sonra var, toplam 3 basamak. 100'ü sağdan 3 basamak kaydırırsak: 0.100 yani 0.1. (Kontrol: 0.4×0.25 gerçekten 0.1'e eşittir.)</p>
+
+<h3>Adım adım çözüm şablonu: karma kesir-ondalık işlemleri</h3>
+<div class="kural">
+<p>Kesir, ondalık sayı ve işlem önceliğinin karıştığı bir soruda şu sırayı izle:</p>
+<ol>
+<li>Önce parantez içindeki işlemleri bitir.</li>
+<li>Ondalık sayıları, işlemi kolaylaştıracaksa kesre çevir (ya da tersi — hangisi işini kolaylaştırıyorsa).</li>
+<li>Üs/kök varsa bu adımda uygula.</li>
+<li>Çarpma ve bölmeleri soldan sağa sırayla yap; bölmede ikinci kesri ters çevirip çarpmayı unutma.</li>
+<li>En son toplama-çıkarmaları, paydaları eşitleyerek yap.</li>
+<li>Sonucu, şıklarla aynı formda (kesir ya da ondalık) yazıp karşılaştır.</li>
+</ol>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Ondalık çarpmada virgülü "olduğu gibi" taşımak (örneğin 0.4×0.25'i 0.4×0.25=1.00 sanıp virgülü yanlış yere koymak) sık yapılan bir hatadır. Doğru yöntem, virgülleri tamamen yok sayıp tam sayı çarpımını yapmak, sonra İKİ sayının virgül sonrası basamak sayılarını TOPLAYIP sonuca uygulamaktır. 0.4 (1 basamak) × 0.25 (2 basamak) = toplamda 3 basamak kayacak, yani sonuç 0.1'dir; 0.10 ya da 1.0 değildir.</p>
+</div>
+
+<h3>Daha fazla ALES seviyesi örnek</h3>
+<div class="ornek">
+<p class="soru">5/6 ile 7/9 kesirlerinden hangisi daha büyüktür?</p>
+<p>A) 5/6 büyüktür   B) 7/9 büyüktür   C) Eşittir   D) Karşılaştırılamaz   E) İkisi de negatiftir</p>
+<details>
+<summary>Çözüm</summary>
+<p>Çapraz çarpma yapalım: 5×9=45, 7×6=42</p>
+<p>45 &gt; 42 olduğu için 5/6 &gt; 7/9'dur.</p>
+<p class="sonuc">Cevap: A) 5/6 büyüktür</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">1.2 × 0.5 + 1/4 işleminin sonucu kaçtır?</p>
+<p>A) 0.65   B) 0.75   C) 0.80   D) 0.85   E) 0.95</p>
+<details>
+<summary>Çözüm</summary>
+<p>Önce ondalık çarpma: 1.2 × 0.5 = 0.6</p>
+<p>Kesri ondalığa çevirelim: 1/4 = 0.25</p>
+<p>Toplam: 0.6 + 0.25 = 0.85</p>
+<p class="sonuc">Cevap: D) 0.85</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">2 tam 1/3 − 5/6 işleminin sonucu kaçtır?</p>
+<p>A) 1   B) 4/3   C) 3/2   D) 5/3   E) 2</p>
+<details>
+<summary>Çözüm</summary>
+<p>Karışık sayıyı bileşik kesre çevirelim: 2 tam 1/3 = (2×3+1)/3 = 7/3</p>
+<p>Paydaları eşitleyelim: OKEK(3,6)=6. 7/3 = 14/6, 5/6 = 5/6</p>
+<p>14/6 − 5/6 = 9/6 = 3/2</p>
+<p class="sonuc">Cevap: C) 3/2</p>
+</details>
+</div>
+
+<h3>Kendini dene</h3>
+<div class="ornek">
+<p class="soru">18/24 kesrinin sadeleştirilmiş hâli nedir?</p>
+<details><summary>Cevap</summary><p>18 ve 24'ün ortak böleni 6'dır: 18÷6=3, 24÷6=4. Sonuç: 3/4</p></details>
+</div>
+<div class="ornek">
+<p class="soru">3/8 ile 2/5 kesirlerinden hangisi daha büyüktür?</p>
+<details><summary>Cevap</summary><p>Çapraz çarpım: 3×5=15, 2×8=16. 16&gt;15 olduğu için 2/5 daha büyüktür.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">0.6 × 0.3 işleminin sonucu kaçtır?</p>
+<details><summary>Cevap</summary><p>6×3=18, iki sayının virgülden sonra toplam 2 basamağı var, sonuç 0.18'dir.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">1 tam 1/2 + 2/3 işleminin sonucu kaçtır?</p>
+<details><summary>Cevap</summary><p>1 tam 1/2 = 3/2. OKEK(2,3)=6: 3/2=9/6, 2/3=4/6. Toplam: 13/6</p></details>
+</div>
+<div class="ornek">
+<p class="soru">5 − 2×(3−1) işleminin sonucu kaçtır?</p>
+<details><summary>Cevap</summary><p>Önce parantez: 3−1=2. Sonra çarpma: 2×2=4. Son olarak: 5−4=1</p></details>
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Kesir toplama/çıkarmada önce paydaları OKEK ile eşitle; pay payla, payda paydayla asla direkt toplanmaz.</li>
+<li>Kesir çarpmada pay payla, payda paydayla çarpılır; bölmede ikinci kesir ters çevrilip çarpılır.</li>
+<li>İç içe kesirlerde en içten başlayıp dışa doğru sadeleştir.</li>
+<li>Ondalık sayıyı kesre çevirirken virgülden sonraki basamak sayısı kadar sıfırlı payda kullan, sonra sadeleştir.</li>
+<li>Sınavın 1. sorusu genelde bu tür karma kesir işlemidir; zaman kaybetmeden ve dikkatli sadeleştirerek çöz.</li>
+<li>Kesir sadeleştirme/genişletmede pay ve paydayı aynı sayıyla çarp ya da böl; kesrin değeri değişmez.</li>
+<li>İki kesri hızlıca karşılaştırmak için çapraz çarpma kullan: a/b ile c/d'de a·d ile b·c karşılaştırılır.</li>
+<li>Ondalık çarpmada virgülleri yok sayıp çarp, sonra iki sayının virgül sonrası basamak sayılarını TOPLAYIP sonuca uygula.</li>
+<li>Karma işlem şablonu: parantez → üs/kök → çarpma-bölme (soldan sağa) → toplama-çıkarma (soldan sağa); gerekirse ondalık-kesir dönüşümü yaparak işini kolaylaştır.</li>
+</ul>
