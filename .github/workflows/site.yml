@@ -50,3 +50,26 @@ jobs:
     steps:
       - id: d
         uses: actions/deploy-pages@v4
+
+  indexnow:
+    # Yayından sonra Bing, Yandex vb. arama motorlarına sitemap'teki adresleri bildirir (ücretsiz, resmî protokol).
+    needs: yayimla
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: IndexNow bildirimi
+        run: |
+          python - <<'PY'
+          import json, re, urllib.request
+          k = open("kaynak/indexnow.txt").read().strip()
+          sm = urllib.request.urlopen("https://alesrotasi.github.io/sitemap.xml", timeout=30).read().decode()
+          urls = re.findall(r"<loc>([^<]+)</loc>", sm)
+          veri = json.dumps({"host": "alesrotasi.github.io", "key": k,
+                             "keyLocation": f"https://alesrotasi.github.io/{k}.txt", "urlList": urls}).encode()
+          r = urllib.request.Request("https://api.indexnow.org/indexnow", data=veri,
+                                     headers={"Content-Type": "application/json; charset=utf-8"})
+          try:
+              print("IndexNow:", urllib.request.urlopen(r, timeout=30).status, len(urls), "adres")
+          except urllib.error.HTTPError as e:
+              print("IndexNow yanıtı:", e.code, e.read()[:200])
+          PY

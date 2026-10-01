@@ -803,6 +803,9 @@ def ekler(yollar):
     yaz("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
     yaz("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
     open(os.path.join(CIKTI, ".nojekyll"), "w").close()
+    if os.path.exists(os.path.join(KOK, "indexnow.txt")):  # IndexNow anahtar dosyası (Bing, Yandex vb.)
+        k = open(os.path.join(KOK, "indexnow.txt")).read().strip()
+        yaz(f"{k}.txt", k)
     for f in ["favicon.svg", "CNAME"] + [os.path.basename(x) for x in glob.glob(os.path.join(KOK, "google*.html"))]:
         if os.path.exists(os.path.join(KOK, f)):
             shutil.copy(os.path.join(KOK, f), CIKTI)
