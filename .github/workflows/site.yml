@@ -34,8 +34,9 @@ jobs:
           if [ "${{ github.event_name }}" = "schedule" ]; then ls _site/sorular | grep -c -- "-" > kaynak/yayin_sayisi.txt || true; fi
           git config user.name "ales-rotasi-bot"
           git config user.email "ales-rotasi-bot@users.noreply.github.com"
-          git add kaynak/yayin_sayisi.txt kaynak/veri/guncelleme.json
-          git diff --cached --quiet || (git commit -q -m "Sayfa güncelleme tarihleri, yayımlanan soru: $(cat kaynak/yayin_sayisi.txt)" && git pull -q --rebase && git push -q)
+          git add kaynak/veri/guncelleme.json
+          if [ -f kaynak/yayin_sayisi.txt ]; then git add kaynak/yayin_sayisi.txt; fi
+          git diff --cached --quiet || (git commit -q -m "Sayfa güncelleme tarihleri" && git pull -q --rebase && git push -q)
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
