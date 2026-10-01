@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALES Sayılar ve temel kavramlar · Sayısal konu anlatımı | ALES Rotası</title>
+<meta name="description" content="ALES sayısal bölümünde &quot;Sayı Kavramları&quot; konusu her sınavda ortalama 3-4 soru ile karşına çıkıyor. Genelde 4-8. sorular ile 15. soru civarında görürsün.…">
+<link rel="canonical" href="https://esraaksoy29.github.io/ales-rotasi/dersler/sayilar-ve-temel-kavramlar/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ALES Sayılar ve temel kavramlar · Sayısal konu anlatımı | ALES Rotası">
+<meta property="og:description" content="ALES sayısal bölümünde &quot;Sayı Kavramları&quot; konusu her sınavda ortalama 3-4 soru ile karşına çıkıyor. Genelde 4-8. sorular ile 15. soru civarında görürsün.…">
+<meta property="og:url" content="https://esraaksoy29.github.io/ales-rotasi/dersler/sayilar-ve-temel-kavramlar/">
+<meta property="og:locale" content="tr_TR">
+<meta name="theme-color" content="#1f4e5f">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<style>:root{--bg:#f7f5f0;--yuzey:#fff;--murekkep:#1d2329;--soluk:#5c6670;--cizgi:#e2ddd3;--cizgi2:#efebe3;
+--vurgu:#1f4e5f;--vurgu-ink:#1f4e5f;--vurgu-acik:#e6eff1;--iyi:#2f7d4f;--uyari:#a3561c;--uyari-acik:#fbf0e6;
+--soz:#7a3e6e;--say:#1f4e5f;--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,"Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#14181c;--yuzey:#1b2026;--murekkep:#e7e4dd;--soluk:#a2a9b0;--cizgi:#2c333b;--cizgi2:#232930;
+--vurgu:#7fb6c6;--vurgu-ink:#9cc9d6;--vurgu-acik:#1e2f35;--iyi:#6cc093;--uyari:#e3a26b;--uyari-acik:#2f2419;--soz:#d39ac6;--say:#7fb6c6;color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--murekkep);font:17px/1.6 var(--sans)}
+a{color:var(--vurgu-ink);text-underline-offset:3px}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;font-weight:600;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.7rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.3rem,3vw,1.65rem);margin:0 0 14px}
+.ic{max-width:1060px;margin:0 auto;padding-inline:clamp(16px,4vw,32px)}
+main.ic{display:grid;gap:44px;padding-block:32px 56px}
+main.ic>*{min-width:0}
+.ust{background:var(--yuzey);border-bottom:1px solid var(--cizgi);position:sticky;top:0;z-index:5}
+.ust .ic{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;padding-block:10px}
+.logo{font:600 1.25rem var(--serif);color:var(--murekkep);text-decoration:none}
+.logo b{color:var(--vurgu-ink)}
+.ust nav{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;font-size:.95rem}
+.ust nav a{text-decoration:none;color:var(--soluk)}
+.ust nav a:hover,.ust nav a[aria-current]{color:var(--murekkep)}
+.ust nav a.tg{color:var(--vurgu-ink);font-weight:600}
+.ust-yazi{font:500 .78rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soluk);margin:0 0 8px}
+.giris{font-size:1.12rem;color:var(--soluk);max-width:62ch;margin:14px 0 0}
+.kahraman{padding-top:20px}
+.dugmeler{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.dugme{display:inline-block;background:var(--vurgu);color:#fff;text-decoration:none;font-weight:600;padding:11px 18px;border-radius:6px}
+@media (prefers-color-scheme:dark){.dugme{color:#0f1417}}
+.dugme.ikincil{background:transparent;color:var(--vurgu-ink);border:1px solid var(--vurgu)}
+.ozet{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.ozet>div{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:8px;padding:18px 20px}
+.ozet ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.ozet p{margin:0;color:var(--soluk)}
+.kartlar{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.kart{display:grid;gap:6px;align-content:start;background:var(--yuzey);border:1px solid var(--cizgi);border-radius:8px;padding:14px 16px;text-decoration:none;color:var(--murekkep);transition:border-color .15s}
+.kart:hover{border-color:var(--vurgu)}
+.kart b{font-weight:600;line-height:1.35}
+.kart .m{font-size:.85rem;color:var(--soluk)}
+.etiket{font:500 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.etiket.soz{color:var(--soz)}.etiket.say{color:var(--say)}
+.tgkutu{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;background:var(--vurgu-acik);border:1px solid var(--vurgu);border-radius:10px;padding:18px 22px}
+.tgkutu p{margin:4px 0 0;color:var(--soluk);max-width:60ch}
+.sss details{border-bottom:1px solid var(--cizgi);padding:12px 0}
+.sss summary{cursor:pointer;font-weight:600}
+.sss p{margin:8px 0 0;color:var(--soluk)}
+.baslik{display:grid;gap:4px}
+.iz{font-size:.9rem;color:var(--soluk);margin-bottom:-28px}
+.iz a{color:var(--soluk)}
+/* ders */
+.ders{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:10px;padding:clamp(18px,4vw,40px);display:grid;gap:18px;min-width:0}
+.ders header{border-bottom:1px solid var(--cizgi);padding-bottom:16px}
+.ders header .m{margin:10px 0 0;color:var(--soluk)}
+.govde{max-width:72ch;display:grid;gap:14px;min-width:0}
+.govde h3{font-size:1.3rem;margin-top:16px}
+.govde h4{font:600 1.02rem var(--serif);margin:6px 0 0}
+.govde p,.govde li{line-height:1.7;margin:0}
+.govde ul,.govde ol{margin:0;padding-left:1.3em;display:grid;gap:5px}
+.govde table{border-collapse:collapse;font-size:.93rem;display:block;overflow-x:auto;max-width:100%}
+.govde th,.govde td{border:1px solid var(--cizgi);padding:6px 10px;text-align:left}
+.govde th{background:var(--cizgi2)}
+.govde .kural{border:1px solid var(--vurgu);border-left-width:4px;background:var(--vurgu-acik);padding:12px 16px;border-radius:4px;display:grid;gap:8px}
+.govde .tuzak{border-left:4px solid var(--uyari);background:var(--uyari-acik);padding:12px 16px;border-radius:4px}
+.govde .tuzak::before{content:"Tuzak";display:block;font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--uyari);margin-bottom:4px}
+.govde .alesde{border:1px dashed var(--cizgi);padding:12px 16px;border-radius:4px;background:var(--bg)}
+.govde .alesde::before{content:"ALES'te";display:block;font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--vurgu-ink);margin-bottom:4px}
+.govde .ornek{border:1px solid var(--cizgi);border-radius:6px;padding:14px 16px;display:grid;gap:10px}
+.govde .ornek .soru{font-weight:600}
+.govde details summary{cursor:pointer;color:var(--vurgu-ink);font-weight:600}
+.govde details[open] summary{margin-bottom:8px}
+.govde details>*+*{margin-top:8px}
+.govde .sonuc{font-weight:700;color:var(--iyi)}
+.govde svg.sekil{display:block;width:100%;max-width:340px;height:auto;margin:8px auto;color:var(--murekkep);overflow:visible}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.9em;line-height:1.1;margin:0 2px}
+.frac>span:first-child{border-bottom:1px solid currentColor;padding:0 3px}
+.frac>span:last-child{padding:0 3px}
+.onson{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.95rem}
+.onson a{max-width:48%;text-decoration:none}
+@media (max-width:560px){.onson a{max-width:100%}}
+/* analiz */
+.tablo{overflow-x:auto;border:1px solid var(--cizgi);border-radius:8px;background:var(--yuzey)}
+.tablo table{border-collapse:collapse;width:100%;min-width:520px;font-size:.95rem}
+.tablo th,.tablo td{padding:9px 14px;border-bottom:1px solid var(--cizgi2);text-align:left;font-variant-numeric:tabular-nums}
+.tablo th{font:500 .75rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soluk)}
+.tablo td:nth-child(n+2),.tablo th:nth-child(n+2){text-align:right;white-space:nowrap}
+.cubuk{display:block;height:5px;margin-top:5px;border-radius:3px;background:var(--vurgu);opacity:.75;width:calc(var(--o)*100%)}
+.z{font:500 .72rem var(--mono);text-transform:uppercase;padding:1px 6px;border-radius:3px;border:1px solid currentColor}
+.z.kolay{color:var(--iyi)}.z.orta{color:var(--soluk)}.z.zor{color:var(--uyari)}
+.alanlar{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:640px}
+.alanlar li{display:grid;grid-template-columns:minmax(150px,1fr) 2fr 48px;gap:12px;align-items:center}
+.alanlar .cubuk{margin:0;height:8px}
+.alanlar b{text-align:right;font-variant-numeric:tabular-nums}
+.not p{color:var(--soluk);max-width:72ch}
+.ozet h2{font-size:2.2rem;color:var(--vurgu-ink);margin:0 0 6px}
+/* program */
+.faz{display:grid;gap:12px}
+.faz>.m{margin:-10px 0 0;color:var(--soluk)}
+.haftalar{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.hafta{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:8px;padding:14px 16px}
+.hafta h3{font-size:1.1rem}
+.hafta h3 span{display:block;font:500 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soluk);margin-bottom:2px}
+.hafta h4{margin:10px 0 2px;font-size:.85rem;color:var(--soluk)}
+.hafta ul{margin:0;padding-left:1.1em;font-size:.93rem;display:grid;gap:3px}
+.ilgili{font-size:.88rem;margin:10px 0 0;color:var(--soluk)}
+.alt{border-top:1px solid var(--cizgi);background:var(--yuzey)}
+.alt .ic{padding-block:22px;font-size:.93rem}
+.alt p{margin:0 0 8px;max-width:80ch}
+.kucuk{color:var(--soluk);font-size:.85rem}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Sayılar ve temel kavramlar", "description": "ALES sayısal bölümünde \"Sayı Kavramları\" konusu her sınavda ortalama 3-4 soru ile karşına çıkıyor. Genelde 4-8. sorular ile 15. soru civarında görürsün.…", "inLanguage": "tr", "educationalLevel": "Lisans mezunu", "learningResourceType": "Konu anlatımı", "isAccessibleForFree": true, "about": "ALES Sayısal", "url": "https://esraaksoy29.github.io/ales-rotasi/dersler/sayilar-ve-temel-kavramlar/"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ALES Rotası", "item": "https://esraaksoy29.github.io/ales-rotasi/"}, {"@type": "ListItem", "position": 2, "name": "Dersler", "item": "https://esraaksoy29.github.io/ales-rotasi/dersler/"}, {"@type": "ListItem", "position": 3, "name": "Sayılar ve temel kavramlar", "item": "https://esraaksoy29.github.io/ales-rotasi/dersler/sayilar-ve-temel-kavramlar/"}]}</script>
+</head>
+<body>
+<header class="ust"><div class="ic">
+<a class="logo" href="../../">ALES <b>Rotası</b></a>
+<nav><a href="../../dersler/" aria-current=page>Dersler</a><a href="../../konu-analizi/">Konu analizi</a><a href="../../program/">16 haftalık program</a><a class="tg" href="https://t.me/aleskampi">Telegram grubu</a></nav>
+</div></header>
+<main class="ic">
+
+<nav class="iz"><a href="../../">Ana sayfa</a> › <a href="../#sayisal">Sayısal dersler</a></nav>
+<article class="ders">
+<header><p class="ust-yazi">ALES Sayısal · 1. hafta</p>
+<h1>Sayılar ve temel kavramlar</h1>
+<p class="m">Bu konudan sınavda ortalama <b>3,8 soru</b> çıkıyor (son 11 ALES).</p></header>
+<div class="govde"><div class="alesde">
+<p>ALES sayısal bölümünde "Sayı Kavramları" konusu her sınavda ortalama <strong>3-4 soru</strong> ile karşına çıkıyor. Genelde 4-8. sorular ile 15. soru civarında görürsün. En sık çıkan iki kalıp şunlar: <strong>basamak-rakam ilişkisi</strong> (ör. "AB7 − AB = AA1 ise A+B kaçtır?" tarzı sorular) ve <strong>faktöriyel sadeleştirme</strong> (ör. 8!/6! gibi ifadeleri kısaltmak). Bunun yanında tek-çift ve pozitif-negatif işaret kurallarına dayanan "her zaman ... olur" tarzı genel sorular da sık görülür.</p>
+</div>
+
+<h3>Sayı kümeleri</h3>
+<p>Önce zihinde bir harita çizelim. Sayılar iç içe geçmiş kümeler halinde büyür:</p>
+<div class="kural">
+<ul>
+<li><strong>Doğal sayılar (ℕ):</strong> 0, 1, 2, 3, … (negatif yok, kesir yok)</li>
+<li><strong>Tam sayılar (ℤ):</strong> …, −2, −1, 0, 1, 2, … (doğal sayılar + negatifleri)</li>
+<li><strong>Rasyonel sayılar (ℚ):</strong> iki tam sayının oranı şeklinde yazılabilen sayılar (<span class="frac"><span>a</span><span>b</span></span>, b≠0). Örnek: 1/2, −3, 0.75</li>
+<li><strong>Reel sayılar (ℝ):</strong> rasyonel + irrasyonel (√2, π gibi kesir olarak yazılamayan) sayıların tümü</li>
+</ul>
+</div>
+<p>ALES'te bu kümeler genelde tek başına değil, "hangi kümeye aittir / ait değildir" şeklinde küçük bir tuzak olarak karşına çıkar. Örneğin √4 = 2 olduğu için aslında doğal sayıdır; ama √2 irrasyoneldir, rasyonel sayı kümesine girmez.</p>
+<p>Bir sayının hangi kümeye ait olduğunu anlamak için kendine şu soruları sor: "Negatif mi?" (evetse doğal sayı değildir, ama tam sayıdır), "Kesirli mi yazılabiliyor mu?" (evetse rasyoneldir), "Kök içinde tam kare var mı?" (yoksa irrasyoneldir). Örneğin −5 bir tam sayıdır ama doğal sayı değildir; 0.6 rasyoneldir çünkü 3/5 şeklinde yazılabilir; π ise irrasyoneldir çünkü hiçbir kesirle tam olarak ifade edilemez.</p>
+
+<h3>Basamak ve rakam</h3>
+<div class="kural">
+<p>İki basamaklı bir sayıyı <strong>AB</strong> şeklinde yazdığımızda, bunun gerçek değeri:</p>
+<p><strong>AB = 10·A + B</strong></p>
+<p>Burada A onlar basamağı (1-9 arası, çünkü 0 olursa sayı tek basamaklı kalır), B ise birler basamağıdır (0-9 arası).</p>
+</div>
+<p>Aynı mantık üç basamaklı sayılara da uzar: <strong>ABC = 100·A + 10·B + C</strong>.</p>
+<div class="ornek">
+<p class="soru">Rakamları toplamı 12 olan ve birler basamağı, onlar basamağından 2 fazla olan iki basamaklı sayı kaçtır?</p>
+<p>A) 39   B) 48   C) 57   D) 66   E) 75</p>
+<details>
+<summary>Çözüm</summary>
+<p>Sayıyı AB olarak yazalım: A onlar, B birler basamağı.</p>
+<p>Rakamlar toplamı: A + B = 12</p>
+<p>Birler, onlardan 2 fazla: B = A + 2</p>
+<p>Bunu yerine koyarsak: A + (A+2) = 12 ⇒ 2A = 10 ⇒ A = 5, B = 7</p>
+<p>Sayı: 57</p>
+<p class="sonuc">Cevap: C) 57</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">AB iki basamaklı bir sayıdır. A, B ve 7 rakamlarından oluşan üç basamaklı sayı olan AB7 ile AB sayısının farkı AA1 sayısına eşittir (AA1'de ilk iki rakam birbirine eşit, son rakam 1'dir). Buna göre A+B kaçtır?</p>
+<p>A) 7   B) 8   C) 9   D) 10   E) 11</p>
+<details>
+<summary>Çözüm</summary>
+<p>AB = 10A + B, AB7 = 100A + 10B + 7</p>
+<p>Fark: AB7 − AB = (100A+10B+7) − (10A+B) = 90A + 9B + 7</p>
+<p>AA1 = 110A + 1 (çünkü ilk iki basamak A, son basamak 1)</p>
+<p>Denklem: 90A + 9B + 7 = 110A + 1 ⇒ 9B + 6 = 20A</p>
+<p>A ve B birer rakam olduğuna göre (A: 1-9, B: 0-9) deneme yaparsak A=3, B=6 çözümü denklemi sağlar: 9·6+6=60=20·3 ✓</p>
+<p>Kontrol: AB=36, AB7=367, 367−36=331=AA1 (A=3) ✓</p>
+<p>A+B = 3+6 = 9</p>
+<p class="sonuc">Cevap: C) 9</p>
+</details>
+</div>
+
+<h3>Tek-çift kuralları</h3>
+<div class="kural">
+<ul>
+<li>çift ± çift = çift</li>
+<li>tek ± tek = çift</li>
+<li>çift ± tek = tek</li>
+<li>çift × (herhangi bir tam sayı) = çift</li>
+<li>tek × tek = tek</li>
+<li>tek sayının karesi her zaman tektir; çift sayının karesi her zaman çifttir</li>
+</ul>
+</div>
+<p>Bu kurallar sözel değil, ezberlenecek küçük bir tablo gibi düşünülmeli. ALES soruları genelde bunları tek tek sormaz, birkaçını bir arada kullanmanı ister.</p>
+<div class="tuzak">
+<p><strong>Tuzak:</strong> "0 sayısı ne çift ne tektir" diye düşünmek yanlıştır. 0 sayısı ÇİFTTİR (0÷2=0, tam bölünüyor). Ayrıca 0, ne pozitiftir ne negatiftir; bu ayrı bir konudur, çift-tek durumuyla karıştırma.</p>
+</div>
+
+<div class="ornek">
+<p class="soru">x bir tek sayı olmak üzere, x² + x ifadesinin çift ya da tek olması hakkında ne söylenebilir?</p>
+<p>A) Her zaman tek   B) Her zaman çift   C) x'e göre değişir   D) Her zaman 0   E) Hiçbiri</p>
+<details>
+<summary>Çözüm</summary>
+<p>x tek olduğu için x² de tektir (tek×tek=tek).</p>
+<p>tek + tek = çift</p>
+<p>Birkaç değer deneyelim: x=1 → 1+1=2 (çift), x=3 → 9+3=12 (çift), x=5 → 25+5=30 (çift). Hepsi çift çıkıyor, kural doğrulanıyor.</p>
+<p class="sonuc">Cevap: B) Her zaman çift</p>
+</details>
+</div>
+
+<h3>Pozitif-negatif işaret kuralları</h3>
+<div class="kural">
+<ul>
+<li>(+)×(+) = (+), (−)×(−) = (+), (+)×(−) = (−)</li>
+<li>Bir negatif sayının çift kuvveti pozitif, tek kuvveti negatiftir: (−2)² = 4, (−2)³ = −8</li>
+<li>"Her zaman pozitiftir" sorularında en sağlam yöntem: karesi alınmış bir ifade (x² gibi) her zaman ≥ 0'dır; ama x² + 1 gibi bir ifade her zaman kesin pozitiftir.</li>
+</ul>
+</div>
+<div class="tuzak">
+<p><strong>Tuzak:</strong> "x² her zaman pozitiftir" ifadesi YANLIŞTIR, çünkü x=0 olduğunda x²=0 olur (pozitif değil, sıfırdır). Doğru ifade: "x² her zaman negatif değildir" ya da "x² ≥ 0'dır."</p>
+</div>
+<div class="ornek">
+<p class="soru">(−3) × (−4) × (−2) işleminin sonucu kaçtır?</p>
+<p>A) −24   B) −9   C) 9   D) 24   E) 24 negatif olamaz</p>
+<details>
+<summary>Çözüm</summary>
+<p>Negatif sayıların çarpımında işareti belirlemek için negatif sayı sayısını sayarız: burada 3 tane negatif sayı var (tek sayıda negatif).</p>
+<p>Tek sayıda negatif çarpan varsa sonuç negatif olur.</p>
+<p>Mutlak değerler çarpımı: 3×4×2 = 24, işaret negatif olduğu için sonuç: −24</p>
+<p class="sonuc">Cevap: A) −24</p>
+</details>
+</div>
+<p>Kısacası: bir çarpımda kaç tane negatif sayı olduğunu say. Negatif sayı adedi çiftse sonuç pozitif, tekse sonuç negatif olur. Aynı mantık negatif bir sayının kuvvetleri için de geçerlidir: (−2)⁴=16 (çift kuvvet, pozitif) ama (−2)⁵=−32 (tek kuvvet, negatif).</p>
+
+<h3>Ardışık sayılar</h3>
+<div class="kural">
+<p>Ardışık tam sayılar: n, n+1, n+2, …</p>
+<p>Ardışık çift (ya da tek) sayılar: n, n+2, n+4, … (aralarındaki fark hep 2'dir)</p>
+<p>1'den n'e kadar olan doğal sayıların toplamı için hazır bir formül vardır: <strong>1+2+3+…+n = n(n+1)/2</strong>. Bu formülü ezbere bilmen, uzun toplama yapmandan seni kurtarır.</p>
+</div>
+<div class="ornek">
+<p class="soru">1'den 20'ye kadar olan doğal sayıların toplamı kaçtır?</p>
+<p>A) 190   B) 200   C) 210   D) 220   E) 230</p>
+<details>
+<summary>Çözüm</summary>
+<p>Formülü kullanalım: n(n+1)/2, burada n=20</p>
+<p>20×21/2 = 420/2 = 210</p>
+<p class="sonuc">Cevap: C) 210</p>
+</details>
+</div>
+<div class="ornek">
+<p class="soru">Ardışık üç tek sayının toplamı 51 olduğuna göre, bu sayıların en büyüğü kaçtır?</p>
+<p>A) 15   B) 17   C) 19   D) 21   E) 23</p>
+<details>
+<summary>Çözüm</summary>
+<p>Sayıları x, x+2, x+4 olarak yazalım (ardışık tek sayılar).</p>
+<p>Toplam: x + (x+2) + (x+4) = 3x + 6 = 51</p>
+<p>3x = 45 ⇒ x = 15</p>
+<p>Sayılar: 15, 17, 19. En büyüğü 19.</p>
+<p>Kontrol: 15+17+19 = 51 ✓</p>
+<p class="sonuc">Cevap: C) 19</p>
+</details>
+</div>
+
+<h3>Faktöriyel</h3>
+<div class="kural">
+<p><strong>n! = n × (n−1) × (n−2) × … × 2 × 1</strong> (n! okunuşu "n faktöriyel")</p>
+<p>Özel durum: 0! = 1 (ezbere bilinmesi gerekir, ALES bunu sıkça sorar)</p>
+<p>Sadeleştirme mantığı: 8!/6! ifadesinde 6! kısmı hem payda hem paydan sadeleşir, geriye sadece 8×7 kalır.</p>
+</div>
+<div class="ornek">
+<p class="soru"><span class="frac"><span>8!</span><span>6!</span></span> işleminin sonucu kaçtır?</p>
+<p>A) 42   B) 48   C) 56   D) 64   E) 72</p>
+<details>
+<summary>Çözüm</summary>
+<p>8! = 8×7×6×5×4×3×2×1, 6! = 6×5×4×3×2×1</p>
+<p>8!/6! ifadesinde 6! kısmı sadeleşir, geriye 8×7 kalır.</p>
+<p>8×7 = 56</p>
+<p class="sonuc">Cevap: C) 56</p>
+</details>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> Faktöriyel sadeleştirmede öğrenciler genelde n!/m! ifadesini n/m sanıp direkt bölme yapmaya kalkışır. Bu YANLIŞTIR. Doğru yol: büyük faktöriyeli açıp küçük faktöriyeli sadeleştirmektir. 8!/6! asla 8/6 değildir.</p>
+</div>
+
+<div class="ornek">
+<p class="soru">5! + 4! işleminin sonucu kaçtır?</p>
+<p>A) 9   B) 96   C) 100   D) 120   E) 144</p>
+<details>
+<summary>Çözüm</summary>
+<p>5! = 5×4×3×2×1 = 120</p>
+<p>4! = 4×3×2×1 = 24</p>
+<p>5! + 4! = 120 + 24 = 144</p>
+<p class="sonuc">Cevap: E) 144</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Ardışık dört doğal sayının toplamı 74 olduğuna göre, bu sayıların en küçüğü kaçtır?</p>
+<p>A) 15   B) 16   C) 17   D) 18   E) 19</p>
+<details>
+<summary>Çözüm</summary>
+<p>Sayıları x, x+1, x+2, x+3 olarak yazalım.</p>
+<p>Toplam: x + (x+1) + (x+2) + (x+3) = 4x + 6 = 74</p>
+<p>4x = 68 ⇒ x = 17</p>
+<p>Sayılar: 17, 18, 19, 20. En küçüğü 17.</p>
+<p>Kontrol: 17+18+19+20 = 74 ✓</p>
+<p class="sonuc">Cevap: C) 17</p>
+</details>
+</div>
+
+<p>Faktöriyel sadeleştirmede bir başka sık kalıp da, iki ardışık faktöriyelin bölümü yerine, aralarında iki basamak fark olan faktöriyellerin bölümüdür. Mantık aynıdır: büyük faktöriyeli, küçüğe kadar açıp sadeleştirirsin.</p>
+<div class="ornek">
+<p class="soru"><span class="frac"><span>6!</span><span>4!</span></span> işleminin sonucu kaçtır?</p>
+<p>A) 20   B) 24   C) 30   D) 36   E) 42</p>
+<details>
+<summary>Çözüm</summary>
+<p>6! = 6×5×4×3×2×1, 4! = 4×3×2×1</p>
+<p>6!/4! ifadesinde 4! sadeleşir, geriye 6×5 kalır.</p>
+<p>6×5 = 30</p>
+<p class="sonuc">Cevap: C) 30</p>
+</details>
+</div>
+
+<h3>Rakamları yer değiştirmiş sayılar</h3>
+<p>Basamak-rakam konusunun ALES'te çok sevilen bir başka kalıbı da, bir sayının rakamlarının yerini değiştirerek elde edilen yeni sayı ile eski sayı arasındaki ilişkidir. Bu, sıfırdan öğrenmesi kolay ama bilmeyince şaşırtan bir kısayoldur.</p>
+<div class="kural">
+<p>İki basamaklı AB sayısı ile rakamları yer değiştirilmiş BA sayısı arasındaki fark her zaman 9'un katıdır:</p>
+<p><strong>AB − BA = (10A+B) − (10B+A) = 9A − 9B = 9(A−B)</strong></p>
+<p>Yani onlar ve birler basamağının farkını bulup 9 ile çarparsan, iki sayı arasındaki farkı direkt hesaplayabilirsin — tek tek AB ve BA'yı yazmana bile gerek kalmaz.</p>
+</div>
+<p>Mini örnek: 52 sayısı ile rakamları yer değiştirilmiş 25 sayısı arasındaki fark, basamak farkına bakılarak hemen bulunabilir: A=5, B=2, A−B=3, fark=9×3=27. Kontrol edersek 52−25=27, gerçekten tutuyor. Bu kısayol, sayının kendisini bilmesen bile (yalnızca basamak farkı verilmişse) soruyu çözmeni sağlar.</p>
+<div class="ornek">
+<p class="soru">İki basamaklı bir sayı ile bu sayının rakamları yer değiştirilerek elde edilen sayı arasındaki fark 45'tir. Bu sayının rakamları toplamı 11 olduğuna göre, büyük sayı kaçtır?</p>
+<p>A) 38   B) 64   C) 72   D) 83   E) 91</p>
+<details>
+<summary>Çözüm</summary>
+<p>Sayıyı AB, yer değiştirmiş hâlini BA olarak yazalım (A > B kabul edelim, çünkü AB büyük olan sayı).</p>
+<p>Fark kuralı: AB − BA = 9(A−B) = 45 ⇒ A−B = 5</p>
+<p>Rakamlar toplamı: A+B = 11</p>
+<p>İki denklemi taraf tarafa toplarsak: 2A = 16 ⇒ A = 8, B = 3</p>
+<p>Büyük sayı: AB = 83</p>
+<p>Kontrol: 83 − 38 = 45 ✓, 8+3 = 11 ✓</p>
+<p class="sonuc">Cevap: D) 83</p>
+</details>
+</div>
+
+<h3>Adım adım çözüm şablonu: basamak-rakam soruları</h3>
+<div class="kural">
+<p>Basamak/rakam sorularıyla karşılaştığında şu sırayı izle:</p>
+<ol>
+<li>Sayıyı harflerle aç: iki basamaklıysa AB = 10A+B, üç basamaklıysa ABC = 100A+10B+C.</li>
+<li>Sorudaki her cümleyi ayrı bir denkleme çevir (toplam, fark, "2 fazla", "yarısı" gibi ifadeler birer denklemdir).</li>
+<li>Kaç bilinmeyen varsa o kadar bağımsız denklem elde etmeye çalış; denklemleri taraf tarafa toplayıp çıkararak harfleri tek tek çöz.</li>
+<li>Bulduğun A, B (varsa C) değerlerinin rakam olma şartını (0-9 arası, baştaki basamak 0 olamaz) sağladığını kontrol et.</li>
+<li>Son olarak bulduğun sayıyı orijinal cümlelerin hepsinde tek tek dene; bu adım hatanı yakalamanın en garanti yoludur.</li>
+</ol>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak:</strong> İki basamaklı bir sayıda onlar basamağı (A) ASLA 0 olamaz, çünkü 0 olursa sayı tek basamaklı kalır (ör. "0B" aslında sadece B'dir). Ama birler basamağı (B) rahatlıkla 0 olabilir. Bir soruda "A ve B birer rakamdır" dendiğinde bu asimetriyi unutma; A için deneme aralığın 1-9, B için 0-9'dur.</p>
+</div>
+
+<h3>Daha fazla ALES seviyesi örnek</h3>
+<div class="ornek">
+<p class="soru"><span class="frac"><span>9!</span><span>7!</span></span> + 3! işleminin sonucu kaçtır?</p>
+<p>A) 48   B) 66   C) 72   D) 78   E) 84</p>
+<details>
+<summary>Çözüm</summary>
+<p>Önce faktöriyel sadeleştirmesi yapalım: 9!/7! ifadesinde 7! sadeleşir, geriye 9×8 kalır.</p>
+<p>9×8 = 72</p>
+<p>3! = 3×2×1 = 6</p>
+<p>Toplam: 72 + 6 = 78</p>
+<p class="sonuc">Cevap: D) 78</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Ardışık beş çift sayının toplamı 100 olduğuna göre, bu sayıların ortadakisi kaçtır?</p>
+<p>A) 16   B) 18   C) 20   D) 22   E) 24</p>
+<details>
+<summary>Çözüm</summary>
+<p>Beş ardışık çift sayıyı ortadaki terime göre yazalım: x−4, x−2, x, x+2, x+4 (aralarındaki fark 2'şer).</p>
+<p>Toplamları: (x−4)+(x−2)+x+(x+2)+(x+4) = 5x</p>
+<p>5x = 100 ⇒ x = 20</p>
+<p>Sayılar: 16, 18, 20, 22, 24. Ortadaki: 20</p>
+<p>Kontrol: 16+18+20+22+24 = 100 ✓</p>
+<p class="sonuc">Cevap: C) 20</p>
+</details>
+</div>
+
+<h3>Kendini dene</h3>
+<div class="ornek">
+<p class="soru">37 sayısı ile bu sayının rakamları yer değiştirilerek elde edilen 73 sayısı arasındaki fark kaçtır?</p>
+<details><summary>Cevap</summary><p>73 − 37 = 36 (kural: 9×(7−3) = 9×4 = 36)</p></details>
+</div>
+<div class="ornek">
+<p class="soru"><span class="frac"><span>7!</span><span>5!</span></span> işleminin sonucu kaçtır?</p>
+<details><summary>Cevap</summary><p>7!/5! ifadesinde 5! sadeleşir, geriye 7×6 kalır: 7×6 = 42</p></details>
+</div>
+<div class="ornek">
+<p class="soru">(−2)³ × (−1)⁴ işleminin sonucu kaçtır?</p>
+<details><summary>Cevap</summary><p>(−2)³ = −8 (tek kuvvet, negatif kalır), (−1)⁴ = 1 (çift kuvvet, pozitif olur). −8 × 1 = −8</p></details>
+</div>
+<div class="ornek">
+<p class="soru">Ardışık üç çift sayının toplamı 48 olduğuna göre, ortadaki sayı kaçtır?</p>
+<details><summary>Cevap</summary><p>Sayılar x−2, x, x+2 olsun. Toplam 3x=48 ⇒ x=16. Ortadaki sayı 16'dır.</p></details>
+</div>
+<div class="ornek">
+<p class="soru">1'den 15'e kadar olan doğal sayıların toplamı kaçtır?</p>
+<details><summary>Cevap</summary><p>n(n+1)/2 formülü: 15×16/2 = 120</p></details>
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Sayı kümeleri iç içedir: ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ; √2 gibi sayılar rasyonel değildir.</li>
+<li>İki basamaklı AB sayısı = 10A + B; üç basamaklı ABC sayısı = 100A + 10B + C.</li>
+<li>Rakam toplamı ve basamak farkı sorularında sayıyı mutlaka 10A+B formunda yaz, denklemi buradan kur.</li>
+<li>Tek-çift kuralları: tek×tek=tek, çift ile yapılan her çarpma çift verir, tek±tek=çift.</li>
+<li>x² her zaman ≥ 0'dır ama "her zaman pozitiftir" demek yanlıştır (x=0 durumunu unutma).</li>
+<li>Ardışık sayı sorularında bilinmeyeni ortadaki (ya da ilk) terime x diyerek denklemi kur.</li>
+<li>0! = 1'dir, ezbere bilmen gerekir.</li>
+<li>n!/m! (n>m) sadeleştirmesinde büyük faktöriyeli açıp ortak kısmı sadeleştir, asla n/m yapma.</li>
+<li>İki basamaklı AB ile rakamları yer değiştirilmiş BA arasındaki fark her zaman 9(A−B)'dir; sayıyı bilmesen bile basamak farkından direkt hesaplanır.</li>
+<li>Basamak-rakam sorularında şablon: sayıyı harflerle aç → her cümleyi denkleme çevir → denklemleri toplayıp/çıkararak çöz → rakam olma şartını (A≠0, 0-9 aralığı) kontrol et → sonucu orijinal cümlelerde dene.</li>
+<li>İki basamaklı bir sayıda onlar basamağı (A) asla 0 olamaz, ama birler basamağı (B) 0 olabilir.</li>
+</ul>
+</div>
+</article>
+<aside class="tgkutu"><div><b>Her gün 1 sözel + 1 sayısal soru</b><p>Telegram grubunda sabah soru, akşam çözüm; her pazartesi haftanın kamp planı; ALES şartlı akademik ilanlar.</p></div><a class="dugme" href="https://t.me/aleskampi">@aleskampi grubuna katıl</a></aside>
+<nav class="onson"><a href="../sozel-mantik-ii-kosullu-kurgu/">← Sözel mantık II: koşullu kurgu</a><a href="../kesirler-ondalik-sayilar-islem-onceligi/">Kesirler, ondalık sayılar, işlem önceliği →</a></nav>
+
+</main>
+<footer class="alt"><div class="ic">
+<p><b>ALES Rotası</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, konu analizi ve çalışma programı.
+Günlük soru, haftalık kamp ve akademik ilanlar için <a href="https://t.me/aleskampi">Telegram grubu @aleskampi</a>.</p>
+<p class="kucuk">İçerikler özgündür; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
+bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
+</div></footer>
+</body>
+</html>

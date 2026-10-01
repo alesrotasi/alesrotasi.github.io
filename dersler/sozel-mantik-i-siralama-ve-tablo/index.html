@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALES Sözel mantık I: sıralama ve tablo · Sözel konu anlatımı | ALES Rotası</title>
+<meta name="description" content="Sözel bölümün son 8 sorusu (43–50) iki ayrı 4&#x27;lü bloktan oluşur: her blokta bir &quot;kurgu&quot; (senaryo) verilir, ardından o kurguyla ilgili 4 soru sorulur.…">
+<link rel="canonical" href="https://esraaksoy29.github.io/ales-rotasi/dersler/sozel-mantik-i-siralama-ve-tablo/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ALES Sözel mantık I: sıralama ve tablo · Sözel konu anlatımı | ALES Rotası">
+<meta property="og:description" content="Sözel bölümün son 8 sorusu (43–50) iki ayrı 4&#x27;lü bloktan oluşur: her blokta bir &quot;kurgu&quot; (senaryo) verilir, ardından o kurguyla ilgili 4 soru sorulur.…">
+<meta property="og:url" content="https://esraaksoy29.github.io/ales-rotasi/dersler/sozel-mantik-i-siralama-ve-tablo/">
+<meta property="og:locale" content="tr_TR">
+<meta name="theme-color" content="#1f4e5f">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<style>:root{--bg:#f7f5f0;--yuzey:#fff;--murekkep:#1d2329;--soluk:#5c6670;--cizgi:#e2ddd3;--cizgi2:#efebe3;
+--vurgu:#1f4e5f;--vurgu-ink:#1f4e5f;--vurgu-acik:#e6eff1;--iyi:#2f7d4f;--uyari:#a3561c;--uyari-acik:#fbf0e6;
+--soz:#7a3e6e;--say:#1f4e5f;--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,"Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#14181c;--yuzey:#1b2026;--murekkep:#e7e4dd;--soluk:#a2a9b0;--cizgi:#2c333b;--cizgi2:#232930;
+--vurgu:#7fb6c6;--vurgu-ink:#9cc9d6;--vurgu-acik:#1e2f35;--iyi:#6cc093;--uyari:#e3a26b;--uyari-acik:#2f2419;--soz:#d39ac6;--say:#7fb6c6;color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--murekkep);font:17px/1.6 var(--sans)}
+a{color:var(--vurgu-ink);text-underline-offset:3px}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;font-weight:600;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.7rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.3rem,3vw,1.65rem);margin:0 0 14px}
+.ic{max-width:1060px;margin:0 auto;padding-inline:clamp(16px,4vw,32px)}
+main.ic{display:grid;gap:44px;padding-block:32px 56px}
+main.ic>*{min-width:0}
+.ust{background:var(--yuzey);border-bottom:1px solid var(--cizgi);position:sticky;top:0;z-index:5}
+.ust .ic{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;padding-block:10px}
+.logo{font:600 1.25rem var(--serif);color:var(--murekkep);text-decoration:none}
+.logo b{color:var(--vurgu-ink)}
+.ust nav{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;font-size:.95rem}
+.ust nav a{text-decoration:none;color:var(--soluk)}
+.ust nav a:hover,.ust nav a[aria-current]{color:var(--murekkep)}
+.ust nav a.tg{color:var(--vurgu-ink);font-weight:600}
+.ust-yazi{font:500 .78rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soluk);margin:0 0 8px}
+.giris{font-size:1.12rem;color:var(--soluk);max-width:62ch;margin:14px 0 0}
+.kahraman{padding-top:20px}
+.dugmeler{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.dugme{display:inline-block;background:var(--vurgu);color:#fff;text-decoration:none;font-weight:600;padding:11px 18px;border-radius:6px}
+@media (prefers-color-scheme:dark){.dugme{color:#0f1417}}
+.dugme.ikincil{background:transparent;color:var(--vurgu-ink);border:1px solid var(--vurgu)}
+.ozet{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.ozet>div{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:8px;padding:18px 20px}
+.ozet ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.ozet p{margin:0;color:var(--soluk)}
+.kartlar{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.kart{display:grid;gap:6px;align-content:start;background:var(--yuzey);border:1px solid var(--cizgi);border-radius:8px;padding:14px 16px;text-decoration:none;color:var(--murekkep);transition:border-color .15s}
+.kart:hover{border-color:var(--vurgu)}
+.kart b{font-weight:600;line-height:1.35}
+.kart .m{font-size:.85rem;color:var(--soluk)}
+.etiket{font:500 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.etiket.soz{color:var(--soz)}.etiket.say{color:var(--say)}
+.tgkutu{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;background:var(--vurgu-acik);border:1px solid var(--vurgu);border-radius:10px;padding:18px 22px}
+.tgkutu p{margin:4px 0 0;color:var(--soluk);max-width:60ch}
+.sss details{border-bottom:1px solid var(--cizgi);padding:12px 0}
+.sss summary{cursor:pointer;font-weight:600}
+.sss p{margin:8px 0 0;color:var(--soluk)}
+.baslik{display:grid;gap:4px}
+.iz{font-size:.9rem;color:var(--soluk);margin-bottom:-28px}
+.iz a{color:var(--soluk)}
+/* ders */
+.ders{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:10px;padding:clamp(18px,4vw,40px);display:grid;gap:18px;min-width:0}
+.ders header{border-bottom:1px solid var(--cizgi);padding-bottom:16px}
+.ders header .m{margin:10px 0 0;color:var(--soluk)}
+.govde{max-width:72ch;display:grid;gap:14px;min-width:0}
+.govde h3{font-size:1.3rem;margin-top:16px}
+.govde h4{font:600 1.02rem var(--serif);margin:6px 0 0}
+.govde p,.govde li{line-height:1.7;margin:0}
+.govde ul,.govde ol{margin:0;padding-left:1.3em;display:grid;gap:5px}
+.govde table{border-collapse:collapse;font-size:.93rem;display:block;overflow-x:auto;max-width:100%}
+.govde th,.govde td{border:1px solid var(--cizgi);padding:6px 10px;text-align:left}
+.govde th{background:var(--cizgi2)}
+.govde .kural{border:1px solid var(--vurgu);border-left-width:4px;background:var(--vurgu-acik);padding:12px 16px;border-radius:4px;display:grid;gap:8px}
+.govde .tuzak{border-left:4px solid var(--uyari);background:var(--uyari-acik);padding:12px 16px;border-radius:4px}
+.govde .tuzak::before{content:"Tuzak";display:block;font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--uyari);margin-bottom:4px}
+.govde .alesde{border:1px dashed var(--cizgi);padding:12px 16px;border-radius:4px;background:var(--bg)}
+.govde .alesde::before{content:"ALES'te";display:block;font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--vurgu-ink);margin-bottom:4px}
+.govde .ornek{border:1px solid var(--cizgi);border-radius:6px;padding:14px 16px;display:grid;gap:10px}
+.govde .ornek .soru{font-weight:600}
+.govde details summary{cursor:pointer;color:var(--vurgu-ink);font-weight:600}
+.govde details[open] summary{margin-bottom:8px}
+.govde details>*+*{margin-top:8px}
+.govde .sonuc{font-weight:700;color:var(--iyi)}
+.govde svg.sekil{display:block;width:100%;max-width:340px;height:auto;margin:8px auto;color:var(--murekkep);overflow:visible}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.9em;line-height:1.1;margin:0 2px}
+.frac>span:first-child{border-bottom:1px solid currentColor;padding:0 3px}
+.frac>span:last-child{padding:0 3px}
+.onson{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.95rem}
+.onson a{max-width:48%;text-decoration:none}
+@media (max-width:560px){.onson a{max-width:100%}}
+/* analiz */
+.tablo{overflow-x:auto;border:1px solid var(--cizgi);border-radius:8px;background:var(--yuzey)}
+.tablo table{border-collapse:collapse;width:100%;min-width:520px;font-size:.95rem}
+.tablo th,.tablo td{padding:9px 14px;border-bottom:1px solid var(--cizgi2);text-align:left;font-variant-numeric:tabular-nums}
+.tablo th{font:500 .75rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soluk)}
+.tablo td:nth-child(n+2),.tablo th:nth-child(n+2){text-align:right;white-space:nowrap}
+.cubuk{display:block;height:5px;margin-top:5px;border-radius:3px;background:var(--vurgu);opacity:.75;width:calc(var(--o)*100%)}
+.z{font:500 .72rem var(--mono);text-transform:uppercase;padding:1px 6px;border-radius:3px;border:1px solid currentColor}
+.z.kolay{color:var(--iyi)}.z.orta{color:var(--soluk)}.z.zor{color:var(--uyari)}
+.alanlar{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:640px}
+.alanlar li{display:grid;grid-template-columns:minmax(150px,1fr) 2fr 48px;gap:12px;align-items:center}
+.alanlar .cubuk{margin:0;height:8px}
+.alanlar b{text-align:right;font-variant-numeric:tabular-nums}
+.not p{color:var(--soluk);max-width:72ch}
+.ozet h2{font-size:2.2rem;color:var(--vurgu-ink);margin:0 0 6px}
+/* program */
+.faz{display:grid;gap:12px}
+.faz>.m{margin:-10px 0 0;color:var(--soluk)}
+.haftalar{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.hafta{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:8px;padding:14px 16px}
+.hafta h3{font-size:1.1rem}
+.hafta h3 span{display:block;font:500 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soluk);margin-bottom:2px}
+.hafta h4{margin:10px 0 2px;font-size:.85rem;color:var(--soluk)}
+.hafta ul{margin:0;padding-left:1.1em;font-size:.93rem;display:grid;gap:3px}
+.ilgili{font-size:.88rem;margin:10px 0 0;color:var(--soluk)}
+.alt{border-top:1px solid var(--cizgi);background:var(--yuzey)}
+.alt .ic{padding-block:22px;font-size:.93rem}
+.alt p{margin:0 0 8px;max-width:80ch}
+.kucuk{color:var(--soluk);font-size:.85rem}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Sözel mantık I: sıralama ve tablo", "description": "Sözel bölümün son 8 sorusu (43–50) iki ayrı 4'lü bloktan oluşur: her blokta bir \"kurgu\" (senaryo) verilir, ardından o kurguyla ilgili 4 soru sorulur.…", "inLanguage": "tr", "educationalLevel": "Lisans mezunu", "learningResourceType": "Konu anlatımı", "isAccessibleForFree": true, "about": "ALES Sözel", "url": "https://esraaksoy29.github.io/ales-rotasi/dersler/sozel-mantik-i-siralama-ve-tablo/"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ALES Rotası", "item": "https://esraaksoy29.github.io/ales-rotasi/"}, {"@type": "ListItem", "position": 2, "name": "Dersler", "item": "https://esraaksoy29.github.io/ales-rotasi/dersler/"}, {"@type": "ListItem", "position": 3, "name": "Sözel mantık I: sıralama ve tablo", "item": "https://esraaksoy29.github.io/ales-rotasi/dersler/sozel-mantik-i-siralama-ve-tablo/"}]}</script>
+</head>
+<body>
+<header class="ust"><div class="ic">
+<a class="logo" href="../../">ALES <b>Rotası</b></a>
+<nav><a href="../../dersler/" aria-current=page>Dersler</a><a href="../../konu-analizi/">Konu analizi</a><a href="../../program/">16 haftalık program</a><a class="tg" href="https://t.me/aleskampi">Telegram grubu</a></nav>
+</div></header>
+<main class="ic">
+
+<nav class="iz"><a href="../../">Ana sayfa</a> › <a href="../#sozel">Sözel dersler</a></nav>
+<article class="ders">
+<header><p class="ust-yazi">ALES Sözel · 8. hafta</p>
+<h1>Sözel mantık I: sıralama ve tablo</h1>
+<p class="m">Bu konudan sınavda ortalama <b>9,6 soru</b> çıkıyor (son 11 ALES).</p></header>
+<div class="govde"><div class="alesde">
+Sözel bölümün son 8 sorusu (43–50) iki ayrı 4'lü bloktan oluşur: her blokta bir "kurgu" (senaryo) verilir, ardından o kurguyla ilgili 4 soru sorulur. Kurgu genelde birkaç kişiyi, bir sıralamayı (boy, yaş, bitiş sırası, oturma düzeni) ya da bir tabloyu (kişi–şehir–meslek gibi) içerir. Sorular "kesinlikle doğrudur", "olabilir", "kesinlikle yanlıştır" gibi kalıplarla gelir. Bu bölüm sözelin en zor kısmıdır (ortalama zorluk ≈ 2,7/3) ama doğru yöntemle en garanti puan getiren kısımdır: bilgi sabit, sadece dikkatli okuma ve düzenli not tutma ister.
+</div>
+
+<h3>Bilgiyi sembole çevirme</h3>
+<p>Bu sorularda en büyük zaman kaybı, bilgileri tekrar tekrar cümle olarak okumaktır. Çözümün ilk adımı, her cümleyi kısa bir sembole indirmektir: isimlerin ilk harfini kullan, "büyük/uzun/önce" ilişkilerini ok ya da eşitsizlik gibi düşün.</p>
+
+<div class="kural">
+<p><strong>Sembolleştirme kuralları:</strong></p>
+<ul>
+<li>"A, B'den uzundur" → A &gt; B (boy sıralamasında A önde)</li>
+<li>"A, B'den önce bitirdi" → A önce, B sonra</li>
+<li>"A, en kısa değildir" → A ≠ son sıra</li>
+<li>"A ile B yan yana / bitişik" → |A konumu − B konumu| = 1</li>
+<li>"A, B'nin hemen solunda/önünde" → A konumu = B konumu − 1 (yön net!)</li>
+</ul>
+</div>
+
+<p>Mini örnek: "Kemal, Leyla'dan uzun; Leyla en kısa değil" cümlesini şöyle yazarsın: K &gt; L, L ≠ son. Tek başına bu bilgi sıralamayı bitirmez ama tabloya koyduğunda diğer bilgilerle birleşince işe yarar.</p>
+
+<h3>Tablo şablonu: kişi × özellik</h3>
+<p>Kurguda birden fazla özellik varsa (şehir, meslek, gün, renk gibi), satırlara kişileri, sütunlara özellikleri yaz. Her kesin bilgiyi hemen tabloya ✓ olarak, imkânsız olan eşleşmeleri de ✗ olarak işaretle. Bir satırda ✓ varsa, o satırın diğer hücreleri otomatik ✗ olur (bir kişi aynı özellikten sadece bir tane alır).</p>
+
+<div class="kural">
+<p><strong>Çözüm sırası:</strong></p>
+<ol>
+<li>Doğrudan verilen kesin bilgileri tabloya/sıraya yerleştir.</li>
+<li>Olumsuz bilgileri (✗) işaretle — bunlar da eleme sağlar.</li>
+<li>Bir satırda/sütunda tek boşluk kaldıysa, o hücre otomatik ✓ olur.</li>
+<li>Kesin bilgi bittiğinde "eğer... ise" mantığıyla bir olasılığı dene; çelişki çıkarsa diğerini seç.</li>
+<li>Son olarak şıklara bak: çoğu zaman tüm tabloyu bitirmeden de sorulan tek şıkkı bulabilirsin.</li>
+</ol>
+</div>
+
+<div class="tuzak">
+<strong>Tuzak:</strong> "A, B'den uzundur" ile "A, B'den daha uzun olabilir" farklı şeylerdir. Birincisi kesin bilgi, ikincisi ihtimaldir. Sözel mantıkta kesin bilgi ile ihtimali karıştırmak en sık yapılan hatadır.
+</div>
+
+<div class="tuzak">
+<strong>Tuzak:</strong> "Ne en uzun ne en kısa" gibi olumsuz bilgileri atlama. Bu tür cümleler tabloyu doldurmaz ama olasılıkları daraltarak çözümün anahtarı olur; genelde son adımda devreye girerler.
+</div>
+
+<h3>Çözümlü örnekler</h3>
+
+<div class="ornek">
+<p class="soru">1. Ayşe, Burak, Cem ve Deniz'in boyları farklıdır. Ayşe, Burak'tan uzundur. Deniz, Ayşe'den kısa ama Burak'tan uzundur. Cem, dört kişi arasında en uzun boyludur. Buna göre, en uzundan en kısaya doğru sıralama aşağıdakilerden hangisidir? A) Cem-Ayşe-Deniz-Burak  B) Ayşe-Cem-Deniz-Burak  C) Cem-Deniz-Ayşe-Burak  D) Ayşe-Deniz-Cem-Burak  E) Cem-Ayşe-Burak-Deniz</p>
+<details>
+<summary>Çözüm</summary>
+<p>Sembolleştirelim: Ayşe &gt; Burak. Ayşe &gt; Deniz &gt; Burak (Deniz, Ayşe'den kısa, Burak'tan uzun). Cem = en uzun. Cem zaten en başa yerleşti. Kalan üç kişi için elimizde Ayşe &gt; Deniz &gt; Burak zinciri var — bu tek başına üçünün sırasını da belirliyor. Zincirleri birleştirince: Cem &gt; Ayşe &gt; Deniz &gt; Burak. Bu sıralamayı, dört kişinin olası 24 diziliminin tamamını deneyip üç koşulu birden sağlayanları sayarak doğruladık: yalnızca bir dizilim kalıyor.</p>
+<p class="sonuc">Cevap: A</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">2. Aslı, Barış, Ceyda ve Doğan; Ankara, İzmir, Bursa ve Van şehirlerinden birinde yaşamakta ve öğretmen, mühendis, doktor, hemşire mesleklerinden birini yapmaktadır. Aslı, Ankara'da yaşamıyor. İzmir'de yaşayan kişi mühendistir. Barış hemşire değildir ve İzmir'de yaşamıyor. Doğan doktordur ve Van'da yaşamaktadır. Ceyda, Ankara'da yaşamaktadır. Buna göre Aslı'nın mesleği nedir? A) Öğretmen  B) Mühendis  C) Doktor  D) Hemşire  E) Belirlenemez</p>
+<details>
+<summary>Çözüm</summary>
+<p>Doğan → Van, doktor (kesin). Ceyda → Ankara (kesin). Aslı, Ankara'da yaşamıyor ve Ceyda zaten Ankara'da olduğu için geriye Aslı için İzmir ve Bursa kalır. Barış, İzmir'de yaşamıyor; Doğan zaten Van'da; Ceyda Ankara'da. O hâlde İzmir'de yaşayabilecek tek kişi Aslı'dır → Aslı = İzmir. İzmir'de yaşayan mühendis olduğuna göre Aslı = mühendis. Geriye Barış = Bursa, öğretmen; Ceyda = hemşire kalır (Barış hemşire değil zaten verilmişti, tutarlı). Tüm tablo: Aslı-İzmir-mühendis, Barış-Bursa-öğretmen, Ceyda-Ankara-hemşire, Doğan-Van-doktor. Bu atamanın tek olduğunu, şehir ve meslek eşleşmelerinin 24×24 olası kombinasyonunu tek tek deneyip beş koşulu birden sağlayan tek çözümü bularak doğruladık.</p>
+<p class="sonuc">Cevap: B</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">3. Ege, Fatma, Gül, Hakan ve Irmak yan yana dizilmiş 5 sandalyeye soldan sağa 1'den 5'e kadar oturmaktadır. Gül tam ortadadır. Ege, Hakan'dan önce; Hakan da Fatma'dan önce oturmaktadır (soldan sağa). Irmak, Fatma'nın hemen solundadır. Buna göre 1 numaralı sandalyede kim oturmaktadır? A) Ege  B) Fatma  C) Gül  D) Hakan  E) Irmak</p>
+<details>
+<summary>Çözüm</summary>
+<p>Gül = 3. numaralı sandalye (kesin). Ege &lt; Hakan &lt; Fatma sırası korunmalı ve Irmak, Fatma'nın hemen solunda, yani Irmak = Fatma − 1. Gül 3'ü tuttuğu için kalan sandalyeler 1, 2, 4, 5. Ege &lt; Hakan &lt; Fatma üçlüsünü ve Irmak = Fatma−1 şartını birlikte deneyince tek uyan dizilim: Ege=1, Hakan=2, Gül=3, Irmak=4, Fatma=5. Bu, Irmak'ın Fatma'nın hemen solunda olma şartını da (4 = 5−1) sağlıyor. Beş kişinin 120 olası diziliminin tamamı tek tek denendiğinde üç koşulu birden sağlayan tek dizilimin bu olduğu doğrulandı.</p>
+<p class="sonuc">Cevap: A</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">4. Aylin, Berk, Ceren ve Dila'nın yaşları farklıdır. Berk, Aylin'den büyüktür. Ceren ne en büyük ne de en küçüktür. Dila, Berk'ten küçük ama Ceren'den büyüktür. Buna göre en büyükten en küçüğe doğru sıralama aşağıdakilerden hangisidir? A) Berk-Ceren-Dila-Aylin  B) Berk-Dila-Ceren-Aylin  C) Ceren-Berk-Dila-Aylin  D) Berk-Dila-Aylin-Ceren  E) Dila-Berk-Ceren-Aylin</p>
+<details>
+<summary>Çözüm</summary>
+<p>Berk &gt; Aylin (kesin). Dila &gt; ... Berk'ten küçük demek Berk &gt; Dila; Dila, Ceren'den büyük demek Dila &gt; Ceren. Bunları birleştirince: Berk &gt; Dila &gt; Ceren. Ceren'in "ne en büyük ne en küçük" olması bu zincirle zaten tutarlı (Ceren üçüncü sırada, ne baş ne son — ama son kişi olarak Aylin kalıyor). Aylin'in Berk'ten küçük olduğunu biliyoruz; zincire nereye gireceğini şıklardan ve "dört kişi de farklı" bilgisinden çözeriz: Berk &gt; Dila &gt; Ceren &gt; Aylin sıralaması hem Berk&gt;Aylin hem Ceren'in ortada olması şartını sağlıyor. Aylin'in Ceren'den küçük olması gerektiği (aksi hâlde Ceren en küçük olurdu) da buradan çıkar. 24 olası sıralamanın tamamı tek tek denendiğinde yalnızca Berk-Dila-Ceren-Aylin sıralamasının dört koşulu birden sağladığı doğrulandı.</p>
+<p class="sonuc">Cevap: B</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">5. Mert, Nil, Onur, Pelin ve Rüya, hafta içi 5 farklı günde (Pazartesi–Cuma) doğum günü kutlamakta ve kırmızı, mavi, yeşil, sarı, mor renklerinden birini sevmektedir. Onur, Çarşamba günü kutlamaktadır. Nil, Onur'dan bir gün önce kutlamaktadır. Mert maviyi sever. Pelin, Pazartesi ya da Cuma günü kutlamaktadır. Rüya, Pelin'den sonraki bir günde kutlamaktadır. Onur, kırmızı ya da sarı sevmez. Nil yeşili sever. Rüya mor sevmez. Mert, Rüya'dan bir gün sonra kutlamaktadır. Pelin kırmızı sevmez. Buna göre Onur hangi rengi sever? A) Kırmızı  B) Mavi  C) Yeşil  D) Sarı  E) Mor</p>
+<details>
+<summary>Çözüm</summary>
+<p>Onur = Çarşamba (kesin). Nil, Onur'dan bir gün önce → Nil = Salı. Pelin, Pazartesi ya da Cuma; Rüya, Pelin'den sonra kutladığına göre Pelin Cuma olamaz (sonrası yok) → Pelin = Pazartesi. Kalan günler Perşembe ve Cuma, Mert ile Rüya'ya kalıyor. Mert, Rüya'dan bir gün sonra kutladığına göre Rüya = Perşembe, Mert = Cuma. Renklerde: Mert = mavi, Nil = yeşil (verilmiş). Onur kırmızı/sarı sevmiyor, mavi/yeşil zaten dolu, mor da Rüya'ya kalmıyor çünkü Rüya mor sevmiyor — geriye Onur için sadece mor kalıyor. Pelin kırmızı sevmediğine göre Pelin = sarı, Rüya için de kırmızı kalıyor. Bu tam tabloyu (gün ve renk için 5!×5! olası kombinasyonu) tek tek deneyip on koşulu birden sağlayan tek çözümün bu olduğunu doğruladık.</p>
+<p class="sonuc">Cevap: E</p>
+</details>
+</div>
+
+<div class="tuzak">
+<strong>Tuzak:</strong> Beşinci örnekte olduğu gibi çok bilgili sorularda, bilgileri geldiği sırayla değil, en "kesin" olandan (isim + gün gibi doğrudan eşleşme) başlayarak işlemek zaman kazandırır. Sondaki dolaylı bilgileri en sona bırak.
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Her cümleyi hemen sembole çevir (&gt;, ✓/✗, konum eşitliği).</li>
+<li>Kişi × özellik tablosu kur; bir satırda ✓ varsa aynı satırın diğer hücrelerini ✗ yap.</li>
+<li>Önce kesin bilgileri, sonra olumsuz (değildir) bilgileri işaretle.</li>
+<li>Tek boşluk kalan satır/sütun otomatik dolar — bunu ara ara kontrol et.</li>
+<li>Kesin bilgi tükenirse "varsayıp dene" yöntemine geç; çelişki çıkarsa varsayımı değiştir.</li>
+<li>Tüm tabloyu bitirmeden de sorulan tek hücreyi bulabiliyorsan zaman kaybetme, direkt şıkka bak.</li>
+<li>"Ne ... ne ..." ve "hemen yanında/solunda" gibi ifadeleri atlamadan işaretle; çoğu zaman çözümün kilidi bunlardır.</li>
+</ul>
+</div>
+</article>
+<aside class="tgkutu"><div><b>Her gün 1 sözel + 1 sayısal soru</b><p>Telegram grubunda sabah soru, akşam çözüm; her pazartesi haftanın kamp planı; ALES şartlı akademik ilanlar.</p></div><a class="dugme" href="https://t.me/aleskampi">@aleskampi grubuna katıl</a></aside>
+<nav class="onson"><a href="../uzun-metin-bloklari/">← Uzun metin blokları (29–42)</a><a href="../sozel-mantik-ii-kosullu-kurgu/">Sözel mantık II: koşullu kurgu →</a></nav>
+
+</main>
+<footer class="alt"><div class="ic">
+<p><b>ALES Rotası</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, konu analizi ve çalışma programı.
+Günlük soru, haftalık kamp ve akademik ilanlar için <a href="https://t.me/aleskampi">Telegram grubu @aleskampi</a>.</p>
+<p class="kucuk">İçerikler özgündür; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
+bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
+</div></footer>
+</body>
+</html>

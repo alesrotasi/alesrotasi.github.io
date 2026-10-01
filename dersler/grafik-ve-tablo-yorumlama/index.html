@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALES Grafik ve tablo yorumlama · Sayısal konu anlatımı | ALES Rotası</title>
+<meta name="description" content="ALES&#x27;te bu konu nasıl çıkar? Grafik ve tablo yorumlama soruları sınav başına ortalama 2,9 soru ile karşına çıkar ve genellikle testin 25-43. soruları…">
+<link rel="canonical" href="https://esraaksoy29.github.io/ales-rotasi/dersler/grafik-ve-tablo-yorumlama/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ALES Grafik ve tablo yorumlama · Sayısal konu anlatımı | ALES Rotası">
+<meta property="og:description" content="ALES&#x27;te bu konu nasıl çıkar? Grafik ve tablo yorumlama soruları sınav başına ortalama 2,9 soru ile karşına çıkar ve genellikle testin 25-43. soruları…">
+<meta property="og:url" content="https://esraaksoy29.github.io/ales-rotasi/dersler/grafik-ve-tablo-yorumlama/">
+<meta property="og:locale" content="tr_TR">
+<meta name="theme-color" content="#1f4e5f">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<style>:root{--bg:#f7f5f0;--yuzey:#fff;--murekkep:#1d2329;--soluk:#5c6670;--cizgi:#e2ddd3;--cizgi2:#efebe3;
+--vurgu:#1f4e5f;--vurgu-ink:#1f4e5f;--vurgu-acik:#e6eff1;--iyi:#2f7d4f;--uyari:#a3561c;--uyari-acik:#fbf0e6;
+--soz:#7a3e6e;--say:#1f4e5f;--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,"Cascadia Mono",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#14181c;--yuzey:#1b2026;--murekkep:#e7e4dd;--soluk:#a2a9b0;--cizgi:#2c333b;--cizgi2:#232930;
+--vurgu:#7fb6c6;--vurgu-ink:#9cc9d6;--vurgu-acik:#1e2f35;--iyi:#6cc093;--uyari:#e3a26b;--uyari-acik:#2f2419;--soz:#d39ac6;--say:#7fb6c6;color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--murekkep);font:17px/1.6 var(--sans)}
+a{color:var(--vurgu-ink);text-underline-offset:3px}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;font-weight:600;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.7rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.3rem,3vw,1.65rem);margin:0 0 14px}
+.ic{max-width:1060px;margin:0 auto;padding-inline:clamp(16px,4vw,32px)}
+main.ic{display:grid;gap:44px;padding-block:32px 56px}
+main.ic>*{min-width:0}
+.ust{background:var(--yuzey);border-bottom:1px solid var(--cizgi);position:sticky;top:0;z-index:5}
+.ust .ic{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;padding-block:10px}
+.logo{font:600 1.25rem var(--serif);color:var(--murekkep);text-decoration:none}
+.logo b{color:var(--vurgu-ink)}
+.ust nav{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;font-size:.95rem}
+.ust nav a{text-decoration:none;color:var(--soluk)}
+.ust nav a:hover,.ust nav a[aria-current]{color:var(--murekkep)}
+.ust nav a.tg{color:var(--vurgu-ink);font-weight:600}
+.ust-yazi{font:500 .78rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soluk);margin:0 0 8px}
+.giris{font-size:1.12rem;color:var(--soluk);max-width:62ch;margin:14px 0 0}
+.kahraman{padding-top:20px}
+.dugmeler{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.dugme{display:inline-block;background:var(--vurgu);color:#fff;text-decoration:none;font-weight:600;padding:11px 18px;border-radius:6px}
+@media (prefers-color-scheme:dark){.dugme{color:#0f1417}}
+.dugme.ikincil{background:transparent;color:var(--vurgu-ink);border:1px solid var(--vurgu)}
+.ozet{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.ozet>div{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:8px;padding:18px 20px}
+.ozet ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.ozet p{margin:0;color:var(--soluk)}
+.kartlar{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.kart{display:grid;gap:6px;align-content:start;background:var(--yuzey);border:1px solid var(--cizgi);border-radius:8px;padding:14px 16px;text-decoration:none;color:var(--murekkep);transition:border-color .15s}
+.kart:hover{border-color:var(--vurgu)}
+.kart b{font-weight:600;line-height:1.35}
+.kart .m{font-size:.85rem;color:var(--soluk)}
+.etiket{font:500 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.etiket.soz{color:var(--soz)}.etiket.say{color:var(--say)}
+.tgkutu{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;background:var(--vurgu-acik);border:1px solid var(--vurgu);border-radius:10px;padding:18px 22px}
+.tgkutu p{margin:4px 0 0;color:var(--soluk);max-width:60ch}
+.sss details{border-bottom:1px solid var(--cizgi);padding:12px 0}
+.sss summary{cursor:pointer;font-weight:600}
+.sss p{margin:8px 0 0;color:var(--soluk)}
+.baslik{display:grid;gap:4px}
+.iz{font-size:.9rem;color:var(--soluk);margin-bottom:-28px}
+.iz a{color:var(--soluk)}
+/* ders */
+.ders{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:10px;padding:clamp(18px,4vw,40px);display:grid;gap:18px;min-width:0}
+.ders header{border-bottom:1px solid var(--cizgi);padding-bottom:16px}
+.ders header .m{margin:10px 0 0;color:var(--soluk)}
+.govde{max-width:72ch;display:grid;gap:14px;min-width:0}
+.govde h3{font-size:1.3rem;margin-top:16px}
+.govde h4{font:600 1.02rem var(--serif);margin:6px 0 0}
+.govde p,.govde li{line-height:1.7;margin:0}
+.govde ul,.govde ol{margin:0;padding-left:1.3em;display:grid;gap:5px}
+.govde table{border-collapse:collapse;font-size:.93rem;display:block;overflow-x:auto;max-width:100%}
+.govde th,.govde td{border:1px solid var(--cizgi);padding:6px 10px;text-align:left}
+.govde th{background:var(--cizgi2)}
+.govde .kural{border:1px solid var(--vurgu);border-left-width:4px;background:var(--vurgu-acik);padding:12px 16px;border-radius:4px;display:grid;gap:8px}
+.govde .tuzak{border-left:4px solid var(--uyari);background:var(--uyari-acik);padding:12px 16px;border-radius:4px}
+.govde .tuzak::before{content:"Tuzak";display:block;font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--uyari);margin-bottom:4px}
+.govde .alesde{border:1px dashed var(--cizgi);padding:12px 16px;border-radius:4px;background:var(--bg)}
+.govde .alesde::before{content:"ALES'te";display:block;font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--vurgu-ink);margin-bottom:4px}
+.govde .ornek{border:1px solid var(--cizgi);border-radius:6px;padding:14px 16px;display:grid;gap:10px}
+.govde .ornek .soru{font-weight:600}
+.govde details summary{cursor:pointer;color:var(--vurgu-ink);font-weight:600}
+.govde details[open] summary{margin-bottom:8px}
+.govde details>*+*{margin-top:8px}
+.govde .sonuc{font-weight:700;color:var(--iyi)}
+.govde svg.sekil{display:block;width:100%;max-width:340px;height:auto;margin:8px auto;color:var(--murekkep);overflow:visible}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.9em;line-height:1.1;margin:0 2px}
+.frac>span:first-child{border-bottom:1px solid currentColor;padding:0 3px}
+.frac>span:last-child{padding:0 3px}
+.onson{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.95rem}
+.onson a{max-width:48%;text-decoration:none}
+@media (max-width:560px){.onson a{max-width:100%}}
+/* analiz */
+.tablo{overflow-x:auto;border:1px solid var(--cizgi);border-radius:8px;background:var(--yuzey)}
+.tablo table{border-collapse:collapse;width:100%;min-width:520px;font-size:.95rem}
+.tablo th,.tablo td{padding:9px 14px;border-bottom:1px solid var(--cizgi2);text-align:left;font-variant-numeric:tabular-nums}
+.tablo th{font:500 .75rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soluk)}
+.tablo td:nth-child(n+2),.tablo th:nth-child(n+2){text-align:right;white-space:nowrap}
+.cubuk{display:block;height:5px;margin-top:5px;border-radius:3px;background:var(--vurgu);opacity:.75;width:calc(var(--o)*100%)}
+.z{font:500 .72rem var(--mono);text-transform:uppercase;padding:1px 6px;border-radius:3px;border:1px solid currentColor}
+.z.kolay{color:var(--iyi)}.z.orta{color:var(--soluk)}.z.zor{color:var(--uyari)}
+.alanlar{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:640px}
+.alanlar li{display:grid;grid-template-columns:minmax(150px,1fr) 2fr 48px;gap:12px;align-items:center}
+.alanlar .cubuk{margin:0;height:8px}
+.alanlar b{text-align:right;font-variant-numeric:tabular-nums}
+.not p{color:var(--soluk);max-width:72ch}
+.ozet h2{font-size:2.2rem;color:var(--vurgu-ink);margin:0 0 6px}
+/* program */
+.faz{display:grid;gap:12px}
+.faz>.m{margin:-10px 0 0;color:var(--soluk)}
+.haftalar{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.hafta{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:8px;padding:14px 16px}
+.hafta h3{font-size:1.1rem}
+.hafta h3 span{display:block;font:500 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soluk);margin-bottom:2px}
+.hafta h4{margin:10px 0 2px;font-size:.85rem;color:var(--soluk)}
+.hafta ul{margin:0;padding-left:1.1em;font-size:.93rem;display:grid;gap:3px}
+.ilgili{font-size:.88rem;margin:10px 0 0;color:var(--soluk)}
+.alt{border-top:1px solid var(--cizgi);background:var(--yuzey)}
+.alt .ic{padding-block:22px;font-size:.93rem}
+.alt p{margin:0 0 8px;max-width:80ch}
+.kucuk{color:var(--soluk);font-size:.85rem}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Grafik ve tablo yorumlama", "description": "ALES'te bu konu nasıl çıkar? Grafik ve tablo yorumlama soruları sınav başına ortalama 2,9 soru ile karşına çıkar ve genellikle testin 25-43. soruları…", "inLanguage": "tr", "educationalLevel": "Lisans mezunu", "learningResourceType": "Konu anlatımı", "isAccessibleForFree": true, "about": "ALES Sayısal", "url": "https://esraaksoy29.github.io/ales-rotasi/dersler/grafik-ve-tablo-yorumlama/"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ALES Rotası", "item": "https://esraaksoy29.github.io/ales-rotasi/"}, {"@type": "ListItem", "position": 2, "name": "Dersler", "item": "https://esraaksoy29.github.io/ales-rotasi/dersler/"}, {"@type": "ListItem", "position": 3, "name": "Grafik ve tablo yorumlama", "item": "https://esraaksoy29.github.io/ales-rotasi/dersler/grafik-ve-tablo-yorumlama/"}]}</script>
+</head>
+<body>
+<header class="ust"><div class="ic">
+<a class="logo" href="../../">ALES <b>Rotası</b></a>
+<nav><a href="../../dersler/" aria-current=page>Dersler</a><a href="../../konu-analizi/">Konu analizi</a><a href="../../program/">16 haftalık program</a><a class="tg" href="https://t.me/aleskampi">Telegram grubu</a></nav>
+</div></header>
+<main class="ic">
+
+<nav class="iz"><a href="../../">Ana sayfa</a> › <a href="../#sayisal">Sayısal dersler</a></nav>
+<article class="ders">
+<header><p class="ust-yazi">ALES Sayısal · 8. hafta</p>
+<h1>Grafik ve tablo yorumlama</h1>
+<p class="m">Bu konudan sınavda ortalama <b>2,9 soru</b> çıkıyor (son 11 ALES).</p></header>
+<div class="govde"><div class="alesde">
+<p><strong>ALES'te bu konu nasıl çıkar?</strong> Grafik ve tablo yorumlama soruları sınav başına ortalama <strong>2,9 soru</strong> ile karşına çıkar ve genellikle testin <strong>25-43. soruları</strong> arasındaki bloklarda, tek bir grafik/tabloya bağlı <strong>2-4 soruluk gruplar</strong> halinde sorulur. Yani bir grafiği/tabloyu bir kere iyi okursan, ardı ardına gelen birkaç soruyu hızlıca çözebilirsin. Bu derste grafikler görsel yerine <strong>HTML tablo</strong> ile verilecek; asıl beceri, sayısal veriden doğru sonucu çıkarmak ve "kesin doğru" ile "muhtemelen doğru"yu ayırt etmektir.</p>
+</div>
+
+<h3>1. Grafik türleri ve nasıl okunur</h3>
+<div class="kural">
+<p><strong>Sütun (çubuk) grafik:</strong> Her kategoriye ait değer, bir sütunun yüksekliğiyle gösterilir. Sütunları karşılaştırırken farkı doğrudan değerlerden çıkar.</p>
+<p><strong>Çizgi grafik:</strong> Zaman içindeki değişimi gösterir; çizginin yükselip alçalması artış/azalışı, eğimin dikliği değişim hızını gösterir.</p>
+<p><strong>Daire (dilim) grafik:</strong> Bütünün parçalara bölünüşünü gösterir. Tüm dilimlerin toplamı her zaman <strong>360°</strong> ya da <strong>%100</strong>'dür.</p>
+</div>
+
+<h3>2. Yüzde-derece dönüşümü</h3>
+<p>Daire grafiklerde veri bazen derece, bazen yüzde olarak verilir. İkisi arasında geçiş yapmak çok basittir çünkü tam daire hem 360°'ye hem %100'e karşılık gelir.</p>
+
+<div class="kural">
+<p>360° = %100 olduğundan: <strong>1° = %(100/360) = %(5/18)</strong> ve <strong>%1 = 3,6°</strong>.</p>
+<p>Bir dilimin derecesi biliniyorsa yüzdesi = derece · (100/360). Yüzdesi biliniyorsa derecesi = yüzde · (360/100) = yüzde · 3,6.</p>
+</div>
+
+<p>Mini örnek: Bir daire grafikte bir dilim 90° ise, bu dilim bütünün 90 · (100/360) = %25'idir.</p>
+
+<h3>3. Tablodan oran ve yüzde değişim çıkarma</h3>
+<p>Tablo sorularında en sık istenen şey, iki değer arasındaki farkı, oranı ya da yüzde değişimi bulmaktır.</p>
+
+<div class="kural">
+<p><strong>Yüzde değişim</strong> = <span class="frac"><span>Yeni değer − Eski değer</span><span>Eski değer</span></span> · 100</p>
+<p>Sonuç pozitifse artış, negatifse azalış olduğunu unutma. Değişim her zaman <strong>eski (başlangıç) değere</strong> göre hesaplanır, yeni değere göre değil.</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak 1 — Yanlış paydayı kullanmak:</strong> 250'den 300'e çıkan bir değerin yüzde artışını bulurken payda 300 değil, <strong>250</strong> (başlangıç/eski değer) olmalıdır. Yanlış paydayı kullanmak, doğru cevaba çok yakın ama hatalı bir şık üretir — ALES bu yanlış şıkkı bilerek seçenekler arasına koyar.</p>
+</div>
+
+<h3>4. "Kesinlikle doğrudur" tipi sorular</h3>
+<p>Bu soru tipinde beş şıktan sadece biri, verilen veriyle <strong>matematiksel olarak zorunlu</strong> olan bilgiyi söyler; diğerleri "olabilir ama kesin değil" türünden yanıltıcı önermelerdir.</p>
+
+<div class="kural">
+<p>Bir şıkkın "kesinlikle doğru" olması için, verilen sayılardan <strong>tek bir sonuca</strong> ulaşman gerekir. Eğer bir şık için birden fazla senaryo (birbirinden farklı ama tabloyla tutarlı iki durum) üretebiliyorsan, o şık kesin doğru değildir.</p>
+<p>En sağlam yöntem: toplamı bilinen bir bütünden, bilinen alt parçaları çıkararak bilinmeyen parçayı bulmaktır — bu tür bir sonuç her zaman kesindir.</p>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak 2 — "Genelde böyledir" ile "kesinlikle böyledir"i karıştırmak:</strong> Bir tabloda "en çok satan ürün her yıl aynıdır" gibi bir örüntü görülse bile, bu örüntünün sorulmayan bir yılda da devam edeceği kesin değildir. "Kesinlikle doğrudur" sorularında sadece tabloda açıkça yazan ya da ondan zorunlu olarak (başka türlü olamayacak şekilde) çıkan sonuçlar doğru kabul edilir.</p>
+</div>
+
+<h3>5. Ortak öncüllü blokları verimli çözmek</h3>
+<p>Bir grafiğe/tabloya bağlı 2-4 soruluk bloklarda zaman kazanmanın yolu şudur: Önce grafiği/tabloyu satır satır, sütun sütun <strong>bir kere dikkatlice</strong> oku (birimi, yılları, kategorileri not al), sonra soruları sırayla çöz. Her soru için tabloya dönüp sadece ilgili hücrelere bak; tüm tabloyu her seferinde baştan okumaya çalışma.</p>
+
+<h3>Çözümlü Örnekler</h3>
+
+<div class="ornek">
+<p class="soru">Aşağıdaki tabloda dört şehrin nüfusu (bin kişi) verilmiştir.</p>
+<table>
+<thead><tr><th>Şehir</th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>
+<tbody><tr><td>Nüfus (bin kişi)</td><td>120</td><td>150</td><td>90</td><td>140</td></tr></tbody>
+</table>
+<p class="soru">Bu dört şehirden hangi ikisinin nüfus farkı en büyüktür ve bu fark kaç bin kişidir?<br>A) 30  B) 40  C) 50  D) 60  E) 70</p>
+<details>
+<summary>Çözüm</summary>
+<p>En büyük fark, en yüksek değerle en düşük değer arasında olur: en yüksek B = 150, en düşük C = 90.</p>
+<p>Fark: 150 − 90 = 60 bin kişi.</p>
+<p class="sonuc">Cevap: D) 60</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir okuldaki öğrencilerin bölüm dağılımı daire grafikte derece cinsinden verilmiştir:</p>
+<table>
+<thead><tr><th>Bölüm</th><th>Fen</th><th>Sözel</th><th>Dil</th><th>TM</th></tr></thead>
+<tbody><tr><td>Açı</td><td>108°</td><td>90°</td><td>72°</td><td>90°</td></tr></tbody>
+</table>
+<p class="soru">Fen bölümündeki öğrenciler, tüm öğrencilerin yüzde kaçıdır?<br>A) 20  B) 25  C) 30  D) 35  E) 40</p>
+<details>
+<summary>Çözüm</summary>
+<p>Tam daire 360° = %100'e karşılık gelir. Fen bölümünün açısı 108°.</p>
+<p>Yüzdesi = 108 · (100/360) = 10800/360 = %30.</p>
+<p class="sonuc">Cevap: C) 30</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir mağazanın yıllara göre satış miktarları (bin adet) aşağıdaki tabloda verilmiştir.</p>
+<table>
+<thead><tr><th>Yıl</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th></tr></thead>
+<tbody><tr><td>Satış (bin adet)</td><td>200</td><td>250</td><td>300</td><td>270</td></tr></tbody>
+</table>
+<p class="soru">2022'den 2023'e satışlardaki artış yüzde kaçtır?<br>A) 10  B) 15  C) 20  D) 25  E) 30</p>
+<details>
+<summary>Çözüm</summary>
+<p>Yüzde değişim, eski (başlangıç) değere göre hesaplanır. Burada eski değer 2022'nin değeri olan 250'dir.</p>
+<p>Yüzde artış = (300 − 250) / 250 · 100 = 50/250 · 100 = %20.</p>
+<p class="sonuc">Cevap: C) 20</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir fabrikadaki 260 çalışanın bölümlere göre dağılımının bir kısmı aşağıdaki tabloda verilmiştir; Muhasebe bölümündeki çalışan sayısı tabloda gösterilmemiştir.</p>
+<table>
+<thead><tr><th>Bölüm</th><th>Üretim</th><th>Pazarlama</th><th>Muhasebe</th><th>İK</th><th>Toplam</th></tr></thead>
+<tbody><tr><td>Çalışan sayısı</td><td>150</td><td>40</td><td>?</td><td>30</td><td>260</td></tr></tbody>
+</table>
+<p class="soru">Muhasebe bölümündeki çalışan sayısı kesinlikle kaçtır?<br>A) 30  B) 35  C) 40  D) 45  E) 50</p>
+<details>
+<summary>Çözüm</summary>
+<p>Toplam çalışan sayısı bilindiğine ve diğer üç bölümün değeri açıkça verildiğine göre, Muhasebe bölümü zorunlu olarak tek bir değere sahiptir; bu yüzden "kesinlikle doğru"dur.</p>
+<p>Muhasebe = 260 − 150 − 40 − 30 = 40.</p>
+<p class="sonuc">Cevap: C) 40</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir firmanın X ve Y ürünlerinin yıllara göre satış miktarları (bin adet) aşağıdaki tabloda verilmiştir. Bu tabloya göre aşağıdaki iki soruyu cevaplayınız.</p>
+<table>
+<thead><tr><th>Yıl</th><th>2022</th><th>2023</th><th>2024</th></tr></thead>
+<tbody>
+<tr><td>X ürünü</td><td>300</td><td>360</td><td>450</td></tr>
+<tr><td>Y ürünü</td><td>400</td><td>400</td><td>360</td></tr>
+</tbody>
+</table>
+<p class="soru">Soru 1: 2023 yılında X ürününün satışının Y ürününün satışına oranı kaçtır?<br>A) 4/5  B) 9/10  C) 1  D) 11/10  E) 5/4</p>
+<details>
+<summary>Çözüm</summary>
+<p>2023'te X = 360, Y = 400. Oran = 360/400 = 9/10 (sadeleştirilmiş hâli).</p>
+<p class="sonuc">Cevap: B) 9/10</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Soru 2 (yukarıdaki tabloya göre): Aşağıdakilerden hangisi tabloya göre kesinlikle doğrudur?<br>A) X ürünü her yıl Y ürününden az satılmıştır.<br>B) Y ürününün satışı her yıl artmıştır.<br>C) X ürününün satışı sadece 2024 yılında Y ürününün satışını geçmiştir.<br>D) X ürününün satışı üç yılda toplam olarak Y'den fazladır.<br>E) 2022 yılında X, Y'den fazla satılmıştır.</p>
+<details>
+<summary>Çözüm</summary>
+<p>Yıl yıl karşılaştıralım: 2022'de X=300, Y=400 → X&lt;Y. 2023'te X=360, Y=400 → X&lt;Y. 2024'te X=450, Y=360 → X&gt;Y.</p>
+<p>Demek ki X, Y'yi sadece 2024 yılında geçmiştir. Bu, tablodan zorunlu olarak çıkan tek doğru önermedir.</p>
+<p>Diğer şıkları eleyelim: A yanlış (2024'te X fazla), B yanlış (Y 2023'te sabit, 2024'te azalmış), D için toplamlar hesaplanmalı: X toplamı 300+360+450=1110, Y toplamı 400+400+360=1160; X toplamı Y'den küçük, D yanlış. E yanlış (2022'de X&lt;Y).</p>
+<p class="sonuc">Cevap: C) X ürününün satışı sadece 2024 yılında Y ürününün satışını geçmiştir.</p>
+</details>
+</div>
+
+<h3>6. Ortalama (aritmetik ortalama) tablo sorularında</h3>
+<p>Grafik-tablo sorularının bir kısmı doğrudan ortalama ister: "bu 4 ayın ortalama satışı kaçtır", "5 şehrin ortalama nüfusu nedir" gibi. Ortalama kavramı basittir ama tabloda kaç tane veri olduğunu (kaç ay, kaç yıl, kaç şehir) doğru saymak kritiktir.</p>
+<div class="kural">
+<p><strong>Aritmetik ortalama</strong> = Tüm değerlerin toplamı ÷ değer sayısı.</p>
+<p>Tabloya bakıp "kaç tane sütun/satır var" diye saymadan bölme işlemi yapma; yanlış sayıya bölmek en sık yapılan hesap hatasıdır.</p>
+</div>
+<p>Mini örnek: Bir mağazanın 5 aylık satışları (bin adet) 40, 55, 60, 45, 50 ise ortalama satış = (40+55+60+45+50)/5 = 250/5 = 50 bin adettir.</p>
+
+<h3>7. "Kaç katı" ve oran karşılaştırmaları</h3>
+<p>Bazı sorular fark ya da yüzde değil, doğrudan oran ("kaç katı") sorar. Bu tip sorularda hangi değerin payda (bölen), hangisinin pay (bölünen) olduğunu doğru seçmek gerekir.</p>
+<div class="kural">
+<p>"A, B'nin kaç katıdır?" sorusunun cevabı her zaman <span class="frac"><span>A</span><span>B</span></span> işlemiyle bulunur — yani sorulan değer payda, "kime göre" denen değer paydadır.</p>
+<p>"B, A'nın kaç katıdır?" ile "A, B'nin kaç katıdır?" birbirinin tersidir (çarpımları 1 vermez, birbirinin çarpmaya göre tersidir); bu ikisini karıştırmamak gerekir.</p>
+</div>
+<p>Mini örnek: X ürününün satışı 450, Y ürününün satışı 90 birim ise X, Y'nin 450/90 = 5 katıdır.</p>
+
+<div class="kural">
+<p><strong>Adım adım çözüm şablonu:</strong></p>
+<ol>
+<li>Tabloyu/grafiği bir kez dikkatle oku: birim (bin, %, derece), yıl/kategori isimleri neler, not al.</li>
+<li>Soruda tam olarak ne isteniyor, netleştir: fark mı, oran ("kaç katı") mı, yüzde değişim mi, ortalama mı, yoksa "kesinlikle doğru" bir önerme mi?</li>
+<li>Sadece soruyla ilgili hücreleri tabloda bul; gereksiz sayılarla vakit kaybetme.</li>
+<li>İşlemi yap, sonucu birimiyle birlikte yaz (bin adet, %, kat gibi).</li>
+<li>Sonucu şıklarla karşılaştır; "kesinlikle doğru" sorularında her şıkkı tek tek tabloyla test et.</li>
+</ol>
+</div>
+
+<h3>Yeni Çözümlü Örnekler</h3>
+
+<div class="ornek">
+<p class="soru">Bir firmanın Ocak-Haziran (6 ay) toplam üretimi 2400 birimdir. İlk beş ayın (Ocak-Mayıs) üretimi aşağıdaki tabloda verilmiştir; Haziran ayının üretimi tabloda gösterilmemiştir.</p>
+<table>
+<thead><tr><th>Ay</th><th>Ocak</th><th>Şubat</th><th>Mart</th><th>Nisan</th><th>Mayıs</th></tr></thead>
+<tbody><tr><td>Üretim (birim)</td><td>380</td><td>420</td><td>400</td><td>410</td><td>390</td></tr></tbody>
+</table>
+<p class="soru">Haziran ayının üretimi, ilk beş ayın ortalama üretiminin yüzde kaçıdır?</p>
+<p>A) 80  B) 90  C) 100  D) 110  E) 120</p>
+<details>
+<summary>Çözüm</summary>
+<p>İlk beş ayın toplamı = 380 + 420 + 400 + 410 + 390 = 2000. Ortalaması = 2000/5 = 400.</p>
+<p>Toplam altı ay 2400 olduğundan Haziran = 2400 − 2000 = 400 (bu, toplamdan bilinen parçaları çıkarma yöntemiyle kesin olarak bulunur).</p>
+<p>Haziran'ın ortalamaya oranı = 400/400 · 100 = %100.</p>
+<p class="sonuc">Cevap: C) 100</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir okulun spor kulüplerine üye öğrenci sayıları aşağıdaki tabloda verilmiştir.</p>
+<table>
+<thead><tr><th>Kulüp</th><th>Basketbol</th><th>Voleybol</th><th>Futbol</th><th>Tenis</th></tr></thead>
+<tbody><tr><td>Üye sayısı</td><td>36</td><td>24</td><td>60</td><td>12</td></tr></tbody>
+</table>
+<p class="soru">Futbol kulübündeki üye sayısı, Tenis kulübündeki üye sayısının kaç katıdır?</p>
+<p>A) 3  B) 4  C) 5  D) 6  E) 8</p>
+<details>
+<summary>Çözüm</summary>
+<p>"Futbol, Tenis'in kaç katı" sorulduğuna göre Futbol payda (bölünen), Tenis payda (bölen) olur: 60/12 = 5.</p>
+<p class="sonuc">Cevap: C) 5</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir şehrin dört mevsimdeki ortalama yağış miktarı (mm) aşağıdaki tabloda verilmiştir.</p>
+<table>
+<thead><tr><th>Mevsim</th><th>İlkbahar</th><th>Yaz</th><th>Sonbahar</th><th>Kış</th></tr></thead>
+<tbody><tr><td>Yağış (mm)</td><td>90</td><td>30</td><td>60</td><td>120</td></tr></tbody>
+</table>
+<p class="soru">Kış mevsimindeki yağış, yıllık toplam yağışın yüzde kaçıdır?</p>
+<p>A) 30  B) 35  C) 40  D) 45  E) 50</p>
+<details>
+<summary>Çözüm</summary>
+<p>Yıllık toplam yağış = 90 + 30 + 60 + 120 = 300 mm.</p>
+<p>Kış'ın payı = 120/300 · 100 = %40.</p>
+<p class="sonuc">Cevap: C) 40</p>
+</details>
+</div>
+
+<div class="tuzak">
+<p><strong>Tuzak 3 — Ortalama ve oranı yanlış kurmak:</strong> Ortalama sorularında toplamı, tablodaki veri sayısına (ay/yıl/kişi sayısına) değil rastgele bir sayıya bölmek büyük bir hesap hatasıdır — önce "kaç tane değer var" diye say. "Kaç katı" sorularında ise A'nın B'ye oranı ile B'nin A'ya oranını karıştırmak (payda-payı ters kurmak) ALES'in sıkça kullandığı bir çeldiricidir; soruyu "... , ...'nin kaç katıdır" diye tekrar oku ve hangi değerin payda geldiğini netleştir.</p>
+</div>
+
+<h3>Kendini dene</h3>
+
+<div class="ornek">
+<p class="soru">Bir mağazada satılan 4 ürünün fiyatları 20, 35, 15 ve 50 TL'dir. Bu ürünlerin ortalama fiyatı kaç TL'dir?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Ortalama = (20 + 35 + 15 + 50) / 4 = 120 / 4 = 30 TL.</p>
+<p class="sonuc">Cevap: 30 TL</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">A ürününün satışı 180 birim, B ürününün satışı 45 birimdir. A, B'nin kaç katıdır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>180/45 = 4.</p>
+<p class="sonuc">Cevap: 4 katı</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir daire grafikte bir dilim 45° ile gösterilmiştir. Bu dilim bütünün yüzde kaçıdır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Yüzde = 45 · (100/360) = 4500/360 = %12,5.</p>
+<p class="sonuc">Cevap: %12,5</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Bir ürünün satışı 2020'de 400, 2021'de 500 birim olmuştur. Bu ürünün satışındaki yüzde artış kaçtır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Yüzde değişim = (Yeni − Eski)/Eski · 100 = (500 − 400)/400 · 100 = 100/400 · 100 = %25.</p>
+<p class="sonuc">Cevap: %25 artış</p>
+</details>
+</div>
+
+<div class="ornek">
+<p class="soru">Toplamı 500 olan 4 kalemden 3'ünün değeri bilinmektedir: 120, 130 ve 150. Dördüncü kalem kesinlikle kaçtır?</p>
+<details>
+<summary>Çözüm</summary>
+<p>Toplamdan bilinen üç parçayı çıkarırsak: 500 − 120 − 130 − 150 = 100. Toplam bilindiği ve diğer üç değer açık verildiği için bu sonuç kesindir (tek bir değere zorunlu olarak ulaşılır).</p>
+<p class="sonuc">Cevap: 100</p>
+</details>
+</div>
+
+<h3>Özet</h3>
+<ul>
+<li>Daire grafikte tam bütün her zaman 360°'ye ve %100'e eşittir; 1° = %(5/18), %1 = 3,6°.</li>
+<li>Yüzde değişim hesabında payda her zaman eski (başlangıç) değerdir, yeni değer değil.</li>
+<li>"Kesinlikle doğrudur" sorularında sadece tek bir sonuca zorunlu olarak götüren şıkkı seç; birden fazla senaryoya açık olan şıkları ele.</li>
+<li>Bilinen bir toplamdan bilinen alt parçaları çıkarmak, her zaman kesin (zorunlu) bir sonuç verir.</li>
+<li>Ortak öncüllü bloklarda grafiği/tabloyu bir kez dikkatle oku, sonra sorulara tek tek dön; her soru için tüm tabloyu yeniden okumaya çalışma.</li>
+<li>Sütun ve çizgi grafiklerde en büyük fark, en yüksek ile en düşük değer arasında aranır.</li>
+<li>Şıklardaki sayıları tabloyla karşılaştırıp elemeden önce, hangi yılın/kategorinin "eski", hangisinin "yeni" değer olduğunu netleştir.</li>
+<li>Ortalama = toplam ÷ değer sayısı; tabloda kaç veri olduğunu saymadan bölme.</li>
+<li>"A, B'nin kaç katıdır" sorularında A payda, B paydadır; tersini karıştırma.</li>
+<li>Adım adım şablonu uygula: önce tabloyu oku, sonra sorunun tam olarak ne istediğini belirle, sonra ilgili hücrelerle işlem yap.</li>
+</ul>
+</div>
+</article>
+<aside class="tgkutu"><div><b>Her gün 1 sözel + 1 sayısal soru</b><p>Telegram grubunda sabah soru, akşam çözüm; her pazartesi haftanın kamp planı; ALES şartlı akademik ilanlar.</p></div><a class="dugme" href="https://t.me/aleskampi">@aleskampi grubuna katıl</a></aside>
+<nav class="onson"><a href="../hareket-isci-havuz-temel-olasilik/">← Hareket, işçi-havuz, temel olasılık</a><a href="../ucgenler/">Üçgenler →</a></nav>
+
+</main>
+<footer class="alt"><div class="ic">
+<p><b>ALES Rotası</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, konu analizi ve çalışma programı.
+Günlük soru, haftalık kamp ve akademik ilanlar için <a href="https://t.me/aleskampi">Telegram grubu @aleskampi</a>.</p>
+<p class="kucuk">İçerikler özgündür; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
+bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
+</div></footer>
+</body>
+</html>
