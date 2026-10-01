@@ -1,0 +1,8 @@
+{"agirlik": {"SAY": [0.75, 0.25], "SOZ": [0.25, 0.75], "EA": [0.5, 0.5]},
+ "kilavuz": "https://dokuman.osym.gov.tr/pdfdokuman/2026/ALES-2/kilavuz_ales2d10062026.pdf",
+ "setler": [
+  {"ad": "2017-ALES Sonbahar (Sayısal Bilgiler)", "say": [17.066, 12.011], "soz": [27.824, 9.735], "url": "https://dokuman.osym.gov.tr/pdfdokuman/2017/ALESSONBAHAR/Say%C4%B1salBilgiler21122017.pdf"},
+  {"ad": "2017-ALES Sonbahar (Değerlendirme Raporu)", "say": [18.59, 12.16], "soz": [30.37, 9.57], "url": "https://dokuman.osym.gov.tr/pdfdokuman/2018/GENEL/ALESRaporu_13022018.pdf"},
+  {"ad": "2018-ALES/2 (Değerlendirme Raporu)", "say": [19.07, 13.03], "soz": [28.85, 9.97], "url": "https://dokuman.osym.gov.tr/pdfdokuman/2018/GENEL/ales2degrapor24122018.pdf"}],
+ "korelasyon": [0.5, 0.6, 0.7],
+ "ek_pay": 2}

@@ -121,3 +121,17 @@ pre.veri{font:.92rem/1.5 var(--mono);background:var(--yuzey);border:1px solid va
 .altlink{font-size:.9rem}
 .rehber h2{font-size:1.35rem;margin:18px 0 4px}
 .rehber ol{display:grid;gap:6px}
+.duyuru.mavi{background:var(--vurgu-acik);border-color:var(--vurgu)}
+.duyuru.mavi b{color:var(--vurgu-ink)}
+.hesap{background:var(--yuzey);border:1px solid var(--vurgu);border-radius:10px;padding:18px clamp(14px,3vw,24px);display:grid;gap:14px}
+.girdi{display:flex;flex-wrap:wrap;gap:12px}
+.girdi fieldset{flex:1 1 220px;border:1px solid var(--cizgi);border-radius:8px;display:flex;gap:12px;padding:10px 14px 14px;margin:0}
+.girdi legend{font-weight:600;padding:0 4px}
+.girdi label{display:grid;gap:4px;font-size:.9rem;color:var(--soluk);flex:1}
+.girdi input{font:600 1.2rem var(--sans);padding:8px 10px;border:1px solid var(--cizgi);border-radius:6px;background:var(--bg);color:var(--murekkep);width:100%;min-width:0}
+.netler{margin:0;color:var(--soluk)}
+.sonuclar{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.sonuclar div{border:1px solid var(--cizgi);border-radius:8px;padding:12px 14px;display:grid;gap:2px;background:var(--bg)}
+.sonuclar span{font-size:.85rem;color:var(--soluk)}
+.sonuclar b{font:600 1.9rem var(--serif);color:var(--vurgu-ink)}
+.sonuclar small{color:var(--soluk)}

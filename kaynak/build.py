@@ -155,7 +155,7 @@ YAYIN = yayinlanan_sorular()
 
 # ---------------------------------------------------------------- şablon
 CSS = open(os.path.join(KOK, "stil.css"), encoding="utf-8").read()
-NAV = [("ales-3-hazirlik/", "ALES/3 planı"), ("ales-calisma-programi/", "Çalışma programı"), ("dersler/", "Dersler"),
+NAV = [("ales-puan-hesaplama/", "Puan hesaplama"), ("ales-3-hazirlik/", "ALES/3 planı"), ("ales-calisma-programi/", "Çalışma programı"), ("dersler/", "Dersler"),
        ("sorular/", "Çözümlü sorular"), ("konu-analizi/", "Konu analizi")]
 
 
@@ -193,7 +193,7 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif=""):
 <footer class="alt"><div class="ic">
 <p><b>ALES Rotası</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, çözümlü sorular, konu analizi ve çalışma programları.
 Günlük soru, haftalık kamp ve akademik ilanlar için <a href="{TG}">Telegram grubu @aleskampi</a>.</p>
-<p class="altlink"><a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a></p>
+<p class="altlink"><a href="{kok}ales-puan-hesaplama/">ALES puan hesaplama</a> · <a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a></p>
 <p class="kucuk">İçerikler özgündür; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
 bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
 </div></footer>
@@ -262,6 +262,7 @@ def ana_sayfa():
 </section>
 
 <a class="duyuru" href="ales-3-hazirlik/"><b>29 Kasım ALES/3'e mi giriyorsun?</b> Başvuru tarihleri ve 8 haftalık öncelik sıralı plan →</a>
+<a class="duyuru mavi" href="ales-puan-hesaplama/"><b>Kaç net kaç puan?</b> ÖSYM formülüyle yaklaşık ALES puanını hesapla →</a>
 
 <section class="ozet">
 <div><h2>Sözel'de en çok soru</h2><ol>{li(konu_istat("SOZ"))}</ol><p><a href="ales-konulari/">Bütün konular →</a></p></div>
@@ -670,6 +671,96 @@ def rehber():
                                        g, "../", ld))
 
 
+PUAN = json.load(open(os.path.join(VERI, "puan_istatistik.json"), encoding="utf-8"))
+
+
+def puan_aralik(say_net, soz_net, tur):
+    """Kılavuz formülüyle, yayımlanmış ÖSYM istatistik setleri × korelasyon senaryolarının min–max'ı (+ ek pay)."""
+    import math
+    a, b = PUAN["agirlik"][tur]
+    r = []
+    for st in PUAN["setler"]:
+        (ms, ss), (mv, sv) = st["say"], st["soz"]
+        sp = lambda n, m, s: 50 + 10 * (n - m) / s
+        AP = a * sp(say_net, ms, ss) + b * sp(soz_net, mv, sv)
+        B = a * sp(50, ms, ss) + b * sp(50, mv, sv)
+        for rho in PUAN["korelasyon"]:
+            S = 10 * math.sqrt(a * a + b * b + 2 * a * b * rho)
+            r.append(70 + 30 * (2 * (AP - 50) - S) / (2 * (B - 50) - S))
+    k = PUAN["ek_pay"]
+    return max(0, min(r) - k), min(100, max(r) + k)
+
+
+def puan_sayfasi():
+    def tablo(tur, satir, sutun, satir_ad, sutun_ad, ters=False):
+        s = f'<div class="tablo"><table><thead><tr><th>{satir_ad} ↓ / {sutun_ad} →</th>' + "".join(f"<th>{c}</th>" for c in sutun) + "</tr></thead><tbody>"
+        for x in satir:
+            s += f"<tr><td><b>{x} net</b></td>"
+            for y in sutun:
+                lo, hi = puan_aralik(y, x, tur) if not ters else puan_aralik(x, y, tur)
+                s += f"<td>{round(lo)}–{round(hi)}</td>"
+            s += "</tr>"
+        return s + "</tbody></table></div>"
+    soz_t = tablo("SOZ", [20, 25, 30, 35, 40, 45], [0, 10, 20, 30], "Sözel net", "Sayısal net")
+    say_t = tablo("SAY", [10, 15, 20, 25, 30, 35, 40], [10, 20, 30, 40], "Sayısal net", "Sözel net", ters=True)
+    ea_t = tablo("EA", [20, 25, 30, 35, 40], [10, 15, 20, 25, 30], "Sözel net", "Sayısal net")
+    kaynak = "".join(f'<li><a href="{s["url"]}">{esc(s["ad"])}</a>: sözel ort. {virgul(s["soz"][0])} (ss {virgul(s["soz"][1])}), '
+                     f'sayısal ort. {virgul(s["say"][0])} (ss {virgul(s["say"][1])})</li>' for s in PUAN["setler"])
+    js = json.dumps(PUAN, ensure_ascii=False)
+    g = f"""
+<header class="baslik"><p class="ust-yazi">Yaklaşık hesap · ÖSYM formülü</p><h1>ALES puan hesaplama: kaç net kaç puan?</h1>
+<p class="giris">Doğru ve yanlış sayını gir; ÖSYM kılavuzundaki formülle üç puan türünde <b>yaklaşık puan aralığını</b> hesaplayalım.
+Kesin puanı yalnızca ÖSYM verebilir: puan, o sınava giren herkesin ortalamasına bağlıdır ve ÖSYM bu ortalamaları 2018'den beri yayımlamıyor.
+Bu yüzden tek bir sayı değil, dürüst bir aralık gösteriyoruz.</p></header>
+
+<section class="hesap" id="hesap">
+<div class="girdi">
+<fieldset><legend>Sözel (50 soru)</legend><label>Doğru <input type="number" id="sozD" min="0" max="50" value="30" inputmode="numeric"></label><label>Yanlış <input type="number" id="sozY" min="0" max="50" value="8" inputmode="numeric"></label></fieldset>
+<fieldset><legend>Sayısal (50 soru)</legend><label>Doğru <input type="number" id="sayD" min="0" max="50" value="15" inputmode="numeric"></label><label>Yanlış <input type="number" id="sayY" min="0" max="50" value="6" inputmode="numeric"></label></fieldset>
+</div>
+<p class="netler" id="netler"></p>
+<div class="sonuclar" id="sonuc"></div>
+<p class="kucuk" id="uyari" hidden></p>
+</section>
+
+<section><h2>Hangi net kaç puan? (ALES Sözel puanı)</h2><p>Hücreler yaklaşık puan aralığıdır.</p>{soz_t}</section>
+<section><h2>ALES Sayısal puanı</h2>{say_t}</section>
+<section><h2>ALES Eşit Ağırlık puanı</h2>{ea_t}</section>
+
+<section class="not"><h2>Nasıl hesaplıyoruz?</h2>
+<p>ÖSYM'nin <a href="{PUAN["kilavuz"]}">2026-ALES başvuru kılavuzuna</a> göre (Bölüm 3.9):</p>
+<ol class="liste">
+<li><b>Ham puan (net)</b> = doğru − yanlış ÷ 4, her test için ayrı.</li>
+<li>Her testin ham puanı, o sınavdaki bütün adayların ortalaması 50, standart sapması 10 olacak biçimde <b>standart puana</b> çevrilir.</li>
+<li><b>Ağırlıklı puan:</b> Sayısal puan türü %75 sayısal + %25 sözel; Sözel puan türü %25 sayısal + %75 sözel; Eşit Ağırlık %50 + %50.</li>
+<li><b>ALES puanı</b> = 70 + 30 × [2(AP − X) − S] ÷ [2(B − X) − S]. AP adayın ağırlıklı puanı; X, S, B ise sınavdaki ağırlıklı puanların ortalaması, standart sapması ve en büyüğüdür.</li>
+</ol>
+<p>Test ortalamaları ve standart sapmalar sınavdan sınava değişir ve ÖSYM bunları en son 2017–2018'de yayımladı. Aralığı bu üç resmî istatistik setiyle,
+sözel-sayısal ilişkisi için üç farklı varsayımla hesaplayıp her iki yana {PUAN["ek_pay"]} puan pay ekliyoruz:</p>
+<ul class="liste">{kaynak}</ul>
+<p>Gerçek puanın bu aralığın dışına düşmesi mümkündür, özellikle çok düşük ve çok yüksek netlerde. Resmî puan için <a href="https://sonuc.osym.gov.tr">sonuc.osym.gov.tr</a>.</p></section>
+{tg_kutu()}
+<script>
+const P={js};
+const sp=(n,m,s)=>50+10*(n-m)/s;
+function aralik(sn,vn,t){{const [a,b]=P.agirlik[t];const r=[];for(const st of P.setler){{const [ms,ss]=st.say,[mv,sv]=st.soz;const AP=a*sp(sn,ms,ss)+b*sp(vn,mv,sv);const B=a*sp(50,ms,ss)+b*sp(50,mv,sv);for(const rho of P.korelasyon){{const S=10*Math.sqrt(a*a+b*b+2*a*b*rho);r.push(70+30*(2*(AP-50)-S)/(2*(B-50)-S));}}}}return [Math.max(0,Math.min(...r)-P.ek_pay),Math.min(100,Math.max(...r)+P.ek_pay)];}}
+const al=id=>Math.max(0,Math.min(50,parseInt(document.getElementById(id).value)||0));
+function hesapla(){{const sD=al('sozD'),sY=al('sozY'),yD=al('sayD'),yY=al('sayY');const uy=document.getElementById('uyari');
+const tasan=(sD+sY>50)||(yD+yY>50);uy.hidden=!tasan;uy.textContent=tasan?'Bir testte doğru + yanlış 50\\'yi geçemez.':'';
+const vn=sD-sY/4,sn=yD-yY/4;document.getElementById('netler').innerHTML='Sözel net: <b>'+vn.toFixed(2).replace('.',',')+'</b> · Sayısal net: <b>'+sn.toFixed(2).replace('.',',')+'</b>';
+const T=[['SOZ','ALES Sözel'],['EA','ALES Eşit Ağırlık'],['SAY','ALES Sayısal']];
+document.getElementById('sonuc').innerHTML=T.map(([k,ad])=>{{const [lo,hi]=aralik(sn,vn,k);return '<div><span>'+ad+'</span><b>'+Math.round(lo)+'–'+Math.round(hi)+'</b><small>yaklaşık</small></div>';}}).join('');}}
+document.querySelectorAll('#hesap input').forEach(i=>i.addEventListener('input',hesapla));hesapla();
+</script>
+"""
+    ld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": "ALES puan hesaplama (yaklaşık)", "url": BASE + "/ales-puan-hesaplama/",
+           "applicationCategory": "EducationalApplication", "operatingSystem": "Web", "inLanguage": "tr", "isAccessibleForFree": True,
+           "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"}}]
+    yaz("ales-puan-hesaplama/", sayfa("ales-puan-hesaplama/", "ALES puan hesaplama 2026: kaç net kaç puan? (ÖSYM formülü)",
+                                      "ALES puanını ÖSYM kılavuzundaki formülle yaklaşık hesapla: sözel, sayısal ve eşit ağırlık puan aralıkları ve kaç net kaç puan tablosu.",
+                                      g, "../", ld, "ales-puan-hesaplama/"))
+
+
 def ekler(yollar):
     yaz("404.html", sayfa("404.html", "Sayfa bulunamadı | ALES Rotası", "Aradığın sayfa bulunamadı.",
                           f'<header class="baslik"><h1>Sayfa bulunamadı</h1><p class="giris"><a href="{BASE}/">Ana sayfaya dön</a> · <a href="{BASE}/sorular/">Çözümlü sorular</a> · <a href="{BASE}/dersler/">Dersler</a></p></header>', BASE + "/"))
@@ -685,8 +776,8 @@ def ekler(yollar):
 if __name__ == "__main__":
     shutil.rmtree(CIKTI, ignore_errors=True)
     os.makedirs(CIKTI)
-    ana_sayfa(); ders_sayfalari(); soru_sayfalari(); analiz(); konu_sayfalari(); programlar(); ales3(); rehber()
-    yollar = (["", "ales-3-hazirlik/", "ales-calisma-programi/"] + [f"ales-calisma-programi/{n}-aylik/" for n in (1, 2, 3, 4)] +
+    ana_sayfa(); ders_sayfalari(); soru_sayfalari(); analiz(); konu_sayfalari(); programlar(); ales3(); rehber(); puan_sayfasi()
+    yollar = (["", "ales-puan-hesaplama/", "ales-3-hazirlik/", "ales-calisma-programi/"] + [f"ales-calisma-programi/{n}-aylik/" for n in (1, 2, 3, 4)] +
               ["ales-nasil-calisilir/", "dersler/"] + [f"dersler/{d['slug']}/" for d in SIRA] +
               ["sorular/"] + [f"sorular/{q['slug']}/" for q in YAYIN] +
               ["konu-analizi/", "ales-konulari/"] + [f"ales-konulari/{s[0]}/" for s in KONU_SAYFALARI])
