@@ -140,3 +140,8 @@ main.ic input{-webkit-user-select:text;user-select:text}
 .iletisim{font-size:.93rem}
 .baski-notu{display:none}
 @media print{body>*{display:none!important}.baski-notu{display:block!important;font:16px/1.5 system-ui,sans-serif;padding:40px}}
+.bulgular{background:var(--vurgu-acik);border:1px solid var(--vurgu);border-radius:10px;padding:18px 22px}
+.bulgular h2{margin-top:0}
+.bulgular ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.bulgular .kucuk{margin:12px 0 0}
+.guncel{color:var(--soluk);font-size:.85rem;margin-top:32px;border-top:1px solid var(--cizgi2);padding-top:10px}

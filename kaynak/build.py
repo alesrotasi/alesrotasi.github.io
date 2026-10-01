@@ -8,10 +8,11 @@ Kitap kırpımı, ÖSYM soru metni İÇERMEZ. Girdiler (hepsi bu depoda):
   kaynak/veri/sorular/*.json       Günün Sorusu bankası (özgün); yalnız günü GEÇMİŞ sorular yayımlanır
   kaynak/icerik.py                 1-2-3 aylık programlar, rehber metni
   kaynak/CNAME (varsa)             özel alan adı
+  kaynak/veri/guncelleme.json      sayfa başına içerik özeti + son değişiklik tarihi (derleme günceller, Actions commit'ler)
 
 Kullanım:  python kaynak/build.py
 """
-import glob, html, json, os, re, shutil, statistics, sys
+import glob, hashlib, html, json, os, re, shutil, statistics, sys
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta, timezone
 
@@ -159,10 +160,72 @@ YAYIN = yayinlanan_sorular()
 CSS = open(os.path.join(KOK, "stil.css"), encoding="utf-8").read()
 NAV = [("ales-puan-hesaplama/", "Puan hesaplama"), ("ales-3-hazirlik/", "ALES/3 planı"), ("ales-calisma-programi/", "Çalışma programı"), ("dersler/", "Dersler"),
        ("sorular/", "Çözümlü sorular"), ("konu-analizi/", "Konu analizi")]
+AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+GUNC_DOSYA = os.path.join(VERI, "guncelleme.json")
+GUNC = json.load(open(GUNC_DOSYA, encoding="utf-8")) if os.path.exists(GUNC_DOSYA) else {}
+KAYNAK_ANALIZ = (f"son {NS} ALES ({SINAVLAR[0]} – {SINAVLAR[-1]}) sorusunun ALES Rotası tarafından yapılan konu ve zorluk etiketlemesi "
+                 f'(<a href="{BASE}/konu-analizi/">konu analizi</a>)')
+KAYNAK_OSYM = '<a href="https://www.osym.gov.tr/">ÖSYM</a> 2026-ALES başvuru kılavuzu'
 
 
-def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif=""):
+def tarih_tr(iso):
+    d = date.fromisoformat(iso)
+    return f"{d.day} {AYLAR[d.month - 1]} {d.year}"
+
+
+def guncel_tarih(yol, govde):
+    """İçerik değiştiyse bugünün tarihi, değişmediyse son değişikliğin tarihi (sitemap lastmod ve 'Son güncelleme' için)."""
+    h = hashlib.sha1(govde.encode("utf-8")).hexdigest()[:12]
+    e = GUNC.get(yol)
+    if not e or e[0] != h:
+        e = GUNC[yol] = [h, BUGUN_TR.isoformat()]
+    return e[1]
+
+
+BOSLUK_NOKTA = re.compile(r"\s+([.,;:])")
+
+
+def sss(kalemler, baslik="Sık sorulanlar"):
+    """[(soru, cevap_html)] → (HTML bölümü, FAQPage JSON-LD). Cevabın ilk cümlesi soruyu doğrudan yanıtlar."""
+    h = "".join(f"<details><summary>{esc(q)}</summary><p>{a}</p></details>" for q, a in kalemler)
+    ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": BOSLUK_NOKTA.sub(lambda m: m.group(1), ilk_cumle(a, 10000))}} for q, a in kalemler]}
+    return f'<section class="sss"><h2>{esc(baslik)}</h2>{h}</section>', ld
+
+
+def rakamlar():
+    """Analizden alıntılanabilir temel sayılar."""
+    soz, say = konu_istat("SOZ"), konu_istat("SAY")
+    soz_top = sum(n for _, n, _, _ in soz)
+    par = sum(n for k, n, _, _ in soz if k.startswith("Paragraf") or k == "Uzun Metin Okuma")
+    k = {s: sum(1 for r in SORULAR if r["bolum"] == b and r["konu"] in ks) for s, _, _, b, ks, _ in KONU_SAYFALARI}
+    zor = max(soz + say, key=lambda x: x[2])
+    sb = lambda n: virgul(round(n / NS, 1))
+    return dict(par_oran=round(100 * par / soz_top), par=sb(par), sozm=sb(k["sozel-mantik"]), saym=sb(k["sayisal-mantik"]),
+                geo=sb(k["geometri"]), prob=sb(k["problemler"]), temel=sb(k["temel-matematik"]), grafik=sb(k["grafik-tablo"]),
+                zor_ad=ad(zor[0]), zor_puan=virgul(round(zor[2], 2)))
+
+
+def bulgular():
+    r = rakamlar()
+    return [f"ALES Sözel testindeki soruların yaklaşık %{r['par_oran']}'si paragraf temellidir (ana düşünce, çıkarım, paragraf yapısı, uzun metin): sınav başına ortalama {r['par']} soru.",
+            f"ALES Sayısal testinde en çok soru getiren tek konu sayısal mantıktır: sınav başına ortalama {r['saym']} soru.",
+            f"Sözel mantık sınav başına ortalama {r['sozm']} soru getirir ve en zor etiketlenen konudur (1–3 ölçeğinde ortalama zorluk {r['zor_puan']}).",
+            f"Temel matematik (temel işlemler, sayı kavramları, denklem, bölünebilme, kümeler, tanımlı işlem) sınav başına ortalama {r['temel']} soru, problemler {r['prob']} soru getirir.",
+            f"Geometri sınav başına ortalama {r['geo']} soru getirir; öğrenmesi en uzun süren konu olduğundan kısa hazırlıkta en sona bırakılabilir.",
+            f"Grafik ve tablo yorumlama sınav başına ortalama {r['grafik']} sorudur."]
+
+
+def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None):
     url = BASE + "/" + yol
+    if yol != "404.html":
+        t = guncel_tarih(yol, govde)
+        govde += (f'\n<p class="guncel">Son güncelleme: <time datetime="{t}">{tarih_tr(t)}</time>'
+                  + (f" · Kaynak: {kaynak}" if kaynak else "") + "</p>")
+        jsonld = (jsonld or []) + [{"@context": "https://schema.org", "@type": "WebPage", "name": baslik, "url": url, "inLanguage": "tr",
+                                    "description": aciklama, "dateModified": t,
+                                    "isPartOf": {"@type": "WebSite", "name": "ALES Rotası", "url": BASE + "/"},
+                                    "publisher": {"@type": "Organization", "name": "ALES Rotası", "url": BASE + "/"}}]
     navh = "".join(f'<a href="{kok}{h}"{" aria-current=page" if aktif == h else ""}>{t}</a>' for h, t in NAV)
     ld = "".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in (jsonld or []))
     return f"""<!doctype html>
@@ -258,6 +321,15 @@ def ana_sayfa():
     say = "".join(ders_kart(d, "") for d in SIRA if d["bolum"] == "SAY")
     li = lambda st: "".join(f"<li><b>{esc(ad(k))}</b> · sınavda ortalama {virgul(round(n / NS, 1))} soru</li>" for k, n, _, _ in st[:4])
     son = sorted(YAYIN, key=lambda q: (-q["gun"], q["bolum"]))[:6]
+    rk = rakamlar()
+    sss_h, sss_ld = sss([
+        ("ALES'te kaç soru var, süre ne kadar?", "ALES'te 50 sözel ve 50 sayısal olmak üzere 100 soru vardır; süre 150 dakikadır. Dört yanlış bir doğruyu götürür. Güncel kurallar için ÖSYM'nin başvuru kılavuzuna bak."),
+        ("ALES'te en çok hangi konudan soru çıkar?", f"Sözel'de paragraf: son {NS} sınavda sözel soruların yaklaşık %{rk['par_oran']}'si paragraf temelliydi. Sayısal'da en büyük tek konu sayısal mantık (sınav başına ortalama {rk['saym']} soru). Ayrıntı: <a href=\"konu-analizi/\">konu analizi</a>."),
+        ("Sıfırdan başlıyorum, nereden başlamalıyım?", f"Paragraftan başla: sözel soruların yaklaşık %{rk['par_oran']}'si paragraf temelli. <a href=\"dersler/{DERS['s01']['slug']}/\">Paragrafta ana düşünce</a> dersiyle başla, sayısalda <a href=\"dersler/{DERS['y01']['slug']}/\">sayılar ve temel kavramlar</a> ile paralel ilerle. Ayrıntılı yol: <a href=\"ales-nasil-calisilir/\">ALES'e sıfırdan nasıl çalışılır?</a>"),
+        ("ALES puanı kaç yıl geçerlidir?", "ALES sonuçları açıklandığı tarihten itibaren 5 yıl geçerlidir. Yaklaşık puanını <a href=\"ales-puan-hesaplama/\">ALES puan hesaplama</a> sayfasında görebilirsin."),
+        ("Çıkmış soruları nereden çözebilirim?", "ÖSYM, geçmiş sınavların soru kitapçıklarını kendi sitesinde ücretsiz yayımlar: <a href=\"https://www.osym.gov.tr/\">osym.gov.tr</a> → Çıkmış Sorular. Bu sitedeki sorular özgündür, ÖSYM sorusu değildir."),
+        ("Bu site ücretli mi?", "Hayır. Dersler, sorular, analiz ve programlar ücretsizdir; üyelik gerekmez."),
+    ])
     sonh = "".join(f'<a class="kart" href="sorular/{q["slug"]}/"><span class="etiket {"soz" if q["bolum"] == "sozel" else "say"}">'
                    f'{q["bolum_ad"]} · {q["gun"]}. gün</span><b>{esc(q["temiz_konu"])}</b></a>' for q in son)
     sonbolum = f'<section><h2>Son çözümlü sorular</h2><div class="kartlar">{sonh}</div><p><a href="sorular/">Bütün çözümlü sorular →</a></p></section>' if son else ""
@@ -283,19 +355,13 @@ def ana_sayfa():
 <section><h2 id="sozel">Sözel dersler</h2><div class="kartlar">{soz}</div></section>
 <section><h2 id="sayisal">Sayısal dersler</h2><div class="kartlar">{say}</div></section>
 
-<section class="sss">
-<h2>Sık sorulanlar</h2>
-<details><summary>ALES'te kaç soru var, süre ne kadar?</summary><p>ALES'te 50 sözel ve 50 sayısal olmak üzere 100 soru vardır; süre 150 dakikadır. Dört yanlış bir doğruyu götürür. Güncel kurallar için ÖSYM'nin başvuru kılavuzuna bak.</p></details>
-<details><summary>Sıfırdan başlıyorum, nereden başlamalıyım?</summary><p>Sözel'deki soruların yaklaşık üçte ikisi paragraf temellidir. <a href="dersler/{DERS['s01']['slug']}/">Paragrafta ana düşünce</a> dersiyle başla, sayısalda <a href="dersler/{DERS['y01']['slug']}/">sayılar ve temel kavramlar</a> ile paralel ilerle. Ayrıntılı yol: <a href="ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a></p></details>
-<details><summary>Çıkmış soruları nereden çözebilirim?</summary><p>ÖSYM, geçmiş sınavların soru kitapçıklarını kendi sitesinde ücretsiz yayımlar: <a href="https://www.osym.gov.tr/">osym.gov.tr</a> → Çıkmış Sorular. Bu sitedeki sorular özgündür, ÖSYM sorusu değildir.</p></details>
-<details><summary>Bu site ücretli mi?</summary><p>Hayır. Dersler, sorular, analiz ve programlar ücretsizdir; üyelik gerekmez.</p></details>
-</section>
+{sss_h}
 """
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "ALES Rotası", "url": BASE + "/", "inLanguage": "tr"},
-          {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Rotası", "url": BASE + "/", "sameAs": [TG_GENEL], "email": "esraaksoyy34@gmail.com"}]
+          {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Rotası", "url": BASE + "/", "sameAs": [TG_GENEL], "email": "esraaksoyy34@gmail.com"}, sss_ld]
     yaz("", sayfa("", "ALES Rotası · ALES'e sıfırdan hazırlık: konu anlatımı, çözümlü sorular, çalışma programı",
                   f"ALES sözel ve sayısal için ücretsiz {len(DERSLER)} konu anlatımı, çözümlü sorular, son {NS} sınavın konu dağılımı ve 1-2-3-4 aylık çalışma programları.",
-                  g, "", ld))
+                  g, "", ld, kaynak=KAYNAK_ANALIZ))
 
 
 def ders_sayfalari():
@@ -422,9 +488,19 @@ def analiz():
     paragraf = sum(n for k, n, _, _ in soz if k.startswith("Paragraf") or k == "Uzun Metin Okuma")
     sm = next(n for k, n, _, _ in say if k == "Sayısal Mantık")
     konular = "".join(f'<a class="kart" href="../ales-konulari/{s}/"><b>{esc(b)}</b></a>' for s, b, *_ in KONU_SAYFALARI)
+    rk = rakamlar()
+    bul = "".join(f"<li>{esc(x)}</li>" for x in bulgular())
+    sss_h, sss_ld = sss([
+        ("ALES Sözel'de en çok hangi konu çıkar?", f"Paragraf. Son {NS} ALES'te sözel soruların yaklaşık %{rk['par_oran']}'si paragraf temelliydi (sınav başına ortalama {rk['par']} soru); ardından sözel mantık gelir (ortalama {rk['sozm']} soru)."),
+        ("ALES Sayısal'da en çok hangi konu çıkar?", f"Sayısal mantık: sınav başına ortalama {rk['saym']} soru. Konu grubu olarak bakılırsa temel matematik konuları toplam {rk['temel']}, problemler {rk['prob']} soru getirir."),
+        ("ALES'te geometri kaç soru çıkar?", f"Sınav başına ortalama {rk['geo']} soru. Ayrıntı: <a href=\"../ales-konulari/geometri/\">ALES'te geometri</a>."),
+        ("ALES'in en zor konusu hangisi?", f"Etiketlemeye göre {rk['zor_ad'].lower()}: 1 (kolay) – 3 (zor) ölçeğinde ortalama zorluk {rk['zor_puan']}. Zorluk etiketleri ALES Rotası'nın değerlendirmesidir."),
+    ])
     g = f"""
 <header class="baslik"><h1>ALES'te hangi konudan kaç soru çıkıyor?</h1>
 <p class="giris">Son {NS} ALES sınavındaki ({SINAVLAR[0]} – {SINAVLAR[-1]}) {len(SORULAR)} sorunun tamamı konu ve zorluğa göre tek tek etiketlendi. Aşağıdaki tablolar bu etiketlerin sayımıdır.</p></header>
+<section class="bulgular"><h2>Öne çıkan bulgular</h2><ol>{bul}</ol>
+<p class="kucuk">Alıntılarken kaynak: ALES Rotası, “ALES soru dağılımı” ({SINAVLAR[0]} – {SINAVLAR[-1]}, {len(SORULAR)} soru), {BASE}/konu-analizi/</p></section>
 <section class="ozet">
 <div><h2>%{round(100 * paragraf / sum(n for _, n, _, _ in soz))}</h2><p>Sözel soruların paragraf temelli olanları (ana düşünce, çıkarım, yapı, uzun metin)</p></div>
 <div><h2>{virgul(round(sm / NS, 1))}</h2><p>Sayısal'da sınav başına sayısal mantık sorusu: en büyük tek konu</p></div>
@@ -436,12 +512,13 @@ def analiz():
 <section><h2>Sözel paragraflar hangi alanlardan geliyor?</h2>
 <p>{len(ALANLAR)} sözel sorunun metni konu alanına göre sınıflandırıldı. Paragraf çalışırken farklı alanlardan metin okumak, sınavdaki metin çeşitliliğine hazırlar.</p>
 <ul class="alanlar">{alan_html}</ul></section>
+{sss_h}
 {yontem()}
 {tg_kutu()}
 """
     yaz("konu-analizi/", sayfa("konu-analizi/", "ALES soru dağılımı: hangi konudan kaç soru çıkıyor?",
                                f"Son {NS} ALES sınavındaki {len(SORULAR)} sorunun konu ve zorluk dağılımı: sözel paragraf, sözel mantık, sayısal mantık, problemler ve geometri.",
-                               g, "../", None, "konu-analizi/"))
+                               g, "../", [sss_ld], "konu-analizi/", kaynak=KAYNAK_ANALIZ))
 
 
 def yontem():
@@ -487,7 +564,8 @@ Bu sorular {bolum_ad(bolum)} testinde çoğunlukla <b>{q1}–{q3}.</b> sorular a
         acik = f"Son {NS} ALES'te {kisa.lower()} sınav başına ortalama {virgul(round(n / NS, 1))} soru: sınav sınav dağılım, soru tipleri, zorluk ve çalışma yolu."
         u = f"{BASE}/ales-konulari/{s}/"
         yaz(f"ales-konulari/{s}/", sayfa(f"ales-konulari/{s}/", baslik, acik, g, "../../",
-                                         [kirinti(("ALES Rotası", BASE + "/"), ("ALES konuları", BASE + "/ales-konulari/"), (baslik, u))], "konu-analizi/"))
+                                         [kirinti(("ALES Rotası", BASE + "/"), ("ALES konuları", BASE + "/ales-konulari/"), (baslik, u))], "konu-analizi/",
+                                         kaynak=KAYNAK_ANALIZ))
     kart = "".join(f'<a class="kart" href="{s}/"><span class="etiket {b.lower()}">{bolum_ad(b)}</span><b>{esc(t)}</b>'
                    f'<span class="m">sınav başına {virgul(round(sum(1 for r in SORULAR if r["bolum"] == b and r["konu"] in k) / NS, 1))} soru</span></a>'
                    for s, t, _, b, k, _ in KONU_SAYFALARI)
@@ -500,7 +578,7 @@ Tüm tablo için <a href="../konu-analizi/">konu analizi</a>.</p></header>
 """
     yaz("ales-konulari/", sayfa("ales-konulari/", "ALES konuları 2026: sözel ve sayısal konular, soru dağılımı",
                                 "ALES sözel ve sayısal konuları ve soru dağılımı: paragraf, sözel mantık, sayısal mantık, problemler, geometri, temel matematik.",
-                                g, "../", None, "konu-analizi/"))
+                                g, "../", None, "konu-analizi/", kaynak=KAYNAK_ANALIZ))
 
 
 def program_haftalari(n):
@@ -596,9 +674,17 @@ def programlar():
         yaz(f"ales-calisma-programi/{n}-aylik/", sayfa(f"ales-calisma-programi/{n}-aylik/", f"{P['baslik']} (sıfırdan, PDF)",
                                                         ilk_cumle(f"{P['baslik']}: {P['giris']}", 155), g, "../../",
                                                         [kirinti(("ALES Rotası", BASE + "/"), ("Çalışma programları", BASE + "/ales-calisma-programi/"), (P["baslik"], u))],
-                                                        "ales-calisma-programi/"))
+                                                        "ales-calisma-programi/", kaynak=KAYNAK_ANALIZ))
         kartlar += (f'<a class="kart" href="{n}-aylik/"><span class="etiket say">{len(haftalar)} hafta</span><b>{esc(P["baslik"])}</b>'
                     f'<span class="m">{esc(ilk_cumle(P["giris"], 110))}</span></a>')
+    rk = rakamlar()
+    sss_h, sss_ld = sss([
+        ("ALES'e kaç ay çalışmak gerekir?", "Sıfırdan başlayan biri için 3–4 ay rahat bir süredir; bu sürede geometri dahil her konuya yetişilir. 1–2 ayda da hazırlanılabilir, ama yalnız en çok soru getiren konulara öncelik vererek."),
+        ("ALES için günde kaç saat çalışmalıyım?", "Programlarımız günde yaklaşık 3 saat üzerine kurulu (1 aylık programda 4 saat): 45 dk paragraf, 60 dk sözel konu, 60 dk sayısal konu ve 15 dk hata defteri. Süreden çok her gün düzenli çalışmak belirleyicidir."),
+        ("ALES'e çalışırken hangi konudan başlanmalı?", f"Paragraftan. Sözel soruların yaklaşık %{rk['par_oran']}'si paragraf temelli; sayısalda ise temel işlemler ve sayı kavramlarıyla başlayıp sayısal mantığa (sınav başına ortalama {rk['saym']} soru) erken geçmek gerekir."),
+        ("Geometriyi atlayabilir miyim?", f"Vaktin 1 ay kadarsa evet. Geometri sınav başına ortalama {rk['geo']} soru getirir ama öğrenmesi en uzun konudur; 1 aylık programımızda bilinçli olarak dışarıda, 2 aylıkta yalnız temel kural düzeyinde."),
+        ("Deneme sınavına ne zaman başlamalıyım?", "Konuların çoğunu bir kez gördükten sonra: 4 aylık programda son 3–4 hafta, 2 aylıkta son 2 hafta. Her denemenin ertesi günü yanlışlarını analiz et; analiz edilmeyen deneme net getirmez."),
+    ])
     g = f"""
 <header class="baslik"><h1>ALES çalışma programı: 1, 2, 3 ve 4 aylık</h1>
 <p class="giris">Sınava kalan süreye göre seç. Hepsi sıfırdan başlayanlar için yazıldı ve son {NS} ALES'teki konu dağılımına göre önceliklendirildi;
@@ -610,11 +696,12 @@ her birinin yazdırılabilir PDF'i var. 29 Kasım'daki sınava hazırlanıyorsan
 <li><b>2 ay:</b> öncelik sıralı; geometri yalnız kural düzeyinde.</li>
 <li><b>1 ay:</b> yalnız en çok soru getiren konular ve deneme. Geometri dışarıda.</li>
 </ul></section>
+{sss_h}
 {tg_kutu()}
 """
     yaz("ales-calisma-programi/", sayfa("ales-calisma-programi/", "ALES çalışma programı: 1, 2, 3 ve 4 aylık (PDF)",
                                         "Sıfırdan ALES için 1, 2, 3 ve 4 aylık çalışma programları: hafta hafta konular, günlük düzen ve indirilebilir PDF.",
-                                        g, "../", None, "ales-calisma-programi/"))
+                                        g, "../", [sss_ld], "ales-calisma-programi/", kaynak=KAYNAK_ANALIZ))
     # eski adres: /program/ → 4 aylık
     hedef = f"{BASE}/ales-calisma-programi/4-aylik/"
     yaz("program/", f'<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Taşındı</title>'
@@ -630,6 +717,13 @@ def ales3():
     paragraf = sum(n for k, n, _, _ in soz if k.startswith("Paragraf") or k == "Uzun Metin Okuma")
     haftalar = [list(h) for h in PROGRAMLAR[2]["haftalar"]]
     haftalar[0][2] = haftalar[0][2] + ["Başvuruyu bu hafta yap (7–15 Ekim)"]
+    rk = rakamlar()
+    sss_h, sss_ld = sss([
+        ("2026 ALES/3 ne zaman?", "29 Kasım 2026 Pazar, saat 10.15'te. Sınav 150 dakikadır; 50 sözel ve 50 sayısal soru sorulur."),
+        ("ALES/3 başvurusu ne zaman, ücreti ne kadar?", "Başvurular 7–15 Ekim 2026 arasında ÖSYM AİS (ais.osym.gov.tr) üzerinden yapılır. Ücret 1.200 TL; ödemenin son günü 16 Ekim. Geç başvuru günü 21 Ekim."),
+        ("ALES/3 sonuçları ne zaman açıklanır?", "17 Aralık 2026'da, sonuc.osym.gov.tr üzerinden."),
+        ("ALES'e 8 haftada hazırlanılır mı?", f"Evet, öncelik sırasıyla çalışırsan. Sözel'in yaklaşık %{rk['par_oran']}'si paragraf, Sayısal'ın en büyük konusu sayısal mantık (sınav başına ortalama {rk['saym']} soru); bu plan önce bunları, en son geometriyi kural düzeyinde işler ve son iki haftayı denemeye ayırır."),
+    ])
     g = f"""
 <header class="baslik"><p class="ust-yazi">2026-ALES/3 · 29 Kasım 2026</p>
 <h1>ALES/3'e 8 haftada hazırlık planı</h1>
@@ -656,11 +750,12 @@ def ales3():
 <li><b>60 dk haftanın sayısal konusu.</b></li>
 <li><b>15 dk hata defteri:</b> bugün yanlış yaptığın soruların nedeni, tek cümleyle.</li>
 </ul></section>
+{sss_h}
 {tg_kutu()}
 """
     yaz("ales-3-hazirlik/", sayfa("ales-3-hazirlik/", "2026 ALES/3'e 8 haftada hazırlık planı (29 Kasım)",
                                   "29 Kasım 2026 ALES/3 için 8 haftalık çalışma planı: başvuru tarihleri, hafta hafta konular, günlük düzen ve son hafta hazırlığı.",
-                                  g, "../", None, "ales-3-hazirlik/"))
+                                  g, "../", [sss_ld], "ales-3-hazirlik/", kaynak=f"{KAYNAK_OSYM}; {KAYNAK_ANALIZ}"))
 
 
 def rehber():
@@ -677,7 +772,7 @@ def rehber():
            "dateModified": BUGUN_TR.isoformat()}]
     yaz("ales-nasil-calisilir/", sayfa("ales-nasil-calisilir/", "ALES'e sıfırdan nasıl çalışılır? Adım adım rehber",
                                        "ALES'e sıfırdan hazırlık: önce hangi konu, günlük düzen, paragraf ve sayısal mantık stratejisi, deneme zamanlaması ve sık yapılan hatalar.",
-                                       g, "../", ld))
+                                       g, "../", ld, kaynak=KAYNAK_ANALIZ))
 
 
 PUAN = json.load(open(os.path.join(VERI, "puan_istatistik.json"), encoding="utf-8"))
@@ -716,6 +811,15 @@ def puan_sayfasi():
     kaynak = "".join(f'<li><a href="{s["url"]}">{esc(s["ad"])}</a>: sözel ort. {virgul(s["soz"][0])} (ss {virgul(s["soz"][1])}), '
                      f'sayısal ort. {virgul(s["say"][0])} (ss {virgul(s["say"][1])})</li>' for s in PUAN["setler"])
     js = json.dumps(PUAN, ensure_ascii=False)
+    o1, o2, o3 = puan_aralik(10, 30, "SOZ"), puan_aralik(20, 40, "SOZ"), puan_aralik(30, 20, "SAY")
+    ar = lambda x: f"{round(x[0])}–{round(x[1])}"
+    sss_h, sss_ld = sss([
+        ("ALES puanı nasıl hesaplanır?", "Önce her test için net bulunur (doğru − yanlış ÷ 4). Netler, o sınava girenlerin ortalamasına göre standart puana çevrilir, puan türüne göre ağırlıklandırılır (Sözel: %75 sözel + %25 sayısal; Sayısal: tersi; Eşit Ağırlık: %50 + %50) ve ÖSYM formülüyle 0–100 arası ALES puanına dönüştürülür."),
+        ("Kaç net kaç puan eder?", f"Kesin cevap sınava girenlerin ortalamasına bağlıdır, ama yaklaşık olarak: 30 sözel + 10 sayısal net ALES Sözel'de {ar(o1)}, 40 sözel + 20 sayısal net {ar(o2)}; 30 sayısal + 20 sözel net ALES Sayısal'da {ar(o3)} puan aralığına düşer."),
+        ("ALES'te 4 yanlış 1 doğruyu götürür mü?", "Evet. Her testte net = doğru − yanlış ÷ 4; boş bırakılan soru neti etkilemez."),
+        ("Yüksek lisans için kaç ALES puanı gerekir?", "Lisansüstü Eğitim ve Öğretim Yönetmeliğine göre tezli yüksek lisans için ilgili puan türünde en az 55; lisans derecesiyle doktoraya başvuruda 80, yüksek lisansla 55. Araştırma görevliliği için en az 70 aranır. Üniversiteler daha yüksek taban belirleyebilir; başvurduğun ilanı kontrol et."),
+        ("ALES puanı kaç yıl geçerlidir?", "5 yıl. Sonucun açıklandığı tarihten itibaren beş yıl boyunca başvurularda kullanılabilir."),
+    ])
     g = f"""
 <header class="baslik"><p class="ust-yazi">Yaklaşık hesap · ÖSYM formülü</p><h1>ALES puan hesaplama: kaç net kaç puan?</h1>
 <p class="giris">Doğru ve yanlış sayını gir; ÖSYM kılavuzundaki formülle üç puan türünde <b>yaklaşık puan aralığını</b> hesaplayalım.
@@ -748,6 +852,7 @@ Bu yüzden tek bir sayı değil, dürüst bir aralık gösteriyoruz.</p></header
 sözel-sayısal ilişkisi için üç farklı varsayımla hesaplayıp her iki yana {PUAN["ek_pay"]} puan pay ekliyoruz:</p>
 <ul class="liste">{kaynak}</ul>
 <p>Gerçek puanın bu aralığın dışına düşmesi mümkündür, özellikle çok düşük ve çok yüksek netlerde. Resmî puan için <a href="https://sonuc.osym.gov.tr">sonuc.osym.gov.tr</a>.</p></section>
+{sss_h}
 {tg_kutu()}
 <script>
 const P={js};
@@ -764,10 +869,10 @@ document.querySelectorAll('#hesap input').forEach(i=>i.addEventListener('input',
 """
     ld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": "ALES puan hesaplama (yaklaşık)", "url": BASE + "/ales-puan-hesaplama/",
            "applicationCategory": "EducationalApplication", "operatingSystem": "Web", "inLanguage": "tr", "isAccessibleForFree": True,
-           "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"}}]
+           "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"}}, sss_ld]
     yaz("ales-puan-hesaplama/", sayfa("ales-puan-hesaplama/", "ALES puan hesaplama 2026: kaç net kaç puan? (ÖSYM formülü)",
                                       "ALES puanını ÖSYM kılavuzundaki formülle yaklaşık hesapla: sözel, sayısal ve eşit ağırlık puan aralıkları ve kaç net kaç puan tablosu.",
-                                      g, "../", ld, "ales-puan-hesaplama/"))
+                                      g, "../", ld, "ales-puan-hesaplama/", kaynak=f'<a href="{PUAN["kilavuz"]}">ÖSYM 2026-ALES kılavuzu, Bölüm 3.9</a> ve ÖSYM sayısal bilgileri'))
 
 
 def hakkinda():
@@ -796,13 +901,40 @@ Sayısal soruların cevapları bilgisayarla ayrıca doğrulanır; sözel sorular
     yaz("hakkinda/", sayfa("hakkinda/", "Hakkında · ALES Rotası", "ALES Rotası nedir, içerikler nasıl hazırlanıyor, veri kaynakları ve iletişim.", g, "../"))
 
 
+def llms_txt():
+    """Yapay zekâ araçları için sitenin özeti (llmstxt.org biçimi)."""
+    L = lambda yol, ad, acik: f"- [{ad}]({BASE}/{yol}): {acik}"
+    s = [f"# ALES Rotası", "",
+         f"> ALES'e (Akademik Personel ve Lisansüstü Eğitime Giriş Sınavı, ÖSYM) sıfırdan hazırlananlar için ücretsiz Türkçe kaynak: "
+         f"{len(DERSLER)} özgün konu anlatımı, her gün yeni çözümlü özgün sorular, son {NS} ALES'in ({SINAVLAR[0]} – {SINAVLAR[-1]}) "
+         f"{len(SORULAR)} sorusunun konu ve zorluk dağılımı, 1-2-3-4 aylık çalışma programları ve ÖSYM formülüyle yaklaşık puan hesaplama. "
+         "Üyelik ve ücret yok. ÖSYM ile bağlantılı değildir.", "",
+         "## Konu analizinden öne çıkan bulgular", ""] + [f"- {x}" for x in bulgular()] + [
+         f"- Kaynak: {BASE}/konu-analizi/ (zorluk etiketleri ALES Rotası'nın değerlendirmesidir, ÖSYM sınıflandırması değildir)", "",
+         "## Ana sayfalar", "",
+         L("ales-puan-hesaplama/", "ALES puan hesaplama", "kaç net kaç puan; ÖSYM 2026 kılavuzu formülüyle Sözel, Sayısal ve Eşit Ağırlık puan aralığı"),
+         L("konu-analizi/", "ALES soru dağılımı", f"son {NS} sınavda hangi konudan kaç soru çıktığı, zorluk ve paragraf metin alanları"),
+         L("ales-konulari/", "ALES konuları", "konu konu soru sayısı, sınav sınav değişim ve soru tipleri"),
+         L("ales-calisma-programi/", "ALES çalışma programı", "sıfırdan 1, 2, 3 ve 4 aylık hafta hafta planlar ve PDF"),
+         L("ales-3-hazirlik/", "2026 ALES/3 hazırlık planı", "29 Kasım 2026 sınavı için tarihler ve 8 haftalık plan"),
+         L("ales-nasil-calisilir/", "ALES'e sıfırdan nasıl çalışılır?", "adım adım hazırlık rehberi"),
+         L("sorular/", "Çözümlü sorular", "her gün eklenen özgün sözel ve sayısal sorular, ayrıntılı çözümleriyle"),
+         L("hakkinda/", "Hakkında", "içeriklerin nasıl hazırlandığı, veri kaynakları ve iletişim"), "",
+         "## Konu anlatımları", ""] + [
+         L(f"dersler/{d['slug']}/", d["baslik"], f"{bolum_ad(d['bolum'])}; sınavda ortalama {virgul(ders_soru(d))} soru") for d in SIRA] + [
+         "", "## Topluluk", "", f"- [Telegram grubu @aleskampi]({TG_GENEL}): her gün 1 sözel + 1 sayısal soru, akşam çözümü, 16 haftalık kamp, ALES/3 hatırlatmaları", ""]
+    return "\n".join(s)
+
+
 def ekler(yollar):
     yaz("404.html", sayfa("404.html", "Sayfa bulunamadı | ALES Rotası", "Aradığın sayfa bulunamadı.",
                           f'<header class="baslik"><h1>Sayfa bulunamadı</h1><p class="giris"><a href="{BASE}/">Ana sayfaya dön</a> · <a href="{BASE}/sorular/">Çözümlü sorular</a> · <a href="{BASE}/dersler/">Dersler</a></p></header>', BASE + "/"))
-    sm = "".join(f"<url><loc>{BASE}/{y}</loc><lastmod>{BUGUN_TR.isoformat()}</lastmod></url>" for y in yollar)
+    sm = "".join(f"<url><loc>{BASE}/{y}</loc><lastmod>{GUNC.get(y, [0, BUGUN_TR.isoformat()])[1]}</lastmod></url>" for y in yollar)
     yaz("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
     yaz("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
     open(os.path.join(CIKTI, ".nojekyll"), "w").close()
+    yaz("llms.txt", llms_txt())
+    json.dump({y: GUNC[y] for y in sorted(GUNC) if y in yollar}, open(GUNC_DOSYA, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     if os.path.exists(os.path.join(KOK, "indexnow.txt")):  # IndexNow anahtar dosyası (Bing, Yandex vb.)
         k = open(os.path.join(KOK, "indexnow.txt")).read().strip()
         yaz(f"{k}.txt", k)

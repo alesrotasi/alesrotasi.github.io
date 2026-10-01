@@ -29,14 +29,13 @@ jobs:
       - run: python kaynak/build.py
         env:
           PYTHONIOENCODING: utf-8
-      - name: Etkinlik kaydı (zamanlanmış görev 60 gün sonra kapanmasın)
-        if: github.event_name == 'schedule'
+      - name: Güncelleme tarihleri ve etkinlik kaydı (zamanlanmış görev 60 gün sonra kapanmasın)
         run: |
-          ls _site/sorular | grep -c -- "-" > kaynak/yayin_sayisi.txt || true
+          if [ "${{ github.event_name }}" = "schedule" ]; then ls _site/sorular | grep -c -- "-" > kaynak/yayin_sayisi.txt || true; fi
           git config user.name "ales-rotasi-bot"
           git config user.email "ales-rotasi-bot@users.noreply.github.com"
-          git add kaynak/yayin_sayisi.txt
-          git diff --cached --quiet || (git commit -q -m "Yayımlanan soru sayısı: $(cat kaynak/yayin_sayisi.txt)" && git push -q)
+          git add kaynak/yayin_sayisi.txt kaynak/veri/guncelleme.json
+          git diff --cached --quiet || (git commit -q -m "Sayfa güncelleme tarihleri, yayımlanan soru: $(cat kaynak/yayin_sayisi.txt)" && git pull -q --rebase && git push -q)
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
