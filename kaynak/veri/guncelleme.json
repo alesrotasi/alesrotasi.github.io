@@ -1,7 +1,7 @@
 {
 "": [
-"d1c65ed46ee4",
-"2026-10-03"
+"7a7987033014",
+"2026-10-04"
 ],
 "ales-3-hazirlik/": [
 "57611ebb1d08",
@@ -32,8 +32,8 @@
 "2026-10-01"
 ],
 "ales-konulari/cumlede-anlam/": [
-"c960dc19e21a",
-"2026-10-01"
+"2c1c0b4a06eb",
+"2026-10-04"
 ],
 "ales-konulari/geometri/": [
 "4426d1f07170",
@@ -64,8 +64,8 @@
 "2026-10-01"
 ],
 "ales-konulari/temel-matematik/": [
-"69025cc3825b",
-"2026-10-03"
+"c0686cb0c038",
+"2026-10-04"
 ],
 "ales-nasil-calisilir/": [
 "b0bc28bc8d59",
@@ -88,8 +88,8 @@
 "2026-10-01"
 ],
 "dersler/bosluk-doldurma-ve-kesin-cikarim/": [
-"44adbad2a2b6",
-"2026-10-01"
+"e0ea4da4cc11",
+"2026-10-04"
 ],
 "dersler/carpanlara-ayirma-ve-ozdeslikler/": [
 "59e3c05d22bc",
@@ -140,8 +140,8 @@
 "2026-10-01"
 ],
 "dersler/sayilar-ve-temel-kavramlar/": [
-"912ec6e479be",
-"2026-10-02"
+"0b068e3f9eb1",
+"2026-10-04"
 ],
 "dersler/sayisal-mantik-ve-ortak-oncullu-bloklar/": [
 "5a96f385f29e",
@@ -188,8 +188,8 @@
 "2026-10-01"
 ],
 "sorular/": [
-"8001ce4924dd",
-"2026-10-03"
+"0513ff5801c1",
+"2026-10-04"
 ],
 "sorular/1-sayisal-kesirlerle-islem/": [
 "8dcc3be36064",
@@ -230,5 +230,13 @@
 "sorular/5-sozel-ana-dusunce/": [
 "054584e6f59c",
 "2026-10-03"
+],
+"sorular/6-sayisal-rakamlar-ve-basamak/": [
+"4612f35ff848",
+"2026-10-04"
+],
+"sorular/6-sozel-cumle-boslugu-doldurma/": [
+"f68e50a43c25",
+"2026-10-04"
 ]
 }
