@@ -1,4 +1,4 @@
-"""ALES Rotası sitesi: kaynak/ → _site/  (GitHub Actions her gün ve her push'ta çalıştırır)
+"""ALES Kampı sitesi: kaynak/ → _site/  (GitHub Actions her gün ve her push'ta çalıştırır)
 
 Kitap kırpımı, ÖSYM soru metni İÇERMEZ. Girdiler (hepsi bu depoda):
   kaynak/ders/*.html               özgün konu anlatımları
@@ -163,7 +163,7 @@ NAV = [("ales-puan-hesaplama/", "Puan hesaplama"), ("ales-3-hazirlik/", "ALES/3 
 AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
 GUNC_DOSYA = os.path.join(VERI, "guncelleme.json")
 GUNC = json.load(open(GUNC_DOSYA, encoding="utf-8")) if os.path.exists(GUNC_DOSYA) else {}
-KAYNAK_ANALIZ = (f"son {NS} ALES ({SINAVLAR[0]} – {SINAVLAR[-1]}) sorusunun ALES Rotası tarafından yapılan konu ve zorluk etiketlemesi "
+KAYNAK_ANALIZ = (f"son {NS} ALES ({SINAVLAR[0]} – {SINAVLAR[-1]}) sorusunun ALES Kampı tarafından yapılan konu ve zorluk etiketlemesi "
                  f'(<a href="{BASE}/konu-analizi/">konu analizi</a>)')
 KAYNAK_OSYM = '<a href="https://www.osym.gov.tr/">ÖSYM</a> 2026-ALES başvuru kılavuzu'
 
@@ -224,8 +224,8 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None)
                   + (f" · Kaynak: {kaynak}" if kaynak else "") + "</p>")
         jsonld = (jsonld or []) + [{"@context": "https://schema.org", "@type": "WebPage", "name": baslik, "url": url, "inLanguage": "tr",
                                     "description": aciklama, "dateModified": t,
-                                    "isPartOf": {"@type": "WebSite", "name": "ALES Rotası", "url": BASE + "/"},
-                                    "publisher": {"@type": "Organization", "name": "ALES Rotası", "url": BASE + "/"}}]
+                                    "isPartOf": {"@type": "WebSite", "name": "ALES Kampı", "url": BASE + "/"},
+                                    "publisher": {"@type": "Organization", "name": "ALES Kampı", "url": BASE + "/"}}]
     navh = "".join(f'<a href="{kok}{h}"{" aria-current=page" if aktif == h else ""}>{t}</a>' for h, t in NAV)
     ld = "".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in (jsonld or []))
     return f"""<!doctype html>
@@ -237,7 +237,7 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None)
 <meta name="description" content="{esc(aciklama)}">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="ALES Rotası">
+<meta property="og:site_name" content="ALES Kampı">
 <meta property="og:title" content="{esc(baslik)}">
 <meta property="og:description" content="{esc(aciklama)}">
 <meta property="og:url" content="{url}">
@@ -249,21 +249,21 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None)
 </head>
 <body>
 <header class="ust"><div class="ic">
-<a class="logo" href="{kok}">ALES <b>Rotası</b></a>
+<a class="logo" href="{kok}">ALES <b>Kampı</b></a>
 <nav>{navh}<a class="tg" href="{TG}">Telegram grubu</a></nav>
 </div></header>
 <main class="ic">
 {govde}
 </main>
 <footer class="alt"><div class="ic">
-<p><b>ALES Rotası</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, çözümlü sorular, konu analizi ve çalışma programları.
+<p><b>ALES Kampı</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, çözümlü sorular, konu analizi ve çalışma programları.
 Günlük soru, haftalık kamp ve akademik ilanlar için <a href="{TG}">Telegram grubu @aleskampi</a>.</p>
 <p class="altlink"><a href="{kok}ales-puan-hesaplama/">ALES puan hesaplama</a> · <a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a></p>
 <p class="iletisim"><a href="{kok}hakkinda/">Hakkında</a> · İletişim: <a href="mailto:esraaksoyy34@gmail.com">esraaksoyy34@gmail.com</a></p>
-<p class="kucuk">© ALES Rotası. İçerikler özgündür ve izinsiz çoğaltılamaz; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
+<p class="kucuk">© ALES Kampı. İçerikler özgündür ve izinsiz çoğaltılamaz; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
 bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
 </div></footer>
-<div class="baski-notu">Bu içerik ALES Rotası'na aittir: {BASE}/</div>
+<div class="baski-notu">Bu içerik ALES Kampı'na aittir: {BASE}/</div>
 {f'<script data-goatcounter="https://{GC}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>' if GC else ""}
 <script>
 (function(){{var serbest=function(e){{return e.target&&e.target.closest&&e.target.closest("input,textarea,select")}};
@@ -357,9 +357,9 @@ def ana_sayfa():
 
 {sss_h}
 """
-    ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "ALES Rotası", "url": BASE + "/", "inLanguage": "tr"},
-          {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Rotası", "url": BASE + "/", "sameAs": [TG_GENEL], "email": "esraaksoyy34@gmail.com"}, sss_ld]
-    yaz("", sayfa("", "ALES Rotası · ALES'e sıfırdan hazırlık: konu anlatımı, çözümlü sorular, çalışma programı",
+    ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "ALES Kampı", "url": BASE + "/", "inLanguage": "tr"},
+          {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Kampı", "url": BASE + "/", "sameAs": [TG_GENEL], "email": "esraaksoyy34@gmail.com"}, sss_ld]
+    yaz("", sayfa("", "ALES Kampı · ALES'e sıfırdan hazırlık: konu anlatımı, çözümlü sorular, çalışma programı",
                   f"ALES sözel ve sayısal için ücretsiz {len(DERSLER)} konu anlatımı, çözümlü sorular, son {NS} sınavın konu dağılımı ve 1-2-3-4 aylık çalışma programları.",
                   g, "", ld, kaynak=KAYNAK_ANALIZ))
 
@@ -397,7 +397,7 @@ def ders_sayfalari():
         ld = [{"@context": "https://schema.org", "@type": "LearningResource", "name": d["baslik"], "description": aciklama,
                "inLanguage": "tr", "learningResourceType": "Konu anlatımı", "isAccessibleForFree": True,
                "about": f"ALES {bolum_ad(d['bolum'])}", "url": u},
-              kirinti(("ALES Rotası", BASE + "/"), ("Dersler", BASE + "/dersler/"), (d["baslik"], u))]
+              kirinti(("ALES Kampı", BASE + "/"), ("Dersler", BASE + "/dersler/"), (d["baslik"], u))]
         yaz(f"dersler/{d['slug']}/", sayfa(f"dersler/{d['slug']}/", baslik, aciklama, g, "../../", ld, "dersler/"))
     soz = "".join(ders_kart(d, "../") for d in SIRA if d["bolum"] == "SOZ")
     say = "".join(ders_kart(d, "../") for d in SIRA if d["bolum"] == "SAY")
@@ -442,7 +442,7 @@ def soru_sayfalari():
 """
         baslik = f"ALES {q['bolum_ad']} sorusu: {q['temiz_konu']} (çözümlü) #{q['gun']}"
         acik = ilk_cumle(f"Çözümlü ALES {q['bolum_ad'].lower()} sorusu ({q['temiz_konu']}): " + (q.get("metin") or q["soru"]), 155)
-        ld = [kirinti(("ALES Rotası", BASE + "/"), ("Çözümlü sorular", BASE + "/sorular/"), (baslik, u))]
+        ld = [kirinti(("ALES Kampı", BASE + "/"), ("Çözümlü sorular", BASE + "/sorular/"), (baslik, u))]
         yaz(f"sorular/{q['slug']}/", sayfa(f"sorular/{q['slug']}/", baslik, acik, g, "../../", ld, "sorular/"))
     # merkez sayfa: derse göre gruplu
     grup = defaultdict(list)
@@ -494,13 +494,13 @@ def analiz():
         ("ALES Sözel'de en çok hangi konu çıkar?", f"Paragraf. Son {NS} ALES'te sözel soruların yaklaşık %{rk['par_oran']}'si paragraf temelliydi (sınav başına ortalama {rk['par']} soru); ardından sözel mantık gelir (ortalama {rk['sozm']} soru)."),
         ("ALES Sayısal'da en çok hangi konu çıkar?", f"Sayısal mantık: sınav başına ortalama {rk['saym']} soru. Konu grubu olarak bakılırsa temel matematik konuları toplam {rk['temel']}, problemler {rk['prob']} soru getirir."),
         ("ALES'te geometri kaç soru çıkar?", f"Sınav başına ortalama {rk['geo']} soru. Ayrıntı: <a href=\"../ales-konulari/geometri/\">ALES'te geometri</a>."),
-        ("ALES'in en zor konusu hangisi?", f"Etiketlemeye göre {rk['zor_ad'].lower()}: 1 (kolay) – 3 (zor) ölçeğinde ortalama zorluk {rk['zor_puan']}. Zorluk etiketleri ALES Rotası'nın değerlendirmesidir."),
+        ("ALES'in en zor konusu hangisi?", f"Etiketlemeye göre {rk['zor_ad'].lower()}: 1 (kolay) – 3 (zor) ölçeğinde ortalama zorluk {rk['zor_puan']}. Zorluk etiketleri ALES Kampı'nın değerlendirmesidir."),
     ])
     g = f"""
 <header class="baslik"><h1>ALES'te hangi konudan kaç soru çıkıyor?</h1>
 <p class="giris">Son {NS} ALES sınavındaki ({SINAVLAR[0]} – {SINAVLAR[-1]}) {len(SORULAR)} sorunun tamamı konu ve zorluğa göre tek tek etiketlendi. Aşağıdaki tablolar bu etiketlerin sayımıdır.</p></header>
 <section class="bulgular"><h2>Öne çıkan bulgular</h2><ol>{bul}</ol>
-<p class="kucuk">Alıntılarken kaynak: ALES Rotası, “ALES soru dağılımı” ({SINAVLAR[0]} – {SINAVLAR[-1]}, {len(SORULAR)} soru), {BASE}/konu-analizi/</p></section>
+<p class="kucuk">Alıntılarken kaynak: ALES Kampı, “ALES soru dağılımı” ({SINAVLAR[0]} – {SINAVLAR[-1]}, {len(SORULAR)} soru), {BASE}/konu-analizi/</p></section>
 <section class="ozet">
 <div><h2>%{round(100 * paragraf / sum(n for _, n, _, _ in soz))}</h2><p>Sözel soruların paragraf temelli olanları (ana düşünce, çıkarım, yapı, uzun metin)</p></div>
 <div><h2>{virgul(round(sm / NS, 1))}</h2><p>Sayısal'da sınav başına sayısal mantık sorusu: en büyük tek konu</p></div>
@@ -523,7 +523,7 @@ def analiz():
 
 def yontem():
     return (f'<section class="not"><h2>Yöntem</h2><p>Veri: son {NS} ALES ({SINAVLAR[0]} – {SINAVLAR[-1]}), {len(SORULAR)} soru. '
-            "Konu ve zorluk etiketleri ALES Rotası tarafından verilmiştir; zorluk 1 (kolay) – 3 (zor) ölçeğinde bizim değerlendirmemizdir, "
+            "Konu ve zorluk etiketleri ALES Kampı tarafından verilmiştir; zorluk 1 (kolay) – 3 (zor) ölçeğinde bizim değerlendirmemizdir, "
             "ÖSYM'nin resmî bir sınıflandırması değildir. Soru metinleri bu sitede yer almaz; çıkmış soruların kendisine ÖSYM'nin sitesinden ulaşabilirsin.</p></section>")
 
 
@@ -564,7 +564,7 @@ Bu sorular {bolum_ad(bolum)} testinde çoğunlukla <b>{q1}–{q3}.</b> sorular a
         acik = f"Son {NS} ALES'te {kisa.lower()} sınav başına ortalama {virgul(round(n / NS, 1))} soru: sınav sınav dağılım, soru tipleri, zorluk ve çalışma yolu."
         u = f"{BASE}/ales-konulari/{s}/"
         yaz(f"ales-konulari/{s}/", sayfa(f"ales-konulari/{s}/", baslik, acik, g, "../../",
-                                         [kirinti(("ALES Rotası", BASE + "/"), ("ALES konuları", BASE + "/ales-konulari/"), (baslik, u))], "konu-analizi/",
+                                         [kirinti(("ALES Kampı", BASE + "/"), ("ALES konuları", BASE + "/ales-konulari/"), (baslik, u))], "konu-analizi/",
                                          kaynak=KAYNAK_ANALIZ))
     kart = "".join(f'<a class="kart" href="{s}/"><span class="etiket {b.lower()}">{bolum_ad(b)}</span><b>{esc(t)}</b>'
                    f'<span class="m">sınav başına {virgul(round(sum(1 for r in SORULAR if r["bolum"] == b and r["konu"] in k) / NS, 1))} soru</span></a>'
@@ -628,7 +628,7 @@ def pdf_yap(n, yol):
     css = ("@font-face{font-family:T;src:url(n.ttf)} @font-face{font-family:T;src:url(b.ttf);font-weight:bold} "
            "*{font-family:T} body{font-size:10pt;line-height:1.35} h1{font-size:18pt;color:#1f4e5f;margin:0 0 4pt} "
            "h2{font-size:11.5pt;color:#1f4e5f;margin:9pt 0 2pt} p{margin:0 0 4pt} ul{margin:0 0 2pt 12pt} li{margin:0} .k{color:#555;font-size:9pt}")
-    h = [f"<h1>{esc(P['baslik'])}</h1><p class='k'>ALES Rotası · {esc(BASE.split('//')[1])} · Telegram: @aleskampi</p>",
+    h = [f"<h1>{esc(P['baslik'])}</h1><p class='k'>ALES Kampı · {esc(BASE.split('//')[1])} · Telegram: @aleskampi</p>",
          f"<p>{esc(P['giris'])}</p><p><b>Günlük düzen:</b> {esc(P['gunluk'])}</p>"]
     for i, (ad_, soz, say, dersler) in enumerate(program_haftalari(n), 1):
         h.append(f"<h2>{i}. hafta: {esc(ad_)}</h2><ul>" + "".join(f"<li><b>Sözel:</b> {esc(x)}</li>" for x in soz) +
@@ -673,7 +673,7 @@ def programlar():
         u = f"{BASE}/ales-calisma-programi/{n}-aylik/"
         yaz(f"ales-calisma-programi/{n}-aylik/", sayfa(f"ales-calisma-programi/{n}-aylik/", f"{P['baslik']} (sıfırdan, PDF)",
                                                         ilk_cumle(f"{P['baslik']}: {P['giris']}", 155), g, "../../",
-                                                        [kirinti(("ALES Rotası", BASE + "/"), ("Çalışma programları", BASE + "/ales-calisma-programi/"), (P["baslik"], u))],
+                                                        [kirinti(("ALES Kampı", BASE + "/"), ("Çalışma programları", BASE + "/ales-calisma-programi/"), (P["baslik"], u))],
                                                         "ales-calisma-programi/", kaynak=KAYNAK_ANALIZ))
         kartlar += (f'<a class="kart" href="{n}-aylik/"><span class="etiket say">{len(haftalar)} hafta</span><b>{esc(P["baslik"])}</b>'
                     f'<span class="m">{esc(ilk_cumle(P["giris"], 110))}</span></a>')
@@ -768,7 +768,7 @@ def rehber():
 """
     u = BASE + "/ales-nasil-calisilir/"
     ld = [{"@context": "https://schema.org", "@type": "Article", "headline": "ALES'e sıfırdan nasıl çalışılır?", "inLanguage": "tr",
-           "author": {"@type": "Organization", "name": "ALES Rotası"}, "url": u, "datePublished": "2026-10-01",
+           "author": {"@type": "Organization", "name": "ALES Kampı"}, "url": u, "datePublished": "2026-10-01",
            "dateModified": BUGUN_TR.isoformat()}]
     yaz("ales-nasil-calisilir/", sayfa("ales-nasil-calisilir/", "ALES'e sıfırdan nasıl çalışılır? Adım adım rehber",
                                        "ALES'e sıfırdan hazırlık: önce hangi konu, günlük düzen, paragraf ve sayısal mantık stratejisi, deneme zamanlaması ve sık yapılan hatalar.",
@@ -877,9 +877,9 @@ document.querySelectorAll('#hesap input').forEach(i=>i.addEventListener('input',
 
 def hakkinda():
     g = f"""
-<article class="ders"><header><p class="ust-yazi">ALES Rotası</p><h1>Hakkında</h1></header>
+<article class="ders"><header><p class="ust-yazi">ALES Kampı</p><h1>Hakkında</h1></header>
 <div class="govde rehber">
-<p><b>ALES Rotası</b>, ALES'e sıfırdan hazırlananlar için ücretsiz bir çalışma rehberidir: {len(DERSLER)} konu anlatımı, her gün yeni
+<p><b>ALES Kampı</b>, ALES'e sıfırdan hazırlananlar için ücretsiz bir çalışma rehberidir: {len(DERSLER)} konu anlatımı, her gün yeni
 çözümlü sorular, sınava kalan süreye göre çalışma programları, konu dağılımı analizi ve yaklaşık puan hesaplama.
 Aynı ekip, her gün soru ve kamp görevi paylaşılan <a href="{TG}">@aleskampi Telegram grubunu</a> yönetir.</p>
 <h2>İçerik nasıl hazırlanıyor?</h2>
@@ -888,7 +888,7 @@ Aynı ekip, her gün soru ve kamp görevi paylaşılan <a href="{TG}">@aleskampi
 <li><b>Dersler ve sorular özgündür.</b> Hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı yapılmaz; sorular ALES'in soru tiplerini örnek alarak sıfırdan yazılır.
 Sayısal soruların cevapları bilgisayarla ayrıca doğrulanır; sözel sorularda her yanlış şıkkın neden yanlış olduğu çözümde gösterilir.</li>
 <li><b>Puan hesaplama</b> ÖSYM kılavuzundaki resmî formülü ve ÖSYM'nin yayımladığı son istatistikleri kullanır; bu yüzden tek bir sayı değil, yaklaşık bir aralık verir.</li>
-<li><b>Tarih ve kurallar</b> ÖSYM'nin kılavuzlarından alınır; son söz her zaman <a href="https://www.osym.gov.tr/">osym.gov.tr</a>'dedir. ALES Rotası ÖSYM ile bağlantılı değildir.</li>
+<li><b>Tarih ve kurallar</b> ÖSYM'nin kılavuzlarından alınır; son söz her zaman <a href="https://www.osym.gov.tr/">osym.gov.tr</a>'dedir. ALES Kampı ÖSYM ile bağlantılı değildir.</li>
 </ul>
 <h2>Hata mı buldun?</h2>
 <p>Bir soruda ikinci bir doğru cevap, bir derste yanlış bilgi ya da çalışmayan bir sayfa gördüysen yaz; kontrol edip düzeltiriz:
@@ -898,19 +898,19 @@ Sayısal soruların cevapları bilgisayarla ayrıca doğrulanır; sözel sorular
 </div></article>
 {tg_kutu()}
 """
-    yaz("hakkinda/", sayfa("hakkinda/", "Hakkında · ALES Rotası", "ALES Rotası nedir, içerikler nasıl hazırlanıyor, veri kaynakları ve iletişim.", g, "../"))
+    yaz("hakkinda/", sayfa("hakkinda/", "Hakkında · ALES Kampı", "ALES Kampı nedir, içerikler nasıl hazırlanıyor, veri kaynakları ve iletişim.", g, "../"))
 
 
 def llms_txt():
     """Yapay zekâ araçları için sitenin özeti (llmstxt.org biçimi)."""
     L = lambda yol, ad, acik: f"- [{ad}]({BASE}/{yol}): {acik}"
-    s = [f"# ALES Rotası", "",
+    s = [f"# ALES Kampı", "",
          f"> ALES'e (Akademik Personel ve Lisansüstü Eğitime Giriş Sınavı, ÖSYM) sıfırdan hazırlananlar için ücretsiz Türkçe kaynak: "
          f"{len(DERSLER)} özgün konu anlatımı, her gün yeni çözümlü özgün sorular, son {NS} ALES'in ({SINAVLAR[0]} – {SINAVLAR[-1]}) "
          f"{len(SORULAR)} sorusunun konu ve zorluk dağılımı, 1-2-3-4 aylık çalışma programları ve ÖSYM formülüyle yaklaşık puan hesaplama. "
          "Üyelik ve ücret yok. ÖSYM ile bağlantılı değildir.", "",
          "## Konu analizinden öne çıkan bulgular", ""] + [f"- {x}" for x in bulgular()] + [
-         f"- Kaynak: {BASE}/konu-analizi/ (zorluk etiketleri ALES Rotası'nın değerlendirmesidir, ÖSYM sınıflandırması değildir)", "",
+         f"- Kaynak: {BASE}/konu-analizi/ (zorluk etiketleri ALES Kampı'nın değerlendirmesidir, ÖSYM sınıflandırması değildir)", "",
          "## Ana sayfalar", "",
          L("ales-puan-hesaplama/", "ALES puan hesaplama", "kaç net kaç puan; ÖSYM 2026 kılavuzu formülüyle Sözel, Sayısal ve Eşit Ağırlık puan aralığı"),
          L("konu-analizi/", "ALES soru dağılımı", f"son {NS} sınavda hangi konudan kaç soru çıktığı, zorluk ve paragraf metin alanları"),
@@ -927,7 +927,7 @@ def llms_txt():
 
 
 def ekler(yollar):
-    yaz("404.html", sayfa("404.html", "Sayfa bulunamadı | ALES Rotası", "Aradığın sayfa bulunamadı.",
+    yaz("404.html", sayfa("404.html", "Sayfa bulunamadı | ALES Kampı", "Aradığın sayfa bulunamadı.",
                           f'<header class="baslik"><h1>Sayfa bulunamadı</h1><p class="giris"><a href="{BASE}/">Ana sayfaya dön</a> · <a href="{BASE}/sorular/">Çözümlü sorular</a> · <a href="{BASE}/dersler/">Dersler</a></p></header>', BASE + "/"))
     sm = "".join(f"<url><loc>{BASE}/{y}</loc><lastmod>{GUNC.get(y, [0, BUGUN_TR.isoformat()])[1]}</lastmod></url>" for y in yollar)
     yaz("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
