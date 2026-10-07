@@ -913,7 +913,7 @@ def gizlilik():
 <div class="govde rehber">
 <p>Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) m. 10 uyarınca, ALES Kampı sitesini kullanırken hangi kişisel verilerin, hangi amaç ve hukuki sebeple işlendiğini açıklar.</p>
 <h2>Veri sorumlusu</h2>
-<p>Veri sorumlusu, ücretsiz ve gönüllü olarak yayımlanan ALES Kampı sitesinin sahibidir. Kişisel verilerle ilgili her talep için iletişim adresi: {e}. Site ÖSYM ya da herhangi bir kurumla bağlantılı değildir.</p>
+<p>Veri sorumlusu, ücretsiz ve gönüllü olarak yayımlanan ALES Kampı sitesinin sahibi <b>Esra Sultan Aslan</b>'dır. Kişisel verilerle ilgili her talep için iletişim adresi: {e}. Site ÖSYM ya da herhangi bir kurumla bağlantılı değildir.</p>
 <h2>İşlenen veriler</h2>
 <ul class="liste">
 <li><b>Üyelik ve form yok.</b> Site üyelik istemez, form içermez, reklam ya da çerez kullanmaz.</li>
