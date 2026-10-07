@@ -1,7 +1,7 @@
 {
 "": [
-"b393662d055b",
-"2026-10-06"
+"88f68cb45cdc",
+"2026-10-07"
 ],
 "ales-3-hazirlik/": [
 "57611ebb1d08",
@@ -48,8 +48,8 @@
 "2026-10-06"
 ],
 "ales-konulari/paragraf/": [
-"44ac9e7cef08",
-"2026-10-06"
+"4081c1f68cd9",
+"2026-10-07"
 ],
 "ales-konulari/problemler/": [
 "5fad0139787e",
@@ -64,8 +64,8 @@
 "2026-10-06"
 ],
 "ales-konulari/temel-matematik/": [
-"9dd30c051d43",
-"2026-10-06"
+"32fd68848fce",
+"2026-10-07"
 ],
 "ales-nasil-calisilir/": [
 "b0bc28bc8d59",
@@ -124,8 +124,8 @@
 "2026-10-03"
 ],
 "dersler/koklu-sayilar/": [
-"93c9c3af4685",
-"2026-10-01"
+"8da2a9d2e923",
+"2026-10-07"
 ],
 "dersler/kumeler-ve-tanimli-islem/": [
 "1fa62e5d6a9a",
@@ -168,8 +168,8 @@
 "2026-10-01"
 ],
 "dersler/yardimci-dusunce-ve-cikarim/": [
-"c607acc79575",
-"2026-10-01"
+"dad12fbf1da3",
+"2026-10-07"
 ],
 "dersler/yer-degistirme-ve-akisi-bozan-cumle/": [
 "3da64e255cb8",
@@ -188,8 +188,8 @@
 "2026-10-06"
 ],
 "sorular/": [
-"e50401d7b5da",
-"2026-10-06"
+"f859de99759c",
+"2026-10-07"
 ],
 "sorular/1-sayisal-kesirlerle-islem/": [
 "8dcc3be36064",
@@ -254,5 +254,13 @@
 "sorular/8-sozel-cikarim/": [
 "36cd4c7ff271",
 "2026-10-06"
+],
+"sorular/9-sayisal-koklu-sayilar/": [
+"34d03b940e1a",
+"2026-10-07"
+],
+"sorular/9-sozel-cikarim/": [
+"77a8bc204a5a",
+"2026-10-07"
 ]
 }
