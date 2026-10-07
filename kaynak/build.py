@@ -259,7 +259,7 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None)
 <p><b>ALES Kampı</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, çözümlü sorular, konu analizi ve çalışma programları.
 Günlük soru, haftalık kamp ve akademik ilanlar için <a href="{TG}">Telegram grubu @aleskampi</a>.</p>
 <p class="altlink"><a href="{kok}ales-puan-hesaplama/">ALES puan hesaplama</a> · <a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a></p>
-<p class="iletisim"><a href="{kok}hakkinda/">Hakkında</a> · İletişim: <a href="mailto:esraaksoyy34@gmail.com">esraaksoyy34@gmail.com</a></p>
+<p class="iletisim"><a href="{kok}hakkinda/">Hakkında</a> · <a href="{kok}gizlilik/">Gizlilik ve KVKK</a> · İletişim: <a href="mailto:esraaksoyy34@gmail.com">esraaksoyy34@gmail.com</a></p>
 <p class="kucuk">© ALES Kampı. İçerikler özgündür ve izinsiz çoğaltılamaz; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
 bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
 </div></footer>
@@ -901,6 +901,39 @@ Sayısal soruların cevapları bilgisayarla ayrıca doğrulanır; sözel sorular
     yaz("hakkinda/", sayfa("hakkinda/", "Hakkında · ALES Kampı", "ALES Kampı nedir, içerikler nasıl hazırlanıyor, veri kaynakları ve iletişim.", g, "../"))
 
 
+def gizlilik():
+    e = '<a href="mailto:esraaksoyy34@gmail.com">esraaksoyy34@gmail.com</a>'
+    sayac = ("<li><b>Ziyaret istatistiği (GoatCounter).</b> Hangi sayfaların ne kadar okunduğunu görmek için çerez kullanmayan GoatCounter hizmeti kullanılır. "
+             "Bu hizmet sayfa adresini, geldiğin bağlantıyı (referrer), tarayıcı/işletim sistemi türünü, ekran boyutunu ve IP adresinden çıkarılan ülke bilgisini "
+             "toplu istatistik olarak kaydeder; IP adresini saklamaz, çerez bırakmaz ve seni siteler arasında izlemez. "
+             "<i>Hukuki sebep:</i> siteyi geliştirmedeki meşru menfaat (KVKK m. 5/2-f).</li>"
+             if GC else "")
+    g = f"""
+<article class="ders"><header><p class="ust-yazi">ALES Kampı</p><h1>Gizlilik ve KVKK aydınlatma metni</h1></header>
+<div class="govde rehber">
+<p>Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) m. 10 uyarınca, ALES Kampı sitesini kullanırken hangi kişisel verilerin, hangi amaç ve hukuki sebeple işlendiğini açıklar.</p>
+<h2>Veri sorumlusu</h2>
+<p>Veri sorumlusu, ücretsiz ve gönüllü olarak yayımlanan ALES Kampı sitesinin sahibidir. Kişisel verilerle ilgili her talep için iletişim adresi: {e}. Site ÖSYM ya da herhangi bir kurumla bağlantılı değildir.</p>
+<h2>İşlenen veriler</h2>
+<ul class="liste">
+<li><b>Üyelik ve form yok.</b> Site üyelik istemez, form içermez, reklam ya da çerez kullanmaz.</li>
+<li><b>Sunucu kayıtları.</b> Site GitHub Pages üzerinde yayımlanır. GitHub, her web sunucusu gibi güvenlik ve kötüye kullanımın önlenmesi amacıyla sayfa isteklerini IP adresi, tarih-saat ve tarayıcı bilgisiyle kayıt altına alır. <i>Hukuki sebep:</i> meşru menfaat (KVKK m. 5/2-f). Bu kayıtlara biz erişmeyiz; GitHub'ın kendi gizlilik bildirimine tabidir.</li>
+{sayac}
+</ul>
+<h2>Yurt dışına aktarım</h2>
+<p>Barındırma (GitHub, ABD){" ve ziyaret istatistiği (GoatCounter)" if GC else ""} hizmetleri yurt dışındaki sunucularda çalıştığı için yukarıdaki teknik veriler, yalnızca bu hizmetlerin sunulması amacıyla ve KVKK m. 9'daki şartlar çerçevesinde yurt dışında işlenir.</p>
+<h2>Telegram grubu</h2>
+<p>Sitedeki Telegram bağlantıları seni Telegram'a götürür; gruba katılmak isteğe bağlıdır. Telegram'da paylaştığın bilgiler (kullanıcı adın, mesajların, anket cevapların) Telegram'ın kendi gizlilik politikasına tabidir ve grubun diğer üyelerince görülebilir. Grup botu, grup içi istatistik (ör. anketlerdeki doğru cevap oranı, gruba hangi davet bağlantısıyla katılındığının sayısı) dışında kişisel veri saklamaz.</p>
+<h2>Bize e-posta gönderdiğinde</h2>
+<p>E-posta adresin, adın (paylaştıysan) ve mesajın yalnızca sana cevap vermek ve bildirdiğin hatayı düzeltmek için kullanılır; kimseyle paylaşılmaz, yazışma bitince makul süre içinde silinir. E-posta hizmeti yurt dışındaki bir sağlayıcı (Google) üzerinden yürür. <i>Hukuki sebep:</i> iletişimi senin başlatman ve talebine cevap verilmesindeki meşru menfaat (KVKK m. 5/2-f).</p>
+<h2>Hakların</h2>
+<p>KVKK m. 11 uyarınca verilerinin işlenip işlenmediğini öğrenme, bilgi isteme, düzeltilmesini ya da silinmesini isteme, aktarıldığı üçüncü kişileri bilme, itiraz etme ve zararın giderilmesini isteme haklarına sahipsin. Başvurunu {e} adresine yazabilirsin; en geç 30 gün içinde cevaplanır. Cevabı yeterli bulmazsan Kişisel Verileri Koruma Kurulu'na şikâyette bulunabilirsin.</p>
+<p>Bu metin, veri işlemeyi etkileyen bir değişiklik olduğunda güncellenir.</p>
+</div></article>
+"""
+    yaz("gizlilik/", sayfa("gizlilik/", "Gizlilik ve KVKK · ALES Kampı", "ALES Kampı KVKK aydınlatma metni: işlenen veriler (sunucu kayıtları, çerezsiz ziyaret istatistiği, e-posta), hukuki sebepler, yurt dışı aktarım ve hakların.", g, "../"))
+
+
 def llms_txt():
     """Yapay zekâ araçları için sitenin özeti (llmstxt.org biçimi)."""
     L = lambda yol, ad, acik: f"- [{ad}]({BASE}/{yol}): {acik}"
@@ -947,10 +980,10 @@ def ekler(yollar):
 if __name__ == "__main__":
     shutil.rmtree(CIKTI, ignore_errors=True)
     os.makedirs(CIKTI)
-    ana_sayfa(); ders_sayfalari(); soru_sayfalari(); analiz(); konu_sayfalari(); programlar(); ales3(); rehber(); puan_sayfasi(); hakkinda()
+    ana_sayfa(); ders_sayfalari(); soru_sayfalari(); analiz(); konu_sayfalari(); programlar(); ales3(); rehber(); puan_sayfasi(); hakkinda(); gizlilik()
     yollar = (["", "ales-puan-hesaplama/", "ales-3-hazirlik/", "ales-calisma-programi/"] + [f"ales-calisma-programi/{n}-aylik/" for n in (1, 2, 3, 4)] +
               ["ales-nasil-calisilir/", "dersler/"] + [f"dersler/{d['slug']}/" for d in SIRA] +
               ["sorular/"] + [f"sorular/{q['slug']}/" for q in YAYIN] +
-              ["konu-analizi/", "ales-konulari/", "hakkinda/"] + [f"ales-konulari/{s[0]}/" for s in KONU_SAYFALARI])
+              ["konu-analizi/", "ales-konulari/", "hakkinda/", "gizlilik/"] + [f"ales-konulari/{s[0]}/" for s in KONU_SAYFALARI])
     ekler(yollar)
     print(f"Site: {CIKTI} · {len(yollar)} sayfa · {len(YAYIN)} yayımlanmış soru · taban {BASE}")
