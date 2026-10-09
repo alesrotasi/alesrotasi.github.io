@@ -1,7 +1,7 @@
 {
 "": [
-"87c2d8ed7dc4",
-"2026-10-08"
+"07604066928f",
+"2026-10-09"
 ],
 "ales-3-hazirlik/": [
 "57611ebb1d08",
@@ -32,8 +32,8 @@
 "2026-10-01"
 ],
 "ales-konulari/cumlede-anlam/": [
-"91af63fed769",
-"2026-10-08"
+"05d1ffaed189",
+"2026-10-09"
 ],
 "ales-konulari/geometri/": [
 "bf3d9a4eca4b",
@@ -64,8 +64,8 @@
 "2026-10-06"
 ],
 "ales-konulari/temel-matematik/": [
-"ca771037a33f",
-"2026-10-08"
+"a8cc4fabb961",
+"2026-10-09"
 ],
 "ales-nasil-calisilir/": [
 "b0bc28bc8d59",
@@ -88,12 +88,12 @@
 "2026-10-01"
 ],
 "dersler/bosluk-doldurma-ve-kesin-cikarim/": [
-"301de59db397",
-"2026-10-08"
+"24200ca8156d",
+"2026-10-09"
 ],
 "dersler/carpanlara-ayirma-ve-ozdeslikler/": [
-"b969d4fb3916",
-"2026-10-08"
+"20f531968a0e",
+"2026-10-09"
 ],
 "dersler/cumle-siralama/": [
 "5c9be03f1877",
@@ -192,8 +192,8 @@
 "2026-10-06"
 ],
 "sorular/": [
-"52125a8b0ee8",
-"2026-10-08"
+"e3ffb18babe1",
+"2026-10-09"
 ],
 "sorular/1-sayisal-kesirlerle-islem/": [
 "8dcc3be36064",
@@ -210,6 +210,14 @@
 "sorular/10-sozel-cikarim/": [
 "9ae14ea9a7a0",
 "2026-10-08"
+],
+"sorular/11-sayisal-ozdeslikler/": [
+"88406961ff91",
+"2026-10-09"
+],
+"sorular/11-sozel-cikarim/": [
+"822f9978181e",
+"2026-10-09"
 ],
 "sorular/2-sayisal-basamak-analizi/": [
 "e3f0455e760d",
