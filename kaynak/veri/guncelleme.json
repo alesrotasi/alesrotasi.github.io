@@ -1,7 +1,7 @@
 {
 "": [
-"273f68914181",
-"2026-10-14"
+"35d6611d7d41",
+"2026-10-15"
 ],
 "ales-3-hazirlik/": [
 "57611ebb1d08",
@@ -48,8 +48,8 @@
 "2026-10-06"
 ],
 "ales-konulari/paragraf/": [
-"5d2d31722ebf",
-"2026-10-14"
+"e036f32c6146",
+"2026-10-15"
 ],
 "ales-konulari/problemler/": [
 "5fad0139787e",
@@ -64,8 +64,8 @@
 "2026-10-06"
 ],
 "ales-konulari/temel-matematik/": [
-"f1ea9937ce89",
-"2026-10-14"
+"9e89ae137782",
+"2026-10-15"
 ],
 "ales-nasil-calisilir/": [
 "b0bc28bc8d59",
@@ -80,8 +80,8 @@
 "2026-10-01"
 ],
 "dersler/anlatim-bicimleri-ve-yazar-tutumu/": [
-"dc3f3a8108d8",
-"2026-10-14"
+"ed4f45ff10b5",
+"2026-10-15"
 ],
 "dersler/bolunebilme-asal-carpanlar-ebob-ekok/": [
 "a11edbd8f9d9",
@@ -108,8 +108,8 @@
 "2026-10-01"
 ],
 "dersler/esitsizlik-mutlak-deger-isaret-analizi/": [
-"4e96d5374042",
-"2026-10-14"
+"c532508698b7",
+"2026-10-15"
 ],
 "dersler/grafik-ve-tablo-yorumlama/": [
 "cd4070a1ff67",
@@ -192,8 +192,8 @@
 "2026-10-06"
 ],
 "sorular/": [
-"807c3852e10c",
-"2026-10-14"
+"2afde8a9c947",
+"2026-10-15"
 ],
 "sorular/1-sayisal-kesirlerle-islem/": [
 "8dcc3be36064",
@@ -258,6 +258,14 @@
 "sorular/16-sozel-yazar-tutumu/": [
 "9dbfa4d3645b",
 "2026-10-14"
+],
+"sorular/17-sayisal-esitsizlik/": [
+"5286846485a1",
+"2026-10-15"
+],
+"sorular/17-sozel-alti-cizili-sozun-anlami/": [
+"7e78092f33d3",
+"2026-10-15"
 ],
 "sorular/2-sayisal-basamak-analizi/": [
 "e3f0455e760d",
