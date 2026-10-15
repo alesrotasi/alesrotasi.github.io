@@ -256,7 +256,8 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None)
 <body>
 <header class="ust"><div class="ic">
 <a class="logo" href="{kok}">ALES <b>Kampı</b></a>
-<nav>{navh}<a class="tg" href="{TG}">Telegram grubu</a></nav>
+<nav aria-label="Ana menü">{navh}</nav>
+<a class="tg" href="{TG}">Telegram grubu</a>
 </div></header>
 <main class="ic">
 {govde}
@@ -273,6 +274,7 @@ bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://w
 <div class="baski-notu">Bu içerik ALES Kampı'na aittir: {BASE}/</div>
 {f'<script data-goatcounter="https://{GC}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>' if GC else ""}
 <script>
+(function(){{var a=document.querySelector(".ust nav a[aria-current]");if(a){{var m=a.parentNode;m.scrollLeft=a.offsetLeft-m.offsetLeft-(m.clientWidth-a.offsetWidth)/2}}}})();
 (function(){{var serbest=function(e){{return e.target&&e.target.closest&&e.target.closest("input,textarea,select")}};
 ["copy","cut","contextmenu","dragstart","selectstart"].forEach(function(t){{document.addEventListener(t,function(e){{if(!serbest(e))e.preventDefault()}})}});}})();
 </script>

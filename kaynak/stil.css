@@ -16,13 +16,21 @@ h2{font-size:clamp(1.3rem,3vw,1.65rem);margin:0 0 14px}
 main.ic{display:grid;gap:44px;padding-block:32px 56px}
 main.ic>*{min-width:0}
 .ust{background:var(--yuzey);border-bottom:1px solid var(--cizgi);position:sticky;top:0;z-index:5}
-.ust .ic{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;padding-block:10px}
+.ust .ic{display:flex;flex-wrap:wrap;align-items:center;gap:0 18px;min-height:56px}
 .logo{font:600 1.25rem var(--serif);color:var(--murekkep);text-decoration:none}
 .logo b{color:var(--vurgu-ink)}
-.ust nav{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;font-size:.95rem}
-.ust nav a{text-decoration:none;color:var(--soluk)}
+.ust nav{display:flex;gap:16px;align-items:center;font-size:.95rem;margin-left:auto}
+.ust nav a{text-decoration:none;color:var(--soluk);white-space:nowrap;padding-block:6px}
 .ust nav a:hover,.ust nav a[aria-current]{color:var(--murekkep)}
-.ust nav a.tg{color:var(--vurgu-ink);font-weight:600}
+.ust nav a[aria-current]{box-shadow:inset 0 -2px var(--vurgu)}
+.ust a.tg{color:var(--vurgu-ink);font-weight:600;font-size:.95rem;text-decoration:none;white-space:nowrap;border:1px solid var(--vurgu);border-radius:99px;padding:4px 12px}
+.ust a.tg:hover{background:var(--vurgu-acik)}
+@media (max-width:1000px){
+.ust .ic{padding-inline:0}
+.ust .logo,.ust a.tg{margin-block:10px}.ust .logo{margin-left:clamp(16px,4vw,32px)}.ust a.tg{margin-left:auto;margin-right:clamp(16px,4vw,32px)}
+.ust nav{order:3;flex:1 0 100%;margin:0;padding:0 clamp(16px,4vw,32px);gap:4px 18px;overflow-x:auto;scrollbar-width:none;border-top:1px solid var(--cizgi)}
+.ust nav::-webkit-scrollbar{display:none}
+.ust nav a{padding-block:10px}}
 .ust-yazi{font:500 .78rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soluk);margin:0 0 8px}
 .giris{font-size:1.12rem;color:var(--soluk);max-width:62ch;margin:14px 0 0}
 .kahraman{padding-top:20px}
