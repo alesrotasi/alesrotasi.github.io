@@ -26,6 +26,12 @@ CNAME = open(os.path.join(KOK, "CNAME")).read().strip() if os.path.exists(os.pat
 BASE = os.environ.get("SITE_BASE") or (f"https://{CNAME}" if CNAME else "https://alesrotasi.github.io")
 TG = "https://t.me/+yu1PnT-cz9ZiM2Fk"  # @aleskampi, "Site" davet bağlantısı (katılım kaynağı sayılır)
 TG_GENEL = "https://t.me/aleskampi"
+YT = "https://www.youtube.com/@aleskampi"
+IG = "https://www.instagram.com/aleskampi/"
+YT_SVG = ('<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" '
+          'd="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>')
+IG_SVG = ('<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" '
+          'd="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>')
 GC = open(os.path.join(KOK, "goatcounter.txt")).read().strip() if os.path.exists(os.path.join(KOK, "goatcounter.txt")) else None
 BUGUN_TR = datetime.now(timezone(timedelta(hours=3))).date()
 KAMP_BASI = date(2026, 9, 28)
@@ -258,6 +264,7 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None)
 <footer class="alt"><div class="ic">
 <p><b>ALES Kampı</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, çözümlü sorular, konu analizi ve çalışma programları.
 Günlük soru, haftalık kamp ve akademik ilanlar için <a href="{TG}">Telegram grubu @aleskampi</a>.</p>
+<p class="sosyal">Bizi takip et: <a class="sm yt" href="{YT}" target="_blank" rel="noopener">{YT_SVG} YouTube</a> <a class="sm ig" href="{IG}" target="_blank" rel="noopener">{IG_SVG} Instagram</a></p>
 <p class="altlink"><a href="{kok}ales-puan-hesaplama/">ALES puan hesaplama</a> · <a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a></p>
 <p class="iletisim"><a href="{kok}hakkinda/">Hakkında</a> · <a href="{kok}gizlilik/">Gizlilik ve KVKK</a> · İletişim: <a href="mailto:esraaksoyy34@gmail.com">esraaksoyy34@gmail.com</a></p>
 <p class="kucuk">© ALES Kampı. İçerikler özgündür ve izinsiz çoğaltılamaz; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
@@ -419,7 +426,7 @@ Arkasında {len(DERSLER)} konu anlatımı ve son {NS} ALES'teki {len(SORULAR)} s
 {sss_h}
 """
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "ALES Kampı", "url": BASE + "/", "inLanguage": "tr"},
-          {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Kampı", "url": BASE + "/", "sameAs": [TG_GENEL], "email": "esraaksoyy34@gmail.com"}, sss_ld]
+          {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Kampı", "url": BASE + "/", "sameAs": [TG_GENEL, YT, IG], "email": "esraaksoyy34@gmail.com"}, sss_ld]
     yaz("", sayfa("", "ALES Kampı · ALES'e sıfırdan hazırlık: konu anlatımı, çözümlü sorular, çalışma programı",
                   f"ALES sözel ve sayısal için ücretsiz {len(DERSLER)} konu anlatımı, çözümlü sorular, son {NS} sınavın konu dağılımı ve 1-2-3-4 aylık çalışma programları.",
                   g, "", ld, kaynak=KAYNAK_ANALIZ))
@@ -1016,7 +1023,8 @@ def llms_txt():
          L("hakkinda/", "Hakkında", "içeriklerin nasıl hazırlandığı, veri kaynakları ve iletişim"), "",
          "## Konu anlatımları", ""] + [
          L(f"dersler/{d['slug']}/", d["baslik"], f"{bolum_ad(d['bolum'])}; sınavda ortalama {virgul(ders_soru(d))} soru") for d in SIRA] + [
-         "", "## Topluluk", "", f"- [Telegram grubu @aleskampi]({TG_GENEL}): her gün 1 sözel + 1 sayısal soru, akşam çözümü, 16 haftalık kamp, ALES/3 hatırlatmaları", ""]
+         "", "## Topluluk", "", f"- [Telegram grubu @aleskampi]({TG_GENEL}): her gün 1 sözel + 1 sayısal soru, akşam çözümü, 16 haftalık kamp, ALES/3 hatırlatmaları",
+         f"- [YouTube @aleskampi]({YT}) ve [Instagram @aleskampi]({IG}): kısa konu anlatımları ve ezber teknikleri", ""]
     return "\n".join(s)
 
 

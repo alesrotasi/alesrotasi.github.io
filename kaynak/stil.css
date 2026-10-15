@@ -107,6 +107,9 @@ main.ic>*{min-width:0}
 .alt{border-top:1px solid var(--cizgi);background:var(--yuzey)}
 .alt .ic{padding-block:22px;font-size:.93rem}
 .alt p{margin:0 0 8px;max-width:80ch}
+.alt .sosyal{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.alt .sosyal a.sm{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:99px;color:#fff;text-decoration:none;font-weight:600}
+.alt .sosyal a.yt{background:#e62117}.alt .sosyal a.ig{background:#c13584}.alt .sosyal a.sm:hover{filter:brightness(.92)}.alt .sosyal svg{vertical-align:-2px}
 .kucuk{color:var(--soluk);font-size:.85rem}
 .duyuru{display:block;background:var(--uyari-acik);border:1px solid var(--uyari);border-radius:10px;padding:14px 20px;color:var(--murekkep);text-decoration:none}
 .duyuru b{color:var(--uyari)}
