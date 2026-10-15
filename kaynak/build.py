@@ -288,8 +288,8 @@ def kirinti(*parcalar):
 
 def tg_kutu():
     return (f'<aside class="tgkutu"><div><b>Her gün 1 sözel + 1 sayısal soru</b>'
-            f'<p>Telegram grubunda sabah soru, akşam çözüm; her gün kamp görevi; ALES/3 hatırlatmaları ve '
-            f'ALES şartlı akademik ilanlar.</p></div><a class="dugme" href="{TG}">@aleskampi grubuna katıl</a></aside>')
+            f'<p>Telegram grubunda sabah soru, akşam çözüm; her gün kamp görevi; ALES/3 hatırlatmaları; '
+            f'üyelerin paylaştığı ALES şartlı akademik ilanlar.</p></div><a class="dugme" href="{TG}">@aleskampi grubuna katıl</a></aside>')
 
 
 def bolum_ad(b):
@@ -333,27 +333,88 @@ def ana_sayfa():
     sonh = "".join(f'<a class="kart" href="sorular/{q["slug"]}/"><span class="etiket {"soz" if q["bolum"] == "sozel" else "say"}">'
                    f'{q["bolum_ad"]} · {q["gun"]}. gün</span><b>{esc(q["temiz_konu"])}</b></a>' for q in son)
     sonbolum = f'<section><h2>Son çözümlü sorular</h2><div class="kartlar">{sonh}</div><p><a href="sorular/">Bütün çözümlü sorular →</a></p></section>' if son else ""
+    # --- kamp ve sınav sayaçları (site her gün yeniden derlenir)
+    kamp_gun = (BUGUN_TR - KAMP_BASI).days + 1
+    kamp_top = 16 * 7
+    hafta_no = min(16, max(1, (kamp_gun - 1) // 7 + 1))
+    hafta_ad = [h[0] for _, _, hs in PROGRAM16 for h in hs][hafta_no - 1]
+    ales3 = date(2026, 11, 29)
+    kalan = (ales3 - BUGUN_TR).days
+    if 1 <= kamp_gun <= kamp_top:
+        kamp_h = (f'<div class="lp-kamp"><p class="etiket">16 haftalık kamp · {hafta_no}. hafta</p>'
+                  f'<p class="lp-buyuk">{kamp_gun}<small>/ {kamp_top}. gün</small></p>'
+                  f'<div class="lp-ilerleme" role="progressbar" aria-valuemin="0" aria-valuemax="{kamp_top}" aria-valuenow="{kamp_gun}" '
+                  f'aria-label="Kamp ilerlemesi"><span style="--o:{kamp_gun / kamp_top:.3f}"></span></div>'
+                  f'<p class="m">Bu haftanın odağı: <b>{esc(hafta_ad)}</b>. Gruba bugün katılan da programın neresinde olduğunu görür ve yakalar.</p></div>')
+    else:
+        kamp_h = ('<div class="lp-kamp"><p class="etiket">16 haftalık kamp</p><p class="lp-buyuk">16 hafta</p>'
+                  '<p class="m">Sözel ve sayısal konular haftalara bölünmüş, her gün tek görev.</p></div>')
+    sayac_h = (f'<div class="lp-kamp"><p class="etiket">2026-ALES/3 · 29 Kasım</p><p class="lp-buyuk">{kalan}<small>gün kaldı</small></p>'
+               f'<p class="m">Sıfırdan başlıyorsan 8 haftalık plan hazır: <a href="ales-3-hazirlik/">ALES/3 planı →</a></p></div>') if kalan >= 0 else ""
+    # --- telefon: dünkü sayısal soru, gruptaki "Günün sorusu" anketi gibi
+    dun = next((q for q in sorted(YAYIN, key=lambda q: -q["gun"]) if q["bolum"] == "sayisal" and len(q.get("soru", "")) + len(q.get("metin", "") or "") < 260), None)
+    if dun:
+        kok_ = esc(((dun.get("metin") or "") + " " + dun["soru"]).strip())
+        sikh = "".join(f'<li><span class="lp-yuvar" aria-hidden="true"></span>{esc(str(s))}</li>' for s in dun["siklar"])
+        telefon = (f'<figure class="lp-tel" aria-label="Telegram grubundaki Günün Sorusu anketinin örneği">'
+                   f'<div class="lp-tel-ust"><span class="lp-av" aria-hidden="true">A</span><div><b>ALES Kampı</b><small>❓ Günün Sorusu</small></div></div>'
+                   f'<div class="lp-balon"><p class="lp-anket-bas">📝 Günün sorusu · Sayısal · {esc(dun["temiz_konu"])}</p>'
+                   f'<p class="lp-kok">{kok_}</p><ol class="lp-anket">{sikh}</ol>'
+                   f'<p class="lp-anket-alt">Anonim test · çözüm akşam 20:00\'de</p></div>'
+                   f'<figcaption>{dun["gun"]}. günün sorusu, grupta sorulduğu hâliyle. <a href="sorular/{dun["slug"]}/">Çözümü gör →</a></figcaption></figure>')
+    else:
+        telefon = ""
     g = f"""
-<section class="kahraman">
-<p class="ust-yazi">ALES hazırlık · Sözel ve Sayısal</p>
-<h1>ALES'e sıfırdan hazırlık için ücretsiz rota</h1>
-<p class="giris">{len(DERSLER)} konu anlatımı, her gün yeni çözümlü sorular, son {NS} ALES'teki {len(SORULAR)} sorunun konu dağılımı ve
-1, 2, 3 ya da 4 aylık çalışma programları. Her ders, o konudan sınavda kaç soru çıktığıyla birlikte.</p>
-<div class="dugmeler"><a class="dugme" href="ales-calisma-programi/">Çalışma programını seç</a><a class="dugme ikincil" href="ales-nasil-calisilir/">Sıfırdan nasıl başlanır?</a></div>
+<section class="lp-kahraman">
+<div class="lp-kahraman-yazi">
+<p class="ust-yazi">Ücretsiz · üyelik yok · Telegram'da</p>
+<h1>ALES'e tek başına değil, <em>her gün birlikte</em> hazırlan</h1>
+<p class="giris">Sabah bir sözel, bir sayısal soru; akşam adım adım çözüm. Haftalık kamp programı, deneme takibi ve takıldığın soruyu sorabileceğin bir grup.
+Arkasında {len(DERSLER)} konu anlatımı ve son {NS} ALES'teki {len(SORULAR)} sorunun konu analizi var.</p>
+<div class="dugmeler"><a class="dugme lp-ana" href="{TG}">Telegram grubuna katıl</a><a class="dugme ikincil" href="#dersler">Önce derslere bak</a></div>
+<p class="lp-not">Katılmak için bir Telegram hesabı yeterli. İstediğin an sessize alır ya da ayrılırsın.</p>
+</div>
+{telefon}
 </section>
 
-<a class="duyuru" href="ales-3-hazirlik/"><b>29 Kasım ALES/3'e mi giriyorsun?</b> Başvuru tarihleri ve 8 haftalık öncelik sıralı plan →</a>
+<ul class="lp-rakam" aria-label="ALES Kampı kısaca">
+<li><b>{len(DERSLER)}</b><span>konu anlatımı</span></li>
+<li><b>{len(SORULAR)}</b><span>çıkmış sorunun konu analizi</span></li>
+<li><b>16</b><span>haftalık kamp programı</span></li>
+<li><b>0 ₺</b><span>ücret, üyelik, reklam yok</span></li>
+</ul>
+
+<section class="lp-gun">
+<h2>Grupta bir gün</h2>
+<ol class="lp-akis">
+<li><time>09:00</time><b>Günün sorusu</b><p>Bir sözel, bir sayısal soru Telegram anketi olarak gelir. İşaretlersin; kimse senin cevabını görmez.</p></li>
+<li><time>Gün boyu</time><b>Kamp görevi ve soru-cevap</b><p>O günün konusu ve hedefi. Takıldığın soruyu “Soru Sor” konusuna yazarsın, başkasınınkini çözersin.</p></li>
+<li><time>20:00</time><b>Çözüm ve doğru oranı</b><p>Her şıkkın neden doğru ya da yanlış olduğu, adım adım. Grubun yüzde kaçının doğru bildiğini de görürsün.</p></li>
+<li><time>Pazar</time><b>Haftalık özet ve net anketi</b><p>Haftanın deneme netini paylaşır, gidişatını görürsün. Pazartesi yeni kamp haftası başlar.</p></li>
+</ol>
+</section>
+
+<section class="lp-sayaclar">
+{kamp_h}
+{sayac_h}
+</section>
+
 <a class="duyuru mavi" href="ales-puan-hesaplama/"><b>Kaç net kaç puan?</b> ÖSYM formülüyle yaklaşık ALES puanını hesapla →</a>
 
-<section class="ozet">
+<section class="ozet lp-ozet">
 <div><h2>Sözel'de en çok soru</h2><ol>{li(konu_istat("SOZ"))}</ol><p><a href="ales-konulari/">Bütün konular →</a></p></div>
 <div><h2>Sayısal'da en çok soru</h2><ol>{li(konu_istat("SAY"))}</ol><p><a href="konu-analizi/">Konu analizi →</a></p></div>
 </section>
 
-{tg_kutu()}
 {sonbolum}
-<section><h2 id="sozel">Sözel dersler</h2><div class="kartlar">{soz}</div></section>
+<section><h2 id="dersler">Sözel dersler</h2><div class="kartlar">{soz}</div></section>
 <section><h2 id="sayisal">Sayısal dersler</h2><div class="kartlar">{say}</div></section>
+
+<section class="lp-katil">
+<div><h2>Yarın sabahki soruyu kaçırma</h2>
+<p>Gruba katıl, yarın 09:00'daki soruyla başla. Bu haftanın planı “16 Haftalık Kamp” konusunun başında sabitli durur.</p></div>
+<a class="dugme lp-ana" href="{TG}">@aleskampi grubuna katıl</a>
+</section>
 
 {sss_h}
 """
