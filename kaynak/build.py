@@ -430,7 +430,7 @@ Arkasında {len(DERSLER)} konu anlatımı ve son {NS} ALES'teki {len(SORULAR)} s
 """
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "ALES Kampı", "url": BASE + "/", "inLanguage": "tr"},
           {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Kampı", "url": BASE + "/", "sameAs": [TG_GENEL, YT, IG], "email": "iletisim@harezmi.dev"}, sss_ld]
-    yaz("", sayfa("", "ALES Kampı · ALES'e sıfırdan hazırlık: konu anlatımı, çözümlü sorular, çalışma programı",
+    yaz("", sayfa("", "ALES Konuları, Çözümlü Sorular ve Çalışma Programı | ALES Kampı",
                   f"ALES sözel ve sayısal için ücretsiz {len(DERSLER)} konu anlatımı, çözümlü sorular, son {NS} sınavın konu dağılımı ve 1-2-3-4 aylık çalışma programları.",
                   g, "", ld, kaynak=KAYNAK_ANALIZ))
 
@@ -464,6 +464,8 @@ def ders_sayfalari():
 {nav}
 """
         baslik = f"ALES {d['baslik'][0].upper() + d['baslik'][1:]} · {bolum_ad(d['bolum'])} konu anlatımı"
+        if len(baslik) > 62:  # Google ~60 karakterden sonrasını keser
+            baslik = f"ALES {d['baslik'][0].upper() + d['baslik'][1:]} Konu Anlatımı"
         u = f"{BASE}/dersler/{d['slug']}/"
         ld = [{"@context": "https://schema.org", "@type": "LearningResource", "name": d["baslik"], "description": aciklama,
                "inLanguage": "tr", "learningResourceType": "Konu anlatımı", "isAccessibleForFree": True,
@@ -512,6 +514,9 @@ def soru_sayfalari():
 {tg_kutu()}
 """
         baslik = f"ALES {q['bolum_ad']} sorusu: {q['temiz_konu']} (çözümlü) #{q['gun']}"
+        if len(baslik) > 62:  # parantezli ayrıntı ve "(çözümlü)" düşer
+            kisa = re.sub(r" *\([^)]*\)", "", q["temiz_konu"])
+            baslik = f"ALES {q['bolum_ad']} sorusu: {kisa} #{q['gun']}"
         acik = ilk_cumle(f"Çözümlü ALES {q['bolum_ad'].lower()} sorusu ({q['temiz_konu']}): " + (q.get("metin") or q["soru"]), 155)
         ld = [kirinti(("ALES Kampı", BASE + "/"), ("Çözümlü sorular", BASE + "/sorular/"), (baslik, u))]
         yaz(f"sorular/{q['slug']}/", sayfa(f"sorular/{q['slug']}/", baslik, acik, g, "../../", ld, "sorular/"))
