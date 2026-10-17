@@ -32,7 +32,8 @@ YT_SVG = ('<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><p
           'd="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>')
 IG_SVG = ('<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" '
           'd="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>')
-GC = open(os.path.join(KOK, "goatcounter.txt")).read().strip() if os.path.exists(os.path.join(KOK, "goatcounter.txt")) else None
+# Anonim sayaç (2026-10-17, GoatCounter yerine): harezmi.dev/_uret_yonetim.py üretir; sayımlar https://harezmi.dev/ales-sayac.php'ye gider
+SAYAC_JS = open(os.path.join(KOK, "istatistik.html"), encoding="utf-8").read() if os.path.exists(os.path.join(KOK, "istatistik.html")) else ""
 BUGUN_TR = datetime.now(timezone(timedelta(hours=3))).date()
 KAMP_BASI = date(2026, 9, 28)
 esc = html.escape
@@ -272,7 +273,7 @@ Günlük soru, haftalık kamp ve akademik ilanlar için <a href="{TG}">Telegram 
 bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
 </div></footer>
 <div class="baski-notu">Bu içerik ALES Kampı'na aittir: {BASE}/</div>
-{f'<script data-goatcounter="https://{GC}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>' if GC else ""}
+{SAYAC_JS}
 <script>
 (function(){{var a=document.querySelector(".ust nav a[aria-current]");if(a){{var m=a.parentNode;m.scrollLeft=a.offsetLeft-m.offsetLeft-(m.clientWidth-a.offsetWidth)/2}}}})();
 (function(){{var serbest=function(e){{return e.target&&e.target.closest&&e.target.closest("input,textarea,select")}};
@@ -973,11 +974,12 @@ Sayısal soruların cevapları bilgisayarla ayrıca doğrulanır; sözel sorular
 
 def gizlilik():
     e = '<a href="mailto:iletisim@harezmi.dev">iletisim@harezmi.dev</a>'
-    sayac = ("<li><b>Ziyaret istatistiği (GoatCounter).</b> Hangi sayfaların ne kadar okunduğunu görmek için çerez kullanmayan GoatCounter hizmeti kullanılır. "
-             "Bu hizmet sayfa adresini, geldiğin bağlantıyı (referrer), tarayıcı/işletim sistemi türünü, ekran boyutunu ve IP adresinden çıkarılan ülke bilgisini "
-             "toplu istatistik olarak kaydeder; IP adresini saklamaz, çerez bırakmaz ve seni siteler arasında izlemez. "
-             "<i>Hukuki sebep:</i> siteyi geliştirmedeki meşru menfaat (KVKK m. 5/2-f).</li>"
-             if GC else "")
+    sayac = ("<li><b>Anonim kullanım istatistiği.</b> Hangi sayfaların ne kadar okunduğunu görmek için her sayfa açılışında kendi sunucumuzdaki (harezmi.dev) sayaçlar bir artırılır; çerez ya da üçüncü taraf izleme hizmeti kullanılmaz. "
+             "Sunucuya yalnız açılan sayfanın adresi, sitemize hangi tür kaynaktan geldiğin (ör. Google, Telegram; tam adres değil), cihaz türü (telefon, tablet, bilgisayar) ve ziyaretinin yeni mi tekrar mı olduğuna dair kaba gruplar (ör. “2–5. ziyaret”, “son gelişten bu yana 1–7 gün”) gider. "
+             "Bu tekrar bilgisi için tarayıcında bir ziyaret notu (ziyaret sayısı ve son ziyaret zamanı) tutulur; bu not sunucuya gönderilmez ve seni tanımlayan bir kimlik numarası içermez. "
+             "Günlük tekil ziyaretçi sayısı için IP adresi ve tarayıcı bilgisinden her gün yenilenen tek yönlü bir özet üretilir ve en çok bir gün tutulur; IP adresinin kendisi kaydedilmez. Kaydedilen yalnızca günlük toplam sayılardır; kişi bazında kayıt tutulmaz, kimseyle paylaşılmaz. "
+             "<i>Amaç:</i> içeriği ve siteyi geliştirmek. <i>Hukuki sebep:</i> veri sorumlusunun meşru menfaati (KVKK m. 5/2-f). Tarayıcında “Do Not Track” ya da “Global Privacy Control” ayarı açıksa hiçbir sayım gönderilmez; sitenin adresine <code>?istatistik=kapat</code> ekleyerek de sayımı kendi tarayıcın için kapatabilirsin.</li>"
+             if SAYAC_JS else "")
     g = f"""
 <article class="ders"><header><p class="ust-yazi">ALES Kampı</p><h1>Gizlilik ve KVKK aydınlatma metni</h1></header>
 <div class="govde rehber">
@@ -991,7 +993,7 @@ def gizlilik():
 {sayac}
 </ul>
 <h2>Yurt dışına aktarım</h2>
-<p>Barındırma (GitHub, ABD){" ve ziyaret istatistiği (GoatCounter)" if GC else ""} hizmetleri yurt dışındaki sunucularda çalıştığı için yukarıdaki teknik veriler, yalnızca bu hizmetlerin sunulması amacıyla ve KVKK m. 9'daki şartlar çerçevesinde yurt dışında işlenir.</p>
+<p>Barındırma (GitHub, ABD){" ve ziyaret istatistiği sunucumuz (Namecheap, ABD)" if SAYAC_JS else ""} hizmetleri yurt dışındaki sunucularda çalıştığı için yukarıdaki teknik veriler, yalnızca bu hizmetlerin sunulması amacıyla ve KVKK m. 9'daki şartlar çerçevesinde yurt dışında işlenir.</p>
 <h2>Telegram grubu</h2>
 <p>Sitedeki Telegram bağlantıları seni Telegram'a götürür; gruba katılmak isteğe bağlıdır. Telegram'da paylaştığın bilgiler (kullanıcı adın, mesajların, anket cevapların) Telegram'ın kendi gizlilik politikasına tabidir ve grubun diğer üyelerince görülebilir. Grup botu, grup içi istatistik (ör. anketlerdeki doğru cevap oranı, gruba hangi davet bağlantısıyla katılındığının sayısı) dışında kişisel veri saklamaz.</p>
 <h2>Bize e-posta gönderdiğinde</h2>

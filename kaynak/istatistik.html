@@ -1,0 +1,30 @@
+<!-- DHBT - MBSTS/site/kaynak/istatistik.py'den üretildi (harezmi.dev/_uret_yonetim.py); elle düzenleme -->
+<script>
+(function(){
+  var H=location.hostname,ac=['dhbtkampi.com','mbstskampi.com','aleskampi.com'].indexOf(H)>=0&&!navigator.webdriver&&navigator.doNotTrack!=='1'&&!navigator.globalPrivacyControl;
+  var L=null;try{L=JSON.parse(localStorage.getItem('ist')||'{}')}catch(e){}
+  function kaydet(){try{localStorage.setItem('ist',JSON.stringify(L))}catch(e){}}
+  if(L){if(/[?&]istatistik=kapat/.test(location.search)){L.kapali=1;kaydet()}else if(/[?&]istatistik=ac/.test(location.search)){delete L.kapali;kaydet()}if(L.kapali)ac=false}
+  window.ist=function(){};if(!ac)return;
+  var simdi=Date.now(),v={};
+  if(!L){v.tur='bilinmiyor'}
+  else if(!L.son||simdi-L.son>18e5){  // 30 dakikadan uzun ara = yeni ziyaret
+    if(L.n){var a=(simdi-L.son)/864e5;v.tur='donen';v.ara=a<1?'ayni-gun':a<7?'1-7-gun':a<30?'7-30-gun':'30+-gun'}else v.tur='yeni';
+    L.n=(L.n||0)+1;v.kac=L.n<2?'1':L.n<6?'2-5':L.n<21?'6-20':'20+'}
+  if(L){L.son=simdi;kaydet()}
+  if(v.tur)v.c=matchMedia('(pointer:coarse)').matches?(Math.min(screen.width,screen.height)>=700?'tablet':'mobil'):'masaustu';
+  var r='';try{r=new URL(document.referrer).hostname.replace(/^www\./,'')}catch(e){}
+  if(r&&r!==H){var t=[[/google\./,'google'],[/bing\./,'bing'],[/yandex\./,'yandex'],[/duckduckgo/,'duckduckgo'],[/telegram|(^|\.)t\.me$/,'telegram'],[/instagram/,'instagram'],[/youtube|youtu\.be/,'youtube'],[/facebook|(^|\.)fb\.|(^|\.)l\.facebook/,'facebook'],[/(^|\.)x\.com$|twitter|(^|\.)t\.co$/,'x'],[/whatsapp/,'whatsapp'],[/dhbtkampi|mbstskampi|aleskampi|harezmi/,'kardes-site'],[/chatgpt|openai|perplexity|claude\.ai|gemini|copilot/,'yapay-zeka']];
+    v.k='diger';for(var i=0;i<t.length;i++)if(t[i][0].test(r)){v.k=t[i][1];break}}
+  else if(v.tur&&!r)v.k='dogrudan';
+  function gonder(o,ek){var b={p:location.pathname,o:o};for(var x in ek)b[x]=ek[x];b=JSON.stringify(b);
+    try{if(navigator.sendBeacon&&navigator.sendBeacon('https://harezmi.dev/ales-sayac.php',b))return}catch(e){}
+    try{fetch('https://harezmi.dev/ales-sayac.php',{method:'POST',body:b,keepalive:true,mode:'no-cors'})}catch(e){}}
+  var giden={};window.ist=function(o,d){if(giden[o])return;giden[o]=1;gonder(o,d?{d:d}:{})};
+  gonder('sayfa',v);
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.tsik button');if(!b)return;
+    setTimeout(function(){var t=b.closest('.test');if(!t)return;var s=t.querySelectorAll('.tsoru'),c=0,d=0;
+      s.forEach(function(q){var x=q.querySelector('.tsik button');if(x&&x.disabled){c++;if(!q.querySelector('.tsik .yanlis'))d++}});
+      ist('test-basla');if(c===s.length){var y=d/s.length;ist('test',y<.5?'0-49':y<.8?'50-79':'80-100')}},0)},true);
+})();
+</script>
