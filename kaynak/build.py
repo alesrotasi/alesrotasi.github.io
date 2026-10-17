@@ -13,6 +13,8 @@ Kitap kırpımı, ÖSYM soru metni İÇERMEZ. Girdiler (hepsi bu depoda):
 Kullanım:  python kaynak/build.py
 """
 import glob, hashlib, html, json, os, re, shutil, statistics, sys
+
+import guvenlik  # İçerik Güvenlik Politikası (DHBT - MBSTS/site/kaynak/guvenlik.py kopyası)
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta, timezone
 
@@ -240,6 +242,7 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None)
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{guvenlik.ihlal_betigi("https://harezmi.dev/ales-sayac.php")}
 <title>{esc(baslik)}</title>
 <meta name="description" content="{esc(aciklama)}">
 <link rel="canonical" href="{url}">
@@ -286,6 +289,8 @@ bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://w
 
 def yaz(yol, icerik):
     p = os.path.join(CIKTI, yol) if yol.endswith((".html", ".xml", ".txt")) else os.path.join(CIKTI, yol, "index.html")
+    if p.endswith(".html"):  # betik parmak izli CSP (GitHub Pages başlık gönderemediği için sayfa içi)
+        icerik = guvenlik.csp_ekle(icerik, {"connect-src": "https://harezmi.dev"})
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8").write(icerik)
 
