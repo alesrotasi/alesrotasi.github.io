@@ -267,7 +267,7 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None)
 Günlük soru, haftalık kamp ve akademik ilanlar için <a href="{TG}">Telegram grubu @aleskampi</a>.</p>
 <p class="sosyal">Bizi takip et: <a class="sm yt" href="{YT}" target="_blank" rel="noopener">{YT_SVG} YouTube</a> <a class="sm ig" href="{IG}" target="_blank" rel="noopener">{IG_SVG} Instagram</a></p>
 <p class="altlink"><a href="{kok}ales-puan-hesaplama/">ALES puan hesaplama</a> · <a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a></p>
-<p class="iletisim"><a href="{kok}hakkinda/">Hakkında</a> · <a href="{kok}gizlilik/">Gizlilik ve KVKK</a> · İletişim: <a href="mailto:iletisim@aleskampi.com">iletisim@aleskampi.com</a></p>
+<p class="iletisim"><a href="{kok}hakkinda/">Hakkında</a> · <a href="{kok}gizlilik/">Gizlilik ve KVKK</a> · İletişim: <a href="mailto:iletisim@harezmi.dev">iletisim@harezmi.dev</a></p>
 <p class="kucuk">© ALES Kampı. İçerikler özgündür ve izinsiz çoğaltılamaz; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
 bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
 </div></footer>
@@ -428,7 +428,7 @@ Arkasında {len(DERSLER)} konu anlatımı ve son {NS} ALES'teki {len(SORULAR)} s
 {sss_h}
 """
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "ALES Kampı", "url": BASE + "/", "inLanguage": "tr"},
-          {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Kampı", "url": BASE + "/", "sameAs": [TG_GENEL, YT, IG], "email": "iletisim@aleskampi.com"}, sss_ld]
+          {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Kampı", "url": BASE + "/", "sameAs": [TG_GENEL, YT, IG], "email": "iletisim@harezmi.dev"}, sss_ld]
     yaz("", sayfa("", "ALES Kampı · ALES'e sıfırdan hazırlık: konu anlatımı, çözümlü sorular, çalışma programı",
                   f"ALES sözel ve sayısal için ücretsiz {len(DERSLER)} konu anlatımı, çözümlü sorular, son {NS} sınavın konu dağılımı ve 1-2-3-4 aylık çalışma programları.",
                   g, "", ld, kaynak=KAYNAK_ANALIZ))
@@ -962,7 +962,7 @@ Sayısal soruların cevapları bilgisayarla ayrıca doğrulanır; sözel sorular
 </ul>
 <h2>Hata mı buldun?</h2>
 <p>Bir soruda ikinci bir doğru cevap, bir derste yanlış bilgi ya da çalışmayan bir sayfa gördüysen yaz; kontrol edip düzeltiriz:
-<a href="mailto:iletisim@aleskampi.com">iletisim@aleskampi.com</a></p>
+<a href="mailto:iletisim@harezmi.dev">iletisim@harezmi.dev</a></p>
 <h2>Kullanım</h2>
 <p>Siteyi kişisel çalışman için özgürce kullanabilirsin. İçeriklerin başka bir sitede, kitapta ya da kanalda izinsiz çoğaltılmasına izin verilmez; alıntı yapmak istersen kaynak bağlantısı vererek yap.</p>
 </div></article>
@@ -972,7 +972,7 @@ Sayısal soruların cevapları bilgisayarla ayrıca doğrulanır; sözel sorular
 
 
 def gizlilik():
-    e = '<a href="mailto:iletisim@aleskampi.com">iletisim@aleskampi.com</a>'
+    e = '<a href="mailto:iletisim@harezmi.dev">iletisim@harezmi.dev</a>'
     sayac = ("<li><b>Ziyaret istatistiği (GoatCounter).</b> Hangi sayfaların ne kadar okunduğunu görmek için çerez kullanmayan GoatCounter hizmeti kullanılır. "
              "Bu hizmet sayfa adresini, geldiğin bağlantıyı (referrer), tarayıcı/işletim sistemi türünü, ekran boyutunu ve IP adresinden çıkarılan ülke bilgisini "
              "toplu istatistik olarak kaydeder; IP adresini saklamaz, çerez bırakmaz ve seni siteler arasında izlemez. "
