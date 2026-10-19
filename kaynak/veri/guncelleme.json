@@ -1,7 +1,7 @@
 {
 "": [
-"61500c113c01",
-"2026-10-18"
+"7e35bfafeee0",
+"2026-10-19"
 ],
 "ales-3-hazirlik/": [
 "5d4ade72f16b",
@@ -48,8 +48,8 @@
 "2026-10-15"
 ],
 "ales-konulari/paragraf/": [
-"126c19c87b73",
-"2026-10-18"
+"f14b86b12b6e",
+"2026-10-19"
 ],
 "ales-konulari/problemler/": [
 "64a2ac047ab5",
@@ -64,8 +64,8 @@
 "2026-10-15"
 ],
 "ales-konulari/temel-matematik/": [
-"ceff19ffd090",
-"2026-10-18"
+"04a7c0309325",
+"2026-10-19"
 ],
 "ales-nasil-calisilir/": [
 "1206bd147984",
@@ -80,8 +80,8 @@
 "2026-10-15"
 ],
 "dersler/anlatim-bicimleri-ve-yazar-tutumu/": [
-"5d5181a0691e",
-"2026-10-18"
+"fab787923cdc",
+"2026-10-19"
 ],
 "dersler/bolunebilme-asal-carpanlar-ebob-ekok/": [
 "79bcb701f874",
@@ -100,8 +100,8 @@
 "2026-10-15"
 ],
 "dersler/denklemler-ve-denklem-sistemleri/": [
-"b5464f149f21",
-"2026-10-15"
+"e4b3b0e457b3",
+"2026-10-19"
 ],
 "dersler/dortgenler-cokgenler-cember/": [
 "89b060fef454",
@@ -192,8 +192,8 @@
 "2026-10-15"
 ],
 "sorular/": [
-"16d0819a2044",
-"2026-10-18"
+"9d747c634cb5",
+"2026-10-19"
 ],
 "sorular/1-sayisal-kesirlerle-islem/": [
 "8ff1e26031f3",
@@ -298,6 +298,14 @@
 "sorular/20-sozel-alti-cizili-sozun-anlami/": [
 "6f3e5c31606e",
 "2026-10-18"
+],
+"sorular/21-sayisal-birinci-dereceden-denklem/": [
+"1e0d5110cb28",
+"2026-10-19"
+],
+"sorular/21-sozel-dusunceyi-gelistirme-yollari/": [
+"5911cca4b9b6",
+"2026-10-19"
 ],
 "sorular/3-sayisal-tek-cift-sayilar/": [
 "4900dca6b5f8",
