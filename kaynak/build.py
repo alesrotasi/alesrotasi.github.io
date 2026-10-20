@@ -384,7 +384,7 @@ def ana_sayfa():
 <div class="lp-kahraman-yazi">
 <p class="ust-yazi">Ücretsiz · üyelik yok · Telegram'da</p>
 <h1>ALES'e tek başına değil, <em>her gün birlikte</em> hazırlan</h1>
-<p class="giris">Sabah bir sözel, bir sayısal soru; akşam adım adım çözüm. Haftalık kamp programı, deneme takibi ve takıldığın soruyu sorabileceğin bir grup.
+<p class="giris">ALES Kampı'nda sabah bir sözel, bir sayısal soru; akşam adım adım çözüm. Haftalık kamp programı, deneme takibi ve takıldığın soruyu sorabileceğin bir grup.
 Arkasında {len(DERSLER)} konu anlatımı ve son {NS} ALES'teki {len(SORULAR)} sorunun konu analizi var.</p>
 <div class="dugmeler"><a class="dugme lp-ana" href="{TG}">Telegram grubuna katıl</a><a class="dugme ikincil" href="#dersler">Önce derslere bak</a></div>
 <p class="lp-not">Katılmak için bir Telegram hesabı yeterli. İstediğin an sessize alır ya da ayrılırsın.</p>
@@ -435,7 +435,7 @@ Arkasında {len(DERSLER)} konu anlatımı ve son {NS} ALES'teki {len(SORULAR)} s
 """
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "ALES Kampı", "url": BASE + "/", "inLanguage": "tr"},
           {"@context": "https://schema.org", "@type": "Organization", "name": "ALES Kampı", "url": BASE + "/", "sameAs": [TG_GENEL, YT, IG], "email": "iletisim@harezmi.dev"}, sss_ld]
-    yaz("", sayfa("", "ALES Konuları, Çözümlü Sorular ve Çalışma Programı | ALES Kampı",
+    yaz("", sayfa("", "ALES Kampı: ALES Konuları, Çözümlü Sorular ve Çalışma Programı",
                   f"ALES sözel ve sayısal için ücretsiz {len(DERSLER)} konu anlatımı, çözümlü sorular, son {NS} sınavın konu dağılımı ve 1-2-3-4 aylık çalışma programları.",
                   g, "", ld, kaynak=KAYNAK_ANALIZ))
 
