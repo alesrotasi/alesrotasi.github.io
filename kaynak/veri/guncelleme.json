@@ -1,7 +1,7 @@
 {
 "": [
-"7e35bfafeee0",
-"2026-10-19"
+"902f00e9e9c0",
+"2026-10-20"
 ],
 "ales-3-hazirlik/": [
 "5d4ade72f16b",
@@ -48,8 +48,8 @@
 "2026-10-15"
 ],
 "ales-konulari/paragraf/": [
-"f14b86b12b6e",
-"2026-10-19"
+"20890f9df2f5",
+"2026-10-20"
 ],
 "ales-konulari/problemler/": [
 "64a2ac047ab5",
@@ -64,8 +64,8 @@
 "2026-10-15"
 ],
 "ales-konulari/temel-matematik/": [
-"04a7c0309325",
-"2026-10-19"
+"7137b498d2cd",
+"2026-10-20"
 ],
 "ales-nasil-calisilir/": [
 "1206bd147984",
@@ -84,8 +84,8 @@
 "2026-10-19"
 ],
 "dersler/bolunebilme-asal-carpanlar-ebob-ekok/": [
-"79bcb701f874",
-"2026-10-15"
+"cdf932cad705",
+"2026-10-20"
 ],
 "dersler/bosluk-doldurma-ve-kesin-cikarim/": [
 "f80be19c1e08",
@@ -132,8 +132,8 @@
 "2026-10-15"
 ],
 "dersler/paragrafta-ana-dusunce-konu-ve-baslik/": [
-"5204cb6eec22",
-"2026-10-15"
+"5b74f327984d",
+"2026-10-20"
 ],
 "dersler/sayi-kesir-ve-yas-problemleri/": [
 "813b1716d710",
@@ -192,8 +192,8 @@
 "2026-10-15"
 ],
 "sorular/": [
-"9d747c634cb5",
-"2026-10-19"
+"42e11a332bf5",
+"2026-10-20"
 ],
 "sorular/1-sayisal-kesirlerle-islem/": [
 "8ff1e26031f3",
@@ -306,6 +306,14 @@
 "sorular/21-sozel-dusunceyi-gelistirme-yollari/": [
 "5911cca4b9b6",
 "2026-10-19"
+],
+"sorular/22-sayisal-bolunebilme/": [
+"f1bc8c54da8e",
+"2026-10-20"
+],
+"sorular/22-sozel-ana-dusunce/": [
+"9ee8e6c2cd8d",
+"2026-10-20"
 ],
 "sorular/3-sayisal-tek-cift-sayilar/": [
 "4900dca6b5f8",
