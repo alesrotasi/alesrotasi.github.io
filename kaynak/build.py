@@ -650,16 +650,36 @@ Bu sorular {bolum_ad(bolum)} testinde çoğunlukla <b>{q1}–{q3}.</b> sorular a
     kart = "".join(f'<a class="kart" href="{s}/"><span class="etiket {b.lower()}">{bolum_ad(b)}</span><b>{esc(t)}</b>'
                    f'<span class="m">sınav başına {virgul(round(sum(1 for r in SORULAR if r["bolum"] == b and r["konu"] in k) / NS, 1))} soru</span></a>'
                    for s, t, _, b, k, _ in KONU_SAYFALARI)
+    rk = rakamlar()
+    soz, say = konu_istat("SOZ"), konu_istat("SAY")
+    tablo = lambda ks: "".join(f"<tr><td>{esc(ad(k))}</td><td>{virgul(round(n / NS, 1))}</td></tr>" for k, n, _, _ in ks)
+    sss_h, sss_ld = sss([
+        ("ALES konuları nelerdir?", "ALES'te iki test vardır: Sözel ve Sayısal. Sözel testte paragraf (ana düşünce, çıkarım, paragraf yapısı, uzun metin), sözel mantık, "
+         "cümlede ve sözcükte anlam sorulur. Sayısal testte temel matematik, problemler, sayısal mantık, grafik-tablo yorumlama ve geometri sorulur."),
+        ("ALES'te kaç soru var?", "ALES'te 50 sözel ve 50 sayısal olmak üzere 100 soru vardır; süre 150 dakikadır. Dört yanlış bir doğruyu götürür. Güncel kurallar için ÖSYM'nin başvuru kılavuzuna bak."),
+        ("ALES matematik konuları nelerdir?", f"Sayısal testteki konular: temel işlemler, sayı kavramları, denklem-eşitsizlik-mutlak değer, bölünebilme, kümeler, tanımlı işlem, "
+         f"problemler, permütasyon-olasılık, sayısal mantık, grafik-tablo ve geometri. En çok soru sayısal mantıktan gelir: sınav başına ortalama {rk['saym']} soru."),
+        ("ALES'te en çok hangi konudan soru çıkar?", f"Sözelde paragraf: soruların yaklaşık %{rk['par_oran']}'si paragraf temelli, sınav başına ortalama {rk['par']} soru. "
+         f"Sayısalda sayısal mantık: sınav başına ortalama {rk['saym']} soru."),
+        ("ALES/3'te hangi dersler var?", "ALES/1, ALES/2 ve ALES/3 aynı biçimdedir: her oturumda 50 sözel ve 50 sayısal soru sorulur, konular değişmez. "
+         "Ayrı bir ders listesi yoktur; konular bu sayfadaki sözel ve sayısal başlıklardır."),
+    ])
     g = f"""
 <header class="baslik"><h1>ALES konuları ve soru dağılımı</h1>
-<p class="giris">ALES'te 50 sözel ve 50 sayısal soru var. Hangi konudan kaç soru çıktığını, sınav sınav değişimini ve en sık soru tiplerini konu konu inceleyebilirsin.
-Tüm tablo için <a href="../konu-analizi/">konu analizi</a>.</p></header>
-<div class="kartlar">{kart}</div>
+<p class="giris">ALES'te 50 sözel ve 50 sayısal, toplam 100 soru var; süre 150 dakika. Sözelde soruların yaklaşık %{rk['par_oran']}'si paragraf temelli,
+sayısalda en çok soru sayısal mantıktan geliyor. Aşağıdaki liste son {NS} ALES'in ({SINAVLAR[0]} – {SINAVLAR[-1]}) konu konu dökümü; ayrıntı için konu sayfalarına geç.</p></header>
+<section><h2>ALES konu listesi</h2>
+<div class="tablo"><table><thead><tr><th>Sözel konular</th><th>Sınav başına soru</th></tr></thead><tbody>{tablo(soz)}</tbody></table></div>
+<div class="tablo"><table><thead><tr><th>Sayısal konular</th><th>Sınav başına soru</th></tr></thead><tbody>{tablo(say)}</tbody></table></div>
+<p class="m">Sınav başına ortalamalar son {NS} sınavdan hesaplandı; bir sınavdan ötekine birkaç soru oynayabilir. Sınav sınav tablo için <a href="../konu-analizi/">konu analizi</a>.</p></section>
+<section><h2>Konu konu inceleme</h2><div class="kartlar">{kart}</div></section>
+{sss_h}
+{yontem()}
 {tg_kutu()}
 """
-    yaz("ales-konulari/", sayfa("ales-konulari/", "ALES konuları 2026: sözel ve sayısal konular, soru dağılımı",
-                                "ALES sözel ve sayısal konuları ve soru dağılımı: paragraf, sözel mantık, sayısal mantık, problemler, geometri, temel matematik.",
-                                g, "../", None, "konu-analizi/", kaynak=KAYNAK_ANALIZ))
+    yaz("ales-konulari/", sayfa("ales-konulari/", "ALES Konuları 2026 ve Soru Dağılımı: Sözel, Sayısal Konu Listesi",
+                                "ALES'te 50 sözel, 50 sayısal soru: konu listesi ve her konudan sınav başına kaç soru çıktığı. Paragraf, sözel mantık, sayısal mantık, problemler, geometri.",
+                                g, "../", [sss_ld], "konu-analizi/", kaynak=KAYNAK_ANALIZ))
 
 
 def program_haftalari(n):
@@ -766,10 +786,18 @@ def programlar():
         ("Geometriyi atlayabilir miyim?", f"Vaktin 1 ay kadarsa evet. Geometri sınav başına ortalama {rk['geo']} soru getirir ama öğrenmesi en uzun konudur; 1 aylık programımızda bilinçli olarak dışarıda, 2 aylıkta yalnız temel kural düzeyinde."),
         ("Deneme sınavına ne zaman başlamalıyım?", "Konuların çoğunu bir kez gördükten sonra: 4 aylık programda son 3–4 hafta, 2 aylıkta son 2 hafta. Her denemenin ertesi günü yanlışlarını analiz et; analiz edilmeyen deneme net getirmez."),
     ])
+    # sınava kalan güne göre öneri (site her gün yeniden derlenir)
+    kalan = (date(2026, 11, 29) - BUGUN_TR).days
+    oneri = 1 if kalan <= 45 else 2 if kalan <= 75 else 3 if kalan <= 105 else 4
+    oneri_h = (f'<p class="giris"><b>ALES/3\'e (29 Kasım) {kalan} gün kaldı.</b> Bu süre için önerimiz {esc(PROGRAMLAR[oneri]["kisa"])} program; '
+               f'haftaları sınav tarihine oturtulmuş hâli için ALES/3 planı.</p>'
+               f'<div class="dugmeler"><a class="dugme" href="{oneri}-aylik/">{esc(PROGRAMLAR[oneri]["baslik"])}</a>'
+               f'<a class="dugme ikincil" href="../ales-3-hazirlik/">Tarihli ALES/3 planı</a></div>') if kalan > 0 else ""
     g = f"""
 <header class="baslik"><h1>ALES çalışma programı: 1, 2, 3 ve 4 aylık</h1>
+{oneri_h}
 <p class="giris">Sınava kalan süreye göre seç. Hepsi sıfırdan başlayanlar için yazıldı ve son {NS} ALES'teki konu dağılımına göre önceliklendirildi;
-her birinin yazdırılabilir PDF'i var. 29 Kasım'daki sınava hazırlanıyorsan <a href="../ales-3-hazirlik/">tarihli ALES/3 planına</a> bak.</p></header>
+her birinin yazdırılabilir PDF'i var.</p></header>
 <div class="kartlar">{kartlar}</div>
 <section><h2>Hangisini seçmeliyim?</h2><ul class="liste">
 <li><b>Sıfırdan ve 3 aydan fazla vaktin varsa:</b> 4 aylık. En rahat tempo; geometri dahil her konu.</li>
