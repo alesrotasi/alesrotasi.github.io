@@ -1,7 +1,7 @@
 {
 "": [
-"aa650fdf125a",
-"2026-10-20"
+"bedfa4782de9",
+"2026-10-21"
 ],
 "ales-3-hazirlik/": [
 "5d4ade72f16b",
@@ -48,8 +48,8 @@
 "2026-10-15"
 ],
 "ales-konulari/paragraf/": [
-"20890f9df2f5",
-"2026-10-20"
+"f43eeddc21c8",
+"2026-10-21"
 ],
 "ales-konulari/problemler/": [
 "64a2ac047ab5",
@@ -64,8 +64,8 @@
 "2026-10-15"
 ],
 "ales-konulari/temel-matematik/": [
-"7137b498d2cd",
-"2026-10-20"
+"0c911643187f",
+"2026-10-21"
 ],
 "ales-nasil-calisilir/": [
 "1206bd147984",
@@ -84,8 +84,8 @@
 "2026-10-19"
 ],
 "dersler/bolunebilme-asal-carpanlar-ebob-ekok/": [
-"cdf932cad705",
-"2026-10-20"
+"997eaa98db50",
+"2026-10-21"
 ],
 "dersler/bosluk-doldurma-ve-kesin-cikarim/": [
 "f80be19c1e08",
@@ -168,8 +168,8 @@
 "2026-10-15"
 ],
 "dersler/yardimci-dusunce-ve-cikarim/": [
-"248eb9dcb36c",
-"2026-10-15"
+"ae03c509e06b",
+"2026-10-21"
 ],
 "dersler/yer-degistirme-ve-akisi-bozan-cumle/": [
 "85c9e57b77d9",
@@ -192,8 +192,8 @@
 "2026-10-15"
 ],
 "sorular/": [
-"42e11a332bf5",
-"2026-10-20"
+"5a2e5d7863f4",
+"2026-10-21"
 ],
 "sorular/1-sayisal-kesirlerle-islem/": [
 "8ff1e26031f3",
@@ -314,6 +314,14 @@
 "sorular/22-sozel-ana-dusunce/": [
 "9ee8e6c2cd8d",
 "2026-10-20"
+],
+"sorular/23-sayisal-ebob-ekok/": [
+"caca83757ad9",
+"2026-10-21"
+],
+"sorular/23-sozel-cikarim/": [
+"47772a940d29",
+"2026-10-21"
 ],
 "sorular/3-sayisal-tek-cift-sayilar/": [
 "4900dca6b5f8",
