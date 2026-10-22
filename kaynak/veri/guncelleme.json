@@ -1,15 +1,15 @@
 {
 "": [
-"bedfa4782de9",
-"2026-10-21"
+"3a68117385cc",
+"2026-10-22"
 ],
 "ales-3-hazirlik/": [
 "5d4ade72f16b",
 "2026-10-15"
 ],
 "ales-calisma-programi/": [
-"0b7f4c97166d",
-"2026-10-21"
+"9816f693d035",
+"2026-10-22"
 ],
 "ales-calisma-programi/1-aylik/": [
 "d66cab67942f",
@@ -48,8 +48,8 @@
 "2026-10-15"
 ],
 "ales-konulari/paragraf/": [
-"f43eeddc21c8",
-"2026-10-21"
+"8b759d8e6160",
+"2026-10-22"
 ],
 "ales-konulari/problemler/": [
 "64a2ac047ab5",
@@ -64,8 +64,8 @@
 "2026-10-15"
 ],
 "ales-konulari/temel-matematik/": [
-"0c911643187f",
-"2026-10-21"
+"861fb6989f21",
+"2026-10-22"
 ],
 "ales-nasil-calisilir/": [
 "1206bd147984",
@@ -128,12 +128,12 @@
 "2026-10-15"
 ],
 "dersler/kumeler-ve-tanimli-islem/": [
-"e54ee6f34ca9",
-"2026-10-15"
+"80212558658f",
+"2026-10-22"
 ],
 "dersler/paragrafta-ana-dusunce-konu-ve-baslik/": [
-"5b74f327984d",
-"2026-10-20"
+"36d23bf609ee",
+"2026-10-22"
 ],
 "dersler/sayi-kesir-ve-yas-problemleri/": [
 "813b1716d710",
@@ -192,8 +192,8 @@
 "2026-10-15"
 ],
 "sorular/": [
-"5a2e5d7863f4",
-"2026-10-21"
+"ca72306d3a21",
+"2026-10-22"
 ],
 "sorular/1-sayisal-kesirlerle-islem/": [
 "8ff1e26031f3",
@@ -322,6 +322,14 @@
 "sorular/23-sozel-cikarim/": [
 "47772a940d29",
 "2026-10-21"
+],
+"sorular/24-sayisal-kumeler/": [
+"3611b6b28f8b",
+"2026-10-22"
+],
+"sorular/24-sozel-ana-dusunce/": [
+"4ff6bd9b547d",
+"2026-10-22"
 ],
 "sorular/3-sayisal-tek-cift-sayilar/": [
 "4900dca6b5f8",
