@@ -212,3 +212,5 @@ main.ic input{-webkit-user-select:text;user-select:text}
 .lp-katil .dugme{background:#fff;color:var(--vurgu)}
 @media (prefers-color-scheme:dark){.lp-katil{background:var(--vurgu-acik);border:1px solid var(--vurgu)}.lp-katil h2{color:var(--murekkep)}.lp-katil p{color:var(--soluk)}.lp-katil .dugme{background:var(--vurgu);color:#0f1417}}
 @media (prefers-reduced-motion:no-preference){.kart,.dugme{transition:border-color .15s,filter .15s}}
+
+.alt .wa{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.alt .wa a{display:inline-flex;align-items:center;padding:4px 12px;border-radius:99px;background:#fff;border:1px solid #25d366;color:#128c4a;text-decoration:none;font-weight:600}.alt .wa a:hover{background:#25d366;color:#fff}

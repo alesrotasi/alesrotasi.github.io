@@ -42,6 +42,18 @@ esc = html.escape
 virgul = lambda x: str(x).replace(".", ",")
 
 
+WA_NO = "905518781826"  # WhatsApp hızlı iletişim: 0551 878 18 26
+WA_KONULAR = ["Şikayet", "Telif hakları", "Öneri", "Genel", "Teşekkür"]
+
+
+def wa_satir(ad):
+    """Altbilgide WhatsApp hızlı iletişim: konu seçilir, wa.me mesajına ön metin olarak eklenir."""
+    from urllib.parse import quote
+    return ("<p class=\"wa\"><b>WhatsApp'tan yaz, önce konuyu seç:</b> " + " ".join(
+        f'<a href="https://wa.me/{WA_NO}?text={quote(f"Merhaba, {ad} sitesinden yazıyorum.{chr(10)}Konu: {k}{chr(10)}")}" target="_blank" rel="noopener">{k}</a>'
+        for k in WA_KONULAR) + '</p>')
+
+
 def slug(s):
     tr = str.maketrans("çğıöşüÇĞİÖŞÜâîû", "cgiosuCGIOSUaiu")
     s = re.sub(r"\([^)]*\)", "", s).translate(tr).lower()
@@ -270,6 +282,7 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None)
 <p><b>ALES Kampı</b>: ALES'e sıfırdan hazırlananlar için ücretsiz konu anlatımları, çözümlü sorular, konu analizi ve çalışma programları.
 Günlük soru, haftalık kamp ve akademik ilanlar için <a href="{TG}">Telegram grubu @aleskampi</a>.</p>
 <p class="sosyal">Bizi takip et: <a class="sm yt" href="{YT}" target="_blank" rel="noopener">{YT_SVG} YouTube</a> <a class="sm ig" href="{IG}" target="_blank" rel="noopener">{IG_SVG} Instagram</a></p>
+{wa_satir("ALES Kampı")}
 <p class="altlink"><a href="{kok}ales-puan-hesaplama/">ALES puan hesaplama</a> · <a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a></p>
 <p class="iletisim"><a href="{kok}hakkinda/">Hakkında</a> · <a href="{kok}gizlilik/">Gizlilik ve KVKK</a> · İletişim: <a href="mailto:iletisim@harezmi.dev">iletisim@harezmi.dev</a></p>
 <p class="kucuk">© ALES Kampı. İçerikler özgündür ve izinsiz çoğaltılamaz; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
@@ -1036,6 +1049,8 @@ def gizlilik():
 <p>Sitedeki Telegram bağlantıları seni Telegram'a götürür; gruba katılmak isteğe bağlıdır. Telegram'da paylaştığın bilgiler (kullanıcı adın, mesajların, anket cevapların) Telegram'ın kendi gizlilik politikasına tabidir ve grubun diğer üyelerince görülebilir. Grup botu, grup içi istatistik (ör. anketlerdeki doğru cevap oranı, gruba hangi davet bağlantısıyla katılındığının sayısı) dışında kişisel veri saklamaz.</p>
 <h2>Bize e-posta gönderdiğinde</h2>
 <p>E-posta adresin, adın (paylaştıysan) ve mesajın yalnızca sana cevap vermek ve bildirdiğin hatayı düzeltmek için kullanılır; kimseyle paylaşılmaz, yazışma bitince makul süre içinde silinir. E-posta hizmeti yurt dışındaki bir sağlayıcı (Google) üzerinden yürür. <i>Hukuki sebep:</i> iletişimi senin başlatman ve talebine cevap verilmesindeki meşru menfaat (KVKK m. 5/2-f).</p>
+<h2>WhatsApp'tan yazdığında</h2>
+<p>Altbilgideki WhatsApp düğmeleri, seçtiğin konuyu (ör. öneri, telif hakları) hazır metin olarak ekleyip WhatsApp'ı açar; düğmeye basmak tek başına bize hiçbir veri göndermez. Mesajı gönderirsen telefon numaran, WhatsApp'taki adın ve mesajın yalnızca sana cevap vermek ve bildirdiğin konuyu değerlendirmek için kullanılır; kimseyle paylaşılmaz, pazarlama için kullanılmaz, yazışma bitince makul süre içinde silinir. WhatsApp'ta paylaştığın bilgiler ayrıca WhatsApp'ın (Meta) kendi gizlilik politikasına tabidir ve yurt dışındaki sunucularda işlenir. <i>Hukuki sebep:</i> iletişimi senin başlatman ve talebine cevap verilmesindeki meşru menfaat (KVKK m. 5/2-f).</p>
 <h2>Hakların</h2>
 <p>KVKK m. 11 uyarınca verilerinin işlenip işlenmediğini öğrenme, bilgi isteme, düzeltilmesini ya da silinmesini isteme, aktarıldığı üçüncü kişileri bilme, itiraz etme ve zararın giderilmesini isteme haklarına sahipsin. Başvurunu {e} adresine yazabilirsin; en geç 30 gün içinde cevaplanır. Cevabı yeterli bulmazsan Kişisel Verileri Koruma Kurulu'na şikâyette bulunabilirsin.</p>
 <p>Bu metin, veri işlemeyi etkileyen bir değişiklik olduğunda güncellenir.</p>
