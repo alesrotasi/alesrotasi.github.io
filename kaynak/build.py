@@ -14,6 +14,7 @@ Kullanım:  python kaynak/build.py
 """
 import glob, hashlib, html, json, os, re, shutil, statistics, sys
 
+import deneme
 import guvenlik  # İçerik Güvenlik Politikası (DHBT - MBSTS/site/kaynak/guvenlik.py kopyası)
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta, timezone
@@ -180,7 +181,7 @@ YAYIN = yayinlanan_sorular()
 # ---------------------------------------------------------------- şablon
 CSS = open(os.path.join(KOK, "stil.css"), encoding="utf-8").read()
 NAV = [("ales-puan-hesaplama/", "Puan hesaplama"), ("ales-3-hazirlik/", "ALES/3 planı"), ("ales-calisma-programi/", "Çalışma programı"), ("dersler/", "Dersler"),
-       ("sorular/", "Çözümlü sorular"), ("konu-analizi/", "Konu analizi")]
+       ("sorular/", "Çözümlü sorular"), ("ales-deneme/", "Deneme"), ("konu-analizi/", "Konu analizi")]
 AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
 GUNC_DOSYA = os.path.join(VERI, "guncelleme.json")
 GUNC = json.load(open(GUNC_DOSYA, encoding="utf-8")) if os.path.exists(GUNC_DOSYA) else {}
@@ -283,7 +284,7 @@ def sayfa(yol, baslik, aciklama, govde, kok, jsonld=None, aktif="", kaynak=None)
 Günlük soru, haftalık kamp ve akademik ilanlar için <a href="{TG}">Telegram grubu @aleskampi</a>.</p>
 <p class="sosyal">Bizi takip et: <a class="sm yt" href="{YT}" target="_blank" rel="noopener">{YT_SVG} YouTube</a> <a class="sm ig" href="{IG}" target="_blank" rel="noopener">{IG_SVG} Instagram</a></p>
 {wa_satir("ALES Kampı")}
-<p class="altlink"><a href="{kok}ales-puan-hesaplama/">ALES puan hesaplama</a> · <a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a></p>
+<p class="altlink"><a href="{kok}ales-puan-hesaplama/">ALES puan hesaplama</a> · <a href="{kok}ales-nasil-calisilir/">ALES'e sıfırdan nasıl çalışılır?</a> · <a href="{kok}ales-konulari/">ALES konuları ve soru dağılımı</a> · <a href="{kok}ales-calisma-programi/">1-2-3-4 aylık programlar</a> · <a href="{kok}sorular/">Çözümlü sorular</a> · <a href="{kok}ales-deneme/">ALES deneme</a></p>
 <p class="iletisim"><a href="{kok}hakkinda/">Hakkında</a> · <a href="{kok}gizlilik/">Gizlilik ve KVKK</a> · İletişim: <a href="mailto:iletisim@harezmi.dev">iletisim@harezmi.dev</a></p>
 <p class="kucuk">© ALES Kampı. İçerikler özgündür ve izinsiz çoğaltılamaz; hiçbir yayınevi kitabından ya da ÖSYM sorusundan alıntı içermez. ALES, ÖSYM'nin düzenlediği bir sınavdır;
 bu site ÖSYM ile bağlantılı değildir. Resmî bilgi için <a href="https://www.osym.gov.tr/">osym.gov.tr</a>.</p>
@@ -1040,6 +1041,7 @@ def gizlilik():
 <h2>İşlenen veriler</h2>
 <ul class="liste">
 <li><b>Üyelik ve form yok.</b> Site üyelik istemez, form içermez, reklam ya da çerez kullanmaz.</li>
+<li><b>Tarayıcında tutulan ilerleme.</b> Deneme sınavlarındaki cevapların, başlama zamanın ve sonucun yalnızca senin tarayıcında (localStorage) saklanır; sunucuya ya da bize gönderilmez. Tarayıcı verilerini silerek istediğin an kaldırabilirsin.</li>
 <li><b>Sunucu kayıtları.</b> Site GitHub Pages üzerinde yayımlanır. GitHub, her web sunucusu gibi güvenlik ve kötüye kullanımın önlenmesi amacıyla sayfa isteklerini IP adresi, tarih-saat ve tarayıcı bilgisiyle kayıt altına alır. <i>Hukuki sebep:</i> meşru menfaat (KVKK m. 5/2-f). Bu kayıtlara biz erişmeyiz; GitHub'ın kendi gizlilik bildirimine tabidir.</li>
 {sayac}
 </ul>
@@ -1077,6 +1079,7 @@ def llms_txt():
          L("ales-3-hazirlik/", "2026 ALES/3 hazırlık planı", "29 Kasım 2026 sınavı için tarihler ve 8 haftalık plan"),
          L("ales-nasil-calisilir/", "ALES'e sıfırdan nasıl çalışılır?", "adım adım hazırlık rehberi"),
          L("sorular/", "Çözümlü sorular", "her gün eklenen özgün sözel ve sayısal sorular, ayrıntılı çözümleriyle"),
+         L("ales-deneme/", "ALES deneme", "haftalık süreli mini denemeler: 7 sayısal + 7 sözel özgün soru, 21 dakika, net ve çözümler"),
          L("hakkinda/", "Hakkında", "içeriklerin nasıl hazırlandığı, veri kaynakları ve iletişim"), "",
          "## Konu anlatımları", ""] + [
          L(f"dersler/{d['slug']}/", d["baslik"], f"{bolum_ad(d['bolum'])}; sınavda ortalama {virgul(ders_soru(d))} soru") for d in SIRA] + [
@@ -1106,10 +1109,10 @@ def ekler(yollar):
 if __name__ == "__main__":
     shutil.rmtree(CIKTI, ignore_errors=True)
     os.makedirs(CIKTI)
-    ana_sayfa(); ders_sayfalari(); soru_sayfalari(); analiz(); konu_sayfalari(); programlar(); ales3(); rehber(); puan_sayfasi(); hakkinda(); gizlilik()
+    ana_sayfa(); ders_sayfalari(); soru_sayfalari(); deneme_yollar = deneme.sayfalar(globals()); analiz(); konu_sayfalari(); programlar(); ales3(); rehber(); puan_sayfasi(); hakkinda(); gizlilik()
     yollar = (["", "ales-puan-hesaplama/", "ales-3-hazirlik/", "ales-calisma-programi/"] + [f"ales-calisma-programi/{n}-aylik/" for n in (1, 2, 3, 4)] +
               ["ales-nasil-calisilir/", "dersler/"] + [f"dersler/{d['slug']}/" for d in SIRA] +
-              ["sorular/"] + [f"sorular/{q['slug']}/" for q in YAYIN] +
+              ["sorular/"] + [f"sorular/{q['slug']}/" for q in YAYIN] + deneme_yollar +
               ["konu-analizi/", "ales-konulari/", "hakkinda/", "gizlilik/"] + [f"ales-konulari/{s[0]}/" for s in KONU_SAYFALARI])
     ekler(yollar)
     print(f"Site: {CIKTI} · {len(yollar)} sayfa · {len(YAYIN)} yayımlanmış soru · taban {BASE}")
