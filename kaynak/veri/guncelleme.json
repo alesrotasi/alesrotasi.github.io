@@ -1,15 +1,15 @@
 {
 "": [
-"3a68117385cc",
-"2026-10-22"
+"606f08c10fef",
+"2026-10-23"
 ],
 "ales-3-hazirlik/": [
 "5d4ade72f16b",
 "2026-10-15"
 ],
 "ales-calisma-programi/": [
-"9816f693d035",
-"2026-10-22"
+"33762d2cdbe9",
+"2026-10-23"
 ],
 "ales-calisma-programi/1-aylik/": [
 "d66cab67942f",
@@ -32,8 +32,8 @@
 "2026-10-21"
 ],
 "ales-konulari/cumlede-anlam/": [
-"11edc77ba503",
-"2026-10-15"
+"1740ce813ec7",
+"2026-10-23"
 ],
 "ales-konulari/geometri/": [
 "1f63f15188a3",
@@ -64,8 +64,8 @@
 "2026-10-15"
 ],
 "ales-konulari/temel-matematik/": [
-"861fb6989f21",
-"2026-10-22"
+"7331cfb1887e",
+"2026-10-23"
 ],
 "ales-nasil-calisilir/": [
 "1206bd147984",
@@ -88,8 +88,8 @@
 "2026-10-21"
 ],
 "dersler/bosluk-doldurma-ve-kesin-cikarim/": [
-"f80be19c1e08",
-"2026-10-15"
+"28ae5b3f4a29",
+"2026-10-23"
 ],
 "dersler/carpanlara-ayirma-ve-ozdeslikler/": [
 "98208de0040a",
@@ -128,8 +128,8 @@
 "2026-10-15"
 ],
 "dersler/kumeler-ve-tanimli-islem/": [
-"80212558658f",
-"2026-10-22"
+"93ff626c5f8b",
+"2026-10-23"
 ],
 "dersler/paragrafta-ana-dusunce-konu-ve-baslik/": [
 "36d23bf609ee",
@@ -192,8 +192,8 @@
 "2026-10-15"
 ],
 "sorular/": [
-"ca72306d3a21",
-"2026-10-22"
+"77f0b7331712",
+"2026-10-23"
 ],
 "sorular/1-sayisal-kesirlerle-islem/": [
 "8ff1e26031f3",
@@ -330,6 +330,14 @@
 "sorular/24-sozel-ana-dusunce/": [
 "4ff6bd9b547d",
 "2026-10-22"
+],
+"sorular/25-sayisal-tanimli-islem/": [
+"474bebc50714",
+"2026-10-23"
+],
+"sorular/25-sozel-cikarim/": [
+"65e9d35efb84",
+"2026-10-23"
 ],
 "sorular/3-sayisal-tek-cift-sayilar/": [
 "4900dca6b5f8",
