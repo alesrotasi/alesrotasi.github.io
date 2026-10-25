@@ -1,0 +1,39 @@
+name: Siteyi derle ve yayımla
+
+# 2026-10-25 kullanıcı kararı: site içerikleri yayından kaldırıldı. Yalnız kapali/ klasörü (kapalı ana sayfa,
+# Hakkında, Gizlilik, Kullanım koşulları, 404) yayımlanır. Kaynaklar (kaynak/) depoda durur; eski iş akışı
+# git geçmişinde (bu dosyanın önceki sürümü) — yeniden açmak için onu geri getir.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  derle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cp -r kapali _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  yayimla:
+    needs: derle
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.d.outputs.page_url }}
+    steps:
+      - id: d
+        uses: actions/deploy-pages@v4
